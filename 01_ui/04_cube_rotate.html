@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            overflow: hidden;
+        }
+        .bb {
+            perspective: 400px;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+        .innerwrap {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: rotateX(0deg) rotateY(0deg);
+            transform-origin: 50% 50%;
+            transform-style: preserve-3d;
+            transition: all 1s;
+        }
+        .wrap_front {
+            background: rgb(255, 255, 255);
+            width: 200px;
+            height: 200px;
+            transform: translateZ(100px) rotate3d(0, 0, 0, 0deg);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            opacity: 0.8;
+        }
+        .wrap_back {
+            background: rgb(236, 236, 236);
+            width: 200px;
+            height: 200px;
+            transform: translateZ(-100px) rotate3d(0, 0, 1, 0deg);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            opacity: 0.8;
+        }
+        .wrap_left {
+            background: rgb(197, 197, 197);
+            width: 200px;
+            height: 200px;
+            transform: translateX(-100px) rotate3d(0, 1, 0, 90deg);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            opacity: 0.8;
+        }
+        .wrap_right {
+            background: rgb(173, 173, 173);
+            width: 200px;
+            height: 200px;
+            transform: translateX(100px) rotate3d(0, 1, 0, 90deg);
+            right: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        .wrap_top {
+            background: #fff;
+            color: rgb(0, 110, 255);
+            width: 200px;
+            height: 200px;
+            transform: translateY(-100px) rotate3d(1, 0, 0, 270deg);
+            right: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            opacity: 0.8;
+        }
+        .wrap_bottom {
+            background: rgb(255, 238, 0);
+            width: 200px;
+            height: 200px;
+            transform: translateY(100px) rotate3d(1, 0, 0, 270deg);
+            right: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            opacity: 0.8;
+        }
+    </style>
+    <div class="yxval" style="color: #fff; font-size: 20px; margin: 20px; position: fixed; top:0; left:0;"></div>
+    <div class="bb">
+        <div class="innerwrap">
+            <div class="wrap_front">front</div>
+            <div class="wrap_back">back</div>
+            <div class="wrap_left">left</div>
+            <div class="wrap_right">right</div>
+            <div class="wrap_top">top</div>
+            <div class="wrap_bottom">bottom</div>
+        </div>
+    </div>
+    <script>
+        var innerwrap = document.querySelector('.innerwrap');
+        var transform = document.styleSheets[0].cssRules[3].style.transform;
+
+        // console.log(transform)
+        var yxval = document.querySelector('.yxval');
+        var click_active = false;
+        var x = 0;
+        var y = 0;
+        var mx = 0;
+        var my = 0;
+        var speed = 0.03;
+        var middleW = 0;
+        var middleH = 0;
+        function init() {
+            middleW = document.body.clientWidth;
+            middleH = document.body.clientHeight;
+        }
+        window
+            .addEventListener('mousedown', function (e) {
+                click_active = true
+                x = e.pageX
+                y = e.pageY
+            })
+            window
+            .addEventListener('mouseup', function (e) {
+                click_active = false
+            })
+            window
+            .addEventListener('mousemove', function (e) {
+                if (click_active) {
+                    mx = mx + (e.pageX - x);
+                    my = my + (e.pageY - y);
+                    x = e.pageX;
+                    y = e.pageY;
+                    console.log(x)
+                    yxval.innerHTML = `x: ${x} y: ${y}`
+                    // console.log('끝좌표: ', mx, my)
+                    innerwrap.style.transform = `rotateX(${ -(my)
+                    }deg) rotateY(${mx}deg)`
+                    // innerwrap.style.transform = `rotate3d(${-(my)}, ${mx}, ${0}, ${mx}deg)`
+                }
+            })
+        window
+        .addEventListener('resize', function (e) {
+            init()
+        })
+    window
+    .addEventListener('load', function (e) {
+        init()
+    })
+    </script>
+
+</body>
+</html>

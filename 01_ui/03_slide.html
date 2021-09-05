@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            font: normal 15px / 1.53 '신한세빛', 'sans-serif';
+        }
+        ol,
+        ul {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+        }
+        /* 공통 */
+        #wrap {
+            width: 100%;
+            perspective: 1200px;
+        }
+        .conts {
+            margin: 30px auto 0;
+            width: 1000px;
+            background: #f7f7f7;
+        }
+        /* nav */
+        .conts.nav ul {
+            display: flex;
+            height: 50px;
+        }
+        .conts.nav ul > li {
+            flex: 1 1 auto;
+            display: flex;
+            justify-content: center;
+            height: 100%;
+        }
+        .conts.nav ul > li > a {
+            display: block;
+            width: 100%;
+            height: 100%;
+            color: #555;
+            text-align: center;
+            line-height: 50px;
+        }
+        /* cube */
+        .conts.cube {
+            display: flex;
+            height: 400px;
+            position: relative;
+        }
+        /* big */
+        .conts.cube .bigcube {
+            flex: 0 1 auto;
+            width: 400px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: translateZ(-200px);
+            transition: 1s all;
+        }
+        .conts.cube .bigcube > article {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 400px;
+            height: 400px;
+            background: #fff;
+            opacity: .3;
+            border: 1px solid #ececec;
+            font-size: 40px;
+            color: #333;
+            padding: 40px;
+        }
+        .conts.cube .bigcube > article.on {
+            opacity: 1;
+        }
+        .conts.cube .bigcube > article:nth-of-type(1) {
+            transform: rotateY(0deg) translateZ(200px)
+        }
+        .conts.cube .bigcube > article:nth-of-type(2) {
+            transform: rotateY(90deg) translateZ(200px)
+        }
+        .conts.cube .bigcube > article:nth-of-type(3) {
+            transform: rotateY(180deg) translateZ(200px)
+        }
+        .conts.cube .bigcube > article:nth-of-type(4) {
+            transform: rotateY(270deg) translateZ(200px)
+        }
+        .conts.cube .bigcube > article:nth-of-type(5) {
+            transform: rotateX(90deg) translateZ(200px);
+        }
+        .conts.cube .bigcube > article:nth-of-type(6) {
+            transform: rotateX(270deg) translateZ(200px);
+        }
+        #wrap.box0 .conts.cube .bigcube {
+            transform: translateZ(-200px) rotateY(0deg)
+        }
+        #wrap.box1 .conts.cube .bigcube {
+            transform: translateZ(-200px) rotateY(-90deg)
+        }
+        #wrap.box2 .conts.cube .bigcube {
+            transform: translateZ(-200px) rotateY(-180deg)
+        }
+        #wrap.box3 .conts.cube .bigcube {
+            transform: translateZ(-200px) rotateY(-270deg)
+        }
+        #wrap.box4 .conts.cube .bigcube {
+            transform: translateZ(-200px) rotateX(-90deg)
+        }
+        #wrap.box5 .conts.cube .bigcube {
+            transform: translateZ(-200px) rotateX(-270deg)
+        }
+        /* small */
+        .conts.cube .smallcube {
+            flex: 1 1 auto;
+            display: flex;
+            width: 600px;
+            flex-wrap: wrap;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        .conts.cube .smallcube > article {
+            width: 200px;
+            height: 200px;
+            flex: 0 1 auto;
+            border: 1px solid #999;
+            position: relative;
+            transition: 1s all;
+            transform-style: preserve-3d;
+            transform: translateZ(-100px);
+        }
+        .conts.cube .smallcube > article > div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: #fff;
+            opacity: 1;
+            font-size: 40px;
+            width: 200px;
+            height: 200px;
+            border: 1px solid #ececec;
+        }
+        .conts.cube .smallcube > article.item1 {
+            z-index: 3;
+        }
+        .conts.cube .smallcube > article.item2 {
+            z-index: 2;
+        }
+        .conts.cube .smallcube > article.item3 {
+            z-index: 1;
+        }
+        .conts.cube .smallcube > article.item4 {
+            z-index: 3;
+        }
+        .conts.cube .smallcube > article.item5 {
+            z-index: 2;
+        }
+        .conts.cube .smallcube > article.item6 {
+            z-index: 1;
+        }
+        .conts.cube .smallcube > article > div:nth-of-type(1) {
+            transform: rotateY(0) translateZ(100px);
+            background: rgb(255, 255, 255);
+        }
+        .conts.cube .smallcube > article > div:nth-of-type(2) {
+            transform: rotateY(90deg) translateZ(100px);
+            background: rgb(223, 223, 223);
+        }
+        .conts.cube .smallcube > article > div:nth-of-type(3) {
+            transform: rotateY(180deg) translateZ(100px);
+            background: rgb(190, 190, 190);
+        }
+        .conts.cube .smallcube > article > div:nth-of-type(4) {
+            transform: rotateY(270deg) translateZ(100px);
+            background: rgb(161, 161, 161);
+        }
+        .conts.cube .smallcube > article > div:nth-of-type(5) {
+            transform: rotateX(90deg) translateZ(100px);
+            background: rgb(141, 141, 141);
+        }
+        .conts.cube .smallcube > article > div:nth-of-type(6) {
+            transform: rotateX(270deg) translateZ(100px);
+            background: rgb(85, 85, 85);
+        }
+        #wrap.box0 .conts.cube .smallcube > article.item1 {
+            transform: translateZ(-100px) rotateY(0deg);
+        }
+        #wrap.box1 .conts.cube .smallcube > article.item2 {
+            transform: translateZ(-100px) rotateY(-90deg)
+        }
+        #wrap.box2 .conts.cube .smallcube > article.item3 {
+            transform: translateZ(-100px) rotateY(-180deg)
+        }
+        #wrap.box3 .conts.cube .smallcube > article.item4 {
+            transform: translateZ(-100px) rotateY(-270deg)
+        }
+        #wrap.box4 .conts.cube .smallcube > article.item5 {
+            transform: translateZ(-100px) rotateX(-90deg)
+        }
+        #wrap.box5 .conts.cube .smallcube > article.item6 {
+            transform: translateZ(-100px) rotateX(-270deg)
+        }
+        .conts.slide {
+            display: flex;
+            height: 300px;
+            overflow: hidden;
+        }
+        .conts.slide .scrollY {
+            flex: 0 0 auto;
+            width: 400px;
+            height: calc(300px * 6);
+            z-index: 1;
+            transition: 1s all;
+        }
+        .conts.slide .scrollY > article {
+            height: 300px;
+        }
+        .conts.slide .scrollY > article:nth-of-type(1) {
+            background: rgb(226, 204, 255);
+        }
+        .conts.slide .scrollY > article:nth-of-type(2) {
+            background: rgb(190, 164, 224);
+        }
+        .conts.slide .scrollY > article:nth-of-type(3) {
+            background: rgb(161, 133, 197);
+        }
+        .conts.slide .scrollY > article:nth-of-type(4) {
+            background: rgb(139, 111, 175);
+        }
+        .conts.slide .scrollY > article:nth-of-type(5) {
+            background: rgb(107, 81, 139);
+        }
+        .conts.slide .scrollY > article:nth-of-type(6) {
+            background: rgb(68, 45, 99);
+        }
+        .conts.slide .scrollX {
+            flex: 0 1 auto;
+            display: flex;
+            width: calc(600px * 6);
+            transition: 1s all;
+        }
+        .conts.slide .scrollX > article {
+            height: 300px;
+            width: 600px;
+        }
+        .conts.slide .scrollX > article:nth-of-type(1) {
+            background: rgb(194, 210, 253);
+        }
+        .conts.slide .scrollX > article:nth-of-type(2) {
+            background: rgb(147, 166, 218);
+        }
+        .conts.slide .scrollX > article:nth-of-type(3) {
+            background: rgb(116, 134, 185);
+        }
+        .conts.slide .scrollX > article:nth-of-type(4) {
+            background: rgb(71, 88, 134);
+        }
+        .conts.slide .scrollX > article:nth-of-type(5) {
+            background: rgb(68, 84, 129);
+        }
+        .conts.slide .scrollX > article:nth-of-type(6) {
+            background: rgb(46, 58, 92);
+        }
+        .conts.nav ul > li > a.on {
+            background: #333;
+            color: #fff;
+        }
+        .smallcube .item1 > div.on,
+        .smallcube .item2 > div.on,
+        .smallcube .item3 > div.on,
+        .smallcube .item4 > div.on,
+        .smallcube .item5 > div.on,
+        .smallcube .item6 > div.on {
+            opacity: 1 !important;
+        }
+</style>
+</head>
+
+
+    <body>
+    <div id="wrap">
+        <nav class="conts nav">
+            <ul>
+                <li><a href="#" class="on">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">6</a></li>
+            </ul>
+        </nav>
+        <div class="conts cube">
+            <section class="bigcube">
+                <article class="on">1</article>
+                <article>2</article>
+                <article>3</article>
+                <article>4</article>
+                <article>5</article>
+                <article>6</article>
+            </section>
+            <section class="smallcube">
+                <article class="item1">
+                    <div class="on">1</div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                    <div>6</div>
+                </article>
+                <article class="item2">
+                    <div class="on">1</div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                    <div>6</div>
+                </article>
+                <article class="item3">
+                    <div class="on">1</div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                    <div>6</div>
+                </article>
+                <article class="item4">
+                    <div class="on">1</div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                    <div>6</div>
+                </article>
+                <article class="item5">
+                    <div class="on">1</div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                    <div>6</div>
+                </article>
+                <article class="item6">
+                    <div class="on">1</div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                    <div>6</div>
+                </article>
+            </section>
+        </div>
+        <div class="conts slide">
+            <section class="scrollY">
+                <article class="on">1</article>
+                <article>2</article>
+                <article>3</article>
+                <article>4</article>
+                <article>5</article>
+                <article>6</article>
+            </section>
+            <section class="scrollX">
+                <article class="on">1</article>
+                <article>2</article>
+                <article>3</article>
+                <article>4</article>
+                <article>5</article>
+                <article>6</article>
+            </section>
+        </div>
+
+
+        <script>
+            (function () {
+                
+                var wrap = document.querySelector('#wrap')
+                var nev = document.querySelectorAll('.conts.nav ul li');
+                var big_Cube = document.querySelectorAll('.bigcube article');
+                var scrollY = document.querySelector('.scrollY');
+                var scrollX = document.querySelector('.scrollX');
+                var small_Cube1 = document.querySelectorAll('.smallcube .item1 div');
+                var small_Cube2 = document.querySelectorAll('.smallcube .item2 div');
+                var small_Cube3 = document.querySelectorAll('.smallcube .item3 div');
+                var small_Cube4 = document.querySelectorAll('.smallcube .item4 div');
+                var small_Cube5 = document.querySelectorAll('.smallcube .item5 div');
+                var small_Cube6 = document.querySelectorAll('.smallcube .item6 div');
+                var isOn;
+                var index = null;
+
+
+                for (var i = 0; i < nev.length; i++) {
+                    (function (h) {
+                        nev[h].children[0].addEventListener('click', function (e) {
+                            e.preventDefault();
+                            action(h)
+                        })
+                    })(i)
+                }
+
+                function inter() {
+                    action(index)
+                    index++
+                    // if(index > nev.length-1) {
+                    // index = 0
+                    // } else {
+                    // index++
+                    // }
+                }
+
+                function action(index) {
+                    console.log(index)
+                    toggleClass(nev[index].children[0], nev, index, 'on')
+                    toggleClass2(big_Cube[index], big_Cube, index, 'on')
+                    scrollYfn(scrollY, index)
+                    scrollXfn(scrollX, index)
+                    wrap.className = '';
+                    wrap.classList.add(`box${index}`);
+                }
+                // setInterval(function() {
+                // // action(index)
+                // inter()
+                // }, 3000)
+                function toggleClass(item, items, i, classN) {
+                    for (var i = 0; i < items.length; i++) {
+                        items[i].children[0].className = '';
+                        item.classList.add(classN)
+                    }
+                }
+
+                function toggleClass2(item, items, i, classN) {
+                    for (var i = 0; i < items.length; i++) {
+                        items[i].className = '';
+                        item.classList.add(classN)
+                    }
+                }
+
+                function scrollYfn(ele, i) {
+                    var height = ele.children[0].clientHeight
+                    ele.style.transform = `translateY(-${height * i}px)`}
+
+
+                function scrollXfn(ele, i) {
+                    var height = ele.children[0].clientWidth
+                    ele.style.transform = `translateX(-${height * i}px)`}
+            })()
+        </script>
+       
+        </body>
+</html>

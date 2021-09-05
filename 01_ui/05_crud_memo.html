@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+
+        <style>
+            .ly_inner.mywall .dx-customize.complete_body.ani_ico::before {
+                top: 22px !important;
+            }
+            .ly_inner.mywall .complete_body {
+                padding-top: 150px;
+            }
+            .ly_inner.mywall .btnwrap > a {
+                width: 80px;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                word-break: break-all;
+            }
+            body,
+            html {
+                font: normal 15px/1.53 '신한세빛', 'sans-serif';
+            }
+            ol,
+            ul {
+                list-style: none;
+            }
+            header {
+                height: 100px;
+                background: rgb(235, 235, 235);
+            }
+            header > div {
+                max-width: 1100px;
+                margin: 0 auto;
+                color: rgb(114, 114, 114);
+                padding: 20px;
+                font-size: 18px;
+            }
+            .outerconts {
+                max-width: 1100px;
+                margin: 30px auto 160px;
+                padding: 20px;
+            }
+            .result > ul {
+                display: flex;
+                flex-wrap: wrap;
+                margin: 20px -5px -5px;
+            }
+            .result > ul > li {
+                flex: 0 1 auto;
+                margin: 5px;
+                border: 1px solid #ddd;
+                padding: 20px;
+                width: calc(33.33333% - 10px);
+                background: #f9f9f9;
+                position: relative;
+            }
+            .result > ul > li span {
+                font-size: 14px;
+                display: block;
+                color: #888;
+                font-weight: 300;
+                margin-bottom: 5px;
+            }
+            .result > ul > li .title {
+                font-size: 18px;
+                font-weight: bold;
+            }
+            .result > ul > li .outerconts {
+                color: #444;
+                margin: 10px 20px 50px 0;
+            }
+            .result > ul > li .btnwrap {
+                position: absolute;
+                bottom: 20px;
+                left: 20px;
+            }
+            textarea {
+                display: block;
+                width: 100%;
+                height: 120px;
+                box-sizing: border-box;
+                padding: 14px;
+                border: 1px solid #dddddd;
+                resize: none;
+                background-color: #fff;
+                font-size: 16px;
+                line-height: 24px;
+                color: #333;
+                margin: 5px 0;
+            }
+            input {
+                border-radius: 0;
+                width: 100%;
+                height: 44px;
+                box-sizing: border-box;
+                padding: 0 14px;
+                border: 1px solid #ddd;
+                background-color: #fff;
+                font-weight: 400;
+                font-size: 16px;
+                color: #333;
+                line-height: 42px;
+            }
+            a {
+                min-width: 63px;
+                height: 28px;
+                padding: 0 10px;
+                border: 1px solid #bbb;
+                border-radius: 3px;
+                background: #fff;
+                font-weight: 400;
+                font-size: 13px;
+                color: #333;
+                line-height: 26px;
+                display: inline-block;
+                text-align: center;
+                text-decoration: none;
+            }
+            .changeArea {
+                margin-bottom: 40px;
+            }
+            .conts {
+                margin: 10px 0 50px;
+            }
+            @media (max-width:768px) {
+                .result > ul > li {
+                    flex: 1 1 100%;
+                    max-width: calc(100% - 10px);
+                }
+            }
+        </style>
+        <div class="wrap">
+            <header>
+                <div>asdasds</div>
+            </header>
+            <div class="outerconts">
+                <input type="text" name="info" placeholder="title...." class="title-input"/>
+                <textarea placeholder="contents..." class="conts-input"></textarea>
+                <a href="#" class="submit">sumbit</a>
+                <div class="result">
+                    <ul></ul>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // splice는 배열 위치가 변경돼서 안됨 -> 이거 됨(dom을 그리고 querySelector를 그 함수 안에다 해야됨. 그리고
+            // 삭제기능은 다른함수로) console.log('삭제되기전 : ', info) info.splice(getId, 1)
+            // console.log('삭제되고 : ', info)
+            var info = [
+                {
+                    title: '11',
+                    conts: 'conts',
+                    id: 0
+                }, {
+                    title: '22',
+                    conts: 'conts',
+                    id: 1
+                }, {
+                    title: '33',
+                    conts: 'conts',
+                    id: 2
+                }, {
+                    title: '44',
+                    conts: 'conts',
+                    id: 3
+                }, {
+                    title: '55',
+                    conts: 'con<br />ts',
+                    id: 4
+                }, {
+                    title: '66',
+                    conts: 'conts',
+                    id: 5
+                }
+            ];
+            var id = info.length - 1;
+            var btn = document.querySelector('.submit')
+            var input = document.querySelector('.title-input')
+            var textarea = document.querySelector('.conts-input')
+            var result = document.querySelector('.result > ul')
+            // load 시
+            createDOM(result, info)
+            // enterEvent(textarea) click 시
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                var titleData = input.value
+                var contsData = textarea.value
+                contsData = contsData.replace(/(?:\r\n|\r|\n)/g, '<br />')
+                if (titleData === '' && contsData === '') 
+                    return console.log('nodata')
+                id++
+                info.push({title: titleData, conts: contsData, id})
+                input.value = ''
+                textarea.value = ''
+                input.focus()
+                createDOM(result, info)
+            })
+            window.addEventListener('dblclick', function (e) {
+                var getId = parseInt(e.target.parentNode.parentNode.getAttribute('data-id')) //data-id값
+                modify(e, getId)
+            })
+            result.addEventListener('click', function (e) {
+                e.preventDefault()
+                var getId = parseInt(e.target.parentNode.parentNode.getAttribute('data-id')) //data-id값
+                switch (e.target.className) {
+                    case 'del':
+                        var del = info.filter(function (val) {
+                            return getId !== val.id
+                        })
+                        info = del
+                        createDOM(result, info)
+                        break
+                    case 'modifybtn':
+                        modify(e, getId)
+                        break
+                    case 'comple':
+                        comple(e, getId)
+                        break
+                }
+            })
+            function createDOM(ele, dataList) {
+                ele.innerHTML = '';
+                dataList.map(function (val, i) {
+                    ele.innerHTML += `
+                        <li data-id="${val.id}">
+                        <div class="default">
+                        <div class="title"><span>${val.id}</span>${val.title}</div>
+                        <div class="conts">${val.conts}</div>
+                        </div>
+                        <div class="modify" style="display:none">
+                        <input type="text" value="${val.title}" class="changeInput">
+                        <textarea class="changeArea">${val.conts}</textarea>
+                        </div>
+                        <div class="btnwrap">
+                        <a href="#" class="del">del</a>
+                        <a href="#" class="modifybtn">modify</a>
+                        <a href="#" class="comple" style="display:none">ok</a>
+                        </div>
+                        </li>
+                        `
+                })
+                var del = document.querySelectorAll('.del')
+                for (var i = 0; i < del.length; i++) {
+                    del[i].addEventListener('click', function () {
+                        console.log(this)
+                    })
+                }
+            }
+
+            // function createDOM(ele, dataList) {  ele.innerHTML = ''; for(var i = 0; i <
+            // dataList.length; i++) { ele.innerHTML += ` <li data-id="${dataList[i].id}">
+            // <div class="default"> <div
+            // class="title"><span>${dataList[i].id}</span>${dataList[i].title}</div> <div
+            // class="conts">${dataList[i].conts}</div> </div> <div class="modify"
+            // style="display:none"> <input type="text" value="${dataList[i].title}"
+            // class="changeInput"> <textarea
+            // class="changeArea">${dataList[i].conts}</textarea> </div> <a href="#"
+            // class="del">del</a> <a href="#" class="modifybtn">modify</a> <a href="#"
+            // class="comple" style="display:none">ok</a> </li> ` } var del =
+            // document.querySelectorAll('.del') for(var i = 0; i < del.length; i++) {
+            // del[i].addEventListener('click', function() { console.log(this) }) } }
+
+            function modify(e, getId) {
+                info.map(function (val, i) {
+                    if (val.id === getId) {
+                        e
+                            .target
+                            .parentNode
+                            .parentNode
+                            .querySelector('.default')
+                            .style
+                            .display = 'none'
+                        e
+                            .target
+                            .parentNode
+                            .parentNode
+                            .querySelector('.modifybtn')
+                            .style
+                            .display = 'none'
+                        e
+                            .target
+                            .parentNode
+                            .parentNode
+                            .querySelector('.modify')
+                            .style
+                            .display = 'block'
+                        e
+                            .target
+                            .parentNode
+                            .parentNode
+                            .querySelector('.comple')
+                            .style
+                            .display = 'inline-block'
+                    }
+                })
+            }
+
+
+            function comple(e, getId) {
+                // if(e.target.className === 'comple') {}
+                info.map(function (val, i) {
+                    // console.log('valid: ', val.id) console.log('getId: ', getId)
+                    if (val.id === getId) {
+                        console.log(e.target.parentNode.parentNode)
+                        e
+                            .target
+                            .parentNode
+                            .parentNode
+                            .querySelector('.default')
+                            .style
+                            .display = 'block'
+                        e
+                            .target
+                            .parentNode
+                            .parentNode
+                            .querySelector('.modifybtn')
+                            .style
+                            .display = 'inline-block'
+                        e
+                            .target
+                            .parentNode
+                            .parentNode
+                            .querySelector('.modify')
+                            .style
+                            .display = 'none'
+                        e
+                            .target
+                            .parentNode
+                            .parentNode
+                            .querySelector('.comple')
+                            .style
+                            .display = 'none'
+                        val.title = e
+                            .target
+                            .parentNode
+                            .parentNode
+                            .querySelector('.changeInput')
+                            .value;
+                        var constData = e
+                            .target
+                            .parentNode
+                            .parentNode
+                            .querySelector('.changeArea')
+                            .value
+                            .replace(/(?:\r\n|\r|\n)/g, '<br />')
+                        val.conts = constData
+                    }
+                })
+                createDOM(result, info)
+                console.log(info)
+            }
+        </script>
+
+    </body>
+</html>

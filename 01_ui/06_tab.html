@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    
+    <style>
+    a {text-decoration: none;}
+    .tabs2 * {box-sizing:border-box; }
+    .tabs2 ul {display:table; width:100%; padding:0; margin:0;}
+    .tabs2 ul li {display:table-cell; width:25%; text-align: center;}
+    .tabs2 ul li a {width:100%; padding:5px; display:block; background: #fff; transition: all .8s ease-in-out; font-size: 13px; opacity: .5;}
+    .tabs2 ul li a.on {background: #fff; font-weight: bold; color:#944949; opacity: 1;}
+    /* .slide-bar * {box-sizing:border-box; margin-top:150px;} */
+    .underbar { width:100%; padding:0; margin:0; transition: all .8s ease-in-out; margin-bottom:50px;}
+    .underbar span {display:inline-block; height:1px; background: #944949; text-indent: -999px; transition: all .8s cubic-bezier(0.92,-0.02, 0, 1.02); margin-top:10px}
+    /* .underbar span.on {width:} */
+    .tab-contents2 * {box-sizing:border-box;}
+    .tab-contents2 {width: 100%; overflow: hidden;}
+    .tab-contents2 ul {margin: 20px 0; padding:0; display:table; transition: all .8s cubic-bezier(0.92,-0.02, 0, 1.02);transform:scale(1); }
+    .tab-contents2 ul li {text-align: center; float:left; opacity: .2; transition: all .8s cubic-bezier(0.92,-0.02, 0, 1.02);}
+    .tab-contents2 ul::after {content:''; width:100%; clear:both;}
+    .tab-contents2 ul li a {width:100%; display:inline-block; background:#fccdcd; padding:5px; transition: all .3s ease-in-out;}
+    .tab-contents2 ul li.active {opacity: 1; transform:scale(1.1); transform: scale3d(1,6,30); }
+    .btn-box { position: absolute; left:0; right:0; margin:0 auto; width:105px; margin-top:20px; }
+    .btn-box .next-btn { width: 50px; height: 30px; background: #999; border: none; display:inline-block; color:white;}
+    .btn-box .prev-btn { width: 50px; height: 30px; background: #999; border: none; display:inline-block; color:white;}
+    </style>
+    <div class="tabs2">
+    <ul>
+    <li><a href="#none" class="on">하하</a></li>
+    <li><a href="#none">하하투</a></li>
+    <li><a href="#none">하하삼</a></li>
+    <li><a href="#none">하하사</a></li>
+    <li><a href="#none">하하오</a></li>
+    <li><a href="#none">하하육</a></li>
+    </ul>
+    </div>
+    <div class="underbar"><span></span></div>
+    <div class="tab-contents2">
+    <ul>
+    <li class="active"><a href="#none" class="" style="height: 150px;">1</a></li>
+    <li><a href="#none" class="" style="background: #fcbdbd; height: 150px;">2</a></li>
+    <li><a href="#none" class="" style="background: #e5a2a2; height: 150px;">3</a></li>
+    <li><a href="#none" class="" style="background: #e29d9d; height: 150px;">4</a></li>
+    <li><a href="#none" class="" style="background: #df9696; height: 150px;">5</a></li>
+    <li><a href="#none" class="" style="background: #da8d8d; height: 150px;">6</a></li>
+    </ul>
+    </div>
+    <div class="btn-box">
+    <button class="prev-btn">prev</button>
+    <button class="next-btn">next</button>
+    </div>
+    <div class="counters"></div>
+    <script>
+    function Tabs2() {
+    this.menu = null;
+    this.menuList = null;
+    this.contents = null;
+    this.contentsList = null;
+    this.contentsParent = null;
+    this.contentsParentNum = null;
+    this.underBar = null;
+    this.listWidth = null;
+    this.ulWidth = null;
+    this.num = 0;
+    this.documentEle = 0;
+    this.touchPos = null;
+    this.EndPos = null;
+    this.nextBtn = null;
+    this.prevBtn = null;
+    this.timers = null
+    this.nowUlWidth = null;
+    // this.counter = null;
+    }
+    Tabs2.prototype.init = function({
+    tabMenu: tabMenuEle,
+    tabContents: contentEle,
+    elementWidth: eleWidth,
+    duration: dur,
+    }) {
+    this.menu = document.querySelector(tabMenuEle);
+    this.menuList = this.menu.querySelectorAll('li');
+    this.contents = document.querySelector(contentEle); //해당 컨텐츠
+    this.contentsList = this.contents.querySelectorAll('li'); //박스들
+    this.documentEle = document.querySelector('body'); //바디
+    this.contentsParent = this.contents.querySelector('ul'); //박스들 부모
+    this.contentsParentNum = this.contentsList.length;
+    this.eleWidth = eleWidth === false ? false : eleWidth //객체 세번째 값 false면 화면 full / 값 주면 해당 값
+    this.underBar = document.querySelector('.underbar')
+    this.listWidth = this.menu.children[0].clientWidth / this.menuList.length; //메뉴 너비 / 개수
+    this.touchStartPos = 0;
+    this.touchEndPos = 0;
+    this.nextBtn = document.querySelector('.next-btn');
+    this.prevBtn = document.querySelector('.prev-btn');
+    this.eventStart(this.num)
+    this.nowUlWidth = parseInt(this.contentsList[0].style.width)
+    console.log('num : ' + this.num)
+    // this.contents = document.querySelector('.counters');
+    }
+    Tabs2.prototype.eventStart = function(idx) {
+    this.initWidth(idx);
+    this.widthResize();
+    this.touchEvent();
+    this.motions(idx);
+    // this.autoPlay(idx);
+    // this.testFn()
+    this.nextClick();
+    this.prevClick();
+    [...this.menuList].map(( item, i ) => {
+    item.addEventListener('click', e => {
+    e.stopPropagation();
+    [...this.menuList].forEach( lis => lis.childNodes[0].classList.remove('on') );
+    e.target.classList.add('on')
+    let idx = this.num = i;
+    // console.log(idx)
+    this.contsTabClick(idx)
+    this.underBarFn(idx)
+    this.motions(idx)
+    })
+    })
+    }
+    // Tabs2.prototype.testFn2 = function() {
+    // this.num++;
+    // this.contents.innerHTML += this.num;
+    // }
+    // Tabs2.prototype.testFn = function() {
+    // let self = this;
+    // setInterval(function() {
+    // self.testFn2()
+    // }, 2000)
+    // }
+    //클릭시
+    Tabs2.prototype.contsTabClick = function(idx) {
+    this.contentsList[idx].parentElement.style.marginLeft = (-this.nowUlWidth * idx) + 'px';
+    [...this.menuList].forEach( lis => lis.childNodes[0].classList.remove('on') );
+    this.menuList[idx].childNodes[0].classList.add('on');
+    window.addEventListener('resize', e => {
+    const nowUlWidth = parseInt(this.contentsList[0].style.width)
+    this.contentsList[idx].parentElement.style.marginLeft = (-nowUlWidth * idx) + 'px'
+    })
+    }
+    Tabs2.prototype.motions = function(idx) {
+    [...this.contentsList].forEach( lis => lis.classList.remove('active') );
+    this.contentsList[idx].classList.add('active')
+    // this.contentsList[idx].style.left += (this.documentEle.clientWidth / 2) + 'px'
+    }
+    Tabs2.prototype.underBarFn = function(idx) {
+    const nowLiWidth = parseInt(this.menuList[0].style.width)
+    this.underBar.children[0].style.marginLeft = (nowLiWidth * idx) + 'px'
+    }
+    Tabs2.prototype.initWidth = function(idx) {
+    const transWidth = this.eleWidth === false ? this.documentEle.clientWidth + 'px' : this.eleWidth //매개변수로 받은 값
+    Array.from(this.menuList).map(lis => lis.style.width = this.listWidth + 'px') //메뉴 적용
+    this.underBar.children[0].style.width = this.listWidth + 'px'; // 언더바 width 메뉴 width 맞추기
+    this.contentsList.forEach(item => item.style.width = transWidth)
+    this.contentsParent.style.width = (this.contentsParentNum*100) + '%';
+    window.addEventListener('resize', e => {
+    const ulWidth = this.menuList[0].parentElement.clientWidth; //ul width 구하기
+    const nowLiWidth = parseInt(this.menuList[0].style.width)
+    const nowunderWidth = ulWidth / this.menuList.length; //ul 나누기 메뉴갯수
+    Array.from(this.menuList).map(lis => lis.style.width = nowunderWidth + 'px')
+    this.underBar.children[0].style.width = nowunderWidth + 'px' // 언더바 width 메뉴 width 맞추기
+    this.underBar.children[0].style.marginLeft = (nowunderWidth * this.num) + 'px'
+    })
+    }
+    Tabs2.prototype.widthResize = function(idx) {
+    window.addEventListener('resize', e=> {
+    const transWidth = this.eleWidth === false ? this.documentEle.clientWidth + 'px' : this.eleWidth ;
+    Array.from(this.contentsList).map(item => {
+    item.style.width = transWidth;
+    })
+    })
+    }
+    Tabs2.prototype.touchEvent = function() {
+    const liContents = Array.from(this.contentsList)
+    liContents.map(lis => {
+    lis.addEventListener('touchstart', e => this.touchStartPos = e.changedTouches[0].clientX) //eventhandle
+    lis.addEventListener('touchend', e => {
+    this.touchEndPos = e.changedTouches[0].clientX;
+    this.touchStartPos > this.touchEndPos ? console.log('스타트가 더 큼') : console.log('마지막이 더 큼')
+    if( this.touchStartPos > this.touchEndPos ) {
+    this.num++
+    this.num >= this.contentsParentNum ? this.num = 0 : null;
+    this.contsTabClick(this.num)
+    this.underBarFn(this.num)
+    this.motions(this.num);
+    console.log(this.num)
+    } else if ( this.touchStartPos < this.touchEndPos ) {
+    this.num <= 0 ? this.num = this.contentsParentNum : null;
+    this.num--
+    this.contsTabClick(this.num)
+    this.underBarFn(this.num)
+    this.motions(this.num);
+    }
+    console.log('num : ' + this.num)
+    })
+    })
+    }
+    // Tabs2.prototype.autoPlay = function(idx) {
+    // let self = this;
+    // this.timers = setInterval(function() {
+    // // self.num++
+    // // console.log(self.num++)
+    // }, 1500)
+    // }
+    // Array.prototype._forEach = function(cb, thisArg) {
+    // let self = thisArg || this
+    // for( let i = 0; i < self.length; i++ ) {
+    // cb.call( self, this[i], i )
+    // }
+    // }
+    // let arr = [11,22,33,44,55]
+    // arr._forEach(function(v, i){
+    // console.log(v, i)
+    // })
+    Tabs2.prototype.nextClick = function() {
+    this.nextBtn.addEventListener('click', e => {
+    this.num++
+    this.num >= this.contentsParentNum ? this.num = 0 : null;
+    this.contsTabClick(this.num)
+    this.underBarFn(this.num)
+    this.motions(this.num);
+    console.log(this.num)
+    })
+    }
+    Tabs2.prototype.prevClick = function() {
+    this.prevBtn.addEventListener('click', e => {
+    this.num <= 0 ? this.num = this.contentsParentNum : null;
+    this.num--
+    this.contsTabClick(this.num)
+    this.underBarFn(this.num)
+    this.motions(this.num);
+    })
+    }
+    const myTabs2 = new Tabs2()
+    myTabs2.init({
+    tabMenu: '.tabs2',
+    tabContents: '.tab-contents2',
+    // elementWidth: false,
+    elementWidth: 250 + 'px',
+    })
+    </script>
+    
+    
+    
+
+</body>
+</html>

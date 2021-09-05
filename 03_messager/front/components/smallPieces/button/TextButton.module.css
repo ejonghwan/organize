@@ -1,0 +1,59 @@
+
+/* text 버튼 */
+.btn {
+    border: none;
+    font-weight: 400;
+    font-size: 15px;
+    background: #fff;;
+}
+
+
+.btn.t1 {
+    color:#333;
+    position: relative;
+    padding-right: 10px;
+}
+
+.btn.t1::after {
+    content: ''; 
+    display: block; 
+    width: 1px;
+    height: 6px;
+    background: #888;
+    transform: rotate(45deg);
+    position: absolute;
+    top:8px;
+    right: 0;
+}
+
+
+.btn.t1::before {
+    content: ''; 
+    display: block; 
+    width: 1px;
+    height: 6px;
+    background: #888;
+    transform: rotate(135deg);
+    position: absolute;
+    top:4px;
+    right: 0;
+}
+
+
+.btn.t2 {
+    pointer-events: none;;
+}
+.btn.t2 > span {color: rgb(146, 146, 146);}
+
+.btn.t3 {
+    color: rgb(0, 135, 224);
+    border: 1px solid #ddd;
+}
+
+.btn.t4 {
+    background: rgb(56, 56, 56);
+    border: 1px solid #ddd;
+}
+.btn.t4 > span {color: #fff;}
+
+

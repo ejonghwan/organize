@@ -1,0 +1,274 @@
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    body,
+    html {
+        width: 100%;
+        height: 100%;
+        background: #222;
+        overflow: hidden;
+    }
+    .wrap {
+        width: 190px;
+        height: 190px;
+        position: absolute;
+        top: 250px;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+    .face {
+        width: 100%;
+        height: 100%;
+        border: 1px solid #fff;
+        border-radius: 50%;
+        background: #444;
+        z-index: 20;
+        position: absolute;
+    }
+    /* 귀 */
+    .ears {
+        z-index: 10;
+        height: 100%;
+        width: 100%;
+        position: relative;
+        transform-origin: 50% 50% 20px;
+        transition: all 0.6s;
+    }
+    .ears > span {
+        border-radius: 50%;
+        border: 1px solid #fff;
+        width: 60px;
+        height: 50px;
+        display: inline-block;
+        position: absolute;
+        background: #666;
+    }
+    .ears > span:nth-child(1) {
+        left: 0;
+        top: 0;
+    }
+    .ears > span:nth-child(2) {
+        right: 0;
+        top: 0;
+    }
+    /* 눈 */
+    .eyes {
+        position: absolute;
+        top: 70px;
+        width: 100%;
+        transform-origin: 50% 50% -80px;
+        transition: all 0.6s;
+    }
+    .eyes > span {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #fff;
+    }
+    .eyes > span:nth-child(1) {
+        position: absolute;
+        left: 60px;
+    }
+    .eyes > span:nth-child(2) {
+        position: absolute;
+        right: 60px;
+    }
+    /* 코 */
+    .muzzle {
+        position: absolute;
+        top: 80px;
+        width: 100%;
+        transform-origin: 50% 50% -90px;
+        transition: all 0.6s;
+    }
+    .muzzle > span {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background: #fff;
+        border: 1px solid #fff;
+        background: #666;
+    }
+    .muzzle > span:nth-child(1) {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        border-radius: 39%;
+        background: #c6c6c6;
+    }
+    /* 양볼 */
+    .cheek {
+        position: absolute;
+        top: 94px;
+        width: 100%;
+        transform-origin: 50% 50% -74px;
+        transition: all 0.6s;
+    }
+    .cheek > span {
+        width: 50px;
+        height: 50px;
+        background: transparent;
+        position: absolute;
+        font-size: 6px;
+        color: #ff7e7e;
+    }
+    .cheek > span:nth-child(1) {
+        width: 21px;
+        height: 10px;
+        border-radius: 50%;
+        left: 40px;
+        /* background: #ffd8d8; */
+        /* border: 1px solid #fff; */
+    }
+    .cheek > span:nth-child(2) {
+        width: 21px;
+        height: 10px;
+        border-radius: 50%;
+        right: 40px;
+        /* background: #ffd8d8; */
+        /* border: 1px solid #fff; */
+    }
+    .input {
+        font-size: 16px;
+        position: absolute;
+        top: 500px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 300px;
+    }
+    .password {
+        font-size: 16px;
+        position: absolute;
+        top: 525px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 300px;
+    }
+    .span {
+        font-size: 16px;
+        position: absolute;
+        top: -520px;
+        color: #fff;
+        border: 1px solid #fff;
+        display: inline-block;
+    }
+</style>
+<div class="wrap">
+    <div class="face">
+        <div class="eyes">
+            <span></span>
+            <span></span>
+        </div>
+        <div class="muzzle">
+            <span></span>
+        </div>
+        <div class="cheek">
+            <span>/ / /
+            </span>
+            <span>/ / /
+            </span>
+        </div>
+    </div>
+    <div class="ears">
+        <span></span>
+        <span></span>
+    </div>
+</div>
+<input type="text" class="input" placeholder="value"/>
+<input type="password" class="password" placeholder="password"/>
+<span class="span">.</span>
+
+
+<script>
+    let wrap = document.querySelector('.wrap');
+    let eyes = document.querySelector('.eyes');
+    let eyesInnerEle = document.querySelectorAll('.eyes > span')
+    let muzzle = document.querySelector('.muzzle');
+    let cheek = document.querySelector('.cheek');
+    let ears = document.querySelector('.ears');
+    let input = document.querySelector('.input');
+    let span = document.querySelector('.span');
+    let spanRect = null
+    let inputRect = null
+    let wrapRect = null
+    let horizontal = null;
+    let vertical = null;
+    let targetPos = 0;
+    let angle = 0;
+    let x = 0;
+    let y = 0;
+
+    function init(e) {}
+
+    function click(e) {
+        const {target: {
+                type
+            }} = e;
+        let val = calcValue(e)
+        // console.log(val)
+        if (type === 'password') {
+            console.log(type)
+            for (let i = 0; i < eyesInnerEle.length; i++) {
+                eyesInnerEle[i].style.height = `${ 2}px`
+            }
+            rotate3d([
+                eyes, muzzle, cheek, ears
+            ], 1, 0, 0, .5)
+        } else {
+            for (let i = 0; i < eyesInnerEle.length; i++) {
+                eyesInnerEle[i].style.height = `${ 10}px`
+            }
+        }
+        if (type !== 'text' && type !== 'password') {
+            rotate3d([
+                eyes, muzzle, cheek, ears
+            ], 0, 0, 0, 0)
+        } else if (type === 'text') {
+            // console.log(type)
+            rotate3d([
+                eyes, muzzle, cheek, ears
+            ], val.x / val.angle, val.y / val.angle, val.y / val.angle / 2, val.angle)
+        }
+    }
+
+    function calcValue(e) {
+        const {target, target: {
+                value
+            }} = e;
+        span.innerText = value;
+        spanRect = span.getBoundingClientRect();
+        inputRect = input.getBoundingClientRect();
+        wrapRect = wrap.getBoundingClientRect();
+        targetPos = inputRect.left + Math.min(spanRect.width, inputRect.width);
+        horizontal = wrapRect.left + wrapRect.width / 2 - targetPos
+        vertical = wrapRect.top + wrapRect.height / 2 - inputRect.top
+        y = Math.atan2(-horizontal, Math.abs(vertical) * 3) //y가 가변이니깐 rotate y<>축
+        x = Math.atan2(vertical, Math.abs(vertical) * 3 / Math.cos(y))
+        angle = Math.max(Math.abs(x), Math.abs(y))
+        // console.log('x: ', x / angle * 180 / Math.PI)
+        console.log('y: ', y / angle * 180 / Math.PI)
+        // console.log(Math.cos(y))
+        rotate3d([
+            eyes, muzzle, cheek, ears
+        ], x / angle, y / angle, y / angle / 2, angle)
+        return {x, y, angle}
+    }
+
+    function rotate3d(ele, x, y, z, deg) {
+        for (let i = 0; i < ele.length; i++) {
+            ele[i].style.transform = `rotate3d(${x}, ${y}, ${z}, ${deg * 180 / Math.PI}deg)`
+        }
+    }
+
+    window.addEventListener('load', init)
+    window.addEventListener('click', click)
+    input.addEventListener('keyup', calcValue)
+
+</script>

@@ -1,0 +1,31 @@
+.item {
+    margin-top:10px;
+}
+
+.item > h3 {font-size: 17px; margin: 40px 0px 15px;}
+
+.item ul.list1 > li {
+    padding-left:18px;
+    text-indent: -18px;
+    margin-top: 7px;
+    font-size: 13px;
+    color: #555;
+}
+
+.item ul.list1 > li::before {
+    content: '-';
+    width: 18px;
+    margin-right: 5px;
+}
+
+.item ul.list2 {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.item ul.list2 > li {
+    flex: 0 0 auto;
+    margin-right: 10px;;
+    margin-top: 7px;
+}

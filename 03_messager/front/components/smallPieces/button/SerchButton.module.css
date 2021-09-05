@@ -1,0 +1,21 @@
+
+/* serch type */
+.serch > span{
+    color: transparent;
+    position: absolute;
+    left: -999999px;
+}
+
+.serch.t1 {
+    width: 25px;
+    height: 25px;
+    background: rgb(255, 136, 136);
+    border: none;
+}
+
+.serch.t2 {
+    width: 25px;
+    height: 25px;
+    background: rgb(138, 136, 255);
+    border: none;
+}

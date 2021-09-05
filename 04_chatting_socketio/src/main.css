@@ -1,0 +1,33 @@
+@charset "utf-8";
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
+
+* {margin:0; padding:0; font-family: 'Spoqa Han Sans Neo', 'sans-serif'; box-sizing: border-box;;}
+body, html {height: 100%; }
+li, ol {list-style: none;}
+textarea {resize: none;}
+
+.wrap {display: flex; flex-direction: column; height: 100%; background: rgb(217, 241, 255);}
+.user-c {width: 100%; position: fixed; background: rgb(217, 241, 255); border-bottom:1px solid #ddd;  padding: 10px 20px;}
+.user-c input {border: 0; width: 150px; padding: 5px;}
+
+.display-c {padding:50px 0;; background: rgb(217, 241, 255);  width: 100%;  }
+.display-c .list {padding: 20px}
+.display-c .list li {display: flex; }
+.display-c .list li+li {margin-top:15px;}
+.display-c .list li .img {margin-right: 15px;;}
+.display-c .list li .img img {border-radius: 50%;}
+.display-c .list li .user { flex: 0 0 auto;}
+.display-c .list li .time {font-size: 13px; color:#999; font-weight: 400; margin-left: 10px; display: flex; align-items: flex-end;}
+.display-c .list li .msg {background: #fff; display: block; padding: 4px 8px; margin-top:4px;}
+.display-c .list li.sent .msg {background: rgb(255, 238, 0)}
+
+.display-c .list li.sent {flex-direction: row-reverse;}
+.display-c .list li.sent .img  {margin-left: 15px; margin-right: 0;}
+.display-c .list li.sent .user {text-align: right;}
+.display-c .list li.sent .time {margin-right: 10px;;}
+
+.input-c { position: fixed; bottom: 0; background: #fff; width: 100%;;}
+.input-c {display: flex; height: 50px;}
+.input-c textarea { flex: 1 1 auto; border: none;}
+.input-c button {background: rgb(255, 238, 0); color:rgb(0, 0, 0); flex: 0 1 auto; width: 150px; border: none;}
