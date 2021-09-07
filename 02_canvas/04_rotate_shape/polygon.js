@@ -49,7 +49,7 @@ export class Polygon {
 
             // (i === 0) ? ctx.moveTo(x, y) : ctx.lineTo(x, y)
             
-            console.log(`i: ${i}    ${x}   ${y}`)
+            // console.log(`i: ${i}    ${x}   ${y}`)
             // console.log(`${i} x: ${x}`)
             // console.log(`${i} y: ${y}`)
             /*
@@ -62,7 +62,7 @@ export class Polygon {
             */
 
 
-            // ctx.beginPath();
+            ctx.beginPath();
             // ctx.arc(x, y, 30, 0, PI2, false)
             // ctx.fill()
 
@@ -80,8 +80,8 @@ export class Polygon {
             }
 
             // ctx.fill();
-            // ctx.closePath();
-            // ctx.restore()
+            ctx.closePath();
+            ctx.restore()
 
         }
         

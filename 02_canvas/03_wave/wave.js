@@ -22,7 +22,7 @@ export class Wave {
     }
 
     init() {
-        // this.point = new Point(this.centerX, this.centerY)
+        this.point = new Point(this.centerX, this.centerY)
         this.points = []
         
         for(let i = 0; i < this.totalPoints; i++) {

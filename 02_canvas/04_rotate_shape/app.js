@@ -40,7 +40,7 @@ class App {
             this.stageHeight + (this.stageHeight / 4),
             this.stageHeight / 2 ,
             this.stageHeight / 4,
-            3
+            10
         )
 
     }
