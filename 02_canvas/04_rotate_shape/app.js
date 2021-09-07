@@ -37,7 +37,7 @@ class App {
 
         this.polygon = new Polygon(
             this.stageWidth / 2,
-            // this.stageHeight + (this.stageHeight / 4),
+            this.stageHeight + (this.stageHeight / 4),
             this.stageHeight / 2 ,
             this.stageHeight / 4,
             3
@@ -46,7 +46,7 @@ class App {
     }
 
     animate() {
-        // window.requestAnimationFrame(this.animate.bind(this))
+        window.requestAnimationFrame(this.animate.bind(this))
 
         this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight )
         this.moveX *= 0.92

@@ -79,15 +79,15 @@ export class Polygon {
                 (j === 0) ? ctx.moveTo(x2, y2) : ctx.lineTo(x2, y2)
             }
 
-            ctx.fill();
-            ctx.closePath();
-            ctx.restore()
+            // ctx.fill();
+            // ctx.closePath();
+            // ctx.restore()
 
         }
         
 
-        // ctx.fill();
-        // ctx.closePath();
+        ctx.fill();
+        ctx.closePath();
         ctx.restore();
     }
 

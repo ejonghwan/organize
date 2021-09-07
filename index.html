@@ -7,21 +7,158 @@
     <title>Document</title>
 </head>
 <body>
-    asdasdggggggggggggggggggg
-    <ul>
-        <li><a href="https://ejonghwan.github.io/organize/01_ui/01_Tetris/index.html">Tetris</a></li>
-        <li><a href="https://ejonghwan.github.io/organize/01_ui/02_character.html"></a></li>
-        <li><a href="https://ejonghwan.github.io/organize/01_ui/03_slide.html"></a></li>
-        <li><a href="https://ejonghwan.github.io/organize/01_ui/05_crud_memo.html"></a></li>
-        <li><a href="https://ejonghwan.github.io/organize/01_ui/06_tab.html"></a></li>
-    </ul>
+    <header><h1>스터디 내용</h1></header>
+    <main>
+        <section>
+            <h2>UI Study</h2>
+            <ul>
+                <li>
+                    <a href="https://ejonghwan.github.io/organize/01_ui/01_Tetris/index.html">테트리스 게임</a>
+                    <dl>
+                        <dt>학습 방법 및 내용(클론 코딩)</dt>
+                        <dd>
+                            <strong>HTML, CSS, Javascript</strong>
+                            <p>캔버스가 아닌 HTML, CSS를 활용하여 만드는게 신기하여 제작</p>
+                            <ul>
+                                <li>- 2차원 배열의 데이터 제작활용 및 객체 사용</li>
+                                <li>- canvas가 아닌 HTML상 element 요소를 좌표화하여 활용</li>
+                                <li>- keyup keydown 이벤트와 이벤트객체 keycode 활용</li>
+                                <li>- 기능 함수화 하는 방법</li>
+                                <li>- requestAnimationFream이 아닌 setInterval을 활용</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <a href="https://ejonghwan.github.io/organize/01_ui/02_character.html">인풋창 커스터마이징</a>
+                    <dl>
+                        <dt>학습 방법 및 내용(직접 제작)</dt>
+                        <dd>
+                            <strong>HTML, CSS, Javascript</strong>
+                            <p>오래 전 코딩을 시작할 때 봤던 인풋창의 상태에 따라 움직이는 캐릭터를 보고 이건 나중에 꼭 만들어보고 싶다라고 생각하여 제작</p>
+                            <ul>
+                                <li>- 중/고등학교 때 배운 삼각함수 학습 및 활용하여 각도구하는 방법 학습</li>
+                                <li>- Math객체의 .cos() .sin() .atan2() 메서드 학습 및 활용</li>
+                                <li>- 쉬운 줄 알았던 CSS의 rotate3d()를 활용하면서 어려움을 느낌</li>
+                                <li>- 원의 지름(2파이)와 각도의 단위인 degree와 radian활용에 대하여 학습</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <a href="https://ejonghwan.github.io/organize/01_ui/03_slide.html">슬라이드</a>
+                    <dl>
+                        <dt>학습 방법 및 내용(직접 제작)</dt>
+                        <dd>
+                            <strong>HTML, CSS, Javascript</strong>
+                            <p>큐브가 돌아가는 것을 연습하고 이걸 슬라이드에 적용하면 괜찮을거라 생각하여 제작<br /> index값을 공유하여 탭 액션 시 다른 요소에도 연결하여 활용
+                            </p>
+                            <ul>
+                                <li>- 3D CSS 요소에 대하여 학습</li>
+                                <li>- transform-style: preserve-3d; 학습</li>
+                                <li>- 부모에 perspective와 position이 같이 있을 시 생기는 문제 해결 및 프로퍼티 학습</li>
+                                <li>- transform: rotateY() translateZ() 가 순서의 영향을 미치는 것 학습</li>
+                                <li>- index를 상위 스코프에 등록하여 모든 함수 내에서 활용</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <a href="https://ejonghwan.github.io/organize/01_ui/05_crud_memo.html">메모 CRUD</a>
+                    <dl>
+                        <dt>학습 방법 및 내용(직접 제작)</dt>
+                        <dd>
+                            <strong>HTML, CSS, Javascript</strong>
+                            <p>React로 todoList를 연습했을 때 순수 JS로 만들면 어떻게 하면 될까를 고민하면서 제작</p>
+                            <ul>
+                                <li>- 데이터를 레이아웃에 CRUD 학습</li>
+                                <li>- CRUD하면서 새로 그려지는 DOM보다 React가 가상돔을 왜 쓰는지 간접적으로 체험</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <a href="https://ejonghwan.github.io/organize/01_ui/06_tab.html">탭</a>
+                    <dl>
+                        <dt>학습 방법 및 내용(직접 제작)</dt>
+                        <dd>
+                            <strong>HTML, CSS, Javascript</strong>
+                            <p>Javascript 공부를 시작한지 얼마 안돼서 prototype 공부겸 만들어본 탭</p>
+                            <ul>
+                                <li>- prototype 기반 언어인 자바스크립트의 구조를 이해</li>
+                                <li>- 생성자에 메서드를 넣으면 왜 안되는지 학습</li>
+                                <li>- 이벤트 객체의 touch 관련 학습</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Canvas Study</h2>
+            <ul>
+                <li>
+                    <a href="https://ejonghwan.github.io/organize/02_canvas/01_sheep/index.html">언덕 모션</a>
+                    <dl>
+                        <dt>학습 방법 및 내용(클론 코딩)</dt>
+                        <dd>
+                            <strong>Javascript</strong>
+                            <p>유투브에 무료 강의로 Canvas를 활용한 인터렉션을 보고 배워보고 싶어서 학습</p>
+                            <ul>
+                                <li>- ES6문법인 class에 대해서 학습</li>
+                                <li>- 객체단위로 만들어 사용하는 방법 학습</li>
+                                <li>- Canvas 좌표 구하는 방법 학습</li>
+                                <li>- bezier curve에 대하여 학습. 2차 베지어곡선의 커브 사이의 값을 2차 방정식을 대입하여 좌표구하기 학습(아직 학습중)</li>
+                                <li>- bezier curve에 따른 방향을 구하는 방법 학습(아직 학습중)</li>
+                                <li>- 프레임 개념 학습과 window 객체인 requestAnimationFream()의 time 인자값을 활용하여 프레임에 대입 및 활용</li>
+                                <li>- 이전값, 현재값, 다음값을 반복문의 응용으로 활용하는 방법 학습</li>
+                                <li>- 좌표 데이터를 배열로 관리하면서 동적으로 변경</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </li>
+                <li>
+                    <a href="https://ejonghwan.github.io/organize/02_canvas/02_impact/index.html">충돌</a>
+                    <dl>
+                        <dt>학습 방법 및 내용(클론 코딩)</dt>
+                        <dd>
+                            <strong>Javascript</strong>
+                            <ul>
+                                <li>- 오브젝트를 객체단위로 만들어 사용하는 방법 학습</li>
+                                <li>- Canvas 좌표 구하는 방법 학습</li>
+                                <li>- bezier curve에 대하여 학습. 2차 베지어곡선의 두 점 사이의 값을 2차 방정식을 대입하여 좌표구하기 학습(아직 학습중)</li>
+                                <li>- bezier curve에 따른 방향을 구하는 방법 학습(아직 학습중)</li>
+                                <li>- 프레임 개념 학습과 window 객체인 requestAnimationFream()의 time 인자값을 활용하여 프레임에 대입 및 활용</li>
+                                <li>- 이전값, 현재값, 다음값을 반복문의 응용으로 활용하는 방법 학습</li>
+                                <li>- 좌표 데이터를 배열로 관리하면서 동적으로 변경</li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </li>
+                <li><a href="https://ejonghwan.github.io/organize/02_canvas/03_wave/index.html">물결</a></li>
+                <li><a href="https://ejonghwan.github.io/organize/02_canvas/04_rotate_shape/index.html">도형 회전</a></li>
+                <li><a href="https://ejonghwan.github.io/organize/02_canvas/05_dot/index.html">이미지 도트</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>React</h2>
+            <ul>
+                <li><a href="https://github.com/ejonghwan/jme">메신저 앱</a></li>
+                <li><a href="">축구 정보 앱</a></li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>socketIO</h2>
+            <ul>
+                <li><a href="https://github.com/ejonghwan/organize/tree/master/04_chatting_socketio">언덕 모션</a></li>
+            </ul>
+        </section>
+    </main>
+
      
-    <ul>
-        <li><a href="https://ejonghwan.github.io/organize/01_ui/01_Tetris/index.html">Tetris</a></li>
-        <li><a href="https://ejonghwan.github.io/organize/01_ui/02_character.html"></a></li>
-        <li><a href="https://ejonghwan.github.io/organize/01_ui/03_slide.html"></a></li>
-        <li><a href="https://ejonghwan.github.io/organize/01_ui/05_crud_memo.html"></a></li>
-        <li><a href="https://ejonghwan.github.io/organize/01_ui/06_tab.html"></a></li>
-    </ul>
+   
 </body>
 </html>
