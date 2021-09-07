@@ -38,11 +38,11 @@ export class Wave {
 
 
     draw(ctx) {
-        // ctx.beginPath();
-        // ctx.fillStyle = '#ff0000'
-        // this.point.update();
-        // ctx.arc(this.point.x, this.point.y, 30, 0, 2 * Math.PI)
-        // ctx.fill();
+        ctx.beginPath();
+        ctx.fillStyle = '#ff0000'
+        this.point.update();
+        ctx.arc(this.point.x, this.point.y, 30, 0, 2 * Math.PI)
+        ctx.fill();
 
         ctx.beginPath();
         ctx.fillStyle = this.color
@@ -72,7 +72,7 @@ export class Wave {
         ctx.lineTo(this.stageWidth, this.stageHeight);
         ctx.lineTo(this.points[0].x, this.stageHeight);
         ctx.fill();
-        ctx.stroke()
+        // ctx.stroke()
         ctx.closePath();
     }
 
