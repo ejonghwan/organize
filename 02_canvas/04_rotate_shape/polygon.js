@@ -30,8 +30,8 @@ export class Polygon {
 
     animate(ctx, moveX) {
         ctx.save();
-        ctx.fillStyle = '#000';
-        ctx.beginPath();
+        // ctx.fillStyle = '#000';
+        // ctx.beginPath();
 
         const angle = PI2 / this.sides; //360도 3등분
         const angle2 = PI2 / 4
@@ -62,7 +62,7 @@ export class Polygon {
             */
 
 
-            ctx.beginPath();
+            // ctx.beginPath();
             // ctx.arc(x, y, 30, 0, PI2, false)
             // ctx.fill()
 
@@ -79,15 +79,15 @@ export class Polygon {
                 (j === 0) ? ctx.moveTo(x2, y2) : ctx.lineTo(x2, y2)
             }
 
-            // ctx.fill();
+            ctx.fill();
             ctx.closePath();
             ctx.restore()
 
         }
         
 
-        ctx.fill();
-        ctx.closePath();
+        // ctx.fill();
+        // ctx.closePath();
         ctx.restore();
     }
 
