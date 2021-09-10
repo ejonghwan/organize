@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
     <title>스터디 내용</title>
     <style>
-        * {margin:0; padding:0;}
+        * {margin:0; padding:0; box-sizing: border-box;}
         html, body {width: 100%; height: 100%;}
         ul, ol {list-style: none;;}
         header { width: 980px; margin: 0 auto; padding: 20px;}
@@ -23,7 +23,7 @@
         h2 {margin-bottom: 20px;}
         
         @media (max-width: 960px) {
-            main {width: 100%;}
+            main, header {width: 100%;}
         }
     </style>
 </head>
@@ -227,7 +227,7 @@
                                 <li>화면에서 dispatch 했을 때 Reducer와 Saga를 통해 서버 통신 후 데이터 흐름 학습 </li>
                                 <li>http Response Reqeust 해더에 대한 학습 </li>
                                 <li>Node.js 프레임워크 Express로 라우트생성 및 요청에 응답 학습</li>
-                                <li>클라이언트와 서버 CORS 에러를 Node 미들웨어 CORS()로 해결</li>
+                                <li>클라이언트와 서버 CORS 에러를 Node 미들웨어 cors로 해결</li>
                                 <li>쿠키와 세션에 대한 학습.</li>
                                 <li>Node.js Passport를 이용한 인증 얕은 학습</li>
                                 <li>관계형 DB 관계설정에 대한 얕은 학습</li>
