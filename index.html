@@ -21,7 +21,8 @@
         dd > ul {margin: 15px 0;}
         dd > ul > li{margin-bottom: 5px; position: relative;padding-left: 10px;;}
         dd > ul > li::before {content: '-';  display: inline-block; position: absolute; top:0; left:0; }
-        h2 {margin-bottom: 20px;}
+        h1 {margin-bottom: 20px; font-size: 20px;}
+        h2 {margin-bottom: 20px; font-size: 17px;}
         
         @media (max-width: 960px) {
             main, header {width: 100%;}
@@ -29,253 +30,55 @@
     </style>
 </head>
 <body>
-    test
-    <header><h1>스터디 내용</h1></header>
+    
+    <header>
+        <h1>jj</h1>
+    </header>
     <main>
         <section>
-            <h2>01. UI Study</h2>
-            <ul>
-                <li>
-                    <a href="https://ejonghwan.github.io/organize/01_ui/01_Tetris/index.html" target="_blank" title="새창" >테트리스 게임</a>
-                    <dl>
-                        <dt>학습 방법 및 내용(클론 코딩)</dt>
-                        <dd>
-                            <strong>HTML, CSS, Javascript</strong>
-                            <p>캔버스가 아닌 HTML, CSS를 활용하여 만드는게 신기하여 제작</p>
-                            <ul>
-                                <li>2차원 배열의 데이터 제작활용 및 객체 사용</li>
-                                <li>canvas가 아닌 HTML상 element 요소를 좌표화하여 활용</li>
-                                <li>keyup keydown 이벤트와 이벤트객체 keycode 활용</li>
-                                <li>기능 함수화하여 사용</li>
-                                <li>requestAnimationFream이 아닌 setInterval을 활용</li>
-                            </ul>
-                        </dd>
-                    </dl>
-                </li>
-                <li>
-                    <a href="https://ejonghwan.github.io/organize/01_ui/02_character.html" target="_blank" title="새창" >인풋창 커스터마이징</a>
-                    <dl>
-                        <dt>학습 방법 및 내용(직접 제작)</dt>
-                        <dd>
-                            <strong>HTML, CSS, Javascript</strong>
-                            <p>오래 전 코딩을 시작할 때 봤던 인풋창의 상태에 따라 움직이는 캐릭터를 보고 이건 나중에 꼭 만들어보고 싶다라고 생각하여 제작</p>
-                            <ul>
-                                <li>중/고등학교 때 배운 삼각함수 학습 및 활용하여 각도구하는 방법 학습</li>
-                                <li>Math객체의 .cos() .sin() .atan2() 메서드 학습 및 활용</li>
-                                <li>엘리먼트와 atan2()의 각도를 데카르트 좌표계와 맞춰 계산하는 방법 학습</li>
-                                <li>쉬운 줄 알았던 CSS의 rotate3d()를 활용하면서 어려움을 느낌</li>
-                                <li>원의 지름(2파이)와 각도의 단위인 degree와 radian활용에 대하여 학습</li>
-                            </ul>
-                        </dd>
-                    </dl>
-                </li>
-                <li>
-                    <a href="https://ejonghwan.github.io/organize/01_ui/04_cube_rotate.html" target="_blank" title="새창" >큐브</a>
-                    <dl>
-                        <dt>학습 방법 및 내용(직접 제작)</dt>
-                        <dd>
-                            <strong>HTML, CSS, Javascript</strong>
-                            <p>큐브에 마우스 이벤트를 넣어 마우스 무브값에 따라 인터렉션 제작</p>
-                            <ul>
-                                <li>mousemove한 값만 계산하여 rotate에 적용하는 방법 학습</li>
-                                <li>CSS transform을 활용해서 3d 큐브 학습</li>
-                            </ul>
-                        </dd>
-                    </dl>
-                </li>
-                <li>
-                    <a href="https://ejonghwan.github.io/organize/01_ui/03_slide.html" target="_blank" title="새창" >슬라이드</a>
-                    <dl>
-                        <dt>학습 방법 및 내용(직접 제작)</dt>
-                        <dd>
-                            <strong>HTML, CSS, Javascript</strong>
-                            <p>큐브가 돌아가는 것을 연습하고 이걸 슬라이드에 적용하면 괜찮을거라 생각하여 제작<br /> index값을 공유하여 탭 액션 시 다른 요소에도 연결하여 활용
-                            </p>
-                            <ul>
-                                <li>3D CSS 요소에 대하여 학습</li>
-                                <li>transform-style: preserve-3d; 학습</li>
-                                <li>부모에 perspective와 position이 같이 있을 시 생기는 문제 해결 및 프로퍼티 학습</li>
-                                <li>transform: rotateY() translateZ() 가 순서의 영향을 미치는 것 학습</li>
-                                <li>index를 상위 스코프에 등록하여 모든 함수 내에서 활용</li>
-                            </ul>
-                        </dd>
-                    </dl>
-                </li>
-                <li>
-                    <a href="https://ejonghwan.github.io/organize/01_ui/05_crud_memo.html" target="_blank" title="새창" >메모 CRUD</a>
-                    <dl>
-                        <dt>학습 방법 및 내용(직접 제작)</dt>
-                        <dd>
-                            <strong>HTML, CSS, Javascript</strong>
-                            <p>React로 todoList를 연습했을 때 순수 JS로 만들면 어떻게 하면 될까를 고민하면서 제작</p>
-                            <ul>
-                                <li>데이터를 화면에 CRUD 하는 방법 학습</li>
-                                <li>CRUD하면서 새로 그려지는 DOM보다 React가 가상돔을 왜 쓰는지 간접적으로 체험</li>
-                                <li>DOM을 다루는 것에 어려움을 느끼면서 학습</li>
-                                
-                            </ul>
-                        </dd>
-                    </dl>
-                </li>
-                <li>
-                    <a href="https://ejonghwan.github.io/organize/01_ui/06_tab.html" target="_blank" title="새창" >탭</a>
-                    <dl>
-                        <dt>학습 방법 및 내용(직접 제작)</dt>
-                        <dd>
-                            <strong>HTML, CSS, Javascript</strong>
-                            <p>Javascript 공부를 시작한지 얼마 안돼서 prototype 공부겸 만들어본 탭</p>
-                            <ul>
-                                <li>prototype 기반 언어인 자바스크립트의 구조를 이해. 생성자와 __proto__ 생략, prototype 체이닝, 상속되는 개념 등</li>
-                                <li>배열과 유사배열의 다른점을 학습하고 DOM selector가 유사배열로 찾는 점을 학습</li>
-                                <li>생성자에 기능을 넣으면 왜 안되는지 학습</li>
-                                <li>이벤트 touch 객체의 관련 학습</li>
-                                <li>JS 스코프체인과 호출스택 이벤트루프, 클로저, 호이스팅, webAPI, Lexical environment 학습</li>
-                                <li>window, function, prototype, object 등에서의 this가 무엇을 보는지 확인 </li>
-                                <li>동기와 비동기에 대해 학습, 이벤트 콜백함수의 비동기 원리 이해, setTimeout, setInterval은 webAPI라 다르게 작동하는 것 학습 </li>
-                                <li>메모리의 참조과정을 학습하고 원시타입/ 참조타입의 차이점, 얕은 복사 깊은 복사 학습</li>
-                                <li>동기와 비동기를 이해하면서 async await promise 등 호출순서와 비동기를 동기로 변경하는 등 순서학습</li>
-                            </ul>
-                        </dd>
-                    </dl>
-                </li>
-            </ul>
+            <h2>ui</h2>
+            <article>
+                <h3>인터렉션</h3>
+                <ul>
+                    <li> 
+                        <a href="/00_uis/01_btn.html" target="_blank" title="new window">btn</a>
+                    </li>
+                </ul>
+            </article>
+            <article>
+                <h3>접근성</h3>
+                <ul>
+                    <li> 
+                        <a href="/00_uis/01_btn.html" target="_blank" title="new window">slide</a>
+                    </li>
+                    <li> 
+                        <a href="/00_uis/01_btn.html" target="_blank" title="new window">tab</a>
+                    </li>
+                    <li> 
+                        <a href="/00_uis/01_btn.html" target="_blank" title="new window">popup</a>
+                    </li>
+                    <li> 
+                        <a href="/00_uis/01_btn.html" target="_blank" title="new window">scroll page</a>
+                    </li>
+                    <li> 
+                        <a href="/00_uis/01_btn.html" target="_blank" title="new window">one page</a>
+                    </li>
+                    <li> 
+                        <a href="/00_uis/01_btn.html" target="_blank" title="new window">input</a>
+                    </li>
+                </ul>
+            </article>
         </section>
-
         <section>
-            <h2>02. Canvas Study</h2>
-            <ul>
-                <li>
-                    <a href="https://ejonghwan.github.io/organize/02_canvas/01_sheep/index.html" target="_blank" title="새창" >언덕 모션</a>
-                    <dl>
-                        <dt>학습 방법 및 내용(클론 코딩)</dt>
-                        <dd>
-                            <strong>Javascript</strong>
-                            <p>유투브에 무료 강의로 Canvas를 활용한 인터렉션을 보고 배워보고 싶어서 학습</p>
-                            <ul>
-                                <li>ES6문법인 class에 대해서 학습</li>
-                                <li>ES6 module에 대해 학습</li>
-                                <li>오브젝트를 객체단위로 만들어 사용하는 방법 학습</li>
-                                <li>Canvas 좌표 구하는 방법 학습</li>
-                                <li>bezier curve에 대하여 학습. 2차 베지어곡선의 커브 사이의 값을 2차 방정식을 대입하여 좌표구하기 학습(아직 학습중)</li>
-                                <li>bezier curve에 따른 방향을 구하는 방법 학습(아직 학습중)</li>
-                                <li>프레임 개념 학습과 window 객체인 requestAnimationFream()의 time 인자값을 활용하여 프레임에 대입 및 활용</li>
-                                <li>이전값, 현재값, 다음값을 반복문의 응용으로 활용하는 방법 학습</li>
-                                <li>좌표 데이터를 배열로 관리하면서 동적으로 변경</li>
-                            </ul>
-                        </dd>
-                    </dl>
-                </li>
-                <li>
-                    <a href="https://ejonghwan.github.io/organize/02_canvas/02_impact/index.html" target="_blank" title="새창" >충돌</a>
-                    <dl>
-                        <dt>학습 방법 및 내용(클론 코딩)</dt>
-                        <dd>
-                            <strong>Javascript</strong>
-                            <ul>
-                                <li>오브젝트를 객체단위로 만들어 사용하는 방법 학습</li>
-                                <li>Canvas 좌표 구해서 요소의 어느쪽에 가까운지 알아내는 방법 학습</li>
-                                <li>오브젝트끼리 충돌했을 때 반대로 이동하는 방법에 대해서 학습</li>
-                                <li>좌표로 위치 계산하여 오브젝트 생성하는 방법 학습</li>
-                            </ul>
-                        </dd>
-                    </dl>
-                </li>
-                <li>
-                    <a href="https://ejonghwan.github.io/organize/02_canvas/03_wave/index.html" target="_blank" title="새창" >물결</a>
-                    <dl>
-                        <dt>학습 방법 및 내용(클론 코딩)</dt>
-                        <dd>
-                            <strong>Javascript</strong>
-                            <ul>
-                                <li>반복적으로 움직이는 sin값 활용</li>
-                                <li>quadraticCurveTo()를 이용하여 두 좌표사이 곡선그리기 학습</li>
-                                <li>배열로 좌표 데이터 관리 및 동적 활용</li>
-                                <li>반복문으로 좌표 데이터 출력하는 방법 학습</li>
-                                <li>응용해서 마우스 값에 따라 물결의 높이를 다르게 적용</li>
-                                <li>강의보다 조금 더 물결같이 보이게끔 고민하면서 수정</li>
-                            </ul>
-                        </dd>
-                    </dl>
-                </li>
-                <li>
-                    <a href="https://ejonghwan.github.io/organize/02_canvas/04_rotate_shape/index.html" target="_blank" title="새창" >도형 회전</a>
-                    <dl>
-                        <dt>학습 방법 및 내용(클론 코딩)</dt>
-                        <dd>
-                            <strong>Javascript</strong>
-                            <ul>
-                                <li>pointerup, pointerdown, pointermove 이벤트를 활용하여 클릭무브 학습</li>
-                                <li>현재 찍은 좌표와 무브한 값의 값을 계산하여 화면상에서 어느정도 무브했는지 계산하는 방법 학습</li>
-                                <li>Math 객체 .cos() .sin() 활용하여 도형그리는 방법 학습 </li>
-                            </ul>
-                        </dd>
-                    </dl>
-                </li>
-                
-            </ul>
-        </section>
-
-        <section>
-            <h2>03. React</h2>
-            <ul>
-                <li>
-                    <a href="https://github.com/ejonghwan/jme" target="_blank" title="새창" >메신저 앱</a>
-                    <dl>
-                        <dt>학습 방법 및 내용(클론 코딩)</dt>
-                        <dd>
-                            <strong>JSX, CSS, styledComponent, React.js, Redux, Redux-saga, Next.js, Node.js, Express, MYSQL, Sequelize</strong>
-                            <ul>
-                                <li>React.js Hooks 및 문법 학습</li>
-                                <li>불변성 학습과 Immer 활용</li>
-                                <li>webpack 설정에 대한 기초적인 학습</li>
-                                <li>styledComponent 학습</li>
-                                <li>Next.js 폴더구조와 컴포넌트, 라우트, SSR 학습 </li>
-                                <li>무한스크롤 구현과 메모리낭비가 왜 생기는지 학습</li>
-                                <li>Redux를 활용한 stroe 상태관리 </li>
-                                <li>Redux-saga로 서버와 비동기 요청 및 응답 받기 </li>
-                                <li>화면에서 dispatch 했을 때 Reducer와 Saga를 통해 서버 통신 후 데이터 흐름 학습 </li>
-                                <li>http Response Reqeust 해더에 대한 학습 </li>
-                                <li>Node.js 프레임워크 Express로 라우트생성 및 요청에 응답 학습</li>
-                                <li>클라이언트와 서버 CORS가 왜 생기는지 학습하고 에러를 Node 미들웨어 cors로 해결</li>
-                                <li>쿠키와 세션에 대한 학습.</li>
-                                <li>Node.js Passport를 이용한 인증 얕은 학습</li>
-                                <li>관계형 DB 관계설정에 대한 얕은 학습</li>
-                                <li>MYSQL을 JS로 사용하기 위해 Sequelize에 대한 얕은 학습</li>
-                                <li>Multer를 이용한 이미지 업로드 설정 얕은 학습 </li>
-                                <li>클라이언트/서버/DB가 데이터를 어떻게 주고 받고 CRUD하는지 전체적인 흐름 학습</li>
-                                
-                            </ul>
-                        </dd>
-                    </dl>
-                </li>
-            </ul>
-        </section>
-
-        <section>
-            <h2>04. socketIO</h2>
-            <ul>
-                <li>
-                    <a href="https://github.com/ejonghwan/organize/tree/master/04_chatting_socketio" target="_blank" title="새창" >채팅앱</a>
-                    <dl>
-                        <dt>학습 방법 및 내용(클론 코딩)</dt>
-                        <dd>
-                            <strong>HTML, CSS, Javascript, Socket.IO</strong>
-                            <ul>
-                                <li>socket.io를 활용하여 양방향 채팅이 어떤식으로 이루어지는지 얕은 학습</li>
-                                <li>socket 메서드 간단하게 학습</li>
-                                <li>프론트에서 보내준 데이터를 서버에서 어떤식으로 받고 응답해주는지 학습</li>
-                            </ul>
-                        </dd>
-                    </dl>
-                </li>
-            </ul>
+            <h2>study</h2>
+            <a href="/study.html">bbbbb</a>
         </section>
     </main>
 
 
 
-
-
+    
+    <footer></footer>
 
 
    
