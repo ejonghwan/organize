@@ -67,14 +67,14 @@
         /* .pagecur {display: inline-block;} */
         /* .pagetotal {display: inline-block;} */
         .wraptest .pagetotal {color: #666; font-weight: 400; padding-left: 9px; margin-left:3px; position: relative; font-size: 16px;}
-        .wraptest .pagetotal::before {content: '';display: inline-block; /*position: absolute; top:53%; left: 3px; */ background-color: #666; width: 1px; height: 13px; /* transform: translateY(-50%) rotateZ(26deg); */}
+        .wraptest .pagetotal::before {content: '';display: inline-block; position: absolute; top:53%; left: 3px;  background-color: #666; width: 1px; height: 13px; /* transform: translateY(-50%) rotateZ(26deg); */}
         .blind {position: absolute; left: -999px; top: -999px; width: 1px; height: 1px; overflow: hidden; margin-left: -1px; border: 0 none !important; background: transparent !important; color: transparent !important;}
     </style>
     <div class="wraptest">
         <button class="left">
             <span class="blind">이전 퀴즈로 이동</span>
         </button>
-        <span class="pagenum text1"><strong class="pagecur"><span class="blind">현재 페이지</span>1</strong><span class="pagetotal"><span class="blind">총  페이지</span>3</span></span>
+        <div class="pagenum text1"><strong class="pagecur"><span class="blind">현재 페이지</span>1</strong><span class="pagetotal"><span class="blind">총  페이지</span>3</span></div>
         
         <button class="right">
             <span class="blind">다음 퀴즈로 이동</span>
