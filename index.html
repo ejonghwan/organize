@@ -55,7 +55,27 @@
     </style>
 </head>
 <body>
-    
+
+
+    <style>
+
+        .wraptest {display: flex; justify-content: center; align-items: center; border: 1px solid red; }
+        .wraptest > button {border:1px solid blue; width: 24px; height: 24px; flex: 0 0 auto;margin: 0 10px 4px;}
+        .wraptest .pagetotal {color: #666; font-weight: 400; padding-left: 9px; margin-left:3px; position: relative; font-size: 16px;}
+        .wraptest .pagetotal::before {content: '';display: inline-block; position: absolute; top:53%; left: 3px; background-color: #666; width: 1px; height: 13px; transform: translateY(-50%) rotateZ(26deg);}
+
+    </style>
+    <div class="wraptest">
+        <button>left</button>
+        <span class="pagenum text1">
+            <strong class="pagecur">1</strong>
+        </span>
+        <span class="pagetotal">3</span>
+        <button>right</button>
+    </div>
+
+
+    <!-- 아이폰에서는 인라인블록이 (inline역할)문자열로 인식 잘 안하는듯.. 주의  -->
     <div class="wrap">
         <ul class="title">
             <li><span>호호호호</span></li>
@@ -76,8 +96,6 @@
             <li><span>호호호호</span></li>
             <li><span>호호호호</span></li>
             <li><span>호호호호</span></li>
-
-
         </ul>
     </div>
      
