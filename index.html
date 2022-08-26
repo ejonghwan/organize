@@ -59,19 +59,23 @@
 
     <style>
 
-        .wraptest {display: flex; justify-content: center; align-items: center; border: 1px solid red; }
-        .wraptest > button {border:1px solid blue; width: 24px; height: 24px; flex: 0 0 auto;margin: 0 10px 4px;}
+        .wraptest {display: flex; justify-content: center; align-items: center; border: 1px solid red; margin-bottom: 3px; margin-top: -3px;}
+        .wraptest > button {border:1px solid blue; width: 24px; height: 24px; flex: 0 0 auto;margin-bottom: 4px; background: url('./arr.png') no-repeat center / 100% auto;}
+        .left {margin-right: 10px;}
+        .right {margin-left: 10px;}
         .wraptest .pagetotal {color: #666; font-weight: 400; padding-left: 9px; margin-left:3px; position: relative; font-size: 16px;}
         .wraptest .pagetotal::before {content: '';display: inline-block; position: absolute; top:53%; left: 3px; background-color: #666; width: 1px; height: 13px; transform: translateY(-50%) rotateZ(26deg);}
-
+        .blind {position: absolute; left: -999px; top: -999px; width: 1px; height: 1px; overflow: hidden; margin-left: -1px; border: 0 none !important; background: transparent !important; color: transparent !important;}
     </style>
     <div class="wraptest">
-        <button>left</button>
-        <span class="pagenum text1">
-            <strong class="pagecur">1</strong>
-        </span>
-        <span class="pagetotal">3</span>
-        <button>right</button>
+        <button class="left">
+            <span class="blind">이전 퀴즈로 이동</span>
+        </button>
+        <span class="pagenum text1"><strong class="pagecur"><span class="blind">현재 페이지</span>1</strong></span>
+        <span class="pagetotal"><span class="blind">총  페이지</span>3</span>
+        <button class="right">
+            <span class="blind">다음 퀴즈로 이동</span>
+        </button>
     </div>
 
 
