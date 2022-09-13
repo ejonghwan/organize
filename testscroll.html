@@ -1,0 +1,511 @@
+	
+	<!-- 이메일 내용 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./ass/lottie.js"></script>
+    <script src="./ass/jquery-3.4.1.min.js"></script>
+    <title>Document</title>
+
+</head>
+<body>
+    
+    <style>
+ @charset "utf-8";
+@font-face{
+font-family: 'SpoqaHanSansNeo';
+src: url('../repages/fonts/SpoqaHanSansNeo-Light.woff2') format('woff2');
+font-weight: 300;
+font-style: normal;
+font-display:swap;
+}
+@font-face{
+font-family: 'SpoqaHanSansNeo';
+src: url('../repages/fonts/SpoqaHanSansNeo-Medium.woff2') format('woff2');
+font-weight: 700;
+font-style: normal;
+font-display:swap;
+}
+@font-face{
+font-family: 'SpoqaHanSansNeo';
+src: url('../repages/fonts/SpoqaHanSansNeo-Bold.woff2') format('woff2');
+font-weight: 900;
+font-style: normal;
+font-display:swap;
+}
+body {font-family: 'SpoqaHanSansNeo' !important;}
+
+
+
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        html, body {width: 100%; height: 100%;}
+        ol, ul {list-style: none;}
+        .ele {width: 100%; height: 100%;;}
+
+        header {background-color: #fff; color: black; padding: 20px; height: 300px; }
+        h1 {font-size: 18px;}
+        h2 {font-size: 15px;}
+        section {}
+        section .sec_wrap h2{padding: 20px 30px; font-size: 20px;}
+        section .sec_wrap .conts{padding: 30px;}
+        section:nth-child(1) {height: 1000px; background-color: #fff; border-top: 1px solid #ddd;}
+        section:nth-child(2) {height: 1500px; background-color: #fff; border-top: 1px solid #ddd;}
+        section:nth-child(3) {height: 2000px; background-color: #fff; border-top: 1px solid #ddd;}
+        section:nth-child(4) {height: 2500px; background-color: #fff; border-top: 1px solid #ddd;}
+        section:nth-child(5) {height: 3000px; background-color: #fff; border-top: 1px solid #ddd;}
+
+        section > .conts {background: rgb(243, 247, 238);  width: 50px; height: 100px; margin-top: 20px; }
+        /* .ele {width: 100px; height: auto; position: fixed; top:0; width: 150px; height: 150px;}  */
+        .ele11 { height: auto; position: fixed; top:200px; width: 100px; height: 100px; z-index: 1;}  
+        .ele22 { height: auto; position: fixed; top:350px; width: 100px; height: 100px; z-index: 1;} 
+
+        .sec3 {position: relative;}
+        .sec3.active .conts {position: fixed; top:0; }
+
+
+        #section_0 .sec0 h2 {color: #333; position: fixed; top:0; width: 100%; background-color: #fff;box-shadow: 0px 15px 16px rgb(0 0 0 / 5%);} 
+        #section_1 .sec1 h2 {color: #333; position: fixed; top:0; width: 100%; background-color: #fff;box-shadow: 0px 15px 16px rgb(0 0 0 / 5%);} 
+        #section_2 .sec2 h2 {color: #333; position: fixed; top:0; width: 100%; background-color: #fff;box-shadow: 0px 15px 16px rgb(0 0 0 / 5%);} 
+        #section_3 .sec3 h2 {color: #333; position: fixed; top:0; width: 100%; background-color: #fff;box-shadow: 0px 15px 16px rgb(0 0 0 / 5%);} 
+        #section_4 .sec4 h2 {color: #333; position: fixed; top:0; width: 100%; background-color: #fff;box-shadow: 0px 15px 16px rgb(0 0 0 / 5%);} 
+        
+        #section_0 .sec0 h2 .progress {width: 100%;display: inline-block;position: fixed;background-color: rgb(10, 96, 255);height: 3px;top: 67px;left: 0; opacity: .8; transform: translateX(0%); transform-origin: 0%;}
+        #section_1 .sec1 h2 .progress {width: 100%;display: inline-block;position: fixed;background-color: rgb(10, 96, 255);height: 3px;top: 67px;left: 0; opacity: .8; transform: translateX(0%); transform-origin: 0%;}
+        #section_2 .sec2 h2 .progress {width: 100%;display: inline-block;position: fixed;background-color: rgb(10, 96, 255);height: 3px;top: 67px;left: 0; opacity: .8; transform: translateX(0%); transform-origin: 0%;}
+        #section_3 .sec3 h2 .progress {width: 100%;display: inline-block;position: fixed;background-color: rgb(10, 96, 255);height: 3px;top: 67px;left: 0; opacity: .8; transform: translateX(0%); transform-origin: 0%;}
+        #section_4 .sec4 h2 .progress {width: 100%;display: inline-block;position: fixed;background-color: rgb(10, 96, 255);height: 3px;top: 67px;left: 0; opacity: .8; transform: translateX(0%); transform-origin: 0%;}
+
+        .nav {position: fixed; z-index: 10; top: 50%; right: 10px; font-size: 13px; opacity: 0; transition: all .5s; transform: translateX(5px); display: none;}
+        .nav.active {opacity: 1; transform: translateX(0px); display: block;}
+
+        .nav > button {border: none; background: #fff;}
+        .nav > button.on {background: #333; color: #fff;}
+
+        .yoffset {opacity: 0; transition: all .5s; transform: translateX(5px);}
+        .yoffset.active {opacity: 1; transform: translateX(0px);}
+
+
+
+    </style>
+
+    <header>
+        <h1>landing</h1>
+    </header>
+    <div class="yoffset" style="position:fixed; right:20px; top:20px; color: black; font-size: 20px; font-weight: bold; z-index: 10;"></div>
+    <div class="ele11"></div>
+    <div class="ele22"></div>
+    <nav class="nav"></nav>
+    <main>
+        <section class="sec0">
+            <div class="sec_wrap">
+                <h2>Q 질문0 이벤트는 신한플레이 전용 이벤트로 최신 버전으로<span class="progress"></span></h2>
+                <div id="c0" class="conts">
+                    <div class="ele"></div>
+                    이 이벤트는 신한플레이 전용 이벤트로 최신 버전으로 업데이트 후 참여할 수 있습니다.<br />
+이 이벤트는 행사기간 내 신한카드 마이데이터 서비스에서 최초로 금융기관을 연결한 고객 대상으로 진행됩니다.<br />
+마이데이터 금융기관 연결 전, 마이데이터 서비스 가입이 필요합니다.<br />
+[경품이벤트 응모]를 완료한 고객에 한하여 당첨자 선정 및 경품을 제공할 수 있습니다.<br />
+모바일 쿠폰 발송은 경품 지급일 당사에서 보유한 고객님의 휴대폰 번호로 보내드리니, 반드시 휴대폰 번호를 업데이트 해주시기 바랍니다.<br />
+신한카드 마이데이터 서비스는 만 19세 이상 신한카드 회원을 대상으로 합니다.<br />
+경품 지급 시점에 마이데이터 연결 철회 및 마이데이터 서비스 탈퇴 시 경품 당첨 대상에서 제외됩니다.<br />
+사용하시는 휴대폰 기종 및 인터넷 환경에 따라 이벤트 참여가 원활하지 않을 수 있습니다.<br />
+이 이벤트는 카드사의 사정에 따라 사전 고지 없이 중단되거나 변경될 수 있습니다.<br />
+                </div>
+            </div>
+        </section>
+        <section class="sec1">
+            <div class="sec_wrap">
+                <h2>Q 질문1 당사에서 보유한 고객님의 휴대폰 번호로<span class="progress"></span></h2>
+                <div id="c1" class="conts">
+                    <div class="ele"></div>
+                      이 이벤트는 신한플레이 전용 이벤트로 최신 버전으로 업데이트 후 참여할 수 있습니다.<br />
+이 이벤트는 행사기간 내 신한카드 마이데이터 서비스에서 최초로 금융기관을 연결한 고객 대상으로 진행됩니다.<br />
+마이데이터 금융기관 연결 전, 마이데이터 서비스 가입이 필요합니다.<br />
+[경품이벤트 응모]를 완료한 고객에 한하여 당첨자 선정 및 경품을 제공할 수 있습니다.<br />
+모바일 쿠폰 발송은 경품 지급일 당사에서 보유한 고객님의 휴대폰 번호로 보내드리니, 반드시 휴대폰 번호를 업데이트 해주시기 바랍니다.<br />
+신한카드 마이데이터 서비스는 만 19세 이상 신한카드 회원을 대상으로 합니다.<br />
+경품 지급 시점에 마이데이터 연결 철회 및 마이데이터 서비스 탈퇴 시 경품 당첨 대상에서 제외됩니다.<br />
+사용하시는 휴대폰 기종 및 인터넷 환경에 따라 이벤트 참여가 원활하지 않을 수 있습니다.<br />
+이 이벤트는 카드사의 사정에 따라 사전 고지 없이 중단되거나 변경될 수 있습니다.<br />
+                </div>
+            </div>
+        </section>
+        <section class="sec2">
+            <div class="sec_wrap">
+                <h2>Q 질문2 보유한 고객님의 휴대폰 번호로 보내드리니<span class="progress"></span></h2>
+                <div id="c2" class="conts">
+                    <div class="ele"></div>
+                      이 이벤트는 신한플레이 전용 이벤트로 최신 버전으로 업데이트 후 참여할 수 있습니다.<br />
+이 이벤트는 행사기간 내 신한카드 마이데이터 서비스에서 최초로 금융기관을 연결한 고객 대상으로 진행됩니다.<br />
+마이데이터 금융기관 연결 전, 마이데이터 서비스 가입이 필요합니다.<br />
+[경품이벤트 응모]를 완료한 고객에 한하여 당첨자 선정 및 경품을 제공할 수 있습니다.<br />
+모바일 쿠폰 발송은 경품 지급일 당사에서 보유한 고객님의 휴대폰 번호로 보내드리니, 반드시 휴대폰 번호를 업데이트 해주시기 바랍니다.<br />
+신한카드 마이데이터 서비스는 만 19세 이상 신한카드 회원을 대상으로 합니다.<br />
+경품 지급 시점에 마이데이터 연결 철회 및 마이데이터 서비스 탈퇴 시 경품 당첨 대상에서 제외됩니다.<br />
+사용하시는 휴대폰 기종 및 인터넷 환경에 따라 이벤트 참여가 원활하지 않을 수 있습니다.<br />
+이 이벤트는 카드사의 사정에 따라 사전 고지 없이 중단되거나 변경될 수 있습니다.<br />
+                </div>
+            </div>
+        </section>
+        <section class="sec3">
+            <div class="sec_wrap">
+                <h2>Q 질문3 고지 없이 중단되거나 변경될 수 있습니다<span class="progress"></span></h2>
+                <div id="c3" class="conts">
+                    <div class="ele"></div>
+                      이 이벤트는 신한플레이 전용 이벤트로 최신 버전으로 업데이트 후 참여할 수 있습니다.<br />
+이 이벤트는 행사기간 내 신한카드 마이데이터 서비스에서 최초로 금융기관을 연결한 고객 대상으로 진행됩니다.<br />
+마이데이터 금융기관 연결 전, 마이데이터 서비스 가입이 필요합니다.<br />
+[경품이벤트 응모]를 완료한 고객에 한하여 당첨자 선정 및 경품을 제공할 수 있습니다.<br />
+모바일 쿠폰 발송은 경품 지급일 당사에서 보유한 고객님의 휴대폰 번호로 보내드리니, 반드시 휴대폰 번호를 업데이트 해주시기 바랍니다.<br />
+신한카드 마이데이터 서비스는 만 19세 이상 신한카드 회원을 대상으로 합니다.<br />
+경품 지급 시점에 마이데이터 연결 철회 및 마이데이터 서비스 탈퇴 시 경품 당첨 대상에서 제외됩니다.<br />
+사용하시는 휴대폰 기종 및 인터넷 환경에 따라 이벤트 참여가 원활하지 않을 수 있습니다.<br />
+이 이벤트는 카드사의 사정에 따라 사전 고지 없이 중단되거나 변경될 수 있습니다.<br />
+                </div>
+            </div>
+        </section>
+        <section class="sec4">
+            <div class="sec_wrap">
+                <h2>Q 질문4 전용 이벤트로 최신 버전으로<span class="progress"></span></h2>
+                <div id="c4" class="conts">
+                    <div class="ele"></div>
+                      이 이벤트는 신한플레이 전용 이벤트로 최신 버전으로 업데이트 후 참여할 수 있습니다.<br />
+이 이벤트는 행사기간 내 신한카드 마이데이터 서비스에서 최초로 금융기관을 연결한 고객 대상으로 진행됩니다.<br />
+마이데이터 금융기관 연결 전, 마이데이터 서비스 가입이 필요합니다.<br />
+[경품이벤트 응모]를 완료한 고객에 한하여 당첨자 선정 및 경품을 제공할 수 있습니다.<br />
+모바일 쿠폰 발송은 경품 지급일 당사에서 보유한 고객님의 휴대폰 번호로 보내드리니, 반드시 휴대폰 번호를 업데이트 해주시기 바랍니다.<br />
+신한카드 마이데이터 서비스는 만 19세 이상 신한카드 회원을 대상으로 합니다.<br />
+경품 지급 시점에 마이데이터 연결 철회 및 마이데이터 서비스 탈퇴 시 경품 당첨 대상에서 제외됩니다.<br />
+사용하시는 휴대폰 기종 및 인터넷 환경에 따라 이벤트 참여가 원활하지 않을 수 있습니다.<br />
+이 이벤트는 카드사의 사정에 따라 사전 고지 없이 중단되거나 변경될 수 있습니다.<br />
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+
+
+   
+
+    <script>
+        
+
+
+        
+        var sectionHeight = []
+        var prevHeight = 0;
+        var totalPrev = 0;
+        var idx = 0;
+        var yOffset = 0;
+        var eles = document.querySelectorAll('section');
+        var header = document.querySelector('header');
+        var body = document.querySelector('body');
+        var main = document.querySelector('main')
+        // var conts = document.querySelectorAll('.conts > .ele')
+    
+        const nav = document.querySelector('.nav')
+        const numberNav = document.querySelector('.yoffset')
+        
+
+       init();
+
+        function init() {
+            yOffset = window.pageYOffset;
+            if(yOffset < main.offsetTop) { navRender(idx); hoho(); } 
+            for(var i = 0; i < eles.length; i++) {
+                sectionHeight[i] = eles[i].clientHeight;
+            }
+
+            if(yOffset < main.offsetTop) { return; } 
+            totalPrev = prevHeight + main.offsetTop
+            for(var i = 0; i < sectionHeight.length; i++) {
+                totalPrev += sectionHeight[i];
+                if(yOffset - main.offsetTop < totalPrev) {
+                    idx = i; 
+                    navRender(idx);
+                    progressNumber(true);
+                    progressBar(idx, yOffset, totalPrev)
+                    hoho();
+                    // console.log(idx, totalPrev)
+                    break;
+                }
+            }
+            
+            body.setAttribute('id', 'section_' + idx)
+            // console.log(document.body.getAttribute('id'))
+            
+            $('html, body').animate({ scrollTop : yOffset+10})
+            console.log('?????????????', prevHeight)
+            
+           
+        }
+
+
+        function scrollEvt1() {
+            yOffset = window.pageYOffset;
+            if(yOffset <= main.offsetTop) { yOffset = 0; idx = 0; prevHeight = 0; };
+            if(yOffset < main.offsetTop) { 
+                body.removeAttribute('id', 'section_' + idx)
+                progressNumber(false);
+                return; 
+            } else { 
+                //이거 계속 실행되는데 한번만 실행되게 
+                body.setAttribute('id', 'section_' + idx)
+                progressBar(idx, yOffset) 
+                progressNumber(true);
+                
+            }
+
+            
+            prevHeight = 0
+            for(var i = 0; i < idx; i++) {
+                prevHeight += sectionHeight[i]
+            }
+            if(yOffset - main.offsetTop > prevHeight + sectionHeight[idx] ) {
+                prevHeight += sectionHeight[idx];
+                idx++;
+                body.setAttribute('id', 'section_' + idx)
+                progressBar(idx, yOffset)
+                currentConts(idx)
+                console.log(sectionHeight)
+            };
+            if(yOffset - main.offsetTop < prevHeight) {
+                idx--
+                prevHeight -= sectionHeight[idx];
+                body.setAttribute('id', 'section_' + idx)
+                progressBar(idx, yOffset)
+                currentConts(idx)
+            };
+            
+        }
+
+        function progressNumber(bool) {
+            bool ? nav.classList.add('active') : nav.classList.remove('active');
+            bool ? numberNav.classList.add('active') : numberNav.classList.remove('active');
+            var cur = Math.round((yOffset - main.offsetTop - prevHeight) / sectionHeight[idx] * 100);
+            if(cur <= 0) {
+                cur = 0;
+            } else if(cur >= 100) {
+                cur = 100;
+            }
+            document.querySelector('.yoffset').innerHTML = cur + "%";
+        }
+
+        function progressBar(idx, yoffset, totalHeight) {
+            if(totalHeight) { prevHeight = totalHeight + main.offsetTop; }
+            eles[idx].querySelector('h2 > .progress').style.transform = "scaleX(" + (Math.abs(yoffset - prevHeight) - main.offsetTop) / sectionHeight[idx] * 100 + "%)"
+        }
+
+
+        function navRender(idx) {
+            if(!nav) return;
+          
+            for(var i = 0; i < eles.length; i++) {
+                nav.innerHTML += "<button>" + eles[i].querySelector('h2').textContent + "</button>" + "<br />";
+                // console.log(eles[i])
+            }
+            nav.querySelectorAll('button')[idx].classList.add('on');
+        }
+
+        function hoho() {
+            const navs = document.querySelectorAll('.nav > button')
+            console.log(navs)
+            for(var i = 0; i < navs.length; i++) {
+                (function(j){
+                    navs[j].addEventListener('click', function() {
+                        navClick(j)
+                        for(var h = 0; h < navs.length; h++) {
+                            navs[h].classList.remove('on')
+                        }
+                        // navs[j].classList.add('on')
+                    })
+                })(i)
+            }
+        }
+
+        function navClick(clickIdx) {   
+            // console.log(clickIdx)
+            // console.log(prevHeight + sectionHeight[clickIdx])
+            console.log(eles[clickIdx].offsetTop)
+            $('html, body').animate({ scrollTop : eles[clickIdx].offsetTop })
+        }
+
+
+        function currentConts(idx) {
+            const navs = document.querySelectorAll('.nav > button')
+            for(var h = 0; h < navs.length; h++) {
+                navs[h].classList.remove('on')
+            }
+            navs[idx].classList.add('on')
+        }
+
+
+
+        // window.addEventListener('load', init)
+        window.addEventListener('scroll', scrollEvt1)
+        window.addEventListener('resize', scrollEvt1)
+     
+      
+
+        // 최적화 테스트
+        // var ani = null;
+        // window.addEventListener('scroll', function() {
+        //     if(window.pageYOffset >= 3000 && ani === null) {
+        //         ani = bodymovin.loadAnimation({
+        //             container: document.querySelector('.ele22'),
+        //             path: './test.json', //string
+        //             renderer: 'svg',
+        //             loop: true, //bool 
+        //             autoplay: false, //bool
+        //             // animationData: animationData
+        //         });
+        //     }
+        // })
+
+
+
+        // ------------------------------------ 스크롤 반응 인터렉션
+        // var anim; 
+        // var yOffset = 0;
+        // var elem = eles[1].querySelector('.ele');
+        // var animData = {
+        //     container: document.querySelector('.ele11'),
+        //     renderer: 'svg',
+        //     loop: false, //bool 
+        //     autoplay: false, //bool
+        //     rendererSettings: {
+        //         progressiveLoad: false,
+        //         preserveAspectRatio: 'xMidYMid slice',
+        //     },
+        //     path: './test.json', //string
+        // }
+
+        // anim = bodymovin.loadAnimation(animData)
+        
+        // function scrollEvt() {
+        //     yOffset = window.pageYOffset;
+        //     var ratio = Math.round(yOffset / (document.querySelector('main').clientHeight - window.innerHeight) * 100);
+        //     // console.log(ratio / 100 * 2900)
+            
+            
+        //     setTimeout(function() {
+        //         // goto stop이 해당 스크롤에 움직였다 멈추라는 거였구나 
+        //         anim.goToAndStop( (ratio / 100) * (anim.totalFrames * 10) )  //totalFrame을 0한개 더 줘야 제대로작동하네 .. total은 270인데
+        //         // console.log(ratio / 100 * 2700)
+        //     }, 50)
+        // }
+        // window.addEventListener('scroll', scrollEvt)
+        // ------------------------------------ 스크롤 반응 인터렉션
+        
+        
+
+
+        // ------------------------------------ 조건에 따른 인터렉션
+        //  var ani = bodymovin.loadAnimation({
+        //     container: document.querySelector('.ele22'),
+        //     path: './test.json', //string
+        //     renderer: 'svg',
+        //     loop: true, //bool 
+        //     autoplay: false, //bool
+        //     // animationData: animationData
+            
+        // });
+        // // console.log(ani)
+        // // 특정조건에서 플레이 & 스톱
+        // window.addEventListener('scroll', function() {
+        //     if(yOffset >= 500 && yOffset <= 700) {
+        //         ani.play();
+        //     } else {
+        //         ani.stop();
+        //     }
+        // })
+
+        // // 특정 조건에서 퍼즈
+        // var toggle = false;
+        // window.addEventListener('click', function() {
+        //     toggle = !toggle
+
+        //     if(toggle) {
+        //         ani.pause();
+        //     } else {
+        //         ani.play();
+        //     }
+        //     // console.log(toggle)
+        // })
+        // ------------------------------------ 조건에 따른 인터렉션
+
+
+
+        // 오늘 이관 
+        // 홈페이지[WEB] > pconts > images > shcard
+        // /pconts/images/shcard/icon-54-clock.png
+
+
+        // ------------------------------------ 어떤 엘리먼트에 왔을 때 동작
+
+        var sec3 = document.querySelector('.sec3');
+        
+        // console.log(sec3.offsetTop)
+
+
+        window.addEventListener('scroll', function() {
+
+            var sec3Ratio = (yOffset - sec3.offsetTop) / sec3.clientHeight;
+
+            if(yOffset > sec3.offsetTop && yOffset < sec3.offsetTop + sec3.clientHeight) {
+                // console.log('sec 3')
+                sec3.classList.add('active')
+            
+                if(sec3Ratio <= .5) {
+                    sec3.querySelector('.conts').style.transform = "translateX(" + (yOffset - sec3.offsetTop) / (sec3.clientHeight) * (window.innerWidth - 20) + 20 + "px)"
+                    sec3.querySelector('.conts').style.opacity = (yOffset - sec3.offsetTop) / (sec3.clientHeight) * (0 - 1) + 0;
+                } else {
+                    sec3.querySelector('.conts').style.transform = "translateX(" + (yOffset - sec3.offsetTop) / (sec3.clientHeight) * (20 - window.innerWidth) + window.innerWidth + "px)"
+                    sec3.querySelector('.conts').style.opacity = (yOffset - sec3.offsetTop) / (sec3.clientHeight) * (1 - 0) + 1;
+                }
+
+                
+
+                // console.log((yOffset - sec3.offsetTop) / (sec3.clientHeight))
+
+            } else {
+                // console.log('sec 3 벗어남')
+                sec3.classList.remove('active')
+            }
+
+         
+        })
+
+
+        // ------------------------------------ 어떤 엘리먼트에 왔을 때 동작
+
+
+
+
+
+        // function ani(ele, path, loop, autoplay) {
+        //     console.log(ele)
+        //     var anim = bodymovin.loadAnimation({
+        //         container: ele,
+        //         path: path, //string
+        //         renderer: 'svg',
+        //         loop: loop, //bool 
+        //         autoplay: autoplay, //bool
+                
+        //     });
+        //     anim.play();
+        // }
+
+        
+       
+        
+
+    </script>
+
+</body>
+</html>
