@@ -272,7 +272,7 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
                 body.setAttribute('id', 'section_' + idx)
                 progressBar(idx, yOffset)
                 currentConts(idx)
-                console.log(sectionHeight)
+                // console.log(sectionHeight)
             };
             if(yOffset - main.offsetTop < prevHeight) {
                 idx--
@@ -306,7 +306,7 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
             if(!nav) return;
           
             for(var i = 0; i < eles.length; i++) {
-                nav.innerHTML += "<button>" + eles[i].querySelector('h2').textContent + "</button>" + "<br />";
+                nav.innerHTML += "<button type='button'>" + eles[i].querySelector('h2').textContent + "</button >" + "<br />";
                 // console.log(eles[i])
             }
             nav.querySelectorAll('button')[idx].classList.add('on');
@@ -331,8 +331,13 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
         function navClick(clickIdx) {   
             // console.log(clickIdx)
             // console.log(prevHeight + sectionHeight[clickIdx])
-            console.log(eles[clickIdx].offsetTop)
+            console.log('hhh', eles[clickIdx])
             $('html, body').animate({ scrollTop : eles[clickIdx].offsetTop })
+            
+            for(var i = 0; i < eles.length; i++) {
+                eles[i].querySelector('h2').removeAttribute('tabindex')
+            }
+            eles[clickIdx].querySelector('h2').setAttribute('tabindex', 1)
         }
 
 
