@@ -94,7 +94,7 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
 
         footer {height: 500px;}
 
-        #c3 {width: 30px; height: 30px; background-color: red; position: fixed; top:250px; left:0; z-index: 20;}
+        #c3 {width: 30px; height: 30px; background-color: red; position: fixed; top:250px; left:0; z-index: 20; opacity: 0;}
 
     </style>
 
@@ -531,36 +531,36 @@ window.addEventListener('scroll', function() {
 
 
         // ------------------------------------ 스크롤 반응 인터렉션
-        // var anim; 
-        // var yOffset = 0;
-        // var elem = eles[1].querySelector('.ele');
-        // var animData = {
-        //     container: document.querySelector('.ele11'),
-        //     renderer: 'svg',
-        //     loop: false, //bool 
-        //     autoplay: false, //bool
-        //     rendererSettings: {
-        //         progressiveLoad: false,
-        //         preserveAspectRatio: 'xMidYMid slice',
-        //     },
-        //     path: './test.json', //string
-        // }
+        var anim; 
+        var yOffset = 0;
+        var elem = eles[1].querySelector('.ele');
+        var animData = {
+            container: document.querySelector('.ele11'),
+            renderer: 'svg',
+            loop: false, //bool 
+            autoplay: false, //bool
+            rendererSettings: {
+                progressiveLoad: false,
+                preserveAspectRatio: 'xMidYMid slice',
+            },
+            path: 'https://raw.githubusercontent.com/thesvbd/Lottie-examples/master/assets/animations/loading.json', //string
+        }
 
-        // anim = bodymovin.loadAnimation(animData)
+        anim = bodymovin.loadAnimation(animData)
         
-        // function scrollEvt() {
-        //     yOffset = window.pageYOffset;
-        //     var ratio = Math.round(yOffset / (document.querySelector('main').clientHeight - window.innerHeight) * 100);
-        //     // console.log(ratio / 100 * 2900)
+        function scrollEvt() {
+            yOffset = window.pageYOffset;
+            var ratio = Math.round(yOffset / (document.querySelector('main').clientHeight - window.innerHeight) * 100);
+            // console.log(ratio / 100 * 2900)
             
             
-        //     setTimeout(function() {
-        //         // goto stop이 해당 스크롤에 움직였다 멈추라는 거였구나 
-        //         anim.goToAndStop( (ratio / 100) * (anim.totalFrames * 10) )  //totalFrame을 0한개 더 줘야 제대로작동하네 .. total은 270인데
-        //         // console.log(ratio / 100 * 2700)
-        //     }, 50)
-        // }
-        // window.addEventListener('scroll', scrollEvt)
+            setTimeout(function() {
+                // goto stop이 해당 스크롤에 움직였다 멈추라는 거였구나 
+                anim.goToAndStop( (ratio / 100) * (anim.totalFrames * 10) )  //totalFrame을 0한개 더 줘야 제대로작동하네 .. total은 270인데
+                // console.log(ratio / 100 * 2700)
+            }, 50)
+        }
+        window.addEventListener('scroll', scrollEvt)
         // ------------------------------------ 스크롤 반응 인터렉션
         
         
