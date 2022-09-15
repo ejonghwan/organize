@@ -44,18 +44,19 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
         html, body {width: 100%; height: 100%;}
         ol, ul {list-style: none;}
         .ele {width: 100%; height: 100%;;}
+        /* *:focus {border: 2px solid red; } */
 
         header {background-color: #fff; color: black; padding: 20px; height: 300px; }
         h1 {font-size: 18px;}
         h2 {font-size: 15px;}
         section {}
         section .sec_wrap h2{padding: 20px 30px; font-size: 20px;}
-        section .sec_wrap .conts{padding: 30px;}
-        section:nth-child(1) {height: 1000px; background-color: #fff; border-top: 1px solid #ddd;}
-        section:nth-child(2) {height: 1500px; background-color: #fff; border-top: 1px solid #ddd;}
-        section:nth-child(3) {height: 2000px; background-color: #fff; border-top: 1px solid #ddd;}
-        section:nth-child(4) {height: 2500px; background-color: #fff; border-top: 1px solid #ddd;}
-        section:nth-child(5) {height: 3000px; background-color: #fff; border-top: 1px solid #ddd;}
+        section .sec_wrap .conts {padding: 30px;}
+        section.sec0 {height: 1000px; background-color: #fff; border-top: 1px solid #ddd;}
+        section.sec1 {height: 1500px; background-color: #fff; border-top: 1px solid #ddd;}
+        section.sec2 {height: 2000px; background-color: #fff; border-top: 1px solid #ddd;}
+        section.sec3 {height: 2500px; background-color: #fff; border-top: 1px solid #ddd;}
+        section.sec4 {height: 3000px; background-color: #fff; border-top: 1px solid #ddd;}
 
         section > .conts {background: rgb(243, 247, 238);  width: 50px; height: 100px; margin-top: 20px; }
         /* .ele {width: 100px; height: auto; position: fixed; top:0; width: 150px; height: 150px;}  */
@@ -66,11 +67,11 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
         .sec3.active .conts {position: fixed; top:0; }
 
 
-        #section_0 .sec0 h2 {color: #333; position: fixed; top:0; width: 100%; background-color: #fff;box-shadow: 0px 15px 16px rgb(0 0 0 / 5%);} 
+        /* #section_0 .sec0 h2 {color: #333; position: fixed; top:0; width: 100%; background-color: #fff;box-shadow: 0px 15px 16px rgb(0 0 0 / 5%);} 
         #section_1 .sec1 h2 {color: #333; position: fixed; top:0; width: 100%; background-color: #fff;box-shadow: 0px 15px 16px rgb(0 0 0 / 5%);} 
         #section_2 .sec2 h2 {color: #333; position: fixed; top:0; width: 100%; background-color: #fff;box-shadow: 0px 15px 16px rgb(0 0 0 / 5%);} 
         #section_3 .sec3 h2 {color: #333; position: fixed; top:0; width: 100%; background-color: #fff;box-shadow: 0px 15px 16px rgb(0 0 0 / 5%);} 
-        #section_4 .sec4 h2 {color: #333; position: fixed; top:0; width: 100%; background-color: #fff;box-shadow: 0px 15px 16px rgb(0 0 0 / 5%);} 
+        #section_4 .sec4 h2 {color: #333; position: fixed; top:0; width: 100%; background-color: #fff;box-shadow: 0px 15px 16px rgb(0 0 0 / 5%);}  */
         
         #section_0 .sec0 h2 .progress {width: 100%;display: inline-block;position: fixed;background-color: rgb(10, 96, 255);height: 3px;top: 67px;left: 0; opacity: .8; transform: translateX(0%); transform-origin: 0%;}
         #section_1 .sec1 h2 .progress {width: 100%;display: inline-block;position: fixed;background-color: rgb(10, 96, 255);height: 3px;top: 67px;left: 0; opacity: .8; transform: translateX(0%); transform-origin: 0%;}
@@ -78,8 +79,8 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
         #section_3 .sec3 h2 .progress {width: 100%;display: inline-block;position: fixed;background-color: rgb(10, 96, 255);height: 3px;top: 67px;left: 0; opacity: .8; transform: translateX(0%); transform-origin: 0%;}
         #section_4 .sec4 h2 .progress {width: 100%;display: inline-block;position: fixed;background-color: rgb(10, 96, 255);height: 3px;top: 67px;left: 0; opacity: .8; transform: translateX(0%); transform-origin: 0%;}
 
-        .nav {position: fixed; z-index: 10; top: 50%; right: 10px; font-size: 13px; opacity: 0; transition: all .5s; transform: translateX(5px); display: none;}
-        .nav.active {opacity: 1; transform: translateX(0px); display: block;}
+        .nav {position: fixed; top: 50%; transform: translateY(-50%); right: 10px; display: none; z-index: 10;  font-size: 13px; }
+        .nav.active { display: block; }
 
         .nav > button {border: none; background: #fff;}
         .nav > button.on {background: #333; color: #fff;}
@@ -87,17 +88,25 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
         .yoffset {opacity: 0; transition: all .5s; transform: translateX(5px);}
         .yoffset.active {opacity: 1; transform: translateX(0px);}
 
+        .title {display: none;}
+        .title.active {color: #333; position: fixed; top:0; width: 100%; background-color: #fff;box-shadow: 0px 15px 16px rgb(0 0 0 / 5%); height: 65px; z-index: 10; display: flex; align-items: center; padding: 20px; font-size: 20px; font-weight: bold;}
 
+
+        footer {height: 500px;}
+
+        #c3 {width: 30px; height: 30px; background-color: red; position: fixed; top:250px; left:0; z-index: 20;}
 
     </style>
 
     <header>
         <h1>landing</h1>
     </header>
+    <div class="title"></div>
     <div class="yoffset" style="position:fixed; right:20px; top:20px; color: black; font-size: 20px; font-weight: bold; z-index: 10;"></div>
     <div class="ele11"></div>
     <div class="ele22"></div>
     <nav class="nav"></nav>
+    <nav class="defaultNav"></nav>
     <main>
         <section class="sec0">
             <div class="sec_wrap">
@@ -155,7 +164,7 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
                 <h2>Q 질문3 고지 없이 중단되거나 변경될 수 있습니다<span class="progress"></span></h2>
                 <div id="c3" class="conts">
                     <div class="ele"></div>
-                      이 이벤트는 신한플레이 전용 이벤트로 최신 버전으로 업데이트 후 참여할 수 있습니다.<br />
+                      <!-- 이 이벤트는 신한플레이 전용 이벤트로 최신 버전으로 업데이트 후 참여할 수 있습니다.<br />
 이 이벤트는 행사기간 내 신한카드 마이데이터 서비스에서 최초로 금융기관을 연결한 고객 대상으로 진행됩니다.<br />
 마이데이터 금융기관 연결 전, 마이데이터 서비스 가입이 필요합니다.<br />
 [경품이벤트 응모]를 완료한 고객에 한하여 당첨자 선정 및 경품을 제공할 수 있습니다.<br />
@@ -163,7 +172,7 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
 신한카드 마이데이터 서비스는 만 19세 이상 신한카드 회원을 대상으로 합니다.<br />
 경품 지급 시점에 마이데이터 연결 철회 및 마이데이터 서비스 탈퇴 시 경품 당첨 대상에서 제외됩니다.<br />
 사용하시는 휴대폰 기종 및 인터넷 환경에 따라 이벤트 참여가 원활하지 않을 수 있습니다.<br />
-이 이벤트는 카드사의 사정에 따라 사전 고지 없이 중단되거나 변경될 수 있습니다.<br />
+이 이벤트는 카드사의 사정에 따라 사전 고지 없이 중단되거나 변경될 수 있습니다.<br /> -->
                 </div>
             </div>
         </section>
@@ -188,7 +197,7 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
 
 
 
-
+    <footer>hoho</footer>
 
    
 
@@ -206,10 +215,12 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
         var header = document.querySelector('header');
         var body = document.querySelector('body');
         var main = document.querySelector('main')
+        var title = document.querySelector('.title')
         // var conts = document.querySelectorAll('.conts > .ele')
     
-        const nav = document.querySelector('.nav')
-        const numberNav = document.querySelector('.yoffset')
+        var nav = document.querySelector('.nav')
+        var defaultNav = document.querySelector('.defaultNav')
+        var numberNav = document.querySelector('.yoffset')
         
 
        init();
@@ -231,16 +242,13 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
                     progressNumber(true);
                     progressBar(idx, yOffset, totalPrev)
                     hoho();
-                    // console.log(idx, totalPrev)
+                    titleRander(idx, title)
                     break;
                 }
             }
             
             body.setAttribute('id', 'section_' + idx)
-            // console.log(document.body.getAttribute('id'))
-            
             $('html, body').animate({ scrollTop : yOffset+10})
-            console.log('?????????????', prevHeight)
             
            
         }
@@ -248,17 +256,21 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
 
         function scrollEvt1() {
             yOffset = window.pageYOffset;
-            if(yOffset <= main.offsetTop) { yOffset = 0; idx = 0; prevHeight = 0; };
+            if(yOffset <= main.offsetTop) { yOffset = 0; idx = 0; prevHeight = 0; title.classList.remove('active');};
             if(yOffset < main.offsetTop) { 
+                // 시작전
                 body.removeAttribute('id', 'section_' + idx)
                 progressNumber(false);
                 return; 
-            } else { 
-                //이거 계속 실행되는데 한번만 실행되게 
+            } else if(yOffset > main.offsetTop && yOffset < main.offsetTop + sectionHeight[0]){ 
+                // 첫번? 엘리먼트에서만 실행
                 body.setAttribute('id', 'section_' + idx)
-                progressBar(idx, yOffset) 
-                progressNumber(true);
-                
+                titleRander(idx, title)
+                progressBar(idx, yOffset)
+                progressNumber(true); 
+            } else {
+                progressBar(idx, yOffset)
+                progressNumber(true); 
             }
 
             
@@ -272,7 +284,7 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
                 body.setAttribute('id', 'section_' + idx)
                 progressBar(idx, yOffset)
                 currentConts(idx)
-                // console.log(sectionHeight)
+                titleRander(idx, title)
             };
             if(yOffset - main.offsetTop < prevHeight) {
                 idx--
@@ -280,6 +292,7 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
                 body.setAttribute('id', 'section_' + idx)
                 progressBar(idx, yOffset)
                 currentConts(idx)
+                titleRander(idx, title)
             };
             
         }
@@ -293,7 +306,7 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
             } else if(cur >= 100) {
                 cur = 100;
             }
-            document.querySelector('.yoffset').innerHTML = cur + "%";
+           numberNav.innerHTML = cur + "%";
         }
 
         function progressBar(idx, yoffset, totalHeight) {
@@ -302,46 +315,46 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
         }
 
 
+        // 네비 렌더
         function navRender(idx) {
             if(!nav) return;
-          
             for(var i = 0; i < eles.length; i++) {
-                nav.innerHTML += "<button type='button'>" + eles[i].querySelector('h2').textContent + "</button >" + "<br />";
+                nav.innerHTML += "<button>" + eles[i].querySelector('h2').textContent + "</button>" + "<br />";
+                defaultNav.innerHTML += "<button>" + eles[i].querySelector('h2').textContent + "</button>" + "<br />";
                 // console.log(eles[i])
             }
             nav.querySelectorAll('button')[idx].classList.add('on');
         }
 
+        // 네비 클릭이벤트
         function hoho() {
-            const navs = document.querySelectorAll('.nav > button')
-            console.log(navs)
+            var navs = document.querySelectorAll('.nav > button')
+            var defaultNavs = document.querySelectorAll('.defaultNav > button')
             for(var i = 0; i < navs.length; i++) {
                 (function(j){
+                    const nextTab = navs[j].querySelector('h2');
                     navs[j].addEventListener('click', function() {
                         navClick(j)
-                        for(var h = 0; h < navs.length; h++) {
-                            navs[h].classList.remove('on')
-                        }
-                        // navs[j].classList.add('on')
+                    })
+                    defaultNavs[j].addEventListener('click', function() {
+                        navClick(j)
                     })
                 })(i)
             }
         }
 
+        // 네비 클릭시
         function navClick(clickIdx) {   
-            // console.log(clickIdx)
-            // console.log(prevHeight + sectionHeight[clickIdx])
-            console.log('hhh', eles[clickIdx])
-            $('html, body').animate({ scrollTop : eles[clickIdx].offsetTop })
-
-            for(var i = 0; i < eles.length; i++) {
-                eles[i].querySelector('h2').removeAttribute('tabindex')
-            }
-            eles[clickIdx].querySelector('h2').setAttribute('tabindex', 1);
-            eles[clickIdx].querySelector('h2').focus();
+            $('html, body').animate({ scrollTop : eles[clickIdx].offsetTop + 50 })
+            numberNav.innerHTML = 0 + '%'
+            setTimeout(function(){
+                const nextTab = eles[clickIdx].querySelector('h2');
+                nextTab.setAttribute('tabindex', 1);
+                nextTab.focus();
+            }, 500)    
         }
 
-
+        // 네비바
         function currentConts(idx) {
             const navs = document.querySelectorAll('.nav > button')
             for(var h = 0; h < navs.length; h++) {
@@ -350,15 +363,153 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
             navs[idx].classList.add('on')
         }
 
+        // 상단 픽스 타이틀
+        function titleRander(idx, ele) {
+            var targetQa = eles[idx].querySelector('h2').textContent;
+            ele.innerHTML = targetQa;
+            ele.classList.add('active')
+        } 
 
+        
 
         // window.addEventListener('load', init)
-        window.addEventListener('scroll', scrollEvt1)
-        window.addEventListener('resize', scrollEvt1)
+        window.addEventListener('scroll', throttle(scrollEvt1, 20))
+        window.addEventListener('resize', debounce(scrollEvt1, 250))
      
-      
 
-        // 최적화 테스트
+
+
+        function throttle(cb, wait) {
+            var waiting = true;
+            return function(args) {
+                if(waiting) {
+                    cb(args);
+                    waiting = false;
+
+                    setTimeout(function() {
+                        // console.log('hoho')
+                        waiting = true
+                    }, wait)
+                } 
+            }
+        }
+
+        function debounce(cb, wait) {
+            var timeout;
+            return function(args) {
+
+                console.log(timeout)
+                clearTimeout(timeout); //한번이면 바로 클리어
+
+                timeout = setTimeout(function() {
+                    cb(args);
+                }, wait);
+            }
+        }
+
+
+        
+
+// ------------------------------------ 어떤 엘리먼트에 왔을 때 동작
+var sec3 = document.querySelector('.sec3');
+
+
+function calcValue(props) {
+    var element = props.element;
+    var startValue = props.startValue; 
+    var endValue = props.endValue;
+    var startPos = props.startPos;
+    var endPos = props.endPos; 
+    var y = props.y;
+    var ratio = (y - element.offsetTop) / element.clientHeight;
+    var result = null;
+
+    var partStart = (startPos * element.clientHeight); //스타트 시작점 
+    var partEnd = (endPos * element.clientHeight); //스타트 끝점 
+    var partHeight =  partEnd - partStart;
+
+    if(y > element.offsetTop + partStart && y < element.offsetTop + partEnd) {
+        // 전체높이로 하면 안됨 
+        // result = (((y - element.offsetTop) / element.clientHeight) * (endValue - startValue) + startValue);
+
+        // console.log((yOffset - element.offsetTop - partStart) / partHeight)
+        // (엘리먼트 시작위치 - 스타트) / 나눌 파트높이 * ~
+        result = ((yOffset - element.offsetTop - partStart) / partHeight) * (endValue - startValue) + startValue;
+
+    } else if(y - element.offsetTop < partStart) {
+        result = startValue; console.log('partStart 이전')
+    } else if(y - element.offsetTop > partEnd) {
+        result = endValue; console.log('partEnd 이후')
+    }
+
+    console.log(result)
+    return result;
+
+    // sec3.querySelector('.conts').style.transform = `translateX(${(((yOffset - sec3.offsetTop) / sectionHeight[3]) * (500 - 200) + 200)}px)`
+    // sec3.querySelector('.conts').style.opacity = (((yOffset - sec3.offsetTop) / sectionHeight[3]) * (2 - 0) + 0)
+
+   
+}
+
+
+window.addEventListener('scroll', function() {
+    var sec3Ratio = (yOffset - sec3.offsetTop) / sec3.clientHeight;
+    yOffset = pageYOffset
+    if(yOffset > sec3.offsetTop && yOffset < sec3.offsetTop + sec3.clientHeight) {
+        sec3.classList.add('active')
+        
+        // 현재 스크롤값 - 섹션이 떨어진값 / 섹션 높이값 * 움직일 값  
+        // sec3.querySelector('.conts').style.transform = `translateX(${(((yOffset - sec3.offsetTop) / sectionHeight[3]) * innerWidth)}px)`
+        // sec3Ratio <= .2
+        if(sec3Ratio <= 0.5) {
+             sec3.querySelector('.conts').style.transform = `translateX(${ calcValue({
+                element: sec3,
+                startValue: 200,
+                endValue: 500,
+                startPos: 0.2,
+                endPos: 0.5,
+                y: yOffset,
+            }) }px)`
+            sec3.querySelector('.conts').style.opacity = calcValue({
+                element: sec3,
+                startValue: 0,
+                endValue: 1,
+                startPos: 0.2,
+                endPos: 0.5,
+                y: yOffset,
+            }) 
+        } else {
+            sec3.querySelector('.conts').style.transform = `translateX(${ calcValue({
+                element: sec3,
+                startValue: 500,
+                endValue: 800,
+                startPos: 0.5,
+                endPos: 0.8,
+                y: yOffset,
+            }) }px)`
+            sec3.querySelector('.conts').style.opacity = calcValue({
+                element: sec3,
+                startValue: 1,
+                endValue: 0,
+                startPos: 0.5,
+                endPos: 0.8,
+                y: yOffset,
+            }) 
+        }
+
+    } else {
+        // console.log('sec 3 벗어남')
+        sec3.classList.remove('active')
+    }
+})
+// ------------------------------------ 어떤 엘리먼트에 왔을 때 동작
+
+
+
+
+
+
+        // lottie json download 최적화 테스트
         // var ani = null;
         // window.addEventListener('scroll', function() {
         //     if(window.pageYOffset >= 3000 && ani === null) {
@@ -372,6 +523,10 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
         //         });
         //     }
         // })
+
+
+
+
 
 
 
@@ -452,43 +607,14 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
         // /pconts/images/shcard/icon-54-clock.png
 
 
-        // ------------------------------------ 어떤 엘리먼트에 왔을 때 동작
 
-        var sec3 = document.querySelector('.sec3');
+
+
+
+
         
-        // console.log(sec3.offsetTop)
 
-
-        window.addEventListener('scroll', function() {
-
-            var sec3Ratio = (yOffset - sec3.offsetTop) / sec3.clientHeight;
-
-            if(yOffset > sec3.offsetTop && yOffset < sec3.offsetTop + sec3.clientHeight) {
-                // console.log('sec 3')
-                sec3.classList.add('active')
-            
-                if(sec3Ratio <= .5) {
-                    sec3.querySelector('.conts').style.transform = "translateX(" + (yOffset - sec3.offsetTop) / (sec3.clientHeight) * (window.innerWidth - 20) + 20 + "px)"
-                    sec3.querySelector('.conts').style.opacity = (yOffset - sec3.offsetTop) / (sec3.clientHeight) * (0 - 1) + 0;
-                } else {
-                    sec3.querySelector('.conts').style.transform = "translateX(" + (yOffset - sec3.offsetTop) / (sec3.clientHeight) * (20 - window.innerWidth) + window.innerWidth + "px)"
-                    sec3.querySelector('.conts').style.opacity = (yOffset - sec3.offsetTop) / (sec3.clientHeight) * (1 - 0) + 1;
-                }
-
-                
-
-                // console.log((yOffset - sec3.offsetTop) / (sec3.clientHeight))
-
-            } else {
-                // console.log('sec 3 벗어남')
-                sec3.classList.remove('active')
-            }
-
-         
-        })
-
-
-        // ------------------------------------ 어떤 엘리먼트에 왔을 때 동작
+       
 
 
 
@@ -512,6 +638,6 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
         
 
     </script>
-
+  
 </body>
 </html>
