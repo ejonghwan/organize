@@ -444,6 +444,7 @@
     
             // 상단 픽스 타이틀
             function titleRander(idx, ele) {
+                if(!eles[idx]) return;
                 var targetQa = eles[idx].querySelector('h2').textContent;
                 title.innerHTML = targetQa;
             } 
