@@ -433,7 +433,7 @@
             function currentConts(idx) {
                 if(!nav) return;
                 var navs = document.querySelectorAll('.nav > button')
-                if(navs) {
+                if(navs[idx]) {
                     for(var h = 0; h < navs.length; h++) {
                     navs[h].classList.remove('on')
                     }
