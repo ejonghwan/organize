@@ -342,12 +342,12 @@
                 if(yOffset >= main.offsetTop && yOffset <= main.clientHeight + main.offsetTop) {
                     // 영역안
                     // console.log(idx ,'in ??')
-                    progressBar(yOffset)
+                    progressBar(yOffset);
                     progressNumber(); 
                     title.classList.add('active'); 
                     nav.classList.add('active');
-                    numberNav.classList.add('active')
-                    progress_wrap.classList.add('active')
+                    numberNav.classList.add('active');
+                    progress_wrap.classList.add('active');
     
                     prevHeight = 0
                     for(var i = 0; i < idx; i++) {
@@ -404,7 +404,7 @@
             }
     
             function progressBar(yoffset, totalHeight) {
-                var isProgress = eles[idx].querySelector('.progress');
+                var isProgress = eles[idx]
                 var isProgressWrap = document.querySelectorAll('.progress_wrap > .progress > span');
                 if(totalHeight) { prevHeight = totalHeight + main.offsetTop; };
                 // eles[idx].querySelector('h2 > .progress').style.transform = "translateX(" + (Math.abs(yoffset - prevHeight) - main.offsetTop) / sectionHeight[idx] * 100 + "%)"
