@@ -11,6 +11,18 @@
     <title>Document</title>
 
 </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="/pconts/js/lottie.js"></script>
+    <script src="/pconts/js/jquery-3.4.1.min.js"></script> 
+    <title>Document</title>
+
+</head>
 <body>
     
     <style>
@@ -92,11 +104,15 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
         .title.active {color: #333; position: fixed; top:0; width: 100%; background-color: #fff;box-shadow: 0px 15px 16px rgb(0 0 0 / 5%); height: 65px; z-index: 10; display: flex; align-items: center; padding: 20px; font-size: 20px; font-weight: bold;}
 
 
-        footer {height: 1500px; background: #999;}
+        footer {height: 1500px; background-color: #999;}
 
         #c3 {width: 30px; height: 30px; background-color: red; position: fixed; top:250px; left:0; z-index: 20; opacity: 0;}
 
-
+        .progress_wrap {display: none;} 
+        .progress_wrap.active {width: 100%;display: inline-block;position: fixed;background-color: rgb(127, 214, 173);height: 8px;top: 80px;left: 0; opacity: .8; transform: translateX(0%); transform-origin: 0%; z-index: 20; display: flex;}
+        .progress_wrap.active .progress {width: 20%; height: 10px; background-color: rgb(78, 110, 255); display: block;  overflow: hidden; border-right: 2px solid rgb(71, 91, 179); position:relative;}
+        .progress_wrap.active .progress > span > em { display: inline-block; position: absolute; top: -4px; left:0; font-size: 10px; font-weight: bold;  color: black;}
+        .progress_wrap.active .progress > span { width: 100%; height: 10px; background-color: rgb(195, 206, 255); display: block;}
 
         .lottie_wrap1 {width: 100px; margin: 0 auto;}
         .lottie_wrap2 {width: 200px; margin: 0 auto;}
@@ -106,6 +122,7 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
             .lottie_wrap2 {width: 1500px;;}
             .lottie_wrap3 {width: 3000px;;}
         }
+
 
 
     </style>
@@ -119,11 +136,16 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
 <div class="lottie_wrap3">
     <div class="lottie_test"></div>
 </div>
-
-
     <header>
         <h1>landing</h1>
     </header>
+    <div class="progress_wrap">
+        <span class="progress"><span><em>Q1</em></span></span>
+        <span class="progress"><span><em>Q2</em></span></span>
+        <span class="progress"><span><em>Q3</em></span></span>
+        <span class="progress"><span><em>Q4</em></span></span>
+        <span class="progress"><span><em>Q5</em></span></span>
+    </div>
     <div class="title"></div>
     <div class="yoffset" style="position:fixed; right:20px; top:20px; color: black; font-size: 20px; font-weight: bold; z-index: 10;"></div>
     <div class="ele11"></div>
@@ -226,12 +248,11 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
 
     <script>
         
-
-
+        
         // lottie 이미지 테스트
         bodymovin.loadAnimation({
             container: document.querySelector('.lottie_wrap1 > .lottie_test'),
-            path: './ass/maintest.json', //string
+            path: './maintest.json', //string
             renderer: 'svg',
             loop: true, //bool 
             autoplay: true, //bool
@@ -241,7 +262,7 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
         // lottie 이미지 테스트
         bodymovin.loadAnimation({
             container: document.querySelector('.lottie_wrap2 > .lottie_test'),
-            path: './ass/maintest.json', //string
+            path: './maintest.json', //string
             renderer: 'svg',
             loop: true, //bool 
             autoplay: true, //bool
@@ -251,12 +272,14 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
             // lottie 이미지 테스트
             bodymovin.loadAnimation({
             container: document.querySelector('.lottie_wrap3 > .lottie_test'),
-            path: './ass/maintest.json', //string
+            path: './maintest.json', //string
             renderer: 'svg',
             loop: true, //bool 
             autoplay: true, //bool
             // animationData: animationData
         });
+
+
 
         
         var sectionHeight = []
@@ -274,10 +297,12 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
         var nav = document.querySelector('.nav')
         var defaultNav = document.querySelector('.defaultNav')
         var numberNav = document.querySelector('.yoffset')
+        var progress_wrap = document.querySelector('.progress_wrap')
+       
         
 
        init();
-
+        
         function init() {
             yOffset = window.pageYOffset;
             if(yOffset < main.offsetTop) { navRender(idx); hoho(); } 
@@ -293,15 +318,14 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
                     idx = i; 
                     navRender(idx);
                     progressNumber(true);
-                    progressBar(idx, yOffset, totalPrev)
+                    progressBar(yOffset, totalPrev)
                     hoho();
-                    titleRander(idx, title)
+                    titleRander(idx)
                     break;
                 }
-            }
-            
-            body.setAttribute('id', 'section_' + idx)
-            $('html, body').animate({ scrollTop : yOffset+10})
+            };
+            body.setAttribute('id', 'section_' + idx);
+            $('html, body').animate({ scrollTop : yOffset+10});
             
            
         }
@@ -309,50 +333,67 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
 
         function scrollEvt1() {
             yOffset = window.pageYOffset;
-            if(yOffset <= main.offsetTop) { yOffset = 0; idx = 0; prevHeight = 0; title.classList.remove('active');};
-            if(yOffset < main.offsetTop) { 
-                // 시작전
+            if(yOffset <= main.offsetTop) { 
+                yOffset = 0; 
+                idx = 0; 
+                prevHeight = 0; 
+            };
+
+            if(yOffset >= main.offsetTop && yOffset <= main.clientHeight + main.offsetTop) {
+                // 영역안
+                // console.log(idx ,'in ??')
+                progressBar(yOffset)
+                progressNumber(); 
+                title.classList.add('active'); 
+                nav.classList.add('active');
+                numberNav.classList.add('active')
+                progress_wrap.classList.add('active')
+
+                prevHeight = 0
+                for(var i = 0; i < idx; i++) {
+                    prevHeight += sectionHeight[i]
+                }
+                if(yOffset - main.offsetTop > prevHeight + sectionHeight[idx] ) {
+                    prevHeight += sectionHeight[idx];
+                    idx++;
+                    body.setAttribute('id', 'section_' + idx)
+                    progressBar(yOffset)
+                    currentConts(idx)
+                    titleRander(idx)
+                };
+                if(yOffset - main.offsetTop < prevHeight) {
+                    idx--
+                    prevHeight -= sectionHeight[idx];
+                    body.setAttribute('id', 'section_' + idx)
+                    progressBar(yOffset)
+                    currentConts(idx)
+                    titleRander(idx)
+                };
+            }
+
+            if(yOffset < main.offsetTop || yOffset > main.clientHeight + main.offsetTop) { 
+                // 영역밖
                 body.removeAttribute('id', 'section_' + idx)
-                progressNumber(false);
-                return; 
-            } else if(yOffset > main.offsetTop && yOffset < main.offsetTop + sectionHeight[0]){ 
+                title.classList.remove('active'); 
+                nav.classList.remove('active');
+                numberNav.classList.remove('active')
+                progress_wrap.classList.remove('active')
+                progressNumber(idx); 
+            } 
+            if(yOffset > main.offsetTop && yOffset < main.offsetTop + sectionHeight[0]) { 
                 // 첫번? 엘리먼트에서만 실행
                 body.setAttribute('id', 'section_' + idx)
-                titleRander(idx, title)
-                progressBar(idx, yOffset)
-                progressNumber(true); 
-            } else {
-                progressBar(idx, yOffset)
-                progressNumber(true); 
-            }
-
-            
-            prevHeight = 0
-            for(var i = 0; i < idx; i++) {
-                prevHeight += sectionHeight[i]
-            }
-            if(yOffset - main.offsetTop > prevHeight + sectionHeight[idx] ) {
-                prevHeight += sectionHeight[idx];
-                idx++;
-                body.setAttribute('id', 'section_' + idx)
-                progressBar(idx, yOffset)
-                currentConts(idx)
-                titleRander(idx, title)
-            };
-            if(yOffset - main.offsetTop < prevHeight) {
-                idx--
-                prevHeight -= sectionHeight[idx];
-                body.setAttribute('id', 'section_' + idx)
-                progressBar(idx, yOffset)
-                currentConts(idx)
-                titleRander(idx, title)
-            };
-            
+                titleRander(idx)
+                progressBar(yOffset)
+                progressNumber(); 
+            } 
         }
 
-        function progressNumber(bool) {
-            bool ? nav.classList.add('active') : nav.classList.remove('active');
-            bool ? numberNav.classList.add('active') : numberNav.classList.remove('active');
+
+
+
+
+        function progressNumber() {
             var cur = Math.round((yOffset - main.offsetTop - prevHeight) / sectionHeight[idx] * 100);
             if(cur <= 0) {
                 cur = 0;
@@ -362,9 +403,32 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
            numberNav.innerHTML = cur + "%";
         }
 
-        function progressBar(idx, yoffset, totalHeight) {
-            if(totalHeight) { prevHeight = totalHeight + main.offsetTop; }
-            eles[idx].querySelector('h2 > .progress').style.transform = "scaleX(" + (Math.abs(yoffset - prevHeight) - main.offsetTop) / sectionHeight[idx] * 100 + "%)"
+        function progressBar(yoffset, totalHeight) {
+            var isProgress = eles[idx].querySelector('.progress');
+            var isProgressWrap = document.querySelectorAll('.progress_wrap > .progress > span');
+            if(totalHeight) { prevHeight = totalHeight + main.offsetTop; };
+            // eles[idx].querySelector('h2 > .progress').style.transform = "translateX(" + (Math.abs(yoffset - prevHeight) - main.offsetTop) / sectionHeight[idx] * 100 + "%)"
+            
+            if(isProgress) { //각 섹션별 프로그래스 
+                eles[idx].querySelector('.progress').style.transform = "translateX(" + (Math.abs(yoffset - prevHeight) - main.offsetTop) / sectionHeight[idx] * 100 + "%)"
+            };
+            if(isProgressWrap) { //단계별로 나눈거 
+                isProgressWrap[idx].style.transform = "translateX(" + (Math.abs(yoffset - prevHeight) - main.offsetTop) / sectionHeight[idx] * 100 + "%)"
+                // console.log('y: ', yOffset, 'h: ', eles[idx].offsetTop)
+                // console.log('idx????', idx)
+                if(yOffset <= eles[idx].offsetTop) { //영역 이전
+                    isProgressWrap[idx].style.transform = "translateX("+ 0 + "%)"
+                }
+                if(yOffset >= eles[idx].offsetTop + eles[idx].clientHeight) { //영역이후
+                    isProgressWrap[idx].style.transform = "translateX("+ 100 + "%)"
+                };
+                for(var i = 0; i < idx; i++) { //새로고침 시
+                    console.log('??????????????????', i, idx)
+                    isProgressWrap[i].style.transform = "translateX("+ 100 + "%)"
+                    // break;
+                }  
+            };
+            
         }
 
 
@@ -410,17 +474,19 @@ body {font-family: 'SpoqaHanSansNeo' !important;}
         // 네비바
         function currentConts(idx) {
             const navs = document.querySelectorAll('.nav > button')
-            for(var h = 0; h < navs.length; h++) {
+            if(navs) {
+                for(var h = 0; h < navs.length; h++) {
                 navs[h].classList.remove('on')
+                }
+                navs[idx].classList.add('on')
             }
-            navs[idx].classList.add('on')
+           
         }
 
         // 상단 픽스 타이틀
         function titleRander(idx, ele) {
             var targetQa = eles[idx].querySelector('h2').textContent;
-            ele.innerHTML = targetQa;
-            ele.classList.add('active')
+            title.innerHTML = targetQa;
         } 
 
         
@@ -490,12 +556,14 @@ function calcValue(props) {
         result = ((yOffset - element.offsetTop - partStart) / partHeight) * (endValue - startValue) + startValue;
 
     } else if(y - element.offsetTop < partStart) {
-        result = startValue; console.log('partStart 이전')
+        result = startValue; 
+        // console.log('partStart 이전')
     } else if(y - element.offsetTop > partEnd) {
-        result = endValue; console.log('partEnd 이후')
+        result = endValue; 
+        // console.log('partEnd 이후')
     }
 
-    console.log(result)
+    // console.log(result)
     return result;
 
     // sec3.querySelector('.conts').style.transform = `translateX(${(((yOffset - sec3.offsetTop) / sectionHeight[3]) * (500 - 200) + 200)}px)`
@@ -515,14 +583,14 @@ window.addEventListener('scroll', function() {
         // sec3.querySelector('.conts').style.transform = `translateX(${(((yOffset - sec3.offsetTop) / sectionHeight[3]) * innerWidth)}px)`
         // sec3Ratio <= .2
         if(sec3Ratio <= 0.5) {
-             sec3.querySelector('.conts').style.transform = `translateX(${ calcValue({
+             sec3.querySelector('.conts').style.transform = "translateX(" + calcValue({
                 element: sec3,
                 startValue: 200,
                 endValue: 500,
                 startPos: 0.2,
                 endPos: 0.5,
                 y: yOffset,
-            }) }px)`
+            }) + "px)";
             sec3.querySelector('.conts').style.opacity = calcValue({
                 element: sec3,
                 startValue: 0,
@@ -532,14 +600,14 @@ window.addEventListener('scroll', function() {
                 y: yOffset,
             }) 
         } else {
-            sec3.querySelector('.conts').style.transform = `translateX(${ calcValue({
+            sec3.querySelector('.conts').style.transform = "translateX(" + calcValue({
                 element: sec3,
                 startValue: 500,
                 endValue: 800,
                 startPos: 0.5,
                 endPos: 0.8,
                 y: yOffset,
-            }) }px)`
+            }) + "px)"
             sec3.querySelector('.conts').style.opacity = calcValue({
                 element: sec3,
                 startValue: 1,
@@ -583,7 +651,44 @@ window.addEventListener('scroll', function() {
 
 
 
+
         // ------------------------------------ 스크롤 반응 인터렉션
+
+
+            
+
+        // lottie 이미지 테스트
+        bodymovin.loadAnimation({
+            container: document.querySelector('.lottie_wrap1 > .lottie_test'),
+            path: './ass/maintest.json', //string
+            renderer: 'svg',
+            loop: true, //bool 
+            autoplay: true, //bool
+            // animationData: animationData
+        });
+        
+        // lottie 이미지 테스트
+        bodymovin.loadAnimation({
+            container: document.querySelector('.lottie_wrap2 > .lottie_test'),
+            path: './ass/maintest.json', //string
+            renderer: 'svg',
+            loop: true, //bool 
+            autoplay: true, //bool
+            // animationData: animationData
+        });
+
+            // lottie 이미지 테스트
+            bodymovin.loadAnimation({
+            container: document.querySelector('.lottie_wrap3 > .lottie_test'),
+            path: './ass/maintest.json', //string
+            renderer: 'svg',
+            loop: true, //bool 
+            autoplay: true, //bool
+            // animationData: animationData
+        });
+
+        
+
         var anim; 
         var yOffset = 0;
         var elem = eles[1].querySelector('.ele');
