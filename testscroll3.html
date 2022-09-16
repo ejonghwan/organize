@@ -97,8 +97,11 @@
     
             #c3 {width: 30px; height: 30px; background-color: red; position: fixed; top:250px; left:0; z-index: 20; opacity: 0;}
     
-            .progress_wrap {width: 100%;display: inline-block;position: fixed;background-color: rgb(127, 214, 173);height: 3px;top: 80px;left: 0; opacity: .8; transform: translateX(0%); transform-origin: 0%;}
-            .progress_wrap .progress {width: 20%; height: 5px; background-color: red; display: block;}
+            .progress_wrap {display: none;} 
+            .progress_wrap.active {width: 100%;display: inline-block;position: fixed;background-color: rgb(127, 214, 173);height: 8px;top: 80px;left: 0; opacity: .8; transform: translateX(0%); transform-origin: 0%; z-index: 20; display: flex;}
+            .progress_wrap.active .progress {width: 20%; height: 10px; background-color: rgb(78, 110, 255); display: block;  overflow: hidden; border-right: 2px solid rgb(71, 91, 179); position:relative;}
+            .progress_wrap.active .progress > span > em { display: inline-block; position: absolute; top: -4px; left:0; font-size: 10px; font-weight: bold;  color: black;}
+            .progress_wrap.active .progress > span { width: 100%; height: 10px; background-color: rgb(195, 206, 255); display: block;}
     
             .lottie_wrap1 {width: 100px; margin: 0 auto;}
             .lottie_wrap2 {width: 200px; margin: 0 auto;}
@@ -125,14 +128,20 @@
         <header>
             <h1>landing</h1>
         </header>
-        <div class="progress_wrap"></div>
+        <div class="progress_wrap">
+            <span class="progress"><span><em>Q1</em></span></span>
+            <span class="progress"><span><em>Q2</em></span></span>
+            <span class="progress"><span><em>Q3</em></span></span>
+            <span class="progress"><span><em>Q4</em></span></span>
+            <span class="progress"><span><em>Q5</em></span></span>
+        </div>
         <div class="title"></div>
         <div class="yoffset" style="position:fixed; right:20px; top:20px; color: black; font-size: 20px; font-weight: bold; z-index: 10;"></div>
         <div class="ele11"></div>
         <div class="ele22"></div>
         <nav class="nav"></nav>
         <nav class="defaultNav"></nav>
-        <main>
+        <div class="main">
             <section class="sec0">
                 <div class="sec_wrap">
                     <h2>Q 질문0 이벤트는 신한플레이 전용 이벤트로 최신 버전으로<span class="progress"></span></h2>
@@ -218,7 +227,7 @@
                     </div>
                 </div>
             </section>
-        </main>
+        </div>
     
     
     
@@ -230,6 +239,7 @@
             
             
     
+    
             
             var sectionHeight = []
             var prevHeight = 0;
@@ -239,28 +249,28 @@
             var eles = document.querySelectorAll('section');
             var header = document.querySelector('header');
             var body = document.querySelector('body');
-            var main = document.querySelector('main')
+            var main = document.querySelector('.main')
             var title = document.querySelector('.title')
             // var conts = document.querySelectorAll('.conts > .ele')
         
             var nav = document.querySelector('.nav')
             var defaultNav = document.querySelector('.defaultNav')
             var numberNav = document.querySelector('.yoffset')
+            var progress_wrap = document.querySelector('.progress_wrap')
+           
             
-    
+            
            init();
             
-            
-    
             function init() {
                 yOffset = window.pageYOffset;
-                if(yOffset < main.getBoundingClientRect().top + yOffset) { navRender(idx); hoho(); } 
+                if(yOffset < (main.getBoundingClientRect().top + yOffset)) { navRender(idx); hoho(); } 
                 for(var i = 0; i < eles.length; i++) {
                     sectionHeight[i] = eles[i].clientHeight;
                 }
     
                 if(yOffset < main.getBoundingClientRect().top + yOffset) { return; } 
-                totalPrev = prevHeight + main.getBoundingClientRect().top + yOffset
+                totalPrev = prevHeight + (main.getBoundingClientRect().top + yOffset)
                 for(var i = 0; i < sectionHeight.length; i++) {
                     totalPrev += sectionHeight[i];
                     if(yOffset - (main.getBoundingClientRect().top + yOffset) < totalPrev) {
@@ -278,7 +288,7 @@
                 
                
             }
-    
+            // https://dev-paycdn.shinhancard.com/conts/dx/guide/shcard_QnA_test.html
     
             function scrollEvt1() {
                 yOffset = window.pageYOffset;
@@ -288,14 +298,17 @@
                     prevHeight = 0; 
                 };
     
+                // console.log(idx ,'out ??')
+    
                 if(yOffset >= main.getBoundingClientRect().top + yOffset && yOffset <= main.clientHeight + main.getBoundingClientRect().top + yOffset) {
                     // 영역안
-                    console.log(idx ,'in ??')
+                    // console.log(idx ,'in ??')
                     progressBar(yOffset)
                     progressNumber(); 
                     title.classList.add('active'); 
                     nav.classList.add('active');
                     numberNav.classList.add('active')
+                    progress_wrap.classList.add('active')
     
                     prevHeight = 0
                     for(var i = 0; i < idx; i++) {
@@ -309,7 +322,7 @@
                         currentConts(idx)
                         titleRander(idx)
                     };
-                    if(yOffset - main.getBoundingClientRect().top + yOffset < prevHeight) {
+                    if(yOffset - (main.getBoundingClientRect().top + yOffset) < prevHeight) {
                         idx--
                         prevHeight -= sectionHeight[idx];
                         body.setAttribute('id', 'section_' + idx)
@@ -325,10 +338,10 @@
                     title.classList.remove('active'); 
                     nav.classList.remove('active');
                     numberNav.classList.remove('active')
+                    progress_wrap.classList.remove('active')
                     progressNumber(idx); 
                 } 
                 if(yOffset > main.getBoundingClientRect().top + yOffset && yOffset < main.getBoundingClientRect().top + yOffset + sectionHeight[0]) { 
-                    // 첫번? 엘리먼트에서만 실행
                     body.setAttribute('id', 'section_' + idx)
                     titleRander(idx)
                     progressBar(yOffset)
@@ -337,9 +350,11 @@
             }
     
     
+    
+    
+    
             function progressNumber() {
-                yOffset = pageYOffset;
-                var cur = Math.round((yOffset - main.getBoundingClientRect().top + yOffset - prevHeight) / sectionHeight[idx] * 100);
+                var cur = Math.round((yOffset - (main.getBoundingClientRect().top + yOffset) - prevHeight) / sectionHeight[idx] * 100);
                 if(cur <= 0) {
                     cur = 0;
                 } else if(cur >= 100) {
@@ -349,21 +364,39 @@
             }
     
             function progressBar(yoffset, totalHeight) {
-                if(totalHeight) { prevHeight = totalHeight + main.getBoundingClientRect().top + yoffset; }
-                // console.log(eles[idx].querySelector('.progress'))
-                if(eles[idx].querySelector('.progress')) {
-                    // eles[idx].querySelector('.progress').style.width = (Math.abs(yoffset - prevHeight) - main.offsetTop) / sectionHeight[idx] * 100 + "%"
-                    eles[idx].querySelector('.progress').style.transform = "translateX(" + (Math.abs(yoffset - prevHeight) - main.getBoundingClientRect().top + yoffset) / sectionHeight[idx] * 100 + "%)"
-                    console.log('???')
-                }
+                var isProgress = eles[idx]
+                var isProgressWrap = document.querySelectorAll('.progress_wrap > .progress > span');
+                if(totalHeight) { prevHeight = totalHeight + (main.getBoundingClientRect().top + yoffset); };
+                
+                if(isProgress) { //각 섹션별 프로그래스 
+                    eles[idx].querySelector('.progress').style.transform = "translateX(" + (Math.abs(yoffset - prevHeight) - (main.getBoundingClientRect().top + yoffset)) / sectionHeight[idx] * 100 + "%)"
+                };
+                if(isProgressWrap) { //단계별로 나눈거 
+                    isProgressWrap[idx].style.transform = "translateX(" + (Math.abs(yoffset - prevHeight) - (main.getBoundingClientRect().top + yoffset)) / sectionHeight[idx] * 100 + "%)"
+                    if(yOffset <= eles[idx].getBoundingClientRect().top + yoffset) { //영역 이전
+                        isProgressWrap[idx].style.transform = "translateX("+ 0 + "%)"
+                    }
+                    if(yOffset >= eles[idx].getBoundingClientRect().top + yoffset + eles[idx].clientHeight) { //영역이후
+                        isProgressWrap[idx].style.transform = "translateX("+ 100 + "%)"
+                    };
+                    for(var i = 0; i < idx; i++) { //새로고침 시
+                        // console.log('??????????????????', i, idx)
+                        isProgressWrap[i].style.transform = "translateX("+ 100 + "%)"
+                        // break;
+                    }  
+                };
+                
             }
+    
     
             // 네비 렌더
             function navRender(idx) {
                 if(!nav) return;
+                console.log('?????????????')
                 for(var i = 0; i < eles.length; i++) {
                     nav.innerHTML += "<button>" + eles[i].querySelector('h2').textContent + "</button>" + "<br />";
                     defaultNav.innerHTML += "<button>" + eles[i].querySelector('h2').textContent + "</button>" + "<br />";
+                    // console.log(eles[i])
                 }
                 nav.querySelectorAll('button')[idx].classList.add('on');
             }
@@ -387,8 +420,7 @@
     
             // 네비 클릭시
             function navClick(clickIdx) {   
-                yOffset = pageYOffset;
-                $('html, body').animate({ scrollTop : eles[clickIdx].getBoundingClientRect().top + yOffset + 50 })
+                $('html, body').animate({ scrollTop : eles[clickIdx].getBoundingClientRect().top + pageYOffset + 50 })
                 numberNav.innerHTML = 0 + '%'
                 setTimeout(function(){
                     const nextTab = eles[clickIdx].querySelector('h2');
@@ -399,11 +431,15 @@
     
             // 네비바
             function currentConts(idx) {
-                const navs = document.querySelectorAll('.nav > button')
-                for(var h = 0; h < navs.length; h++) {
+                if(!nav) return;
+                var navs = document.querySelectorAll('.nav > button')
+                if(navs) {
+                    for(var h = 0; h < navs.length; h++) {
                     navs[h].classList.remove('on')
+                    }
+                    navs[idx].classList.add('on')
                 }
-                navs[idx].classList.add('on')
+               
             }
     
             // 상단 픽스 타이틀
@@ -412,7 +448,7 @@
                 title.innerHTML = targetQa;
             } 
     
-       
+            
     
             // window.addEventListener('load', init)
             window.addEventListener('scroll', throttle(scrollEvt1, 20))
@@ -463,28 +499,30 @@
         var startPos = props.startPos;
         var endPos = props.endPos; 
         var y = props.y;
-        var ratio = (y - element.getBoundingClientRect().top + pageYOffset) / element.clientHeight;
+        var ratio = (y - element.offsetTop) / element.clientHeight;
         var result = null;
     
         var partStart = (startPos * element.clientHeight); //스타트 시작점 
         var partEnd = (endPos * element.clientHeight); //스타트 끝점 
         var partHeight =  partEnd - partStart;
     
-        if(y > element.getBoundingClientRect().top + pageYOffset + partStart && y < element.getBoundingClientRect().top + pageYOffset + partEnd) {
+        if(y > element.offsetTop + partStart && y < element.offsetTop + partEnd) {
             // 전체높이로 하면 안됨 
-            // result = (((y - element.getBoundingClientRect().top + pageYOffset) / element.clientHeight) * (endValue - startValue) + startValue);
+            // result = (((y - element.offsetTop) / element.clientHeight) * (endValue - startValue) + startValue);
     
-            // console.log((yOffset - element.getBoundingClientRect().top + pageYOffset - partStart) / partHeight)
+            // console.log((yOffset - element.offsetTop - partStart) / partHeight)
             // (엘리먼트 시작위치 - 스타트) / 나눌 파트높이 * ~
-            result = ((yOffset - element.getBoundingClientRect().top + pageYOffset - partStart) / partHeight) * (endValue - startValue) + startValue;
+            result = ((yOffset - element.offsetTop - partStart) / partHeight) * (endValue - startValue) + startValue;
     
-        } else if(y - element.getBoundingClientRect().top + pageYOffset < partStart) {
-            result = startValue; console.log('partStart 이전')
-        } else if(y - element.getBoundingClientRect().top + pageYOffset > partEnd) {
-            result = endValue; console.log('partEnd 이후')
+        } else if(y - element.offsetTop < partStart) {
+            result = startValue; 
+            // console.log('partStart 이전')
+        } else if(y - element.offsetTop > partEnd) {
+            result = endValue; 
+            // console.log('partEnd 이후')
         }
     
-        console.log(result)
+        // console.log(result)
         return result;
     
         // sec3.querySelector('.conts').style.transform = `translateX(${(((yOffset - sec3.offsetTop) / sectionHeight[3]) * (500 - 200) + 200)}px)`
@@ -495,9 +533,9 @@
     
     
     window.addEventListener('scroll', function() {
-        var sec3Ratio = (yOffset - sec3.getBoundingClientRect().top + pageYOffset) / sec3.clientHeight;
+        var sec3Ratio = (yOffset - sec3.offsetTop) / sec3.clientHeight;
         yOffset = pageYOffset
-        if(yOffset > sec3.getBoundingClientRect().top + pageYOffset && yOffset < sec3.getBoundingClientRect().top + pageYOffset + sec3.clientHeight) {
+        if(yOffset > sec3.offsetTop && yOffset < sec3.offsetTop + sec3.clientHeight) {
             sec3.classList.add('active')
             
             // 현재 스크롤값 - 섹션이 떨어진값 / 섹션 높이값 * 움직일 값  
@@ -572,73 +610,70 @@
     
     
     
-            // ------------------------------------ 스크롤 반응 인터렉션
-    
+        // ------------------------------------ 스크롤 반응 인터렉션
+        // lottie 이미지 테스트
+        bodymovin.loadAnimation({
+            container: document.querySelector('.lottie_wrap1 > .lottie_test'),
+            path: './ass/maintest.json', //string
+            renderer: 'svg',
+            loop: true, //bool 
+            autoplay: true, //bool
+            // animationData: animationData
+        });
+        
+        // lottie 이미지 테스트
+        bodymovin.loadAnimation({
+            container: document.querySelector('.lottie_wrap2 > .lottie_test'),
+            path: './ass/maintest.json', //string
+            renderer: 'svg',
+            loop: true, //bool 
+            autoplay: true, //bool
+            // animationData: animationData
+        });
+
             // lottie 이미지 테스트
             bodymovin.loadAnimation({
-                container: document.querySelector('.lottie_wrap1 > .lottie_test'),
-                path: './ass/maintest.json', //string
-                renderer: 'svg',
-                loop: true, //bool 
-                autoplay: true, //bool
-                // animationData: animationData
-            });
-            
-            // lottie 이미지 테스트
-            bodymovin.loadAnimation({
-                container: document.querySelector('.lottie_wrap2 > .lottie_test'),
-                path: './ass/maintest.json', //string
-                renderer: 'svg',
-                loop: true, //bool 
-                autoplay: true, //bool
-                // animationData: animationData
-            });
-    
-                // lottie 이미지 테스트
-                bodymovin.loadAnimation({
-                container: document.querySelector('.lottie_wrap3 > .lottie_test'),
-                path: './ass/maintest.json', //string
-                renderer: 'svg',
-                loop: true, //bool 
-                autoplay: true, //bool
-                // animationData: animationData
-            });
-    
-            
-    
-            var anim; 
-            var yOffset = 0;
-            var elem = eles[1].querySelector('.ele');
-            var animData = {
-                container: document.querySelector('.ele11'),
-                renderer: 'svg',
-                loop: false, //bool 
-                autoplay: false, //bool
-                rendererSettings: {
-                    progressiveLoad: false,
-                    preserveAspectRatio: 'xMidYMid slice',
-                },
-                path: 'https://raw.githubusercontent.com/thesvbd/Lottie-examples/master/assets/animations/loading.json', //string
-            }
-    
-            anim = bodymovin.loadAnimation(animData)
-            
-            function scrollEvt() {
-                yOffset = window.pageYOffset;
-                var ratio = Math.round(yOffset / (document.querySelector('main').clientHeight - window.innerHeight) * 100);
-                // console.log(ratio / 100 * 2900)
-                
-                
-                setTimeout(function() {
-                    // goto stop이 해당 스크롤에 움직였다 멈추라는 거였구나 
-                    anim.goToAndStop( (ratio / 100) * (anim.totalFrames * 10) )  //totalFrame을 0한개 더 줘야 제대로작동하네 .. total은 270인데
-                    // console.log(ratio / 100 * 2700)
-                }, 50)
-            }
-            window.addEventListener('scroll', scrollEvt)
-            // ------------------------------------ 스크롤 반응 인터렉션
+            container: document.querySelector('.lottie_wrap3 > .lottie_test'),
+            path: './ass/maintest.json', //string
+            renderer: 'svg',
+            loop: true, //bool 
+            autoplay: true, //bool
+            // animationData: animationData
+        });
+
+        
+
+        var anim; 
+        var yOffset = 0;
+        var elem = eles[1].querySelector('.ele');
+        var animData = {
+            container: document.querySelector('.ele11'),
+            renderer: 'svg',
+            loop: false, //bool 
+            autoplay: false, //bool
+            rendererSettings: {
+                progressiveLoad: false,
+                preserveAspectRatio: 'xMidYMid slice',
+            },
+            path: 'https://raw.githubusercontent.com/thesvbd/Lottie-examples/master/assets/animations/loading.json', //string
+        }
+
+        anim = bodymovin.loadAnimation(animData)
+        
+        function scrollEvt() {
+            yOffset = window.pageYOffset;
+            var ratio = Math.round(yOffset / (document.querySelector('main').clientHeight - window.innerHeight) * 100);
+            // console.log(ratio / 100 * 2900)
             
             
+            setTimeout(function() {
+                // goto stop이 해당 스크롤에 움직였다 멈추라는 거였구나 
+                anim.goToAndStop( (ratio / 100) * (anim.totalFrames * 10) )  //totalFrame을 0한개 더 줘야 제대로작동하네 .. total은 270인데
+                // console.log(ratio / 100 * 2700)
+            }, 50)
+        }
+        window.addEventListener('scroll', scrollEvt)
+        // ------------------------------------ 스크롤 반응 인터렉션
             
     
     
