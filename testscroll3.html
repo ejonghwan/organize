@@ -13,10 +13,30 @@
     
     </head>
     <body>
-        
+    
         <style>
      @charset "utf-8";
-   
+    @font-face{
+    font-family: 'SpoqaHanSansNeo';
+    src: url('../repages/fonts/SpoqaHanSansNeo-Light.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display:swap;
+    }
+    @font-face{
+    font-family: 'SpoqaHanSansNeo';
+    src: url('../repages/fonts/SpoqaHanSansNeo-Medium.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display:swap;
+    }
+    @font-face{
+    font-family: 'SpoqaHanSansNeo';
+    src: url('../repages/fonts/SpoqaHanSansNeo-Bold.woff2') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+    font-display:swap;
+    }
     body {font-family: 'SpoqaHanSansNeo' !important;}
     
     
@@ -77,7 +97,8 @@
     
             #c3 {width: 30px; height: 30px; background-color: red; position: fixed; top:250px; left:0; z-index: 20; opacity: 0;}
     
-    
+            .progress_wrap {width: 100%;display: inline-block;position: fixed;background-color: rgb(127, 214, 173);height: 3px;top: 80px;left: 0; opacity: .8; transform: translateX(0%); transform-origin: 0%;}
+            .progress_wrap .progress {width: 20%; height: 5px; background-color: red; display: block;}
     
             .lottie_wrap1 {width: 100px; margin: 0 auto;}
             .lottie_wrap2 {width: 200px; margin: 0 auto;}
@@ -104,6 +125,7 @@
         <header>
             <h1>landing</h1>
         </header>
+        <div class="progress_wrap"></div>
         <div class="title"></div>
         <div class="yoffset" style="position:fixed; right:20px; top:20px; color: black; font-size: 20px; font-weight: bold; z-index: 10;"></div>
         <div class="ele11"></div>
@@ -207,37 +229,6 @@
         <script>
             
             
-            // lottie 이미지 테스트
-            bodymovin.loadAnimation({
-                container: document.querySelector('.lottie_wrap1 > .lottie_test'),
-                path: './maintest.json', //string
-                renderer: 'svg',
-                loop: true, //bool 
-                autoplay: true, //bool
-                // animationData: animationData
-            });
-            
-            // lottie 이미지 테스트
-            bodymovin.loadAnimation({
-                container: document.querySelector('.lottie_wrap2 > .lottie_test'),
-                path: './maintest.json', //string
-                renderer: 'svg',
-                loop: true, //bool 
-                autoplay: true, //bool
-                // animationData: animationData
-            });
-    
-                // lottie 이미지 테스트
-                bodymovin.loadAnimation({
-                container: document.querySelector('.lottie_wrap3 > .lottie_test'),
-                path: './maintest.json', //string
-                renderer: 'svg',
-                loop: true, //bool 
-                autoplay: true, //bool
-                // animationData: animationData
-            });
-    
-    
     
             
             var sectionHeight = []
@@ -259,24 +250,26 @@
     
            init();
             
+            
+    
             function init() {
                 yOffset = window.pageYOffset;
-                if(yOffset < main.offsetTop) { navRender(idx); hoho(); } 
+                if(yOffset < main.getBoundingClientRect().top + yOffset) { navRender(idx); hoho(); } 
                 for(var i = 0; i < eles.length; i++) {
                     sectionHeight[i] = eles[i].clientHeight;
                 }
     
-                if(yOffset < main.offsetTop) { return; } 
-                totalPrev = prevHeight + main.offsetTop
+                if(yOffset < main.getBoundingClientRect().top + yOffset) { return; } 
+                totalPrev = prevHeight + main.getBoundingClientRect().top + yOffset
                 for(var i = 0; i < sectionHeight.length; i++) {
                     totalPrev += sectionHeight[i];
-                    if(yOffset - main.offsetTop < totalPrev) {
+                    if(yOffset - (main.getBoundingClientRect().top + yOffset) < totalPrev) {
                         idx = i; 
                         navRender(idx);
                         progressNumber(true);
-                        progressBar(idx, yOffset, totalPrev)
+                        progressBar(yOffset, totalPrev)
                         hoho();
-                        titleRander(idx, title)
+                        titleRander(idx)
                         break;
                     }
                 };
@@ -289,74 +282,64 @@
     
             function scrollEvt1() {
                 yOffset = window.pageYOffset;
-                if(yOffset <= main.offsetTop) { 
+                if(yOffset <= main.getBoundingClientRect().top + yOffset) { 
                     yOffset = 0; 
                     idx = 0; 
                     prevHeight = 0; 
-                    title.classList.remove('active'); 
                 };
-                // if(yOffset > main.clientHeight + main.offsetTop) { 
-                //     idx = eles.length - 1; 
-                //     yOffset = prevHeight;  
-                //     title.classList.remove('active'); 
-                //     nav.classList.remove('active') 
-                //     progressNumber(false); 
-                //     console.log('??????', idx, eles.length - 1); 
-                // } // 넘쳤을 때 초기화 
     
-                if(yOffset < main.offsetTop || yOffset > main.clientHeight + main.offsetTop) { 
-                    // 시작전
-                    body.removeAttribute('id', 'section_' + idx)
-                    title.classList.remove('active'); 
-                    nav.classList.remove('active') 
-                    progressNumber(false);
-                    return; 
-                } else if (yOffset > main.offsetTop && yOffset < main.offsetTop + sectionHeight[0]) { 
-                    // 첫번? 엘리먼트에서만 실행
-                    body.setAttribute('id', 'section_' + idx)
-                    titleRander(idx, title)
-                    progressBar(idx, yOffset)
-                    progressNumber(); 
-                    title.classList.add('active')
-                    nav.classList.add('active')
-                    // offset.classList.add('active')
-                   
-                } else {
-                    progressBar(idx, yOffset)
+                if(yOffset >= main.getBoundingClientRect().top + yOffset && yOffset <= main.clientHeight + main.getBoundingClientRect().top + yOffset) {
+                    // 영역안
+                    console.log(idx ,'in ??')
+                    progressBar(yOffset)
                     progressNumber(); 
                     title.classList.add('active'); 
-                    nav.classList.add('active') 
+                    nav.classList.add('active');
+                    numberNav.classList.add('active')
     
+                    prevHeight = 0
+                    for(var i = 0; i < idx; i++) {
+                        prevHeight += sectionHeight[i]
+                    }
+                    if(yOffset - (main.getBoundingClientRect().top + yOffset) > prevHeight + sectionHeight[idx] ) {
+                        prevHeight += sectionHeight[idx];
+                        idx++;
+                        body.setAttribute('id', 'section_' + idx)
+                        progressBar(yOffset)
+                        currentConts(idx)
+                        titleRander(idx)
+                    };
+                    if(yOffset - main.getBoundingClientRect().top + yOffset < prevHeight) {
+                        idx--
+                        prevHeight -= sectionHeight[idx];
+                        body.setAttribute('id', 'section_' + idx)
+                        progressBar(yOffset)
+                        currentConts(idx)
+                        titleRander(idx)
+                    };
                 }
     
-                
-                prevHeight = 0
-                for(var i = 0; i < idx; i++) {
-                    prevHeight += sectionHeight[i]
-                }
-                if(yOffset - main.offsetTop > prevHeight + sectionHeight[idx] ) {
-                    prevHeight += sectionHeight[idx];
-                    idx++;
+                if(yOffset < main.getBoundingClientRect().top + yOffset || yOffset > main.clientHeight + main.getBoundingClientRect().top + yOffset) { 
+                    // 영역밖
+                    body.removeAttribute('id', 'section_' + idx)
+                    title.classList.remove('active'); 
+                    nav.classList.remove('active');
+                    numberNav.classList.remove('active')
+                    progressNumber(idx); 
+                } 
+                if(yOffset > main.getBoundingClientRect().top + yOffset && yOffset < main.getBoundingClientRect().top + yOffset + sectionHeight[0]) { 
+                    // 첫번? 엘리먼트에서만 실행
                     body.setAttribute('id', 'section_' + idx)
-                    progressBar(idx, yOffset)
-                    currentConts(idx)
                     titleRander(idx)
-                    console.log(idx)
-                };
-                if(yOffset - main.offsetTop < prevHeight) {
-                    idx--
-                    prevHeight -= sectionHeight[idx];
-                    body.setAttribute('id', 'section_' + idx)
-                    progressBar(idx, yOffset)
-                    currentConts(idx)
-                    titleRander(idx)
-                };
-                
+                    progressBar(yOffset)
+                    progressNumber(); 
+                } 
             }
     
+    
             function progressNumber() {
-                
-                var cur = Math.round((yOffset - main.offsetTop - prevHeight) / sectionHeight[idx] * 100);
+                yOffset = pageYOffset;
+                var cur = Math.round((yOffset - main.getBoundingClientRect().top + yOffset - prevHeight) / sectionHeight[idx] * 100);
                 if(cur <= 0) {
                     cur = 0;
                 } else if(cur >= 100) {
@@ -365,13 +348,15 @@
                numberNav.innerHTML = cur + "%";
             }
     
-            function progressBar(idx, yoffset, totalHeight) {
-                if(totalHeight) { prevHeight = totalHeight + main.offsetTop; }
-                // eles[idx].querySelector('h2 > .progress').style.transform = "translateX(" + (Math.abs(yoffset - prevHeight) - main.offsetTop) / sectionHeight[idx] * 100 + "%)"
-                eles[idx].querySelector('h2 > .progress').style.width = (Math.abs(yoffset - prevHeight) - main.offsetTop) / sectionHeight[idx] * 100 + "%"
-                // document.querySelectorAll('') //이거부터 하면됨
+            function progressBar(yoffset, totalHeight) {
+                if(totalHeight) { prevHeight = totalHeight + main.getBoundingClientRect().top + yoffset; }
+                // console.log(eles[idx].querySelector('.progress'))
+                if(eles[idx].querySelector('.progress')) {
+                    // eles[idx].querySelector('.progress').style.width = (Math.abs(yoffset - prevHeight) - main.offsetTop) / sectionHeight[idx] * 100 + "%"
+                    eles[idx].querySelector('.progress').style.transform = "translateX(" + (Math.abs(yoffset - prevHeight) - main.getBoundingClientRect().top + yoffset) / sectionHeight[idx] * 100 + "%)"
+                    console.log('???')
+                }
             }
-    
     
             // 네비 렌더
             function navRender(idx) {
@@ -379,7 +364,6 @@
                 for(var i = 0; i < eles.length; i++) {
                     nav.innerHTML += "<button>" + eles[i].querySelector('h2').textContent + "</button>" + "<br />";
                     defaultNav.innerHTML += "<button>" + eles[i].querySelector('h2').textContent + "</button>" + "<br />";
-                    // console.log(eles[i])
                 }
                 nav.querySelectorAll('button')[idx].classList.add('on');
             }
@@ -403,7 +387,8 @@
     
             // 네비 클릭시
             function navClick(clickIdx) {   
-                $('html, body').animate({ scrollTop : eles[clickIdx].offsetTop + 50 })
+                yOffset = pageYOffset;
+                $('html, body').animate({ scrollTop : eles[clickIdx].getBoundingClientRect().top + yOffset + 50 })
                 numberNav.innerHTML = 0 + '%'
                 setTimeout(function(){
                     const nextTab = eles[clickIdx].querySelector('h2');
@@ -427,7 +412,7 @@
                 title.innerHTML = targetQa;
             } 
     
-            
+       
     
             // window.addEventListener('load', init)
             window.addEventListener('scroll', throttle(scrollEvt1, 20))
@@ -478,24 +463,24 @@
         var startPos = props.startPos;
         var endPos = props.endPos; 
         var y = props.y;
-        var ratio = (y - element.offsetTop) / element.clientHeight;
+        var ratio = (y - element.getBoundingClientRect().top + pageYOffset) / element.clientHeight;
         var result = null;
     
         var partStart = (startPos * element.clientHeight); //스타트 시작점 
         var partEnd = (endPos * element.clientHeight); //스타트 끝점 
         var partHeight =  partEnd - partStart;
     
-        if(y > element.offsetTop + partStart && y < element.offsetTop + partEnd) {
+        if(y > element.getBoundingClientRect().top + pageYOffset + partStart && y < element.getBoundingClientRect().top + pageYOffset + partEnd) {
             // 전체높이로 하면 안됨 
-            // result = (((y - element.offsetTop) / element.clientHeight) * (endValue - startValue) + startValue);
+            // result = (((y - element.getBoundingClientRect().top + pageYOffset) / element.clientHeight) * (endValue - startValue) + startValue);
     
-            // console.log((yOffset - element.offsetTop - partStart) / partHeight)
+            // console.log((yOffset - element.getBoundingClientRect().top + pageYOffset - partStart) / partHeight)
             // (엘리먼트 시작위치 - 스타트) / 나눌 파트높이 * ~
-            result = ((yOffset - element.offsetTop - partStart) / partHeight) * (endValue - startValue) + startValue;
+            result = ((yOffset - element.getBoundingClientRect().top + pageYOffset - partStart) / partHeight) * (endValue - startValue) + startValue;
     
-        } else if(y - element.offsetTop < partStart) {
+        } else if(y - element.getBoundingClientRect().top + pageYOffset < partStart) {
             result = startValue; console.log('partStart 이전')
-        } else if(y - element.offsetTop > partEnd) {
+        } else if(y - element.getBoundingClientRect().top + pageYOffset > partEnd) {
             result = endValue; console.log('partEnd 이후')
         }
     
@@ -510,9 +495,9 @@
     
     
     window.addEventListener('scroll', function() {
-        var sec3Ratio = (yOffset - sec3.offsetTop) / sec3.clientHeight;
+        var sec3Ratio = (yOffset - sec3.getBoundingClientRect().top + pageYOffset) / sec3.clientHeight;
         yOffset = pageYOffset
-        if(yOffset > sec3.offsetTop && yOffset < sec3.offsetTop + sec3.clientHeight) {
+        if(yOffset > sec3.getBoundingClientRect().top + pageYOffset && yOffset < sec3.getBoundingClientRect().top + pageYOffset + sec3.clientHeight) {
             sec3.classList.add('active')
             
             // 현재 스크롤값 - 섹션이 떨어진값 / 섹션 높이값 * 움직일 값  
@@ -588,6 +573,39 @@
     
     
             // ------------------------------------ 스크롤 반응 인터렉션
+    
+            // lottie 이미지 테스트
+            bodymovin.loadAnimation({
+                container: document.querySelector('.lottie_wrap1 > .lottie_test'),
+                path: './ass/maintest.json', //string
+                renderer: 'svg',
+                loop: true, //bool 
+                autoplay: true, //bool
+                // animationData: animationData
+            });
+            
+            // lottie 이미지 테스트
+            bodymovin.loadAnimation({
+                container: document.querySelector('.lottie_wrap2 > .lottie_test'),
+                path: './ass/maintest.json', //string
+                renderer: 'svg',
+                loop: true, //bool 
+                autoplay: true, //bool
+                // animationData: animationData
+            });
+    
+                // lottie 이미지 테스트
+                bodymovin.loadAnimation({
+                container: document.querySelector('.lottie_wrap3 > .lottie_test'),
+                path: './ass/maintest.json', //string
+                renderer: 'svg',
+                loop: true, //bool 
+                autoplay: true, //bool
+                // animationData: animationData
+            });
+    
+            
+    
             var anim; 
             var yOffset = 0;
             var elem = eles[1].querySelector('.ele');
@@ -600,7 +618,7 @@
                     progressiveLoad: false,
                     preserveAspectRatio: 'xMidYMid slice',
                 },
-                path: '/pconts/images/dx/landing/lottie-chatbot.json', //string
+                path: 'https://raw.githubusercontent.com/thesvbd/Lottie-examples/master/assets/animations/loading.json', //string
             }
     
             anim = bodymovin.loadAnimation(animData)
@@ -619,6 +637,7 @@
             }
             window.addEventListener('scroll', scrollEvt)
             // ------------------------------------ 스크롤 반응 인터렉션
+            
             
             
     
@@ -698,4 +717,3 @@
       
     </body>
     </html>
-        <!-- //이메일 내용 -->
