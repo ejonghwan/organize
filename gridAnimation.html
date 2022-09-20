@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {box-sizing: border-box;}
+        html, body {background-color: #121212; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;;}
+        .box {
+            --box-width: 20rem; 
+            --box-height: 30rem; 
+            --frag-width: calc(var(--box-width) / var(--col));
+            --frag-height: calc(var(--box-height) / var(--row));
+            --img-url: url('https://djjjk9bjm164h.cloudfront.net/leather01.jpg');
+
+
+            display: flex; 
+            flex-wrap: wrap; 
+            width: var(--box-width); 
+            height: var(--box-height); 
+            box-sizing: border-box; 
+            border: 1px solid #f1f1f1;
+        }
+
+
+        .fragment {
+            --x-offset: calc(var(--x) * var(--frag-width) * -1);
+            --y-offset: calc(var(--y) * var(--frag-height) * -1);
+
+
+            width: var(--frag-width);
+            height: var(--frag-height);
+            border: 1px solid red;
+            box-sizing: border-box;
+
+            background-image: var(--img-url);
+            background-position: var(--x-offset) var(--y-offset);
+            background-size: var(--box-width) var(--box-height);
+            background-repeat: no-repeat;
+        }
+        
+
+    </style>
+</head>
+<body>
+    
+
+
+    <div class="box"></div>
+
+
+    <script>
+        class GridAnimaition {
+            constructor(el, row = 15, col = 15) {
+                this.element = el;
+                this.row = row; //y  
+                this.col = col; //x
+
+                this.element.style.setProperty('--row', this.row)
+                this.element.style.setProperty('--col', this.col)
+
+                this.randomIntBetween = (min, max) => {
+                    return Math.floor(Math.random() * (max - min + 1) + min)
+                }
+            }
+            
+
+            animate() {
+                //this.row * this.col <- 조각 이미지 총 갯수 
+                for(let i = 0; i < this.row; i++) {
+                    for(let j = 0; j < this.col; j++) {
+                        const fragment = document.createElement('div');
+                        fragment.className = 'fragment';
+                        fragment.style.setProperty('--x', j)
+                        fragment.style.setProperty('--y', i)
+
+                        this.element.appendChild(fragment)
+                    }
+                }
+            }
+        }
+
+        const box = document.querySelector('.box')
+        new GridAnimaition(box).animate();
+    </script>
+
+</body>
+</html>
