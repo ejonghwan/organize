@@ -58,7 +58,7 @@
         
 
 
-        .test {position: absolute; top: 0; left: 0; color: #fff;}
+        .test {position: absolute; top: 0; left: 0; color: #fff; width: var(--hwidth);}
     </style>
 </head>
 <body>
@@ -72,6 +72,7 @@
 
         const test = document.querySelector('.test')
         test.style.setProperty('border', '1px solid red')
+        test.style.setProperty('--hwidth', `500px`)
 
 
 
