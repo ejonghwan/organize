@@ -73,6 +73,7 @@
         const test = document.querySelector('.test')
         test.style.setProperty('border', '1px solid red')
         test.style.setProperty('--hwidth', `500px`)
+        test.style.padding = '20px'
 
 
 
@@ -95,6 +96,10 @@
             animate() {
                 //this.row * this.col <- 조각 이미지 총 갯수 
                 const duration = 2000;
+
+                const x = this.col - 1
+                const y = this.row - 1
+
                 for(let i = 0; i < this.row; i++) {
                     for(let j = 0; j < this.col; j++) {
                         const fragment = document.createElement('div');
@@ -102,9 +107,18 @@
                         fragment.style.setProperty('--x', j)
                         fragment.style.setProperty('--y', i)
 
-                        const delay = i;
+                        // const delay = i; //위에서 아래로 
+                        // const delay = j; //왼쪽에서 오른쪽으로  
+                        // const delay = this.randomIntBetween(x, x + y); //랜덤
+                        // const delay = j + i ; //왼쪽위에서 오른쪽 아래  대각 
+                        // const delay = (y + x) - (j - i); //왼쪽위에서 오른쪽 아래 위에꺼반대 
+                        // const delay = Math.abs((x + y) / 2 - (j + i)); //가운데 에서 양쪽으로 
+                        // const delay = (x + y) / 2 - Math.abs((x + y) / 2 - (j + i)); //양쪽에서 가운데로  
+                        const delay = Math.abs((x / 2) - j) + Math.abs((y / 2) - i); //가운데에서 사방으로 
 
-                        const isOdd = (i + j) % 2 === 0
+
+
+                        const isOdd = (i + j) % 2 === 0;
 
                         fragment.style.setProperty('--delay', delay * 70 + 'ms')
                         fragment.style.setProperty('--duration', duration + 'ms')
