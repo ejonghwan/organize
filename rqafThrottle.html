@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+<div style="height: 3000px">asd</div>
+
+<script>
+
+
+
+function throttleUsingRaf(cb) {
+      var rAfTimeout = null;
+
+      return function () {
+        if (rAfTimeout) {
+          window.cancelAnimationFrame(rAfTimeout);
+        }
+        rAfTimeout = window.requestAnimationFrame(function () {
+          cb();
+        })
+      }
+    }
+    function onScroll() {
+       console.log('123')
+      // code ...
+    }
+    // document.addEventListener('scroll', throttleUsingRaf(onScroll));
+
+
+
+
+
+    
+
+    function throttle(cb, wait) {
+        var waiting = true;
+        return function(args) {
+            if(waiting) { //waiting이 참일떄만 실행
+                cb(args);
+                waiting = false; //여기서 반대조건
+
+                setTimeout(function() { //여기서 n초후에 true만들어줌 
+                    waiting = true
+                }, wait)
+            } 
+        }
+    }
+
+    // window.addEventListener('click', throttle(() => {
+    //     console.log(1111)
+    // }, 3000))
+
+
+
+
+    function debounce(cb, wait) {
+        var timeout;
+        return function(args) {
+
+            // console.log(timeout)
+            clearTimeout(timeout); //한번이면 바로 클리어
+
+            timeout = setTimeout(function() {
+                cb(args);
+            }, wait);
+        }
+    }
+
+    window.addEventListener('click', debounce(() => {
+        console.log(1111)
+    }, 3000))
+
+
+        
+</script>
+
+</body>
+</html>
