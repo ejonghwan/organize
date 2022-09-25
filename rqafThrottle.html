@@ -59,17 +59,43 @@ function throttleUsingRaf(cb) {
 
 
 
+    // // 마지막에 실행
+    // function debounce(cb, wait) {
+    //     var timeout;
+       
+    //     return function(args) {
 
+    //         console.log(timeout)
+    //         clearTimeout(timeout); //클리어하고 
+
+    //         timeout = setTimeout(function() { //다시 설정하고 
+    //             cb(args);
+    //         }, wait);
+    //     }
+    // }
+
+    // 처음실행하고 
     function debounce(cb, wait) {
         var timeout;
+        var hoho = false;
         return function(args) {
 
-            // console.log(timeout)
-            clearTimeout(timeout); //한번이면 바로 클리어
-
-            timeout = setTimeout(function() {
+            if(!hoho) {
                 cb(args);
-            }, wait);
+                hoho = true; 
+
+
+                console.log(timeout)
+                clearTimeout(timeout); //클리어하고 
+
+                timeout = setTimeout(function() { //다시 설정하고 
+                    hoho = false;
+                }, wait);
+                
+            }
+            
+
+            
         }
     }
 
