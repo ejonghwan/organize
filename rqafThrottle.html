@@ -74,7 +74,7 @@ function throttleUsingRaf(cb) {
     //     }
     // }
 
-    // 처음실행하고 
+    // 처음실행하고 됐다! 처음에 한번실행하고 그 후에 계속 실행안되고 
     function debounce(cb, wait) {
         var timeout;
         var hoho = false;
@@ -83,19 +83,11 @@ function throttleUsingRaf(cb) {
             if(!hoho) {
                 cb(args);
                 hoho = true; 
-
-
-                console.log(timeout)
-                clearTimeout(timeout); //클리어하고 
-
-                timeout = setTimeout(function() { //다시 설정하고 
-                    hoho = false;
-                }, wait);
-                
             }
-            
-
-            
+            clearTimeout(timeout); //클리어하고
+            timeout = setTimeout(function() { //다시 설정하고 
+                hoho = false;
+            }, wait); 
         }
     }
 
