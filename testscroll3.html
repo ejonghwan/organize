@@ -116,15 +116,40 @@
     
         </style>
     asdasdasd
-    <div class="lottie_wrap1" aria-hidden="true">
+    <div class="lottie_wrap1">
         <div class="lottie_test"></div>
     </div>
     <div class="lottie_wrap2">
-        <div class="lottie_test" aria-hidden="true"></div>
+        <div class="lottie_test"></div>
     </div>
     <div class="lottie_wrap3">
         <div class="lottie_test"></div>
     </div>
+
+    <script>
+
+        // 접근성
+        
+            function acc() {
+                var ele1 = document.querySelector('.lottie_wrap1 svg')
+                var ele2 = document.querySelectorAll('.lottie_wrap2 image')
+                var ele3 = document.querySelectorAll('.lottie_wrap3 image')
+                console.log('ele1', ele1)
+                ele1.setAttribute('aria-hidden', true)
+
+
+                console.log(ele2)
+                for(var i = 0; i < ele2.length; i++) {
+                    ele2[i].setAttribute('alt', ' ')
+                    ele3[i].setAttribute('aria-hidden', true)
+                }
+            }
+
+            window.addEventListener('load', acc)
+
+
+    </script>
+
         <header>
             <h1>landing</h1>
         </header>
