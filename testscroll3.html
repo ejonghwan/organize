@@ -115,12 +115,12 @@
     
     
         </style>
-    
-    <div class="lottie_wrap1">
+    asdasdasd
+    <div class="lottie_wrap1" aria-hidden="true">
         <div class="lottie_test"></div>
     </div>
     <div class="lottie_wrap2">
-        <div class="lottie_test"></div>
+        <div class="lottie_test" aria-hidden="true"></div>
     </div>
     <div class="lottie_wrap3">
         <div class="lottie_test"></div>
@@ -439,6 +439,7 @@
                     }
                     navs[idx].classList.add('on')
                 }
+                
                
             }
     
@@ -545,8 +546,8 @@
             if(sec3Ratio <= 0.5) {
                  sec3.querySelector('.conts').style.transform = "translateX(" + calcValue({
                     element: sec3,
-                    startValue: window.innerWidth / 5,
-                    endValue: window.innerWidth / 2,
+                    startValue: 200,
+                    endValue: 500,
                     startPos: 0.2,
                     endPos: 0.5,
                     y: yOffset,
@@ -562,8 +563,8 @@
             } else {
                 sec3.querySelector('.conts').style.transform = "translateX(" + calcValue({
                     element: sec3,
-                    startValue: window.innerWidth / 2,
-                    endValue: window.innerWidth ,
+                    startValue: 500,
+                    endValue: 800,
                     startPos: 0.5,
                     endPos: 0.8,
                     y: yOffset,
