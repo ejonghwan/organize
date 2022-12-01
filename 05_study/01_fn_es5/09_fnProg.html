@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./_.js"></script>
+    
+</head>
+<body>
+    
+
+
+<h1>다형성 높이기</h1>
+이전에 했던 함수들은 _.js에 있음
+
+<script>
+
+/* _each의 외부 다형성 높이기 */ 
+
+/*  기존 each함수 
+    function _each(list, iter) {
+        for(let i = 0; i < list.length; i++) {
+            iter(list[i])
+        }
+    }
+*/
+
+
+
+
+/* 1. _each에 null을 넣어도 에러 안나게 */
+// _each(null, console.log) //Uncaught TypeError: Cannot read properties of null (reading 'length').. 수정하면 안남
+console.log( curryr_filter(null, function(v) { return v }) ) // []
+/*  바뀐 each 코드 
+
+    원리
+    for 문은 언디파인드가 들어가면 그냥 내보냄 
+
+    var _length = _get2('length')
+    function _each(list, iter) {
+        for(let i = 0, len = _length(list); i < len; i++) {
+            iter(list[i])
+        }
+    }
+*/
+
+
+
+
+
+/* 2. _keys 만들기 */
+
+// 이미 있는 keys는 null이 들어갔을 때 에러가 남 
+console.log( Object.keys({ name: "ID", age: 33 }) )
+console.log( Object.keys( [1, 2, 3, 4] ) )
+console.log( Object.keys( 10 ) )
+// console.log( Object.keys(null) ) //09_fnProg.html:59 Uncaught TypeError: Cannot convert undefined or null to object
+
+function _is_object(obj) {
+    return typeof obj == 'object' && !!obj;
+}
+
+function _keys(obj) {
+    return _is_object(obj) ? Object.keys(obj) : []
+}
+
+
+
+/* _each 외부 다형성 높이기 */
+
+// 지금은 아무것도 내뱉지않음. length가 없는 object이기 떄문에
+_each({ 13: "id", 18: "hd", 29: "yd" }, function(name) {
+    console.log(name)
+})
+
+// _each 수정
+// function _each(list, iter) {
+//     let keys = _keys(list);
+//     for(let i = 0, len = keys.length; i < len; i++) {
+//         iter(list[keys[i]])
+//     }
+// }
+
+
+_go(users,  //null이 들어가도 빈배열만 내뱉을 뿐 에러가 나지않음
+    curryr_map(function(user) { return user.name }),
+    curryr_map(function(name) { return name.toLowerCase() }),
+    console.log
+)
+
+
+// 데이터가 어떻게 생겼던지 관계없음 
+_go({ 1: users[0], 3: users[2], 5: users[4] }, 
+    curryr_map(function(user) { return user.name.toLowerCase() }),
+    console.log
+)
+
+
+
+
+
+
+
+// ##################### 연습 
+
+function test(fn) {
+    return function(a, b) {
+        return fn(a, b)
+    }
+}
+
+const test1 = test(function(a, b) { return a + b })
+
+console.log(test1(2, 3))
+
+
+
+
+
+// 두번째 오는 인자를 첫번쨰 함수에 그냥 위임해서 그 함수에서 처리하게끔 만든 함수 
+function curr(fn) {
+    return function(a, b) {
+        arguments.length == 2 ? fn(a, b) : function(b) { return fn(b, a) }
+    }
+}
+
+const c = curr(function(a, b) {
+    console.log(a + b)
+})
+
+c(5, 2)
+
+
+
+function evt(fn) {
+    return function(a, b, c) {
+        return fn(a, b, c)
+    }
+}
+
+const click = evt(function(ele, evt, cb) {
+    ele.addEventListener(evt, cb)
+})
+
+const hover = evt(function(ele, evt, cb) {
+    ele.addEventListener(evt, cb)
+})
+
+
+hover(
+    document.querySelector("body"),
+    "enter",
+    function(e) { console.log(e) }
+)
+
+click(
+    document.querySelector("body"),
+    "click",
+    function(e) { console.log(e) }
+)
+
+
+</script>
+
+
+
+</body>
+</html>

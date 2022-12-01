@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<h1>중복 제거</h1>
+
+<script>
+
+var users = [
+    { id:1, name: "ID", age: 36 },
+    { id:2, name: "BJ", age: 12 },
+    { id:3, name: "JB", age: 43 },
+    { id:4, name: "AS", age: 23 },
+    { id:5, name: "EW", age: 34 },
+    { id:6, name: "TR", age: 65 },
+    { id:7, name: "GF", age: 23 },
+    { id:8, name: "TR", age: 11 },
+]
+
+
+
+
+// ####   함수형 프로그래밍 
+
+// filter
+// function _filter(fn, iter) {
+//     var new_list = []
+//     for(let i = 0; i < iter.length; i++) {
+//         if(fn(iter[i])) { //배열을 그대로 함수 인자로 넘겨줌 
+//             new_list.push(iter[i])
+//         }
+//     }
+//     return new_list
+// }
+
+// map
+// function _map(fn, iter) {
+//     var new_list = [];
+//     for(var i = 0; i < iter.length; i++) {
+//         new_list.push(fn(iter[i]))
+//     }
+//     return new_list;
+// }
+
+
+
+// const hoho = _map( user => user.name, _filter( b => b.age > 30, users) )
+// console.log(hoho)
+
+
+// 만든 필터와 맵 중복 제거... 지금은 반복되는 부분이 같음 
+
+function _each(list, iter) {
+    for(let i = 0; i < list.length; i++) {
+        iter(list[i])
+    }
+}
+
+
+function _filter(fn, iter) {
+    var new_list = []
+    _each(iter, function(val) {
+        if(fn(val)) { //배열을 그대로 함수 인자로 넘겨줌 
+            new_list.push(val)
+        }
+    })
+    return new_list
+}
+
+
+function _map(iter, fn) {
+    var new_list = [];
+    _each(iter, function(val) {
+        new_list.push(fn(val))
+    })
+    return new_list;
+}
+
+
+const over_30 = _map( _filter(function(user) { return user.age > 30 }, users), function(user){ return user.name })
+console.log(over_30)
+
+
+
+
+
+// 함수형에서는 두번째 함수가 콜백이 아닐수도 있음. 
+// 예를 들어 만든 맵 함수는 콜백이 아니기 때문
+// 내부의 다형성은 두번째 함수가 담당함
+console.log( _map([1,2,3,4,5], v => v + 10) )
+
+
+
+
+</script>
+
+
+</body>
+</html>
