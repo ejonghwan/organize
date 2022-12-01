@@ -112,9 +112,13 @@ function _curryr(fn) {
     }
 }
 
+
+
 const aa = _curryr(_map)
 console.log(aa)
+
 aa([1,2,3,4], function(val) { console.log('1', val) })
+aa(function(val) { console.log('1', val) })([1,2,3,4])
 
 
 </script>
