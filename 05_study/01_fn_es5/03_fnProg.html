@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<h1>일급함수</h1>
+
+<script>
+
+// 일급함수 
+// 자바스크립트는 함수가 일급함수. 함수를 값으로 다룰 수 있는 함수
+
+var f1 = function() { return a * a }
+console.log(f1)
+
+
+// 함수를 받아서 리턴하는 함수
+function f3(f) {
+    return f();
+}
+
+console.log( f3(function() { return 10 }) )
+
+
+// 언제 평가해도 상관없는 함수들을 값으로 가지고 다니며 사용하는게 함수형 프로그래밍
+
+
+
+
+// add_maker
+function add_maker(a) {
+    return function(b) {
+        return a + b;
+    }
+}
+
+var add10 = add_maker(10)
+console.log( add10(20) )
+
+
+// ## 중요! 함수 내부의 인자나 값 변수들이 다른곳을 변경하거나 밖의 값을 참조하지않으면 순수함수 
+
+
+
+function f4(f1, f2, f3) {
+    return f3(f1() + f2());
+}
+
+console.log('?',  f4(() => 5, () => 10, a => a * 5 ) )
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

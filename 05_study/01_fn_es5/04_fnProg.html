@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<h1>명령형 코드</h1>
+
+<script>
+
+var users = [
+    { id:1, name: "ID", age: 36 },
+    { id:2, name: "BJ", age: 12 },
+    { id:3, name: "JB", age: 43 },
+    { id:4, name: "AS", age: 23 },
+    { id:5, name: "EW", age: 34 },
+    { id:6, name: "TR", age: 65 },
+    { id:7, name: "GF", age: 23 },
+    { id:8, name: "TR", age: 11 },
+]
+
+
+
+
+// ######### 일반적인 프로그래밍 
+// 30세이상 
+var tempUsers = []
+for(let i = 0; i < users.length; i++) {
+    if(users[i].age > 30) {
+        tempUsers.push(users[i])
+    }
+}
+// console.log(tempUsers)
+
+
+// 30세 이상 이름 수집 
+var names = []
+for(let i = 0; i < users.length; i++) {
+    if(users[i].age > 30) {
+        names.push(users[i].name)
+    }
+}
+
+// console.log(names)
+
+
+// 30세 이하
+var tempUsers = []
+for(let i = 0; i < users.length; i++) {
+    if(users[i].age < 30) {
+        tempUsers.push(users[i])
+    }
+}
+// console.log(tempUsers)
+
+
+
+// 30세 이상 이름 수집 
+var names = []
+for(let i = 0; i < users.length; i++) {
+    if(users[i].age < 30) {
+        names.push(users[i].name)
+    }
+}
+// console.log(names)
+
+
+
+
+
+// ####   함수형 프로그래밍 
+
+// filter
+function _filter(fn, iter) {
+    var new_list = []
+    for(let i = 0; i < iter.length; i++) {
+        if(fn(iter[i])) { //배열을 그대로 함수 인자로 넘겨줌 
+            new_list.push(iter[i])
+        }
+    }
+    return new_list
+}
+
+// 응용형 함수..원하는 시점에 평가를 하며 특정한 일을 함 + 고차함수
+let 유저30세이상 = _filter( b => { 
+    // console.log('b', b); 
+    return b.age > 30  
+} , users)
+console.log('유저30세이상', 유저30세이상)
+
+
+// map
+function _map(fn, iter) {
+    var new_list = [];
+    for(var i = 0; i < iter.length; i++) {
+        new_list.push(fn(iter[i]))
+    }
+    return new_list;
+}
+
+
+let over_30 = _map(user => user.name, 유저30세이상)
+console.log(over_30)
+
+
+
+
+
+// 객체 루프돌땐 
+// for(const b in users[0]) {
+//     console.log(b, users[0][b])
+// }
+
+
+
+// ### 
+// 함수형 프로그래밍은 함수를 대입하기보단 중첩해나가면서 새로운 값들을 얻어나간다. 아래처럼
+
+const hoho = _map( user => user.name, _filter( b => b.age > 30, users) )
+console.log(hoho)
+
+
+
+</script>
+
+
+</body>
+</html>

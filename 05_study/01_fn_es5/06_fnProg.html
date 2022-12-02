@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+<h1>커링</h1>
+
+<script>
+
+function _each(list, iter) {
+    for(let i = 0; i < list.length; i++) {
+        iter(list[i])
+    }
+}
+
+
+function _filter(fn, iter) {
+    var new_list = []
+    _each(iter, function(val) {
+        if(fn(val)) { //배열을 그대로 함수 인자로 넘겨줌 
+            new_list.push(val)
+        }
+    })
+    return new_list
+}
+
+
+function _map(iter, fn) {
+    var new_list = [];
+    _each(iter, function(val) {
+        new_list.push(fn(val))
+    })
+    return new_list;
+}
+
+
+var users = [
+    { id:1, name: "ID", age: 36 },
+    { id:2, name: "BJ", age: 12 },
+    { id:3, name: "JB", age: 43 },
+    { id:4, name: "AS", age: 23 },
+    { id:5, name: "EW", age: 34 },
+    { id:6, name: "TR", age: 65 },
+    { id:7, name: "GF", age: 23 },
+    { id:8, name: "TR", age: 11 },
+]
+
+
+
+
+// function _curry(fn) {
+//     return function(a, b) {
+//         if(arguments.length == 2) return fn(a, b)
+//         return function(b) {
+//             return fn(a, b)
+//         }
+//     }
+// }
+
+function _curry(fn) {
+    return function(a, b) {
+        return arguments.length == 2 ? fn(a, b) : function(b) { return fn(a, b) }    
+    }
+}
+
+
+const add = _curry(function(a, b) { return a + b })
+console.log( add(15)(3) )
+
+// 아규먼츠에 따라 리턴시킴
+console.log( add(3, 5) )
+
+
+
+const sub = _curry(function(a, b) { return a - b })
+console.log(sub(5, 10)) // 얘는 잘 되는데
+var sub10 = sub(10)
+console.log( sub10(5) ) //이 경우에 5가 나옴.. 그래서 오른쪽부터 계산하는 함수가 따로 필요.
+
+
+// 인자가 한개씩 들어왔을 때 인자값을 오른쪽부터 평가
+function _curryr(fn) { 
+    return function(a, b){
+        return arguments.length == 2 ? fn(a, b) : function(b) { return fn(b, a) }  
+    }
+}
+
+const subr = _curryr(function(a, b) { return a - b })
+var sub10 = subr(10)
+console.log( sub10(5) ) // -5 잘나옴
+
+
+
+
+
+
+
+// ###########   get
+function _get(obj, key) {
+    return obj == null ? undefined : obj[key]
+};
+
+
+console.log( _get(users[0], 'name') )
+// console.log(users[20].name) //이건 20번쨰가 없기에 에러남
+console.log( _get(users[20], 'name') ) //앞에 필터떄문에 20번째가 없지만 에러가 나지않는다 
+
+
+
+
+
+// get을 curry로 같이 
+let _get2 = _curryr(function(obj, key) {
+    return obj == null ? undefined : obj[key]
+});
+
+console.log('curryr get: ', _get2('name')(users[5]) )
+
+// 이렇게 하면 맵, 필터에서 이렇게 가능
+// _map( _filter(function(user) { return user.age > 30 }, users), function(user){ return user.name }) 원본
+console.log(
+_map( _filter(function(user) { return user.age > 30 }, users), _get2("name"))
+)
+console.log(
+_map( _filter(function(user) { return user.age > 30 }, users), _get2("age"))
+)
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    li.active {background-color: brown; color: #fff;}
+</style>
+
+<ul class="ul">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+</ul>
+
+<script>
+
+const ui = (function(){
+    // console.log(ul)
+    // for(let i = 0; i < ul.length; i++) {
+    //     ul[i].addEventListener('click', e => {
+    //         for(let j = 0; j < ul.length; j++) {
+    //             ul[j].classList.remove('active')
+    //         }
+    //         ul[i].classList.add('active')
+    //     })
+    // }
+
+    function toggleClass(iter, className, evt) {
+        for(let i = 0; i < iter.length; i++) {
+            iter[i].addEventListener(evt, e => {
+                for(let j = 0; j < iter.length; j++) {
+                    iter[j].classList.remove(className)
+                }
+                iter[i].classList.add(className)
+            })
+        }
+    }
+
+    return {
+        toggleClass,
+    }
+    // console.log(ui)
+
+})()
+
+
+
+
+const ul = document.querySelectorAll('.ul > li')
+ui.toggleClass(ul, 'active', 'click')
+
+
+</script>
+
+
+</body>
+</html>
