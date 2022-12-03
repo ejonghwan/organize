@@ -11,7 +11,7 @@
         html, body {width: 100%; height: 100%;}
         ul, ol {list-style: none;;}
         header { width: 980px; margin: 0 auto; padding: 20px;}
-        main {width: 980px; margin:0 auto; }
+        /* main {width: 980px; margin:0 auto; }
         section {padding:20px 20px}
         section > ul {margin-bottom: 40px;;}
         section > ul > li {margin-bottom: 40px; font-size: 15px; position: relative; padding-left: 20px;}
@@ -20,9 +20,18 @@
         dd > strong {display: inline-block; margin-top: 10px; margin-bottom: 5px;}
         dd > ul {margin: 15px 0;}
         dd > ul > li{margin-bottom: 5px; position: relative;padding-left: 10px;;}
-        dd > ul > li::before {content: '-';  display: inline-block; position: absolute; top:0; left:0; }
-        h1 {margin-bottom: 20px; font-size: 20px;}
-        h2 {margin-bottom: 20px; font-size: 17px;}
+        dd > ul > li::before {content: '-';  display: inline-block; position: absolute; top:0; left:0; } */
+        h1 {margin-bottom: 20px; font-size: 24px;}
+        h2 {margin-bottom: 20px; font-size: 20px;}
+        h3 {margin-bottom: 10px; font-size: 17px;}
+        body {background-color: #111; color: rgb(197, 197, 197)}
+        a {text-decoration: none; color: rgb(42, 195, 255);}
+        .hoho section {padding: 20px;}
+        .hoho section + section {margin-top: 20px; border-top: 1px solid #333;}
+        .hoho section > div {margin-bottom: 30px;}
+        .hoho section ul {padding-left: 10px;}
+        .hoho section ul > li::before {content: '-'; display: inline-block; width: 10px; height: 100%; }
+
         
         @media (max-width: 960px) {
             main, header {width: 100%;}
@@ -33,9 +42,11 @@
         * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
         html, body {
             width: 100%;
+            height: 100%;;
         }
         .wrap {
             width: 80%;
@@ -56,7 +67,95 @@
 </head>
 <body>
 
+    <main class="hoho">
+        <section>
+            <h2>test page</h2>
+            <ul>
+                <li><a href="/00_test/01_Tetris/index.html" target="_blank">tetris</a></li>
+                <li><a href="/00_test/02_chatting_socketio/" target="_blank">soketio</a></li>
+                <li><a href="/00_test/crud/02_crud_memo.html" target="_blank">crud</a></li>
+            </ul>
+        </section>
+        <section>
+            <h2>ui</h2>
+            <div>
+                <h3>animation</h3>
+                <ul>
+                    <li><a href="/01_ui/animation/gridAnimation.html" target="_blank">카드 그리드</a></li>
+                    <li><a href="/01_ui/animation/01_character.html" target="_blank">인풋 캐릭터 </a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>button</h3>
+                <ul>
+                    <li><a href="/01_ui/button/01_btn.html" target="_blank">스티키 버튼</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>input</h3>
+                <ul>
+                    <li><a href="/" target="_blank">asd</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>slide</h3>
+                <ul>
+                    <li><a href="/01_ui/slide/01_slide.html" target="_blank">연습 슬라이드</a></li>
+                    <li><a href="/01_ui/slide/04_cube_rotate.html" target="_blank">큐브 슬라이드</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>tab</h3>
+                <ul>
+                    <li><a href="/01_ui/tab/06_tab.html" target="_blank">프로토타입 연습 탭</a></li>
+                </ul>
+            </div>
+        </section>
+        <section>
+            <h2>canvas</h2>
+            <ul>
+                <li><a href="/02_canvas/01_sheep/" target="_blank">sheep</a></li>
+                <li><a href="/02_canvas/02_impact/" target="_blank">inpact</a></li>
+                <li><a href="/02_canvas/03_wave/" target="_blank">wave</a></li>
+                <li><a href="/02_canvas/04_rotate_shape/" target="_blank">rotate shape</a></li>
+            </ul>
+        </section>
+        <section>
+            <h2>util</h2>
+            <ul>
+                <li><a href="/03_util/rqafThrottle.html" target="_blank">requestAnimation throttle</a></li>
+            </ul>
+        </section>
+        <section>
+            <h2>default project</h2>
+            <ul>
+                <li><a href="/04_project/index.html" target="_blank">mm</a></li>
+            </ul>
+        </section>
+        <section>
+            <h2>study</h2>
+            <ul>
+                <li><a href="/05_study/01_fn_es5/index.html" target="_blank" >함수형 프로그래밍 es5 - 유인동님</a></li>
+                <li><a href="/05_study/02_fn_es6/index.html" target="_blank">함수형 프로그래밍 es6 - 유인동님</a></li>
+                <li><a href="/05_study/02_fn_es6/index.html" target="_blank">함수형 프로그래밍 es6 응용 - 유인동님</a></li>
+            </ul>
+        </section>
+    </main>
+    
 
+
+
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+
+    
     <style>
 
         .wraptest {display: flex; justify-content: center; align-items: center; border: 1px solid red; margin-bottom: 3px; margin-top: -3px;}
