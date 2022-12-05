@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>고 파이프 / 코드를 값으로</h1>
+
+
+
+
+
+
+
+
+
+<script>
+  const log = console.log;
+
+  const curry = f =>
+    (a, ..._) => _.length ? f(a, ..._) : (..._) => f(a, ..._);
+
+  const map = curry((f, iter) => {
+    let res = [];
+    for (const a of iter) {
+      res.push(f(a));
+    }
+    return res;
+  });
+
+  const filter = curry((f, iter) => {
+    let res = [];
+    for (const a of iter) {
+      if (f(a)) res.push(a);
+    }
+    return res;
+  });
+
+  const reduce = curry((f, acc, iter) => {
+    if (!iter) {
+      iter = acc[Symbol.iterator]();
+      acc = iter.next().value;
+    }
+    for (const a of iter) {
+      acc = f(acc, a);
+    }
+    return acc;
+  });
+
+</script>
+
+
+
+
+------------------------------------------------
+
+
+
+<script>
+  const products = [
+    {name: '반팔티', price: 15000},
+    {name: '긴팔티', price: 20000},
+    {name: '핸드폰케이스', price: 15000},
+    {name: '후드티', price: 30000},
+    {name: '바지', price: 25000}
+  ];
+
+  const add = (a, b) => a + b;
+
+  log(
+    reduce(
+      add,
+      map(p => p.price,
+        filter(p => p.price < 20000, products))));
+  console.clear();
+</script>
+
+
+
+
+# 코드를 값으로 다루어 표현력 높이기
+
+## go, pipe
+
+<script>
+  const go = (...args) => reduce((a, f) => f(a), args);
+  const pipe = (f, ...fs) => (...as) => go(f(...as), ...fs);
+  /*  log(f(0, 1));
+    파이프함수 해석: ...as가 0, 1이고 (f, ...fs)이렇게하면 
+    첫번째함수만 개별로 꺼내고 나머지 함수는 배열로 받음. 그니깐 첫번쨰 함수에 인자들을 배열로 여러개받음
+  */
+
+  //고 함수는 첫번째 인자가 계산이 되면 두번쨰 인자로 가고 두번쨰 인자가 세번쨰로 가고 ...리듀스,
+  go(
+    add(0, 1),
+    a => a + 10,
+    a => a + 100,
+    log);
+  // 111
+
+  // 파이프 함수는 함수들이 나열되어있는 함수들의 모임체. 함수를 리턴
+  const f = pipe(
+    (a, b) => a + b,
+    a => a + 10,
+    a => a + 100);
+
+  log(f(0, 1));
+
+  console.clear();
+
+</script>
+
+<script>
+
+  log(
+    reduce(
+      add,
+      map(p => p.price,
+        filter(p => p.price < 20000, products))));
+
+
+
+  // 위 함수 조합을 고 함수로 조금 더 보기좋게 
+  go(
+    products,
+    products => filter(p => p.price < 20000, products),
+    products => map(p => p.price, products),
+    prices => reduce(add, prices),
+    log);
+
+  // 위 함수를 커리를 감싸면 아래처럼 더 간단해짐. 
+  go(
+    products,
+    filter(p => p.price < 20000), //프로덕트를 받아서 프로덕트를 내보내기에 생략가능. 커리떄문
+    map(p => p.price), //여기도 마찬가지
+    reduce(add), //여기도 마찬가지
+    log);
+
+</script>
+
+
+
+
+
+## curry
+
+<script>
+
+  const mult = curry((a, b) => a * b);
+  log(mult(3)(2));
+
+  const mult3 = mult(3);
+  log(mult3(10));
+  log(mult3(5));
+  log(mult3(3));
+  console.clear();
+</script>
+
+
+
+
+
+
+# 함수 조합으로 함수 만들기
+
+<script>
+
+  // 원본
+  /*
+     go(
+    products,
+    filter(p => p.price < 20000), 
+    map(p => p.price), 
+    reduce(add), 
+    log); //30000
+
+     go(
+    products,
+    filter(p => p.price >= 20000), 
+    map(p => p.price), 
+    reduce(add), 
+    log); //75000
+  */
+
+
+
+  const total_price = pipe(
+    map(p => p.price),
+    reduce(add));
+
+  const base_total_price = predi => pipe(
+    filter(predi),
+    total_price);
+
+  go(
+    products,
+    base_total_price(p => p.price < 20000),
+    log);
+
+  go(
+    products,
+    base_total_price(p => p.price >= 20000),
+    log);
+</script>
+
+
+
+</body>
+</html>

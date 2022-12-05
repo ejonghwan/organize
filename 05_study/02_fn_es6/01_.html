@@ -8,22 +8,63 @@
 </head>
 <body>
 
-    <h1>개요</h1>
+    <h1>일급함수와 고차함수</h1>
 
+
+    # 일급함수 
+    - 함수가 값으로 다뤄질 수 있다
+    <script>
+        const add5 = a => a + 5;
+        console.log(add5);
+        console.log(add5(5))
+
+        const f1 = () => () => 1;
+        console.log(f1)
+
+        const f2 = f1();
+        console.log(f2)
+        console.log(f2())
+    </script>
+
+
+
+
+    # 고차함수
+    - 함수를 값으로 받아서 사용하는 함수 
+    1. 함수를 인자로 받아서 실행하는 함수 
+    2. 함수를 만들어서 리턴하는 함수
 
     <script>
-
-        // 일급함수 
-        // 함수가 값으로 다뤄질 수 있다
-
-
-
-        // 고차함수
-        // 함수를 값으로 받아서 사용하는 함수 
         // 1. 함수를 인자로 받아서 실행하는 함수 
-        // 2. 함수를 리턴하는 함수
-        
+        const apply1 = fn => fn(1)
+        const add2 = a => a + 2 
+
+        console.log(apply1(add2))
+        //어플라이함수는 add2 함수를 받아서 실행하고 있음
+
+        // function a(fn) { return fn(1) } //여기서 넘긴1이 add2의 a가 됨
+        /*
+            f1에 인자를 넘기는건 넘어오는 함수의 인자값을 예상한거
+            const apply1 = fn => (a => a + 2)(1) 
+        */
+
+
+        const times = (fn, n) => {
+            let i = -1;
+            while(++i < n) fn(i)
+        }
+        times(console.log, 3) // 0 1 2
+        times(a => console.log(a + 10), 3) //10 11 12
+
     </script>
+
+    <script>
+        //   2. 함수를 만들어서 리턴하는 함수
+        const addMaker = a => b => a + b;
+        const add10 = addMaker(10);
+        console.log(add10(5))
+    </script>
+
 
 </body>
 </html>
