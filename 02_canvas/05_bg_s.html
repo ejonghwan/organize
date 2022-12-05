@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+        * {box-sizing: border-box; margin: 0; padding: 0; }
+        body {background-color: #111;}
+        canvas {position: fixed; z-index: 1; top:0; left:0;}
+        .main {position: relative; z-index: 2; color: #fff; background-color: rgba(63, 63, 63, .4); padding: 20px; margin: 20px 150px; backdrop-filter: blur(10px);;}
+        .main > section + section {margin-top: 30px;}
+</style>
+
+
+    <div class="main">
+        <section>
+            <h1>section 1</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id libero quaerat itaque nihil distinctio blanditiis eligendi iste nostrum rem odio. Error sed tempore ipsa reiciendis! Voluptatem excepturi saepe repellat hic.</p>
+        </section>
+        <section>
+            <h1>section 1</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id libero quaerat itaque nihil distinctio blanditiis eligendi iste nostrum rem odio. Error sed tempore ipsa reiciendis! Voluptatem excepturi saepe repellat hic.</p>
+        </section>
+        <section>
+            <h1>section 1</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id libero quaerat itaque nihil distinctio blanditiis eligendi iste nostrum rem odio. Error sed tempore ipsa reiciendis! Voluptatem excepturi saepe repellat hic.</p>
+        </section>
+        <section>
+            <h1>section 1</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id libero quaerat itaque nihil distinctio blanditiis eligendi iste nostrum rem odio. Error sed tempore ipsa reiciendis! Voluptatem excepturi saepe repellat hic.</p>
+        </section>
+        <section>
+            <h1>section 1</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id libero quaerat itaque nihil distinctio blanditiis eligendi iste nostrum rem odio. Error sed tempore ipsa reiciendis! Voluptatem excepturi saepe repellat hic.</p>
+        </section>
+        <section>
+            <h1>section 1</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id libero quaerat itaque nihil distinctio blanditiis eligendi iste nostrum rem odio. Error sed tempore ipsa reiciendis! Voluptatem excepturi saepe repellat hic.</p>
+        </section>
+        </div>
+        <div class="main">
+        <section>
+            <h1>section 1</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id libero quaerat itaque nihil distinctio blanditiis eligendi iste nostrum rem odio. Error sed tempore ipsa reiciendis! Voluptatem excepturi saepe repellat hic.</p>
+        </section>
+        <section>
+            <h1>section 1</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id libero quaerat itaque nihil distinctio blanditiis eligendi iste nostrum rem odio. Error sed tempore ipsa reiciendis! Voluptatem excepturi saepe repellat hic.</p>
+        </section>
+        <section>
+            <h1>section 1</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id libero quaerat itaque nihil distinctio blanditiis eligendi iste nostrum rem odio. Error sed tempore ipsa reiciendis! Voluptatem excepturi saepe repellat hic.</p>
+        </section>
+        <section>
+            <h1>section 1</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id libero quaerat itaque nihil distinctio blanditiis eligendi iste nostrum rem odio. Error sed tempore ipsa reiciendis! Voluptatem excepturi saepe repellat hic.</p>
+        </section>
+       
+        <section>
+            <h1>section 1</h1>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id libero quaerat itaque nihil distinctio blanditiis eligendi iste nostrum rem odio. Error sed tempore ipsa reiciendis! Voluptatem excepturi saepe repellat hic.</p>
+        </section>
+    </div>
+    <canvas></canvas>
+
+
+
+    <script>
+
+        const canvas = document.querySelector('canvas')
+        canvas.width = window.innerWidth
+        canvas.height = window.innerHeight
+        const ctx = canvas.getContext('2d')
+
+        const TOTAL = 150
+        const petalArray = []
+
+        const img = new Image();
+        img.src = 'http://placeimg.com/640/480/animals'
+        img.onload = () => {
+            for(let i = 0; i < TOTAL; i++) {
+                petalArray.push(new Petal())
+            }
+
+            console.log(petalArray)
+            rander();
+        }
+
+       
+
+
+        function rander() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height)
+            petalArray.forEach(item => {
+                item.animate();
+            });
+            window.requestAnimationFrame(rander)
+        }
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        })
+
+
+        class Petal {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height * 2 - canvas.height;
+                this.w = 30 + Math.random() * 15;
+                this.h = 20 + Math.random() * 10;
+                this.opacity = this.w / 45;
+                // 최대 가로값이 45니깐 위드를 45로 나눠
+                // 오파시티값이 30/45 부터 1까지의 값이 나오게 됨 
+
+                this.xSpeed = 2 + Math.random(); 
+                this.ySpeed = 1 + Math.random() * 0.5;
+
+                this.flip = Math.random();
+                this.flipSpeed = Math.random() * 0.03;
+            }
+
+            draw() {
+                if(this.y > canvas.height || this.x > canvas.width) {
+                    this.x = -img.width;
+                    this.y = Math.random() * canvas.height * 2 - canvas.height;
+                    //y 값은 자연스러우기 위해 2배로 잡음
+
+                    this.xSpeed = 2 + Math.random(); 
+                    this.ySpeed = 1 + Math.random() * 0.5;
+
+                    this.flip = Math.random();
+                }
+                ctx.globalAlpha = this.opacity;
+                ctx.drawImage(
+                    img, 
+                    this.x, 
+                    this.y, 
+                    this.w * (0.66 + Math.abs(Math.cos(this.flip) / 3)), 
+                    this.h * (0.8 + Math.abs(Math.sin(this.flip) / 2))
+                    )
+            }
+
+            animate() {
+                this.x += this.xSpeed
+                this.y += this.ySpeed
+                this.draw();
+                this.flip += this.flipSpeed
+            }
+        }
+
+    </script>
+</body>
+</html>

@@ -21,18 +21,20 @@
 
 
 
+
 <script>
+
 
 /* 1. 수집하기 - map */
     console.log(
-        curryr_map(users, function(user) {
+        c_map(users, function(user) {
             return user.name
         })
     )    
 
     // value만 꺼내옴
     function _values(data) {
-        return curryr_map(data, function(val) { return val })
+        return c_map(data, function(val) { return val })
     }
 
     console.log( _keys(users[0]) ) //key만 
@@ -51,31 +53,202 @@
 
     // 위 아이덴티티 함수로 이렇게 할수있음..익명함수와 기능이 같음
     // function _values(data) {
-    //     return curryr_map(data, _identity)
+    //     return c_map(data, _identity)
     // }
 
     // values함수를 이렇게 만들어도 동일함
     // var _Values = _map(_identity)
 
 
-
-
+    // #################################################    
 
     /* pluck */
     // function _pluck(data, key) {
-    //     return curryr_map(data, function(obj) {
+    //     return c_map(data, function(obj) {
     //         return obj[key]
     //     })
     // }
 
     function _pluck(data, key) {
-        return curryr_map(data, _get2(key))
+        return c_map(data, _get2(key))
     }
 
     console.log( _pluck(users, 'age') )
     console.log( _pluck(users, 'name') )
 
 
+    // #################################################
+
+
+
+
+/* 2. 거르기 */
+/* filter 30세 이상만 */
+    console.log(
+        _filter(users, function(user) {
+            return user.age > 30
+        })
+    )
+
+
+    // #################################################
+
+/* reject 30세 이상을 제외한 */
+    // reject의 filter 두번째 인자를 추상화한 함수. 
+    // 함수를 받아서 리턴되는 함수가 실행될 때 인자값을 받은 함수에 넘겨주면서 반전시킴
+    function _negate(func) {
+        return function(val) {
+            return !func(val)
+        }
+    }
+
+    // function _reject(data, fn) {
+    //     return _filter(data, function(val) {
+    //         return !fn(val)
+    //     })
+    // }
+
+    // _negate함수를 사용해서 아래처럼 추상화
+
+    function _reject(data, fn) {
+        return _filter(data, _negate(fn))
+    }
+
+
+    console.log(
+        _reject(users, function(user) {
+            return user.age > 30
+        })
+    )
+
+
+    // #################################################
+
+
+
+/* compact 0 null fale는 사라지고 정수와 오브젝트만 남는 함수 */
+    // var compact = curryr_filter(_identity)
+    console.log(
+        compact([1, 2, 0, false, null, {}])
+    )
+
+
+    // #################################################
+
+
+/* 3. 수집하기 */
+/* find 배열안의 값이 돌면서 찾는 값을 만나면 그 1개를 꺼냄 */
+    // function _find(list, fn) {
+    //     let keys = _keys(list);
+    //     for(let i = 0; i < keys.length; i++) {
+    //         let val = list[keys[i]];
+    //         if(fn(val)) return val
+    //     }
+    // }
+
+    // let c_find = _curryr(function(list, fn) {
+    //     let keys = _keys(list);
+    //     for(let i = 0; i < keys.length; i++) {
+    //         let val = list[keys[i]];
+    //         if(fn(val)) return val
+    //     }
+    // })
+
+
+    // console.log('?', _find({a: '1', b: '2', c: '3', d: '4'}, function(val) { return val === '3'}) )
+    console.log(
+        '첫번째 30세 이상인 값 하나', 
+        _find(users, function(val) { return val.age > 30}) 
+        )
+
+
+    // #################################################
+
+
+/* find 배열안의 값이 돌면서 찾는 값을 만나면 그 1개의 인덱스를 꺼냄 */
+    // function _find_index(list, fn) {
+    //     let keys = _keys(list);
+    //     for(let i = 0; i < keys.length; i++) {
+    //         let val = list[keys[i]];
+    //         if(fn(val)) return i
+    //     }
+    // }
+    
+    // let c_find_index = _curryr(function(list, fn) {
+    //     let keys = _keys(list);
+    //     for(let i = 0; i < keys.length; i++) {
+    //         let val = list[keys[i]];
+    //         if(fn(val)) return i
+    //     }
+    //     return -1;
+    // })
+
+    console.log(
+        '첫번째 30세 이하인 값 인덱스', 
+        c_find_index(users, function(val) { return val.age < 30}) 
+        )
+
+
+
+
+    // ex code)
+    console.log(
+        _get2(_find(users, function(user) {
+            return user.id === 5;
+        }), 'name')
+    )
+    
+    _go(users,
+        c_find(function(user) { return user.id == 3; }), //여기서 커리알로 감싸주지않으면 에러났음
+        _get2('name'),
+        console.log
+    )
+
+   
+    // #################################################
+
+    
+/* some 1개라도 만족하는게 있다면 */
+        function _some(data, fn) {
+            // fn이 만족하는인덱스를 찾아보고 찾아지느게 있으면 트루
+            return c_find_index(data, fn || _identity) != -1;
+        }
+        console.log( 
+            _some([1, 2, 3, 10, 20], function(val) {
+                return val > 30 //30보다 큰게 없는데 true나옴 
+            })
+        )
+
+
+
+    // #################################################
+
+
+
+
+/* every 모두 만족한다면 */
+        function _every(data, fn) {
+            return c_find_index(data, _negate(fn || _identity)) == -1;
+        }
+        
+        console.log(
+            _every([1, 2, 3, 4, 5], function(val) {
+                return val > 0 //true
+            })
+        )
+
+
+
+        // 썸과 에브리는 fn을 생략해도 동작해야함 || _identity 추가
+        console.log(
+            _some([1, 2, 0, 10])
+        )
+        console.log(
+            _some([null, false])
+        )
+        console.log(
+            _every([null, false])
+        )
 
 
 
@@ -88,10 +261,7 @@
 
 
 
-
-
-
-
+// --------------------------------------
 
 
 // _map([1,2,3,4 ], function(val){ console.log(val) })
@@ -114,11 +284,17 @@ function _curryr(fn) {
 
 
 
-const aa = _curryr(_map)
-console.log(aa)
+// const aa = _curryr(_map)
+// console.log(aa)
 
-aa([1,2,3,4], function(val) { console.log('1', val) })
-aa(function(val) { console.log('1', val) })([1,2,3,4])
+// aa([1,2,3,4], function(val) { console.log('1', val) })
+// aa(function(val) { console.log('1', val) })([1,2,3,4])
+
+
+
+console.clear();
+
+
 
 
 </script>
