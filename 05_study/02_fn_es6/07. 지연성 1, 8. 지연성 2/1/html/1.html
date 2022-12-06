@@ -1,8 +1,33 @@
 <script src="../lib/fx.js"></script>
 
+
+
+## 정리
+느긋한 L.range는 제네레이터로 만들어져있기 때문에 이터레이터 프로토콜을 따르고 있다 
+
+- 작동순서 
+레인지
+1. 어레이 생성 (array)
+2. 이터러블 객체만듦 (array iterator 객체)
+3. 순회 
+
+
+느긋한 레인지 (함수 자체가 .next를 하기전엔 아예 연산조차도 안함. 안에 실행자체를 안함)
+1. 이터러블 객체만듦
+2. .next() 시 순회
+
+때문에 메모리 낭비가 심하지않고 빠름. 
+
+
+
+
+
+
+
 ## range
 
 <script>
+  // 리미트까지 뽑아주는 함수
   var add = (a, b) => a + b;
 
   const range = l => {
@@ -19,9 +44,14 @@
   log(reduce(add, list));
 </script>
 
+
+
+
+
 ## 느긋한 L.range
 
 <script>
+  // 느긋한 레인지는 *로 만들었기 떄문에 무한을 넣어도 됨. 
   const L = {};
   L.range = function* (l) {
     let i = -1;
@@ -31,8 +61,8 @@
   };
 
   var list = L.range(4);
-  log(list);
-  log(reduce(add, list));
+  log('??리스트', list);
+  log('redu?', reduce(add, list));
 </script>
 
 <script>
@@ -44,12 +74,17 @@
 
   // test('range', 10, () => reduce(add, range(1000000)));
   // test('L.range', 10, () => reduce(add, L.range(1000000)));
-  console.clear();
+  // console.clear();
 </script>
+
+
+
+
 
 ## take
 
 <script>
+  // 커리를 더한 테이크는 리미트숫자만큼 뽑아줌
   const take = curry((l, iter) => {
     let res = [];
     for (const a of iter) {
@@ -58,6 +93,9 @@
     }
     return res;
   });
+
+
+
   console.time('');
   go(
     range(10000),
@@ -66,6 +104,8 @@
     log);
   console.timeEnd('');
 
+
+
   console.time('');
   go(
     L.range(10000),
@@ -73,5 +113,7 @@
     reduce(add),
     log);
   console.timeEnd('');
+
+
 </script>
 

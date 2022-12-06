@@ -5,6 +5,11 @@
 - 느긋한 계산법
 - 제너레이터/이터레이터 프로토콜을 기반으로 구현
 
+
+
+
+
+
 ### L.map
 
 <script>
@@ -16,6 +21,12 @@
   // log(it.next());
   // log(it.next());
 </script>
+
+
+
+
+
+
 
 ### L.filter
 
@@ -30,9 +41,14 @@
 </script>
 
 
+
+
+
+
 ### range, map, filter, take, reduce 중첩 사용
 
 <script>
+
   const range = l => {
     let i = -1;
     let res = [];
@@ -41,6 +57,7 @@
     }
     return res;
   };
+
 
   const map = curry((f, iter) => {
     let res = [];
@@ -53,6 +70,7 @@
     return res;
   });
 
+
   const filter = curry((f, iter) => {
     let res = [];
     iter = iter[Symbol.iterator]();
@@ -63,6 +81,7 @@
     }
     return res;
   });
+
 
   const take = curry((l, iter) => {
     let res = [];
@@ -75,6 +94,7 @@
     }
     return res;
   });
+  
 
   const reduce = curry((f, acc, iter) => {
     if (!iter) {
@@ -98,7 +118,25 @@
   //   take(10),
   //   log);
   // console.timeEnd('');
+
+  /*
+    실행순서가 일반 array라면 
+    1. 레인지에서 나온 배열을 
+    2. 1번 결과을 맵이 받아 연산 후 리턴 하고 
+    3. 2번 결과를 받아 연산 후  리턴 
+    4. 3번 결과를 받아 연산 후 리턴
+
+    하지만 지연평가는 좀 다름
+    레인지, 맵, 필터는 연산 조차하지않고 바로 넘김 
+    1. 테이크함수가 실행되면  while !(cur = iter.next()  이 부분때문에 받은 iter쪽(필터)으로 넘어감
+    2. 필터에서도  while !(cur = iter.next() 이 부분때문에 받은 iter쪽(맵)으로 넘어감
+    3. 맵에서도  while !(cur = iter.next() 이 부분때문에 받은 iter쪽(레인지)으로 넘어감
+  */
 </script>
+
+
+
+
 
 ### L.range, L.map, L.filter, take, reduce 중첩 사용
 
@@ -149,6 +187,10 @@
   // console.timeEnd('L');
 </script>
 
+
+
+
+
 ### map, filter 계열 함수들이 가지는 결합 법칙
 
 - 사용하는 데이터가 무엇이든지
@@ -188,6 +230,12 @@
   //
   // log(join(' - ', a()));
 </script>
+
+
+
+
+
+
 
 ### take, find
 
