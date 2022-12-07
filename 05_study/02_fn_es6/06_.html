@@ -72,14 +72,15 @@
 
 
 
-
+1. es6 문법
+2. promise async/await
+3. 함수랑 객체 
 
 
     <script>
       const log = console.log;
 
-      const curry = f =>
-        (a, ..._) => _.length ? f(a, ..._) : (..._) => f(a, ..._);
+      const curry = f => (a, ..._) => _.length ? f(a, ..._) : (..._) => f(a, ..._);
 
       const map = curry((f, iter) => {
         let res = [];
