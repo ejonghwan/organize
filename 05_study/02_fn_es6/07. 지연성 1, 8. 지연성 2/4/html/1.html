@@ -31,6 +31,9 @@
   console.clear();
 </script>
 
+
+
+
 ## yield *
 
 <script>
@@ -53,6 +56,9 @@
   };
 </script>
 
+
+
+
 ## L.deepFlat
 
 만일 깊은 Iterable을 모두 펼치고 싶다면 아래와 같이 `L.deepFlat`을 구현하여 사용할 수 있습니다. `L.deepFlat`은 깊은 Iterable을 펼쳐줍니다.
@@ -68,9 +74,20 @@
   // [1, 2, 3, 4, 5];
 </script>
 
+
+
+
+
 ## L.flatMap
 
 <script>
+  /*
+    플랫맵을 만드는 이유: 시간복잡도 차이는 크게 없지만 플래툰().맵()을 하는걸 조금더 단순화시키려고
+    기존 배열 메서드 flatMap과 시간복잡도 차이는 그다지 크지않음
+    이유는 지연평가하는 L.flatMap도 모두 순회하기 때문 
+  */
+
+
   // log([[1, 2], [3, 4], [5, 6, 7]].flatMap(a => a));
   // log([[1, 2], [3, 4], [5, 6, 7]].flatMap(a => a.map(a => a * a)));
   // log(flatten([[1, 2], [3, 4], [5, 6, 7]].map(a => a.map(a => a * a))));
@@ -104,6 +121,9 @@
 </script>
 
 
+
+
+
 ## 2차원 배열 다루기
 
 <script>
@@ -122,6 +142,9 @@
     reduce(add),
     log);
 </script>
+
+
+
 
 
 ## 지연성 / 이터러블 중심 프로그래밍 실무적인 코드

@@ -1,5 +1,50 @@
 <script src="../lib/fx.js"></script>
 
+
+진짜중요!!
+콜백지옥을 해결하는 것보다 
+<h1>callback이랑 promise의 가장 다른점은 promsie는 일급으로 값이 될 수 있다는 점</h1>
+<p>Promise를 리턴하면 대기, 성공, 실패를 다루는 값</p>
+
+
+Promise는 resolve를 뱉어도 계속 .then으로 이어나갈 수 있는 값임 
+이 값은 함수로 전달할수도 있고 값으로 사용할수도 있는 일급함수임 
+
+
+
+
+## Composition 설명
+함수 합성을 안전하게 하는 도구 모나드(박스안의 값). js는 타입을 중시하며 사고하는 언어가 아니기 때문에 자세히 알 필요는 없지만 알아두면 도움됨 
+
+const g = a => a + 1;
+const f = a => a * a;
+
+// log(f(g(1)));
+// log(f(g()));
+
+위 두번째 로그처럼 인자값을 들어와야 값을 리턴하지만 인자값을 주지않으면 NaN이 찍힘. 이걸 안전하게 함수합성 하려면?  이 방법이 모나드
+
+
+모나드 방법1
+- []배열 박스로 감싼 후 실제 사용값을 forEach로 내보냄. 배열에 값이 없어도 에러나지않음
+[].map(g).map(f).forEach(r => log(r));
+
+모나드 방법2
+- Promise를 이용함. 방법1이랑 성질이 조금 다름. 비동기를 안전하게 하게 하기위함. 얘는 배열값이 없으면 NaN뜸
+Promise.resolve(2).then(g).then(f).then(r => log(r));
+
+
+
+
+## Kleisli Composition 설명
+오류가 있을 코드의 안전한 합성을 위해 있는 방법론
+
+
+
+
+
+
+
 # Promise
 
 ## 일급
@@ -31,6 +76,9 @@
   // log(b);
 </script>
 
+
+
+
 ## 일급 활용
 
 <script>
@@ -46,6 +94,9 @@
   const n2 = delay100(10);
   // log(go1(go1(n2, add5), log));
 </script>
+
+
+
 
 ## Composition
 
@@ -68,11 +119,15 @@
   ).then(g).then(f)/*.then(r => log(r))*/;
 </script>
 
+
+
+
 ## Kleisli Composition
 
 <script>
   // f . g
-  // f(g(x)) = f(g(x))
+  // f(g(x)) = f(g(x
+  ))
   // f(g(x)) = g(x)
 
   var users = [
