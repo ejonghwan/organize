@@ -39,8 +39,12 @@ Promise.resolve(2).then(g).then(f).then(r => log(r));
 ## Kleisli Composition 설명
 오류가 있을 코드의 안전한 합성을 위해 있는 방법론
 
+도중에 오류가 있을 시 실행하지않고 맨 뒤로 보낸다거나..
+맨아래 ex소스 참고
 
-
+Promise라면 중간에 if로 else 일때 Promise.reject() 해주면 됨. 
+그럼 다음으로 안넘어감.
+Promise.reject('no') 하고 마지막 go함수에 .catch()
 
 
 
@@ -126,8 +130,7 @@ Promise.resolve(2).then(g).then(f).then(r => log(r));
 
 <script>
   // f . g
-  // f(g(x)) = f(g(x
-  ))
+  // f(g(x)) = f(g(x))
   // f(g(x)) = g(x)
 
   var users = [
