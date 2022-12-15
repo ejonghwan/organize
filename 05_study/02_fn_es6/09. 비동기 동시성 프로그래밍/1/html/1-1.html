@@ -43,9 +43,13 @@ Promise.resolve(2).then(g).then(f).then(r => log(r));
 맨아래 ex소스 참고
 
 Promise라면 중간에 if로 else 일때 Promise.reject() 해주면 됨. 
-그럼 다음으로 안넘어감.
+그럼 다음으로 안넘어감. (그 다음 함수들은 취소함)
 Promise.reject('no') 하고 마지막 go함수에 .catch()
 
+
+혹은 no를 넘겨주고 take같은 값을 보여주는 함수에서 
+.catch(e => e === 'no' ? recur() : Promise.reject('진짜 에러남') ) 
+이런식으로 분기처리도 가능함.
 
 
 

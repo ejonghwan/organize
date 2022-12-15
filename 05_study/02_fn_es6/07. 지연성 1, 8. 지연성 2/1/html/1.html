@@ -34,6 +34,7 @@
     let i = -1;
     let res = [];
     while (++i < l) {
+      console.log('range: ', i)
       res.push(i);
     }
     return res;
@@ -56,20 +57,21 @@
   L.range = function* (l) {
     let i = -1;
     while (++i < l) {
+      console.log('l.range: ', i)
       yield i;
     }
   };
 
   var list = L.range(4);
-  log('??리스트', list);
-  log('redu?', reduce(add, list));
+  // log('??리스트', list);
+  // log('redu?', reduce(add, list));
 </script>
 
 <script>
   function test(name, time, f) {
-    console.time(name);
+    // console.time(name);
     while (time--) f();
-    console.timeEnd(name);
+    // console.timeEnd(name);
   }
 
   // test('range', 10, () => reduce(add, range(1000000)));
@@ -95,24 +97,25 @@
   });
 
 
+  // console.clear();
 
-  console.time('');
+  console.time('11');
   go(
     range(10000),
     take(5),
     reduce(add),
     log);
-  console.timeEnd('');
+  console.timeEnd('11');
 
 
 
-  console.time('');
+  console.time('22');
   go(
     L.range(10000),
     take(5),
     reduce(add),
     log);
-  console.timeEnd('');
+  console.timeEnd('22');
 
 
 </script>
