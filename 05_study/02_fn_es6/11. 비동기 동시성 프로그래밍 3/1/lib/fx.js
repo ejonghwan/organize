@@ -1,7 +1,6 @@
 const log = console.log;
 
-const curry = f =>
-  (a, ..._) => _.length ? f(a, ..._) : (..._) => f(a, ..._);
+const curry = f => (a, ..._) => _.length ? f(a, ..._) : (..._) => f(a, ..._);
 
 const isIterable = a => a && a[Symbol.iterator];
 

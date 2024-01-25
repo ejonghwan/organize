@@ -160,23 +160,28 @@
                     title: '타이틀 1',
                     conts: 'conts',
                     id: 0
-                }, {
+                }, 
+                {
                     title: '타이틀 2',
                     conts: 'conts',
                     id: 1
-                }, {
+                }, 
+                {
                     title: '타이틀 3',
                     conts: 'conts',
                     id: 2
-                }, {
+                },
+                {
                     title: '타이틀 4',
                     conts: 'conts',
                     id: 3
-                }, {
+                },
+                {
                     title: '타이틀 5',
                     conts: 'con<br />ts',
                     id: 4
-                }, {
+                },
+                {
                     title: '타이틀 6',
                     conts: 'conts',
                     id: 5
@@ -187,16 +192,21 @@
             var input = document.querySelector('.title-input')
             var textarea = document.querySelector('.conts-input')
             var result = document.querySelector('.result > ul')
+
+
             // load 시
             createDOM(result, info)
+
+
             // enterEvent(textarea) click 시
             btn.addEventListener('click', function (e) {
                 e.preventDefault();
                 var titleData = input.value
                 var contsData = textarea.value
+
                 contsData = contsData.replace(/(?:\r\n|\r|\n)/g, '<br />')
-                if (titleData === '' && contsData === '') 
-                    return console.log('nodata')
+                if (titleData === '' && contsData === '') return console.log('nodata')
+
                 id++
                 info.push({title: titleData, conts: contsData, id})
                 input.value = ''
@@ -204,6 +214,10 @@
                 input.focus()
                 createDOM(result, info)
             })
+
+
+
+
             window.addEventListener('dblclick', function (e) {
                 var getId = parseInt(e.target.parentNode.parentNode.getAttribute('data-id')) //data-id값
                 modify(e, getId)
@@ -228,7 +242,9 @@
                 }
             })
             function createDOM(ele, dataList) {
+
                 ele.innerHTML = '';
+
                 dataList.map(function (val, i) {
                     ele.innerHTML += `
                         <li data-id="${val.id}">
@@ -248,12 +264,15 @@
                         </li>
                         `
                 })
+
                 var del = document.querySelectorAll('.del')
+
                 for (var i = 0; i < del.length; i++) {
                     del[i].addEventListener('click', function () {
                         console.log(this)
                     })
                 }
+                
             }
 
             // function createDOM(ele, dataList) {  ele.innerHTML = ''; for(var i = 0; i <
