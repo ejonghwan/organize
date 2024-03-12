@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body { background-color: #2a2b2c; color: #fff; }
+        section { height: 500px; border-bottom: 1px solid #0098f0; }     
+        
+    </style>
+</head>
+<body>
+
+    <div class="state"></div>
+    
+    <a href="./이벤트 위임.html">asdasdasd</a>
+    <a href="https://www.naver.com">nnn</a>
+
+    <section>1</section>
+    <section>1</section>
+    <section class="target t">1 target 1</section>
+    <section>1</section>
+    <section>1</section>
+    <section>1</section>
+    <section class="target tt">1 target 2</section>
+    <section>1</section>
+
+    <!-- 아코디언 테스트 완료.  -->
+    <!-- <div id="acco_test">
+        <div class="acco_item">
+            <button type="button" class="acco_head"><strong class="tit">aco head test</strong></button>
+            <ul class="acco_body">
+                <li>aco body test</li>
+                <li>aco body test</li>
+                <li>aco body test</li>
+                <li>aco body test</li>
+                <li>aco body test</li>
+                <li>aco body test</li>
+            </ul>
+        </div>
+        <div class="acco_item">
+            <button type="button" class="acco_head"><strong class="tit">aco head test</strong></button>
+            <ul class="acco_body">
+                <li>aco body test</li>
+                <li>aco body test</li>
+                <li>aco body test</li>
+                <li>aco body test</li>
+                <li>aco body test</li>
+                <li>aco body test</li>
+            </ul>
+        </div>
+        <div class="acco_item">
+            <button type="button" class="acco_head"><strong class="tit">aco head test</strong></button>
+            <ul class="acco_body">
+                <li>aco body test</li>
+                <li>aco body test</li>
+                <li>aco body test</li>
+                <li>aco body test</li>
+                <li>aco body test</li>
+                <li>aco body test</li>
+            </ul>
+        </div>
+        <div class="acco_item">
+            <button type="button" class="acco_head"><strong class="tit">aco head test</strong></button>
+            <ul class="acco_body">
+                <li>aco body test</li>
+                <li>aco body test</li>
+                <li>aco body test</li>
+                <li>aco body test</li>
+                <li>aco body test</li>
+                <li>aco body test</li>
+            </ul>
+        </div>
+    </div> -->
+
+
+
+
+    <script>
+        
+    //#######################################
+
+        // const L = {}
+
+        // L.map = function* (f, iter) {
+        //   for (let item of iter) {
+        //     yield f(item)
+        //   }
+        // }
+
+        // L.filter = function* (f, iter) {
+        //   for (let item of iter) {
+        //     if(f(item)) yield item
+        //   }
+        // }
+
+        // L.take = function* (limit, iter) {
+        //   for (let item of iter) {
+        //     yield item
+        //     if (!--limit) break
+        //   }
+        // }
+
+        // // 엄격한 평가 함수 모음
+        // const _ = {}
+
+        // _.take = function(limit, iter) {
+        //   const result = []
+        //   for (let item of iter) {
+        //     result.push(item)
+        //     if (result.length === limit) return result
+        //   }
+        // }
+
+
+
+            // function testfn(...aa) {
+            //     console.log('clo inner')
+            //     return function(e, ...arg) {
+            //         console.log('closer', e, arg, ...aa)
+            //     }
+            // }
+            // window.addEventListener('click', testfn('asdsasds', 'ttttttt'))
+
+            // function* aa() {
+            //     yield 1;
+            //     yield 2;
+            // }
+            // const test = aa();
+            // console.log(test.next().value)
+            // console.log(test.next().value)
+            let arr = ['aa', 'bb', 'cc', 'dd', 'ee'];
+            let iter = arr[Symbol.iterator]();
+            // while(true) {
+            //     if(iter.next().done) return;
+            //     console.log(1)
+            //     // console.log('??', iter.next());
+            // };
+
+            function* ge(fn, it) {
+                for(let item of it) {
+                    yield fn(item)
+                };
+            };
+            
+            let getest = ge((x) => { 
+                console.log(x)
+            }, iter);
+
+            // console.log(getest)
+            const hoho = () => {
+                for(let i = 0; i < 1; i++) {
+                    // console.log(i, getest.next().value)
+                    if(getest.next().done) break;
+                    
+                    // if(getest.next().value !== 'cc') console.log('?', getest.next().value) 
+                    getest.next();
+                }
+            }
+
+            const result = hoho();
+            // console.log('re?', result);
+        
+
+
+        // ##############################
+
+            const tt = (fn, g) => {
+                return x => {
+                    return fn( g(x) )//fn의 arg로 g함수의 값을 넘김. g함수의 인자는 클로저의 인자
+                }
+            }
+
+            // const gg = n => n === 3 ? 'ok' : 'no' // g의 인자는 x로 전달됨
+            // const gogo = tt(x => console.log(x), gg) // 첫번째 인자가 fn, 두번째 인자가 g인데.. g의 arg는 x로 전달됨
+
+            // gogo(4)
+
+
+            // 좀더쉽게
+            const gogogo = tt(
+                x => console.log(x), 
+                n => n === 3 ? '3임' : '3아님'    
+            )
+            // gogogo(3)
+
+
+            // #######################################
+
+
+ 
+            
+            const ar = [{ na: 'aa', ag: 3 }, { na: 'bb', ag: 57 }, { na: 'cc', ag: 22 }, ]
+
+            const a = f => (arg, ..._) => f(arg, ..._); 
+            const bb = a( (aa, ...b) => b.forEach( fn => {
+                let abc = [];
+                abc = fn( abc );
+                console.log(abc)
+                return abc;
+                
+            }) )
+            
+            let re = bb(
+                ar,
+                x => x.filter(it => it.ag > 20),
+                x => x.filter(it => it.na === 'bb'),
+                // x => x.map(it => it),
+            )
+
+            console.log('re?', re);
+
+
+            console.clear();
+            const arrr = ['aa', 'bb', 'cc']
+            const gogo = list => list.reduce((re, val, i) => {
+                console.log(i, re, val);
+                return re
+            })
+
+            console.log('z', 
+                gogo(
+                    arrr.map(a => a),
+                    x => x.filter(a => 'bb'),
+                )
+            )
+
+
+
+
+
+
+
+
+
+
+            function _reduce(fn, acc, iter) {
+                if(arguments.length === 2) {
+                    iter = iter[Symbol.iterator]();
+                    acc = iter.next().value;
+                }
+                for(const a of iter) {
+                    // iter는 fs 함수들.. a는 들어온 함수들
+                    acc = fn(acc, a)
+                }
+                
+                return acc;
+            }
+
+
+            const _go = (a, ...fs) => _reduce((a, f) => f(a), a, fs)
+
+            
+            // acc = fn(acc, a) //reduce 내부 
+            // function _go(a, ...fs) {
+            //     return _reduce(function(a, f) {
+            //         return f(a);
+            //     }, a, fs);
+            // };
+
+
+            console.log(
+                _go(
+                    ar,
+                    x => x.filter(it => it.ag > 20),
+                    x => x.filter(it => it.na === 'bb')
+                )
+            )
+
+
+
+
+            // const abb = (f) => (n) => f(n);
+            // const abb1 = abb((a) => { return ar.filter(i => i.ag > 20) }) 
+            // console.log( abb1(ar) )
+
+
+
+
+
+
+
+
+
+
+            function ta(f) {
+                return function(a, ..._) {
+                    return _.length ? f(a, ..._) : function(..._) {
+                        return f(a, ..._)
+                    }
+                }
+            }
+
+            const o1 = ta(function(a, ..._) { console.log('a', a, _) }) 
+            const o2 = o1(['a','b'])
+            // const o3 = o2((x) => { console.log(x) }, (x) => { console.log(x) })
+            
+
+            // try{
+            //     const curry = f => (a, ..._) => _.length ? f(a, ..._) : (..._) => f(a, ..._);
+            //     // 1. 커링 함수
+            //     // 2. 맵 함수
+            //     const Lmap = curry((a, b) => {
+
+            //     })
+
+            //     go( 
+            //         [],    
+            //         Lmap(), 
+            //         Lmap(),
+            //         take()
+            //     )
+
+            //     Lmap(() => {})
+            // } catch(e){ console.log(e) }
+
+
+
+                
+            // request
+            const res = [{name: 'aa', age: 30}, {name: 'bb', age: 22}, {name: 'cc', age: 35}, {name: 'dd', age: 66}]
+            const req = () => initialState.list.push(...res) 
+            // state test
+            const initialState = {
+                list: [],
+            }
+
+            // view
+            const stateTest = {
+                var: {
+                    wrap: document.querySelector('.state'),
+                    btns: null
+                },
+                init() {
+                    this.render()
+                    console.log(initialState.list)
+
+                    const d = new Promise((res, rej) => {
+                        try {
+                            setTimeout(() => {
+                                req();
+                                res();
+                            }, 1500)
+                        } catch(e) { 
+                            rej(e) 
+                        }
+                        
+                    })
+
+                    d.then(() => {
+                        this.render()
+                    }).then(() => {
+                        this.var.btns = document.querySelectorAll('button')
+                        window.addEventListener('click', this.update.bind(this))
+                        
+                    })
+
+                },
+                
+                render() {
+                    let t = '';
+                    initialState.list.forEach(item => t += `
+                        <div>
+                            <span>${item.name}</span>: 
+                            <span>${item.age}</span>
+                            <button type="button">${item.name}</button>
+                        </div>
+                    `)
+                    
+                    this.var.wrap.innerHTML = t;  
+                },
+                
+                update(e) {
+                    res.map(data => {
+                        if(data.name === e.target.textContent) data.age++;
+                    })
+                    this.render()
+                   
+                }
+            }
+            stateTest.init();
+           
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+            const ob = (target, cb) => {
+                const inter = new IntersectionObserver(entries => {
+                    // console.log(entries)
+                    entries.forEach(ent => {
+                        if(ent.isIntersecting) {
+                            // console.log(ent)
+                            cb('a');
+                        }
+                    })
+                })
+
+                inter.observe(target)
+            }
+
+            const inc = n => (clo) => console.log(n++, clo)
+            ob(document.querySelector('.target.t'), inc(5))
+            
+
+
+
+
+            // const evt = (...e) => (x, ...t) => console.log('e: ', e, 'x: ', x, 't: ', t);
+            // addEventListener('click', evt(1,2,3))
+
+
+
+
+
+
+            const onObj = {
+                init() {
+                    
+                },
+
+                // on: {
+                //     testfn() {
+                //         console.log('test')
+                //     }
+                // }
+
+                on(name, cb) {
+                    if(name === 'testfn') addEventListener('resize', () => cb())
+                }
+                
+            }
+
+            // console.log(onObj.on)
+            onObj.on("testfn", function() {
+                console.log('hoho')
+            })
+
+
+
+    </script>
+</body>
+</html>

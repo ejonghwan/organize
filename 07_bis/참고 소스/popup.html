@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+
+        // 추천모델 팝업
+            .pt_model_pop#modal03 {
+                z-index:200; position:absolute; display: none; left:50%; transform:translateX(-50%); @include vw-pc(width, 1440); @include vw-pc(border-radius, 0); background-color:#fff;
+
+                .pt_modal__content {
+                    /*@include vw-pc(width, 591);*/ width: 100%; @include vw-pc(margin, 0 auto); @include vw-pc(padding, 90 40 81);
+                    .sec_model.popup {
+                        .pt_modal {
+                            position: relative;
+                        }
+                    }
+                }
+                
+                .btn_close {
+                    position:absolute; @include vw-pc(top, 19); @include vw-pc(right, 24); @include vw-pc(width,24); @include vw-pc(height,40);
+
+                    &::before {content:""; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%) rotate(45deg); @include vw-pc(width,24); @include vw-pc(height,1); background-color:#000;}
+                    &::after {content:""; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%) rotate(135deg); @include vw-pc(width,24); @include vw-pc(height,1); background-color:#000;}
+                }
+            }
+
+
+    </style>
+    
+
+    <!-- 팝업 버튼 -->
+    <a href="#" class="pt_btn_noti model_2"  data-role="btnModal" data-target="#modal03" data-omni-type="microsite" data-omni="sec:event:system-air-conditioners:detailmore_pod-notice" title="모델 추천 팝업열기">쉽게 비교하기</a>
+
+
+    <!-- 팝업 컨텐츠 -->
+    <div class="pt_model_pop" id="modal03" tabindex="0">
+        <!-- <div class="pt_modal popup"> -->
+            <div class="pt_modal__content">
+                <!-- 슬라이드 -->
+                <section class="sec_model popup">
+                    <div class="pt_model">
+                        <div class="pt_model__title-box">
+                            <h3 class="pt_model__title-box--title">에어컨 라인업별 추천 모델</h3>
+                        </div>
+                        <!-- nav -->
+                        <div class="swiper-container pt_model__swiper--nav-wrap">
+                            <div class="swiper-wrapper pt_model__swiper--nav">
+                                <!-- slide 1 -->
+                                <div class="swiper-slide pt_model__swiper--nav-item active">
+                                    <button type="button" data-omni-type="microsite" data-omni="sec:event:air-contioners:tab_gallery">무풍 갤러리</button>
+                                </div>
+                                <!-- slide 2 -->
+                                <div class="swiper-slide pt_model__swiper--nav-item">
+                                    <button type="button" data-omni-type="microsite" data-omni="sec:event:air-contioners:tab_classic">무풍 클래식</button>
+                                </div>
+                                <!-- slide 3 -->
+                                <div class="swiper-slide pt_model__swiper--nav-item">
+                                    <button type="button" data-omni-type="microsite" data-omni="sec:event:air-contioners:tab_q9000"><span class="en">Q9000</span></button>
+                                </div>
+                                <!-- slide 4 -->
+                                <div class="swiper-slide pt_model__swiper--nav-item model_2_target">
+                                    <button type="button" data-omni-type="microsite" data-omni="sec:event:air-contioners:tab_system">시스템에어컨</button>
+                                </div>
+                                <!-- slide 5 -->
+                                <div class="swiper-slide pt_model__swiper--nav-item">
+                                    <button type="button" data-omni-type="microsite" data-omni="sec:event:air-contioners:tab_system_infinte">시스템에어컨 <span class="en">Infinite Line</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //nav -->
+                        <!-- content -->
+                        <div class="swiper-container pt_model__swiper">
+                            <div class="swiper-wrapper pt_model__swiper--wrapper">
+                                <!-- slide 1 -->
+                                <div class="swiper-slide pt_slide active">
+                                    <div class="pt_slide__img-box">
+                                        <img src="../../is/images/model/2401/wac_option_model_line_01_pc.png" alt="거실에 놓여있는 BESPOKE 무풍에어컨 갤러리 청정 (58.5 ㎡ + 18.7 ㎡) 이미지" class="m_hide" loading="lazy" />
+                                        <img src="../../is/images/model/2401/wac_option_model_line_01_mo.png" alt="거실에 놓여있는 BESPOKE 무풍에어컨 갤러리 청정 (58.5 ㎡ + 18.7 ㎡) 이미지" class="m_show" loading="lazy" />
+                                    </div>
+                                    <div class="pt_slide__txt-box">
+                                        <h4 class="pt_slide__txt-box--title">
+                                            <span class="en">BESPOKE</span> 무풍에어컨 갤러리<br />청정 <span class="en">(58.5 ㎡ + 18.7 ㎡)</span>
+                                        </h4>
+                                        <p class="pt_slide__txt-box--code">AF18CX839WSRT</p>
+                                        <ul class="pt_slide__txt-box--ico-wrap">
+                                            <li class="pt_slide__txt-box--ico-item">
+                                                <div class="pt_slide__txt-box--ico">
+                                                    <img src="../../is/images/model/2401/wac_option_model_line_ico_01_pc.png" alt="" class="m_hide" loading="lazy" />
+                                                    <img src="../../is/images/model/2401/wac_option_model_line_ico_01_mo.png" alt="" class="m_show" loading="lazy" />
+                                                </div>
+                                                <p class="pt_slide__txt-box--txt">와이드<br />무풍냉방</p>
+                                            </li>
+                                            <li class="pt_slide__txt-box--ico-item">
+                                                <div class="pt_slide__txt-box--ico">
+                                                    <img src="../../is/images/model/2401/wac_option_model_line_ico_02_pc.png" alt="" class="m_hide" loading="lazy" />
+                                                    <img src="../../is/images/model/2401/wac_option_model_line_ico_02_mo.png" alt="" class="m_show" loading="lazy" />
+                                                </div>
+                                                <p class="pt_slide__txt-box--txt">고효율 에너지<br />맞춤 절전</p>
+                                            </li>
+                                            <li class="pt_slide__txt-box--ico-item">
+                                                <div class="pt_slide__txt-box--ico">
+                                                    <img src="../../is/images/model/2401/wac_option_model_line_ico_03_pc.png" alt="" class="m_hide" loading="lazy" />
+                                                    <img src="../../is/images/model/2401/wac_option_model_line_ico_03_mo.png" alt="" class="m_show" loading="lazy" />
+                                                </div>
+                                                <p class="pt_slide__txt-box--txt">하이패스<br />서큘 냉방</p>
+                                            </li>
+                                        </ul>
+                                        <!-- <p class="pt_slide__txt-box--btn-wrap">
+                                            <a href="https://www.samsung.com/sec/air-conditioners/package-af18cx839wsr-d2c/AF18CX839WSRT/" data-omni-type="microsite" data-omni="sec:event:air-conditioners:goto_AF18CX839WSRT" title="무풍에어컨 구매하기 페이지로 이동(본 창으로 열림)" class="btn_common type_round buy_btn">구매하기</a>
+                                        </p>  -->
+                                    </div>
+                                    <div class="pt_slide__label-box type1">
+                                        <span>일반<br />에어컨</span>
+                                    </div>
+                                </div>
+                                <!-- //slide 1 -->
+                                <!-- slide 2 -->
+                                <div class="swiper-slide pt_slide">
+                                    <div class="pt_slide__img-box">
+                                        <img src="../../is/images/model/2401/wac_option_model_line_02_pc.png" alt="거실에 놓여있는 무풍에어컨 클래식 청정 (62.6 ㎡ + 18.7 ㎡) 이미지" class="m_hide" loading="lazy" />
+                                        <img src="../../is/images/model/2401/wac_option_model_line_02_mo.png" alt="거실에 놓여있는 무풍에어컨 클래식 청정 (62.6 ㎡ + 18.7 ㎡) 이미지" class="m_show" loading="lazy" />
+                                    </div>
+                                    <div class="pt_slide__txt-box">
+                                        <h4 class="pt_slide__txt-box--title">
+                                            무풍에어컨 클래식 청정<br /><span class="en">(62.6 ㎡ + 18.7 ㎡)</span>
+                                        </h4>
+                                        <p class="pt_slide__txt-box--code ">AF19B7932RFRT</p>
+                                        <ul class="pt_slide__txt-box--ico-wrap">
+                                            <li class="pt_slide__txt-box--ico-item">
+                                                <div class="pt_slide__txt-box--ico">
+                                                    <img src="../../is/images/model/2401/wac_option_model_line_ico_04_pc.png" alt="" class="m_hide" loading="lazy" />
+                                                    <img src="../../is/images/model/2401/wac_option_model_line_ico_04_mo.png" alt="" class="m_show" loading="lazy" />
+                                                </div>
+                                                <p class="pt_slide__txt-box--txt">직바람 없는<br />무풍냉방</p>
+                                            </li>
+                                            <li class="pt_slide__txt-box--ico-item">
+                                                <div class="pt_slide__txt-box--ico">
+                                                    <img src="../../is/images/model/2401/wac_option_model_line_ico_05_pc.png" alt="" class="m_hide" loading="lazy" />
+                                                    <img src="../../is/images/model/2401/wac_option_model_line_ico_05_mo.png" alt="" class="m_show" loading="lazy" />
+                                                </div>
+                                                <p class="pt_slide__txt-box--txt">하이패스<br />회오리 냉방</p>
+                                            </li>
+                                            <li class="pt_slide__txt-box--ico-item">
+                                                <div class="pt_slide__txt-box--ico">
+                                                    <img src="../../is/images/model/2401/wac_option_model_line_ico_06_pc.png" alt="" class="m_hide" loading="lazy" />
+                                                    <img src="../../is/images/model/2401/wac_option_model_line_ico_06_mo.png" alt="" class="m_show" loading="lazy" />
+                                                </div>
+                                                <p class="pt_slide__txt-box--txt">이지케어<br />5단계</p>
+                                            </li>
+                                        </ul>
+                                        <!-- <p class="pt_slide__txt-box--btn-wrap">
+                                            <a href="https://www.samsung.com/sec/air-conditioners/package-af19b7932rfr-d2c/AF19B7932RFRT/" data-omni-type="microsite" data-omni="sec:event:air-conditioners:goto_AF19B7932RFRT" title="무풍에어컨 클래식 청정 구매하기 페이지로 이동(본 창으로 열림)" class="btn_common type_round buy_btn">구매하기</a>
+                                        </p> -->
+                                    </div>
+                                    <div class="pt_slide__label-box type1">
+                                        <span>일반<br />에어컨</span>
+                                    </div>
+                                </div>
+                                <!-- //slide 2 -->
+                                <!-- slide 3 -->
+                                <div class="swiper-slide pt_slide">
+                                    <div class="pt_slide__img-box">
+                                        <img src="../../is/images/model/2401/wac_option_model_line_03_pc.png" alt="거실에 놓여있는 에어컨 모델 Q9000 (62.6 ㎡ + 18.7 ㎡) 이미지" class="m_hide" loading="lazy" />
+                                        <img src="../../is/images/model/2401/wac_option_model_line_03_mo.png" alt="거실에 놓여있는 에어컨 모델 Q9000 (62.6 ㎡ + 18.7 ㎡) 이미지" class="m_show" loading="lazy" />
+                                    </div>
+                                    <div class="pt_slide__txt-box">
+                                        <h4 class="pt_slide__txt-box--title">
+                                            에어컨 <span class="en">Q9000<br />(62.6 ㎡ + 18.7 ㎡)</span>
+                                        </h4>
+                                        <p class="pt_slide__txt-box--code ">AF19B6474WSRT</p>
+                                        <ul class="pt_slide__txt-box--ico-wrap">
+                                            <li class="pt_slide__txt-box--ico-item">
+                                                <div class="pt_slide__txt-box--ico">
+                                                    <img src="../../is/images/model/2401/wac_option_model_line_ico_05_pc.png" alt="" class="m_hide" loading="lazy" />
+                                                    <img src="../../is/images/model/2401/wac_option_model_line_ico_05_mo.png" alt="" class="m_show" loading="lazy" />
+                                                </div>
+                                                <p class="pt_slide__txt-box--txt">하이패스<br />회오리 냉방</p>
+                                            </li>
+                                            <li class="pt_slide__txt-box--ico-item">
+                                                <div class="pt_slide__txt-box--ico">
+                                                    <img src="../../is/images/model/2401/wac_option_model_line_ico_02_pc.png" alt="" class="m_hide" loading="lazy" />
+                                                    <img src="../../is/images/model/2401/wac_option_model_line_ico_02_mo.png" alt="" class="m_show" loading="lazy" />
+                                                </div>
+                                                <p class="pt_slide__txt-box--txt">바람문<br />컨트롤 절전</p>
+                                            </li>
+                                            <li class="pt_slide__txt-box--ico-item">
+                                                <div class="pt_slide__txt-box--ico">
+                                                    <img src="../../is/images/model/2401/wac_option_model_line_ico_06_pc.png" alt="" class="m_hide" loading="lazy" />
+                                                    <img src="../../is/images/model/2401/wac_option_model_line_ico_06_mo.png" alt="" class="m_show" loading="lazy" />
+                                                </div>
+                                                <p class="pt_slide__txt-box--txt">이지케어<br />4단계</p>
+                                            </li>
+                                        </ul>
+                                        <!-- <p class="pt_slide__txt-box--btn-wrap">
+                                            <a href="https://www.samsung.com/sec/air-conditioners/package-af19b6474wsr-d2c/AF19B6474WSRT/" data-omni-type="microsite" data-omni="sec:event:air-conditioners:goto_AF19B6474WSRT" title="에어컨 Q9000 구매하기 페이지로 이동(본 창으로 열림)" class="btn_common type_round buy_btn">구매하기</a>
+                                        </p> -->
+                                    </div>
+                                    <div class="pt_slide__label-box type3">
+                                        <span>일반<br />에어컨</span>
+                                    </div>
+                                </div>
+                                <!-- //slide 3 -->
+                                <!-- slide 4 -->
+                                <div class="swiper-slide pt_slide">
+                                    <div class="pt_slide__img-box">
+                                        <img src="../../is/images/model/2401/wac_option_model_line_04_pc.png" alt="거실 천장에 설치된 가정용 무풍 시스템에어컨 114.6 ㎡ 4실 (Wi-Fi 외장형) 이미지" class="m_hide" loading="lazy" />
+                                        <img src="../../is/images/model/2401/wac_option_model_line_04_mo.png" alt="거실 천장에 설치된 가정용 무풍 시스템에어컨 114.6 ㎡ 4실 (Wi-Fi 외장형) 이미지" class="m_show" loading="lazy" />
+                                    </div>
+                                    <div class="pt_slide__txt-box">
+                                        <h4 class="pt_slide__txt-box--title">
+                                            가정용 무풍 시스템에어컨<br /><span class="en">114.6 ㎡ 4실 (Wi-Fi 외장형)</span>
+                                        </h4>
+                                        <p class="pt_slide__txt-box--code ">AJ30AXS4P36SSY</p>
+                                        <ul class="pt_slide__txt-box--ico-wrap">
+                                            <li class="pt_slide__txt-box--ico-item">
+                                                <div class="pt_slide__txt-box--ico">
+                                                    <img src="../../is/images/model/2401/wac_option_model_line_ico_04_pc.png" alt="" class="m_hide" loading="lazy" />
+                                                    <img src="../../is/images/model/2401/wac_option_model_line_ico_04_mo.png" alt="" class="m_show" loading="lazy" />
+                                                </div>
+                                                <p class="pt_slide__txt-box--txt">직바람 없는<br />무풍냉방</p>
+                                            </li>
+                                            <li class="pt_slide__txt-box--ico-item">
+                                                <div class="pt_slide__txt-box--ico">
+                                                    <img src="../../is/images/model/2401/wac_option_model_line_ico_02_pc.png" alt="" class="m_hide" loading="lazy" />
+                                                    <img src="../../is/images/model/2401/wac_option_model_line_ico_02_mo.png" alt="" class="m_show" loading="lazy" />
+                                                </div>
+                                                <p class="pt_slide__txt-box--txt">최대 61%<br />절전냉방</p>
+                                            </li>
+                                            <li class="pt_slide__txt-box--ico-item">
+                                                <div class="pt_slide__txt-box--ico">
+                                                    <img src="../../is/images/model/2401/wac_option_model_line_ico_07_pc.png" alt="" class="m_hide" loading="lazy" />
+                                                    <img src="../../is/images/model/2401/wac_option_model_line_ico_07_mo.png" alt="" class="m_show" loading="lazy" />
+                                                </div>
+                                                <p class="pt_slide__txt-box--txt">무풍청정<br />살균필터</p>
+                                            </li>
+                                        </ul>
+                                        <!-- <p class="pt_slide__txt-box--btn-wrap">
+                                            <a href="https://www.samsung.com/sec/system-air-conditioners/package-aj30axs4p36ssy-d2c/AJ30AXS4P36SSY/"  data-omni-type="microsite" data-omni="sec:event:air-conditioners:goto_AJ30AXS4P36SSY" title="가정용 무풍 시스템 에어컨 구매하기 페이지로 이동(본 창으로 열림)" class="btn_common type_round buy_btn">구매하기</a>
+                                        </p> -->
+                                    </div>
+                                    <div class="pt_slide__label-box type2">
+                                        <span>시스템<br />에어컨</span>
+                                    </div>
+                                </div>
+                                <!-- //slide 4 -->
+                                <!-- slide 5 -->
+                                <div class="swiper-slide pt_slide">
+                                    <div class="pt_slide__img-box">
+                                        <img src="../../is/images/model/2401/wac_option_model_line_05_pc.png" alt="거실 천장에 설치된 BESPOKE 무풍 시스템에어컨 Infinite Line 83.3 ㎡ 3실 이미지" class="m_hide" loading="lazy" />
+                                        <img src="../../is/images/model/2401/wac_option_model_line_05_mo.png" alt="거실 천장에 설치된 BESPOKE 무풍 시스템에어컨 Infinite Line 83.3 ㎡ 3실 이미지" class="m_show" loading="lazy" />
+                                    </div>
+                                    <div class="pt_slide__txt-box">
+                                        <h4 class="pt_slide__txt-box--title">
+                                            <span class="en">BESPOKE</span> 무풍 시스템에어컨<br /><span class="en">Infinite Line 83.3 ㎡ 3실</span>
+                                        </h4>
+                                        <p class="pt_slide__txt-box--code ">AN23ASU3P26SSY</p>
+                                        <ul class="pt_slide__txt-box--ico-wrap">
+                                            <li class="pt_slide__txt-box--ico-item">
+                                                <div class="pt_slide__txt-box--ico">
+                                                    <img src="../../is/images/model/2401/wac_option_model_line_ico_08_pc.png" alt="" class="m_hide" loading="lazy" />
+                                                    <img src="../../is/images/model/2401/wac_option_model_line_ico_08_mo.png" alt="" class="m_show" loading="lazy" />
+                                                </div>
+                                                <p class="pt_slide__txt-box--txt">인피니트<br />디자인</p>
+                                            </li>
+                                            <li class="pt_slide__txt-box--ico-item">
+                                                <div class="pt_slide__txt-box--ico">
+                                                    <img src="../../is/images/model/2401/wac_option_model_line_ico_09_pc.png" alt="" class="m_hide" loading="lazy" />
+                                                    <img src="../../is/images/model/2401/wac_option_model_line_ico_09_mo.png" alt="" class="m_show" loading="lazy" />
+                                                </div>
+                                                <p class="pt_slide__txt-box--txt">엣지<br />라이팅</p>
+                                            </li>
+                                            <li class="pt_slide__txt-box--ico-item">
+                                                <div class="pt_slide__txt-box--ico">
+                                                    <img src="../../is/images/model/2401/wac_option_model_line_ico_04_pc.png" alt="" class="m_hide" loading="lazy" />
+                                                    <img src="../../is/images/model/2401/wac_option_model_line_ico_04_mo.png" alt="" class="m_show" loading="lazy" />
+                                                </div>
+                                                <p class="pt_slide__txt-box--txt">와이드<br />무풍냉방</p>
+                                            </li>
+                                        </ul>
+                                        <!-- <p class="pt_slide__txt-box--btn-wrap">
+                                            <a href="https://www.samsung.com/sec/system-air-conditioners/AN23BSU3P26SSY/AN23ASU3P26SSY/" data-omni-type="microsite" data-omni="sec:event:air-conditioners:goto_AN23ASU3P26SSY" title="무풍 시스템 에어컨 Infinite line 구매하기 페이지로 이동(본 창으로 열림)" class="btn_common type_round buy_btn">구매하기</a>
+                                        </p> -->
+                                    </div>
+                                    <div class="pt_slide__label-box type2">
+                                        <span>시스템<br />에어컨</span>
+                                    </div>
+                                </div>
+                                <!-- //slide 5 -->
+                            </div>
+            
+                            <div class="pt_model__swiper--control-box m_show">
+                                <div class="pt_model__swiper--pagenation"></div>
+                                <div class="pt_model__swiper--state play">
+                                    <button type="button" class="play">
+                                        <span class="blind">재생</span>
+                                    </button>
+                                    <button type="button" class="stop">
+                                        <span class="blind">정지</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //content -->
+                    </div>
+                
+                </section>
+                <!-- //슬라이드 -->
+            </div>
+            <a href="javascript:;" title="팝업 닫기" class="btn_close" data-role="closeModal" data-target="#modal03" style="color:#fff;"></a> 
+        <!-- </div> -->
+    </div>
+            
+
+
+
+
+    
+    <script>
+
+        import { modal } from './modules/modal';
+        modal.init();
+
+    </script>
+
+</body>
+</html>

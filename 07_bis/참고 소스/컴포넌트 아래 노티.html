@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <style>
+// 컴포넌트 아래 유의문구 
+.pt_component_noti {position: relative; @include vw-pc(margin, 0 auto 100); width:100%; max-width:1440px;}
+.pt_component_noti span {display:block; @include vw-pc(font-size, 16); @include vw-pc(line-height, 24); letter-spacing: -0.07em; text-align: left; color: #888;}
+
+
+// 구분있을떄 
+.sec_project_wrap.bespoke_jetair {
+    .inner_1440[data-page-content=air] {
+        .pt_component_noti {position: relative; @include vw-pc(margin, 0 auto 100); width:100%; max-width:1440px;}
+        .pt_component_noti span { @include vw-pc(padding, 0 60);}
+    }
+
+    .inner_1440[data-page-content=jet] {
+        .pt_component_noti {position: relative; @include vw-pc(margin, 0 auto 100); width:100%; max-width:1440px;}
+        .pt_component_noti span { @include vw-pc(margin-top, -70);}
+    }
+}
+
+
+@media screen and (max-width:768px) {
+    // 컴포넌트 아래 유의문구 
+    .pt_component_noti {@include vw-mo(margin, 50 auto 120);}
+    .pt_component_noti span {@include vw-mo(font-size, 21); @include vw-mo(line-height, 28);}
+
+    .inner_1440[data-page-content=jet] {
+        .pt_component_noti span { @include vw-mo(margin-top, -90);  @include vw-mo(padding, 0 20);}
+    }
+}
+    </style>
+    
+
+<!-- 여기 컴포넌트 있음  -->
+    
+<!-- split bespoke_jetair_2.txt -->
+<div class="sec_project_wrap bespoke_jetair event_wrap">
+
+    <!-- 노티부분 -->
+    <div class="inner_1440" data-page-content="jet">
+        <div class="pt_component_noti">
+            <span>* 기준가 대비 혜택가 할인율(쿠폰이 있는 경우, 기준가 대비 쿠폰적용가 할인율)</span>
+        </div>
+    </div>
+    <div class="inner_1440" data-page-content="air">
+        <div class="pt_component_noti">
+            <span>* 기준가 대비 혜택가 할인율(쿠폰이 있는 경우, 기준가 대비 쿠폰적용가 할인율)</span>
+        </div>
+    </div>
+    <!-- //노티부분 -->
+
+</div>
+
+
+</body>
+</html>

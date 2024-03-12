@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./swiper/swiper.css" />
+    <script src="./swiper/swiper.js"></script>
+    <title>Document</title>
+
+    <style>
+        * { margin:0; padding:0; box-sizing: border-box; }
+        ul, ol { list-style: none; }
+
+        /* .swiper_wrap {padding: 20px} */
+
+        .nav { padding: 20px; }
+        .nav .swiper-slide { display: flex; justify-content: center; align-items: center; border: 1px solid #000; cursor: pointer; width: 200px; height: 50px; }
+
+        .conts { padding: 20px; }
+        .conts .swiper-slide { border: 1px solid #000; cursor: pointer; width: 90vw; height: 100px; margin-top: 20px; margin-right: 20px;   }
+
+        .loop { padding: 20px; }
+        .loop .swiper-slide {  cursor: pointer; width: 200px; margin: 20px; height: 100px; /* border: 1px solid red; */
+            /* opacity: 0 !important;  */ 
+        }
+        .loop .swiper-slide .inner { background-color: aqua; height: 100%;; }
+        .loop .swiper-slide:last-child {margin-right: 0;}
+        /* .loop .swiper-slide:nth-child(1) { width: 20%; }
+        .loop .swiper-slide:nth-child(2) { width: 10%; }
+        .loop .swiper-slide:nth-child(3) { width: 30%; }
+        .loop .swiper-slide:nth-child(4) { width: 60%; }
+        .loop .swiper-slide:nth-child(5) { width: 30%; }
+        .loop .swiper-slide:nth-child(6) { width: 50%; } */
+        .loop .swiper-slide.swiper-slide-active {  padding: 0 20px; transform: scale(1.2); transition: 1s cubic-bezier(0.23, 1, 0.320, 1);} 
+        /* .loop .swiper-slide.swiper-slide-next { padding: 0 40px } */
+        /* .loop .swiper-slide.swiper-slide-prev { padding: 0 40px } */
+        /* .loop .swiper-slide-active {opacity: 1 !important;} */
+
+
+        .trans { padding: 20px; }
+        .trans .swiper-slide {  cursor: pointer; width: 300px; margin: 20px; height: 100px; /* border: 1px solid red; */
+            /* opacity: 0 !important;  */ background-color: rgb(54, 150, 150);
+        }
+        .trans .swiper-slide .inner { height: 100%; opacity: 0; transform: translateY(40px);  transition: 1s cubic-bezier(0.23, 1, 0.320, 1);  }
+        .trans .swiper-slide:last-child {margin-right: 0;}
+        .trans .swiper-slide.swiper-slide-active { transform: scale(1.2);  transition: 1s cubic-bezier(0.23, 1, 0.320, 1); } 
+        .trans .swiper-slide.swiper-slide-active .inner { transform: translateY(0); opacity: 1; }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="el_1">1</div>
+    <div class="el_2">2</div>
+    <div class="el_3">3</div>
+
+    <div class="swiper_wrap">
+        <!-- nav -->
+        <div class="swiper-container nav">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">menu_1</div>
+                <div class="swiper-slide">menu_2</div>
+                <div class="swiper-slide">menu_3</div>
+                <div class="swiper-slide">menu_4</div>
+                <div class="swiper-slide">menu_5</div>
+                <div class="swiper-slide">menu_6</div>
+            </div>
+            
+            <div class="swiper-pagination swiper-pagination-bullets"></div>
+            <div class="pt-swiper-prev"></div>
+            <div class="pt-swiper-next"></div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+        </div>    
+        <!-- //nav -->
+
+
+        <!-- conts -->
+        <div class="swiper-container conts">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">Slide 1</div>
+                <div class="swiper-slide">Slide 2</div>
+                <div class="swiper-slide">Slide 3</div>
+                <div class="swiper-slide">Slide 4</div>
+                <div class="swiper-slide">Slide 5</div>
+                <div class="swiper-slide">Slide 6</div>
+            </div>
+            
+            <div class="swiper-pagination swiper-pagination-bullets"></div>
+            <div class="pt-swiper-prev"></div>
+            <div class="pt-swiper-next"></div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+        </div>    
+        <!-- //conts -->
+
+
+          <!-- loop test -->
+          <div class="swiper-container loop">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="inner">hoho1</div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="inner">hoho2</div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="inner">hoho3</div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="inner">hoho4</div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="inner">hoho5</div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="inner">hoho6</div>
+                </div>
+            </div>
+            
+            <div class="swiper-pagination swiper-pagination-bullets"></div>
+            <div class="pt-swiper-prev"></div>
+            <div class="pt-swiper-next"></div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+        </div>    
+        <!-- //loop test -->
+
+
+
+          <!-- trans test -->
+          <div class="swiper-container trans">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="inner">hoho1</div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="inner">hoho2</div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="inner">hoho3</div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="inner">hoho4</div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="inner">hoho5</div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="inner">hoho6</div>
+                </div>
+            </div>
+            
+            <div class="swiper-pagination swiper-pagination-bullets"></div>
+            <div class="pt-swiper-prev"></div>
+            <div class="pt-swiper-next"></div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+        </div>    
+        <!-- //trans test -->
+    </div>
+
+
+    <script>
+
+ 
+
+        const ui = {
+            init() {
+                const contsSwiper = this.swiper_conts();
+                const navSwiper = this.swiper_nav();
+                const loopSwiper = this.swiper_loop();
+                const transSwiper = this.swiper_trans();
+                this.var.swiperIns = { contsSwiper, navSwiper }
+                // this.tp()
+            },
+
+
+            var: {
+                swiperIns: null,
+                navs: document.querySelector('.nav .swiper-slide'),
+            },
+
+            swiper_nav() {
+                let _this = this;
+                return  new Swiper(".nav", {
+                    slidesPerView: "auto",
+                    observer: true, // 팝업 등 숨겨져있는 상태에서 옵저버 
+                    observeParents: true, // 팝업 등 숨겨져있는 상태에서 옵저버 
+           
+                    // navigation: {
+                    //     prevEl: '.conts .pt-swiper-prev',
+                    //     nextEl: '.conts .pt-swiper-next',                
+                    // },
+                 
+                    autoplay: { // 오토플레이 모바일에서만 작동되게 하려면
+                        enabled: false,
+                    },
+                    breakpoints: {
+                        320: { // 320 이상
+                            slidesPerView: "auto",
+                            autoplay: { // 오토플레이 모바일에서만 작동되게 하려면
+                                enabled: true,
+                                delay: 3000,
+                            },
+                        },
+                        768: { // 768 이상
+                            slidesPerView: "auto",
+                        }
+                    },
+                    on: {
+                        slideChange: function() {}, // 슬라이드 변경 (오토는 불가)
+                        transitionEnd: function() {},  // 변경 후 (오토 가능)
+                        transitionStart: function() {
+                            // _this.contsMove(this.activeIndex)
+                        }, 
+                        click: function() {
+                            // console.log(this.clickedIndex)
+                            _this.contsMove(this.clickedIndex)
+                        },
+                      
+                        breakpoint: function () {  // 브렉포인트 지나갈때마다
+                            var that = this;
+                            setTimeout(function () {
+                                that.slideTo(0, 0);
+                            }, 150);
+                        },
+                        init: function() {},
+                    },
+                });
+
+            },
+            swiper_conts() {
+                let _this = this;
+                return new Swiper(".conts", {
+                    slidesPerView: "auto",
+                    observer: true, // 팝업 등 숨겨져있는 상태에서 옵저버 
+                    observeParents: true, // 팝업 등 숨겨져있는 상태에서 옵저버 
+                    
+
+                    navigation: {
+                        prevEl: '.test_1 .pt-swiper-prev',
+                        nextEl: '.test_1 .pt-swiper-next',                
+                    },
+                    pagination: {
+                        el: ".conts .swiper-pagination",
+                    },
+                    autoplay: { // 오토플레이 모바일에서만 작동되게 하려면
+                        enabled: false,
+                    },
+                    breakpoints: {
+                        320: { // 320 이상
+                            slidesPerView: "auto",
+                            autoplay: { // 오토플레이 모바일에서만 작동되게 하려면
+                                enabled: true,
+                                delay: 3000,
+                            },
+                        },
+                        768: { // 768 이하
+                            slidesPerView: "auto",
+                        }
+                    },
+                    on: {
+                        slideChange: function() {}, // 슬라이드 변경 (오토는 불가)
+                        transitionEnd: function() {},  // 변경 후 (오토 가능)
+                        transitionStart: function() {
+                            _this.navMove(this.activeIndex);
+                        },
+                        breakpoint: function () {  // 브렉포인트 지나갈때마다
+                            var that = this;
+                            setTimeout(function () {
+                                that.slideTo(0, 0);
+                            }, 150);
+                        },
+                        init: function() {},
+                    },
+                });
+
+            },
+
+            swiper_loop() {
+                let _this = this;
+                const abc = new Swiper(".loop.swiper-container", {
+                    slidesPerView: "auto",
+                    observer: true, // 팝업 등 숨겨져있는 상태에서 옵저버 
+                    observeParents: true, // 팝업 등 숨겨져있는 상태에서 옵저버 
+                    loop: true,
+                    centeredSlides: true,
+                    // spaceBetween: 30,
+                    // effect: 'fade',
+                    // autoplay: {
+                    //     delay: 3000,
+                    //     enabled: true,
+                    // },
+
+                    // navigation: {
+                    //     prevEl: '.test_1 .pt-swiper-prev',
+                    //     nextEl: '.test_1 .pt-swiper-next',                
+                    // },
+                    pagination: {
+                        el: ".loop .swiper-pagination",
+                    },
+                    breakpoints: {
+                        // 320: { // 320 이상
+                        //     slidesPerView: "auto",
+                        //     autoplay: { 
+                        //         enabled: false,
+                        //         delay: 5000,
+                        //     },
+                        // },
+                        768: { // 768 이상
+                            slidesPerView: 1,
+                        }
+                    },
+                    on: {
+                        init: function() {
+                            console.log(this)
+                            let that = this;
+                            this.hoho = _this.lastCallDebounce(() => {
+                                that.destroy(true)
+                                // _this.swiper_loop()
+                                // console.log('c')
+                                setTimeout(() => {
+                                    console.log('se', _this)
+                                    _this.swiper_loop()
+                                }, 500)
+                            }, 1500)
+                        },
+
+                        // breakpoint: function () {  // 브렉포인트 지나갈때마다
+                        //     var that = this;
+                        //     setTimeout(function () {
+                        //         that.slideTo(0, 0);
+                        //     }, 150);
+                        // },
+
+                        resize: function() {
+                            // console.log('re?', this)
+                            let that = this;
+                            // this.destroy(true)
+
+                            this.hoho();
+                        },
+
+                        // resize: _this.lastCallDebounce(() => {
+                        //     console.log(this)
+                        //     // this.swiper_loop.abc.destroy(true)
+                        // }, 2000)
+                        slideChange: function() {
+                            this.update();
+                        },
+                    },
+                    
+                });
+                return { abc }
+            },
+            
+
+            
+            swiper_trans() {
+                let _this = this;
+                const abc = new Swiper(".trans.swiper-container", {
+                    slidesPerView: "auto",
+                    observer: true, // 팝업 등 숨겨져있는 상태에서 옵저버 
+                    observeParents: true, // 팝업 등 숨겨져있는 상태에서 옵저버 
+                    loop: true,
+                    centeredSlides: true,
+                    // spaceBetween: 30,
+                    // effect: 'fade',
+                    // autoplay: {
+                    //     delay: 3000,
+                    //     enabled: true,
+                    // },
+
+                    // navigation: {
+                    //     prevEl: '.test_1 .pt-swiper-prev',
+                    //     nextEl: '.test_1 .pt-swiper-next',                
+                    // },
+                    pagination: {
+                        el: ".loop .swiper-pagination",
+                    },
+                    breakpoints: {
+                        // 320: { // 320 이상
+                        //     slidesPerView: "auto",
+                        //     autoplay: { 
+                        //         enabled: false,
+                        //         delay: 5000,
+                        //     },
+                        // },
+                        768: { // 768 이상
+                            slidesPerView: 1,
+                        }
+                    },
+                    on: {
+                        init: function() {
+                            console.log(this)
+                            let that = this;
+                            this.hoho = _this.lastCallDebounce(() => {
+                                that.destroy(true)
+                                // _this.swiper_loop()
+                                // console.log('c')
+                                setTimeout(() => {
+                                    console.log('se', _this)
+                                    _this.swiper_loop()
+                                }, 500)
+                            }, 1500)
+                        },
+
+                        // breakpoint: function () {  // 브렉포인트 지나갈때마다
+                        //     var that = this;
+                        //     setTimeout(function () {
+                        //         that.slideTo(0, 0);
+                        //     }, 150);
+                        // },
+
+                        resize: function() {
+                            // console.log('re?', this)
+                            let that = this;
+                            // this.destroy(true)
+
+                            this.hoho();
+                        },
+
+                        // resize: _this.lastCallDebounce(() => {
+                        //     console.log(this)
+                        //     // this.swiper_loop.abc.destroy(true)
+                        // }, 2000)
+                        slideChange: function() {
+                            this.update();
+                        },
+                    },
+                    
+                });
+                return { abc }
+            },
+            
+
+
+            navMove(idx) {
+                console.log('?nav move', idx)
+                this.var.swiperIns.navSwiper.slideTo(idx)
+            },
+
+            contsMove(idx) {
+                console.log('?conts move', idx)
+                this.var.swiperIns.contsSwiper.slideTo(idx)
+            },
+
+            navClickEvt(e) {
+                
+            },
+
+            lastCallDebounce(cb, delay) {
+                let timeout;
+                return args => {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => {
+                    cb(args);
+                }, delay);
+                };
+            },
+
+            tp() {
+                console.log('tp', this);
+                return 11
+            },
+            // tpp: {
+            //     aa: new Swiper(".loop.swiper-container", {
+            //         slidesPerView: 3,
+            //         observer: true, // 팝업 등 숨겨져있는 상태에서 옵저버 
+            //         observeParents: true, // 팝업 등 숨겨져있는 상태에서 옵저버 
+            //         loop: true,
+            //         // effect: 'fade',
+            //         autoplay: {
+            //             delay: 1000,
+            //             enabled: true,
+            //         },
+            //         pagination: {
+            //             el: ".loop .swiper-pagination",
+            //         },
+            //         breakpoints: {
+            //             768: { // 768 이상
+            //                 slidesPerView: 1,
+            //             }
+            //         },
+            //         on: {
+            //             init: function() {
+            //                 // console.log(this)
+            //             },
+            //             // breakpoint: function () {  // 브렉포인트 지나갈때마다
+            //             //     var that = this;
+            //             //     setTimeout(function () {
+            //             //         that.slideTo(0, 0);
+            //             //     }, 150);
+            //             // },
+            //             // resize: function() {
+            //             //     // console.log('re?', this)
+            //             //     let that = this;
+            //             //     // this.destroy(true)
+
+            //             //     const test = _this.lastCallDebounce(() => {
+            //             //         that.destroy(true)
+            //             //         _this.swiper_loop()
+            //             //         console.log('c')
+            //             //         // setTimeout(() => {
+            //             //         //     console.log('se', _this)
+            //             //         //     _this.swiper_loop()
+            //             //         // }, 500)
+            //             //     }, 2500)
+            //             // }
+            //             // resize: _this.lastCallDebounce(() => {
+            //             //     console.log(this)
+            //             //     // this.swiper_loop.abc.destroy(true)
+            //             // }, 2000)
+
+            //         },
+                    
+            //     })
+            // }
+        };
+
+        // console.log( ui.tpp.aa.classNames )
+        // ui.tpp.aa.destroy();
+
+        // addEventListener('resize', e => {
+        //     console.log(ui.tpp.aa)
+        // })
+
+
+
+        ui.init();
+
+        // #########################################################################
+
+
+
+         // conts swiper
+         const contentSwiper = new Swiper("", {
+                slidesPerView: "auto",
+                observer: true, // 팝업 등 숨겨져있는 상태에서 옵저버 
+                observeParents: true, // 팝업 등 숨겨져있는 상태에서 옵저버 
+                preloadImages: false,
+                lazy: true,
+                allowTouchMove: true, // pc 작동안되게
+                spaceBetween: 20, // 공백
+                navigation: {
+                    prevEl: '.test_1 .pt-swiper-prev',
+                    nextEl: '.test_1 .pt-swiper-next',                
+                },
+                a11y: {
+                    prevSlideMessage: '이전 슬라이드',
+                    nextSlideMessage: '다음 슬라이드',
+                    slideLabelMessage: '총 {{slidesLength}}장의 슬라이드 중 {{index}}번 슬라이드 입니다.',
+                },
+                autoplay: { // 오토플레이 모바일에서만 작동되게 하려면
+                    enabled: false,
+                },
+                breakpoints: {
+                    320: { // 320 이상
+                        slidesPerView: 1,
+                        autoplay: { // 오토플레이 모바일에서만 작동되게 하려면
+                            enabled: true,
+                            delay: 3000,
+                        },
+                    },
+                    768: { // 768 이상
+                        slidesPerView: "auto",
+                    }
+                },
+                on: {
+                    slideChange: function() {}, // 슬라이드 변경 (오토는 불가)
+                    transitionEnd: function() {},  // 변경 후 (오토 가능)
+                    transitionStart: function() {}, // 변경 시작 (오토 가능)
+                    slideNextTransitionStart: function(){ swiper.isEnd }, //다음슬라이드 시작 때 || 끝에 도착했는지
+                    slideNextTransitionEnd: function(){}, // 다음 슬라이드 이동 후 
+                    breakpoint: function () {  // 브렉포인트 지나갈때마다
+                        var that = this;
+                        setTimeout(function () {
+                            that.slideTo(0, 0);
+                        }, 150);
+                    },
+                    init: function() {},
+                },
+            });
+
+        
+
+        /* 
+            ### 스와이프 이슈 
+            1. perview auto 시 마지막 인덱스 못잡는 버그
+            https://github.com/nolimits4web/Swiper/issues/1716
+            -> swiper.isEnd 해결
+
+
+            2. 스와이프 auto 시 width값 안 맞아서 인디케이터에 하나 더 잡히는 이슈
+            -> padding 조금 줄여서 해결
+
+
+
+            3. 스와이프하면 오토플레이 멈추는 이슈. 
+            -> 스와이핑 했을 때 swiper.autoPlay.run() 강제로 줌. (play일때만)
+
+        */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+        // 객체 정리
+        let test = {
+            var: {
+                el_1: document.querySelector('.el_1'),
+                el_2: document.querySelector('.el_2'),
+                el_3: document.querySelector('.el_3')
+            },
+
+            log(arg) { console.log(arg); },
+
+            swiper_1() {
+                const swiper_ins = new Swiper('swiper1', {})
+                return { swiper_ins }
+            },
+
+            swiper_2() {
+                let _this = this;
+                const swiper_ins = new Swiper('swiper2', {
+                    on: {
+                        init() {
+                            //swiper 안에서 객체 this 쓰려면 _this로. 혹은 arrow fn
+                        }
+                    }
+                })
+                return { swiper_ins }
+            },
+
+            clickEvt() {
+                this.log('hoho')
+            },
+
+            init() {
+                swiper_1();
+                swiper_2();
+                this.var.el_1.addEventListener('click', this.clickEvt.bind(this))
+            }
+        }
+
+
+        
+        // class 기억
+        class Test {
+            constructor(a, b, option) {
+                this.a = a;
+                this.b = b;
+                // this.option = option;
+                this.optInit = option.on.init()
+            
+                addEventListener('resize', option.on.resize)
+            }
+
+            init() {
+                console.log('class init');
+                this.over();
+            }
+            over() {}
+        }
+
+        const Test1 = new Test('aa', 'bb', {
+            on: {
+                init: () => { console.log('init fn ') },
+                resize: () => { console.log('resize fn ') }
+            },
+        })
+        Test1.init();
+
+    </script>
+</body>
+</html>

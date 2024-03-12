@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./swiper/swiper.css" />
+    <script src="./swiper/swiper.js"></script>
+    <title>Document</title>
+
+    <style>
+        * { margin:0; padding:0; box-sizing: border-box; }
+        ul, ol { list-style: none; }
+
+        /* .swiper_wrap {padding: 20px} */
+
+        .nav { padding: 20px; }
+        .nav .swiper-slide { display: flex; justify-content: center; align-items: center; border: 1px solid #000; cursor: pointer; width: 200px; height: 50px; }
+
+        .conts { padding: 20px; }
+        .conts .swiper-slide { border: 1px solid #000; cursor: pointer; width: 90vw; height: 100px; margin-top: 20px; margin-right: 20px;   }
+
+        .loop { padding: 20px; }
+        .loop .swiper-slide {  cursor: pointer; width: 200px; margin: 20px; height: 100px; /* border: 1px solid red; */
+            /* opacity: 0 !important;  */ 
+        }
+        .loop .swiper-slide .inner { background-color: aqua; height: 100%;; }
+        .loop .swiper-slide:last-child {margin-right: 0;}
+        /* .loop .swiper-slide:nth-child(1) { width: 20%; }
+        .loop .swiper-slide:nth-child(2) { width: 10%; }
+        .loop .swiper-slide:nth-child(3) { width: 30%; }
+        .loop .swiper-slide:nth-child(4) { width: 60%; }
+        .loop .swiper-slide:nth-child(5) { width: 30%; }
+        .loop .swiper-slide:nth-child(6) { width: 50%; } */
+        .loop .swiper-slide.swiper-slide-active {  padding: 0 20px; transform: scale(1.2); transition: 1s cubic-bezier(0.23, 1, 0.320, 1);} 
+        /* .loop .swiper-slide.swiper-slide-next { padding: 0 40px } */
+        /* .loop .swiper-slide.swiper-slide-prev { padding: 0 40px } */
+        /* .loop .swiper-slide-active {opacity: 1 !important;} */
+
+
+        .trans { padding: 20px; }
+        .trans .swiper-slide {  cursor: pointer; width: 300px; margin: 20px; height: 100px; /* border: 1px solid red; */
+            /* opacity: 0 !important;  */ background-color: rgb(54, 150, 150);
+        }
+        .trans .swiper-slide .inner { height: 100%; opacity: 0; transform: translateY(40px);  transition: 1s cubic-bezier(0.23, 1, 0.320, 1);  }
+        .trans .swiper-slide:last-child {margin-right: 0;}
+        .trans .swiper-slide.swiper-slide-active { transform: scale(1.2);  transition: 1s cubic-bezier(0.23, 1, 0.320, 1); } 
+        .trans .swiper-slide.swiper-slide-active .inner { transform: translateY(0); opacity: 1; }
+
+    </style>
+
+</head>
+<body>
+
+
+    <div class="swiper_wrap">
+         <!-- nav -->
+         <div class="swiper-container nav">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">menu_1</div>
+                <div class="swiper-slide">menu_2</div>
+                <div class="swiper-slide">menu_3</div>
+                <div class="swiper-slide">menu_4</div>
+                <div class="swiper-slide">menu_5</div>
+                <div class="swiper-slide">menu_6</div>
+            </div>
+            
+            <div class="swiper-pagination swiper-pagination-bullets"></div>
+            <div class="pt-swiper-prev"></div>
+            <div class="pt-swiper-next"></div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+        </div>    
+        <!-- //nav -->
+
+
+        <!-- conts -->
+        <div class="swiper-container conts">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">Slide 1</div>
+                <div class="swiper-slide">Slide 2</div>
+                <div class="swiper-slide">Slide 3</div>
+                <div class="swiper-slide">Slide 4</div>
+                <div class="swiper-slide">Slide 5</div>
+                <div class="swiper-slide">Slide 6</div>
+            </div>
+            
+            <div class="swiper-pagination swiper-pagination-bullets"></div>
+            <div class="pt-swiper-prev"></div>
+            <div class="pt-swiper-next"></div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+        </div>    
+        <!-- //conts -->
+         
+    </div>
+
+
+    <script>
+
+ 
+
+        const ui = {
+            init() {
+                const contsSwiper = this.swiper_conts();
+                const navSwiper = this.swiper_nav();
+                this.var.swiperIns = { contsSwiper, navSwiper }
+            },
+
+
+            var: {
+                swiperIns: null,
+                navs: document.querySelector('.nav .swiper-slide'),
+            },
+
+            swiper_nav() {
+                let _this = this;
+                return  new Swiper(".nav", {
+                    slidesPerView: "auto",
+                    observer: true, // 팝업 등 숨겨져있는 상태에서 옵저버 
+                    observeParents: true, // 팝업 등 숨겨져있는 상태에서 옵저버 
+           
+                    // navigation: {
+                    //     prevEl: '.conts .pt-swiper-prev',
+                    //     nextEl: '.conts .pt-swiper-next',                
+                    // },
+                 
+                    autoplay: { // 오토플레이 모바일에서만 작동되게 하려면
+                        enabled: false,
+                    },
+                    breakpoints: {
+                        320: { // 320 이상
+                            slidesPerView: "auto",
+                            autoplay: { // 오토플레이 모바일에서만 작동되게 하려면
+                                enabled: true,
+                                delay: 3000,
+                            },
+                        },
+                        768: { // 768 이상
+                            slidesPerView: "auto",
+                        }
+                    },
+                    on: {
+                        slideChange: function() {}, // 슬라이드 변경 (오토는 불가)
+                        transitionEnd: function() {},  // 변경 후 (오토 가능)
+                        transitionStart: function() {
+                            // _this.contsMove(this.activeIndex)
+                        }, 
+                        click: function() {
+                            // console.log(this.clickedIndex)
+                            _this.contsMove(this.clickedIndex)
+                        },
+                      
+                        breakpoint: function () {  // 브렉포인트 지나갈때마다
+                            var that = this;
+                            setTimeout(function () {
+                                that.slideTo(0, 0);
+                            }, 150);
+                        },
+                        init: function() {},
+                    },
+                });
+
+            },
+            swiper_conts() {
+                let _this = this;
+                return new Swiper(".conts", {
+                    slidesPerView: "auto",
+                    observer: true, // 팝업 등 숨겨져있는 상태에서 옵저버 
+                    observeParents: true, // 팝업 등 숨겨져있는 상태에서 옵저버 
+                    
+
+                    // navigation: {
+                    //     prevEl: '.test_1 .pt-swiper-prev',
+                    //     nextEl: '.test_1 .pt-swiper-next',                
+                    // },
+                    pagination: {
+                        el: ".conts .swiper-pagination",
+                    },
+                    autoplay: { // 오토플레이 모바일에서만 작동되게 하려면
+                        enabled: false,
+                    },
+                    breakpoints: {
+                        320: { // 320 이상
+                            slidesPerView: "auto",
+                            autoplay: { // 오토플레이 모바일에서만 작동되게 하려면
+                                enabled: true,
+                                delay: 3000,
+                            },
+                        },
+                        768: { // 768 이하
+                            slidesPerView: "auto",
+                        }
+                    },
+                    on: {
+                        slideChange: function() {}, // 슬라이드 변경 (오토는 불가)
+                        transitionEnd: function() {},  // 변경 후 (오토 가능)
+                        transitionStart: function() {
+                            _this.navMove(this.activeIndex);
+                        },
+                        breakpoint: function () {  // 브렉포인트 지나갈때마다
+                            var that = this;
+                            setTimeout(function () {
+                                that.slideTo(0, 0);
+                            }, 150);
+                        },
+                        init: function() {},
+                    },
+                });
+
+            },
+
+            navMove(idx) {
+                console.log('?nav move', idx)
+                this.var.swiperIns.navSwiper.slideTo(idx)
+            },
+
+            contsMove(idx) {
+                console.log('?conts move', idx)
+                this.var.swiperIns.contsSwiper.slideTo(idx)
+            },
+
+            tp() {
+                console.log('tp', this);
+                return 11
+            },
+           
+        };
+
+
+
+
+        ui.init();
+
+        // #########################################################################
+
+
+
+      
+
+    </script>
+</body>
+</html>
