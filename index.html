@@ -69,6 +69,36 @@
 
     <main class="hoho">
         <section>
+
+            <div onclick="handleclick(event)">
+                <h2>img onerror test</h2>
+                <div>
+                    <h3>정상이미지</h3>
+                    <img src="/assets/img/aab.png" style="width: 100px; height: 100px" alt="">
+                </div>
+                <br />
+                <div>
+                    <h3>이미지 없을 때 이미지</h3>
+                    <img src="/assets/img/aab2.png" style="width: 100px; height: 100px" onerror="handleImgError(event)" alt="">
+                </div>
+            </div>
+
+            <script>
+
+                function handleclick(event) {
+                    console.log('click', event)
+                }
+
+
+                function handleImgError(event) {
+                    console.log('onError fn???', event)
+                    event.target.setAttribute('src', "/assets/img/error.png")
+                    
+                }
+
+            </script>
+
+
             <h2>test page</h2>
             <ul>
                 <li><a href="/00_test/01_Tetris/index.html" target="_blank">tetris</a></li>
