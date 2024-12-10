@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,10 +8,30 @@
     <link rel="stylesheet" href="" media="screen">
     <title>스터디 내용</title>
     <style>
-        * {margin:0; padding:0; box-sizing: border-box;}
-        html, body {width: 100%; height: 100%;}
-        ul, ol {list-style: none;;}
-        header { width: 980px; margin: 0 auto; padding: 20px;}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+            ;
+        }
+
+        header {
+            width: 980px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
         /* main {width: 980px; margin:0 auto; }
         section {padding:20px 20px}
         section > ul {margin-bottom: 40px;;}
@@ -21,20 +42,62 @@
         dd > ul {margin: 15px 0;}
         dd > ul > li{margin-bottom: 5px; position: relative;padding-left: 10px;;}
         dd > ul > li::before {content: '-';  display: inline-block; position: absolute; top:0; left:0; } */
-        h1 {margin-bottom: 20px; font-size: 24px;}
-        h2 {margin-bottom: 20px; font-size: 20px;}
-        h3 {margin-bottom: 10px; font-size: 17px;}
-        body {background-color: #111; color: rgb(197, 197, 197)}
-        a {text-decoration: none; color: rgb(42, 195, 255);}
-        .hoho section {padding: 20px;}
-        .hoho section + section {margin-top: 20px; border-top: 1px solid #333;}
-        .hoho section > div {margin-bottom: 30px;}
-        .hoho section ul {padding-left: 10px;}
-        .hoho section ul > li::before {content: '-'; display: inline-block; width: 10px; height: 100%; }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
 
-        
+        h2 {
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        h3 {
+            margin-bottom: 10px;
+            font-size: 17px;
+        }
+
+        body {
+            background-color: #111;
+            color: rgb(197, 197, 197)
+        }
+
+        a {
+            text-decoration: none;
+            color: rgb(42, 195, 255);
+        }
+
+        .hoho section {
+            padding: 20px;
+        }
+
+        .hoho section+section {
+            margin-top: 20px;
+            border-top: 1px solid #333;
+        }
+
+        .hoho section>div {
+            margin-bottom: 30px;
+        }
+
+        .hoho section ul {
+            padding-left: 10px;
+        }
+
+        .hoho section ul>li::before {
+            content: '-';
+            display: inline-block;
+            width: 10px;
+            height: 100%;
+        }
+
+
         @media (max-width: 960px) {
-            main, header {width: 100%;}
+
+            main,
+            header {
+                width: 100%;
+            }
         }
 
 
@@ -44,10 +107,14 @@
             padding: 0;
             box-sizing: border-box;
         }
-        html, body {
+
+        html,
+        body {
             width: 100%;
-            height: 100%;;
+            height: 100%;
+            ;
         }
+
         .wrap {
             width: 80%;
             height: 30px;
@@ -55,16 +122,19 @@
             display: inline-block;
             background-color: #ffd4dc;
         }
+
         .title {
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
         }
 
-        .title > li {display: inline;}
-
+        .title>li {
+            display: inline;
+        }
     </style>
 </head>
+
 <body>
 
     <main class="hoho">
@@ -79,7 +149,8 @@
                 <br />
                 <div>
                     <h3>이미지 없을 때 이미지</h3>
-                    <img src="/assets/img/aab2.png" style="width: 100px; height: 100px" onerror="handleImgError(event)" alt="">
+                    <img src="/assets/img/aab2.png" style="width: 100px; height: 100px" onerror="handleImgError(event)"
+                        alt="">
                 </div>
             </div>
 
@@ -93,7 +164,7 @@
                 function handleImgError(event) {
                     console.log('onError fn???', event)
                     event.target.setAttribute('src', "/assets/img/error.png")
-                    
+
                 }
 
             </script>
@@ -165,47 +236,102 @@
         <section>
             <h2>study</h2>
             <ul>
-                <li><a href="/05_study/01_fn_es5/index.html" target="_blank" >함수형 프로그래밍 es5 - 유인동님</a></li>
+                <li><a href="/05_study/01_fn_es5/index.html" target="_blank">함수형 프로그래밍 es5 - 유인동님</a></li>
                 <li><a href="/05_study/02_fn_es6/index.html" target="_blank">함수형 프로그래밍 es6 - 유인동님</a></li>
                 <li><a href="/05_study/02_fn_es6/index.html" target="_blank">함수형 프로그래밍 es6 응용 - 유인동님</a></li>
             </ul>
         </section>
     </main>
-    
 
 
 
 
+
     <br />
     <br />
     <br />
-    
+
     <br />
     <br />
     <br />
     <br />
 
 
-    
+
     <style>
+        .wraptest {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid red;
+            margin-bottom: 3px;
+            margin-top: -3px;
+        }
 
-        .wraptest {display: flex; justify-content: center; align-items: center; border: 1px solid red; margin-bottom: 3px; margin-top: -3px;}
-        .wraptest > button {border:1px solid blue; width: 24px; height: 24px; flex: 0 0 auto;margin-bottom: 4px; background: url('./arr.png') no-repeat center / 100% auto;}
-        .left {margin-right: 10px;}
-        .right {margin-left: 10px;}
-        .pagenum  {flex: 0 0 auto; }
+        .wraptest>button {
+            border: 1px solid blue;
+            width: 24px;
+            height: 24px;
+            flex: 0 0 auto;
+            margin-bottom: 4px;
+            background: url('./arr.png') no-repeat center / 100% auto;
+        }
+
+        .left {
+            margin-right: 10px;
+        }
+
+        .right {
+            margin-left: 10px;
+        }
+
+        .pagenum {
+            flex: 0 0 auto;
+        }
+
         /* .pagecur {display: inline-block;} */
         /* .pagetotal {display: inline-block;} */
-        .wraptest .pagetotal {color: #666; font-weight: 400; padding-left: 9px; margin-left:3px; position: relative; font-size: 16px;}
-        .wraptest .pagetotal::before {content: '';display: block; position: absolute; top:53%; left: 3px;  background-color: #666; width: 1px; height: 13px; /* transform: translateY(-50%) rotateZ(26deg); */}
-        .blind {position: absolute; left: -999px; top: -999px; width: 1px; height: 1px; overflow: hidden; margin-left: -1px; border: 0 none !important; background: transparent !important; color: transparent !important;}
+        .wraptest .pagetotal {
+            color: #666;
+            font-weight: 400;
+            padding-left: 9px;
+            margin-left: 3px;
+            position: relative;
+            font-size: 16px;
+        }
+
+        .wraptest .pagetotal::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 53%;
+            left: 3px;
+            background-color: #666;
+            width: 1px;
+            height: 13px;
+            /* transform: translateY(-50%) rotateZ(26deg); */
+        }
+
+        .blind {
+            position: absolute;
+            left: -999px;
+            top: -999px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            margin-left: -1px;
+            border: 0 none !important;
+            background: transparent !important;
+            color: transparent !important;
+        }
     </style>
     <div class="wraptest">
         <button class="left">
             <span class="blind">이전 퀴즈로 이동</span>
         </button>
-        <div class="pagenum text1"><strong class="pagecur"><span class="blind">현재 페이지</span>1</strong><span class="pagetotal"><span class="blind">총  페이지</span>3</span></div>
-        
+        <div class="pagenum text1"><strong class="pagecur"><span class="blind">현재 페이지</span>1</strong><span
+                class="pagetotal"><span class="blind">총 페이지</span>3</span></div>
+
         <button class="right">
             <span class="blind">다음 퀴즈로 이동</span>
         </button>
@@ -236,7 +362,30 @@
             <li><span>호호호호</span></li>
         </ul>
     </div>
-     
+
+
+    <script>
+
+        const all = document.querySelectorAll('.wrap .title li');
+        console.log('all?', all)
+
+        // for (let i = 0; i < all.length; i++) {
+        //     all[i].addEventListener('click', () => {
+        //         console.log('target?', this)
+        //     })
+        // }
+
+        const wrap1 = document.querySelector('.wrap')
+        wrap1.addEventListener('click', (e) => {
+            console.log('wrap', e.target.nodeName)
+
+            if (e.target.NodeName === 'LI') {
+                console.log('엘아이')
+            }
+        })
+
+    </script>
+
 
     <header>
         <h1>jj</h1>
@@ -247,7 +396,7 @@
             <article>
                 <h3>인터렉션</h3>
                 <ul>
-                    <li> 
+                    <li>
                         <a href="/00_uis/01_btn.html" target="_blank" title="new window">btn</a>
                     </li>
                 </ul>
@@ -255,22 +404,22 @@
             <article>
                 <h3>접근성</h3>
                 <ul>
-                    <li> 
+                    <li>
                         <a href="/00_uis/01_btn.html" target="_blank" title="new window">slide</a>
                     </li>
-                    <li> 
+                    <li>
                         <a href="/00_uis/01_btn.html" target="_blank" title="new window">tab</a>
                     </li>
-                    <li> 
+                    <li>
                         <a href="/00_uis/01_btn.html" target="_blank" title="new window">popup</a>
                     </li>
-                    <li> 
+                    <li>
                         <a href="/00_uis/01_btn.html" target="_blank" title="new window">scroll page</a>
                     </li>
-                    <li> 
+                    <li>
                         <a href="/00_uis/01_btn.html" target="_blank" title="new window">one page</a>
                     </li>
-                    <li> 
+                    <li>
                         <a href="/00_uis/01_btn.html" target="_blank" title="new window">input</a>
                     </li>
                 </ul>
@@ -291,32 +440,311 @@
                  A 30 50 0 0 1 162.55 162.45
                  L 172.55 152.45
                  A 30 50 -45 0 1 215.1 109.9
-                 L 315 10" stroke="black" fill="green" stroke-width="2" fill-opacity="0.5"/>
-      </svg>
+                 L 315 10" stroke="black" fill="green" stroke-width="2" fill-opacity="0.5" />
+    </svg>
 
-      <br /><br />
-      
-      <svg width="325" height="325" xmlns="http://www.w3.org/2000/svg">
+    <br /><br />
+
+    <svg width="325" height="325" xmlns="http://www.w3.org/2000/svg">
         <path d="M80 80
                  A 45 45, 0, 0, 0, 125 125
-                 L 125 80 Z" fill="green"/>
+                 L 125 80 Z" fill="green" />
         <path d="M230 80
                  A 45 45, 0, 1, 0, 275 125
-                 L 275 80 Z" fill="red"/>
+                 L 275 80 Z" fill="red" />
         <path d="M80 230
         3
                  A 45 45, 0, 0, 1, 125 275
-                 L 125 230 Z" fill="purple"/>
+                 L 125 230 Z" fill="purple" />
         <path d="M230 230
                  A 45 45, 0, 1, 1, 275 275
-                 L 275 230 Z" fill="blue"/>
-      </svg>
+                 L 275 230 Z" fill="blue" />
+    </svg>
 
 
-    
+
     <footer></footer>
 
 
-   
+
 </body>
+
+
+<script>
+
+    const arr = {
+        아이스크림: [
+            { name: 'hoho1', bb: true },
+            { name: 'hoho2', bb: true },
+            { name: 'hoho3', bb: false },
+            { name: 'hoho4', bb: false },
+            { name: 'hoho5', bb: true },
+            { name: 'hoho6', bb: true },
+        ],
+        토단: [
+            { name: 'toto1', bb: true },
+            { name: 'toto2', bb: true },
+            { name: 'toto3', bb: false },
+            { name: 'toto4', bb: false },
+            { name: 'toto5', bb: true },
+            { name: 'toto6', bb: true },
+        ],
+    }
+
+    // console.log('arr??', arr)
+
+
+    // const item = Object.entries(arr).reduce((acc, cur, idx) => {
+    //     // console.log('reduce?', acc, cur, idx)
+    //     cur.map(item => console.log('inner item?', item))
+    //     return acc;
+    // },)
+    // console.log('최종 값????', item)
+
+
+
+
+
+
+
+
+
+
+    // test 2 
+    // console.clear();
+    const orderList = [
+        {
+            orderNum: '124124124124',
+            orderDate: '202401111000',
+            orderTag: '신용카드',
+            nonMember: true,
+            orderData: [
+                {
+                    partialShipment: true,
+                    company: '아이스크림미디어',
+                    seller: '아이스크림',
+                    itemName:
+                        '마르지아나 싸인펜 12색 (뚜껑 없이도 최대 30일간 마르지않아요)',
+                    isSingleProd: true,
+                    itemCount: 1,
+                    price: '19,800',
+                    thumbnailUrl: '/images/thumb/banner/small_01.jpg',
+                    order: '',
+                    status: '배송완료',
+                    statusNo: '06',
+                    fileNames: [
+                        'filename.jpg',
+                        'filename2.jpg',
+                        'filename3.jpg',
+                        'filename4.jpg'
+                    ]
+                },
+                {
+                    partialShipment: true,
+                    company: '아이스크림미디어',
+                    seller: '아이스크림',
+                    itemName:
+                        '마르지아나 싸인펜 12색 (뚜껑 없이도 최대 30일간 마르지않아요)',
+                    isSingleProd: true,
+                    itemCount: 1,
+                    price: '19,800',
+                    thumbnailUrl: '/images/thumb/banner/small_01.jpg',
+                    order: '',
+                    status: '배송완료',
+                    statusSub: '상품후기작성',
+                    statusNo: '08'
+                },
+                {
+                    partialShipment: false,
+                    company: '아이스크림미디어',
+                    seller: '아이스크림',
+                    itemName:
+                        '마르지아나 싸인펜 12색 (뚜껑 없이도 최대 30일간 마르지않아요)',
+                    isSingleProd: true,
+                    itemCount: 1,
+                    price: '19,800',
+                    thumbnailUrl: '/images/thumb/banner/small_01.jpg',
+                    order: '',
+                    status: '배송완료',
+                    statusSub: '상품후기작성',
+                    statusNo: '08'
+                },
+                {
+                    partialShipment: false,
+                    company: '아이스크림미디어',
+                    seller: '아이스크림',
+                    itemName:
+                        '마르지아나 싸인펜 12색 (뚜껑 없이도 최대 30일간 마르지않아요)',
+                    isSingleProd: true,
+                    itemCount: 1,
+                    price: '19,800',
+                    thumbnailUrl: '/images/thumb/banner/small_01.jpg',
+                    order: '',
+                    status: '배송완료',
+                    statusSub: '상품후기작성',
+                    statusNo: '08'
+                },
+                {
+                    partialShipment: true,
+                    company: '아이스크림미디어',
+                    seller: '아이스크림',
+                    itemName:
+                        '마르지아나 싸인펜 12색 (뚜껑 없이도 최대 30일간 마르지않아요)',
+                    isSingleProd: true,
+                    itemCount: 1,
+                    price: '19,800',
+                    thumbnailUrl: '/images/thumb/banner/small_01.jpg',
+                    order: '',
+                    status: '배송완료',
+                    statusSub: '상품후기작성',
+                    statusNo: '08'
+                },
+                {
+                    partialShipment: true,
+                    company: '아이스크림미디어',
+                    seller: '아이스크림',
+                    itemName:
+                        '마르지아나 싸인펜 12색 (뚜껑 없이도 최대 30일간 마르지않아요)',
+                    isSingleProd: true,
+                    itemCount: 1,
+                    price: '19,800',
+                    thumbnailUrl: '/images/thumb/banner/small_01.jpg',
+                    order: '',
+                    status: '배송완료',
+                    statusSub: '상품후기작성',
+                    statusNo: '08'
+                },
+                {
+                    partialShipment: true,
+                    company: '주식회사 토단',
+                    seller: '토단',
+                    itemName: '하비클레이 실속형(5색)',
+                    isSingleProd: true,
+                    itemCount: 1,
+                    price: '19,800',
+                    thumbnailUrl: '/images/thumb/banner/small_01.jpg',
+                    order: '',
+                    status: '주문완료',
+                    statusNo: '02'
+                },
+                {
+                    partialShipment: true,
+                    company: '주식회사 토단',
+                    seller: '토단',
+                    itemName: '하비클레이 실속형(5색)',
+                    isSingleProd: true,
+                    itemCount: 1,
+                    price: '19,800',
+                    thumbnailUrl: '/images/thumb/banner/small_01.jpg',
+                    order: '',
+                    status: '주문완료',
+                    statusNo: '02'
+                },
+                {
+                    partialShipment: true,
+                    company: '주식회사 토단',
+                    seller: '토단',
+                    itemName: '하비클레이 실속형(5색)',
+                    isSingleProd: true,
+                    itemCount: 1,
+                    price: '19,800',
+                    thumbnailUrl: '/images/thumb/banner/small_01.jpg',
+                    order: '',
+                    status: '주문완료',
+                    statusNo: '02'
+                },
+                {
+                    partialShipment: false,
+                    company: '주식회사 토단',
+                    seller: '토단',
+                    itemName: '하비클레이 실속형(5색)',
+                    isSingleProd: true,
+                    itemCount: 1,
+                    price: '19,800',
+                    thumbnailUrl: '/images/thumb/banner/small_01.jpg',
+                    order: '',
+                    status: '주문완료',
+                    statusNo: '02'
+                },
+                {
+                    partialShipment: true,
+                    company: '주식회사 토단',
+                    seller: '토단',
+                    itemName: '하비클레이 실속형(5색)',
+                    isSingleProd: true,
+                    itemCount: 1,
+                    price: '19,800',
+                    thumbnailUrl: '/images/thumb/banner/small_01.jpg',
+                    order: '',
+                    status: '주문완료',
+                    statusNo: '02'
+                },
+                {
+                    partialShipment: true,
+                    company: '주식회사 토단',
+                    seller: '토단',
+                    itemName: '하비클레이 실속형(5색)',
+                    isSingleProd: true,
+                    itemCount: 1,
+                    price: '19,800',
+                    thumbnailUrl: '/images/thumb/banner/small_01.jpg',
+                    order: '',
+                    status: '주문완료',
+                    statusNo: '02'
+                },
+                {
+                    partialShipment: true,
+                    company: '주식회사 토단',
+                    seller: '토단',
+                    itemName: '하비클레이 실속형(5색)',
+                    isSingleProd: true,
+                    itemCount: 1,
+                    price: '19,800',
+                    thumbnailUrl: '/images/thumb/banner/small_01.jpg',
+                    order: '',
+                    status: '주문완료',
+                    statusNo: '02'
+                },
+                {
+                    partialShipment: true,
+                    company: '주식회사 토단',
+                    seller: '토단',
+                    itemName: '하비클레이 실속형(5색)',
+                    isSingleProd: true,
+                    itemCount: 1,
+                    price: '19,800',
+                    thumbnailUrl: '/images/thumb/banner/small_01.jpg',
+                    order: '',
+                    status: '주문완료',
+                    statusNo: '02'
+                },
+            ]
+        }
+    ]
+
+    // const last = { 
+    //     아이스크림: { 
+    //         bb1: [],
+    //         bb2: []
+    //      }
+    //  }
+
+    // .push({ bb1: cur, bb2: cur })
+
+    const groupedItems = orderList[0].orderData.reduce(
+        (acc, cur) => {
+            if (cur.seller) {
+                const groupBy = (acc[cur.seller] = acc[cur.seller] || { partialShipment: [], notPartialShipment: [] })
+                cur.partialShipment ? groupBy.partialShipment.push(cur) : groupBy.notPartialShipment.push(cur)
+            }
+            return acc
+        },
+        {}
+    )
+
+    console.log('groupedItems???', groupedItems)
+
+
+</script>
+
 </html>

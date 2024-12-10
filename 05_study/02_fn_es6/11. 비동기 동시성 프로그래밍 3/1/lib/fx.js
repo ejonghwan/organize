@@ -75,6 +75,7 @@ L.filter = curry(function* (f, iter) {
   }
 });
 
+
 L.entries = function* (obj) {
   for (const k in obj) yield [k, obj[k]];
 };
