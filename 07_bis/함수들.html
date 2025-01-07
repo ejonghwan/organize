@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+
+        
+    function _getCookie(name) {
+      let x, y;
+      let val = document.cookie.split(';');
+    
+      for (let i = 0; i < val.length; i++) {
+        x = val[i].substr(0, val[i].indexOf('='));
+        y = val[i].substr(val[i].indexOf('=') + 1);
+        x = x.replace(/^\s+|\s+$/g, ''); // 앞과 뒤의 공백 제거하기
+        if (x === name) {
+          return unescape(y); // unescape로 디코딩 후 값 리턴
+        }
+      }
+    }
+
+    function  _getParam(name) {
+      const searchParams = new URLSearchParams(location.search);
+      return searchParams.get(name);
+     
+      // const urlParams = new URL(location.href).searchParams;
+      // const result = urlParams.get(name);
+      // return result;
+
+
+
+
+    }
+
+
+    
+    var getType = getParam("type");
+     // ie 호환성을위해 변경
+    function getParam(name) {
+        var curr_url = location.search.substr(location.search.indexOf("?") + 1);
+        var svalue = "";
+        curr_url = curr_url.split("&");
+        for (var i = 0; i < curr_url.length; i++)
+        {
+            temp = curr_url[i].split("=");
+            if ([temp[0]] == name) { svalue = temp[1]; }
+        }
+        return svalue;
+    }
+
+
+
+
+    </script>
+
+</body>
+</html>

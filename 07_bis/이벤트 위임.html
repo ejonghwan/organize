@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    
+<style>
+    .evtTest > li { border: 1px solid black; padding: 5px; }
+</style>
+
+<ul class="evtTest">
+    <li class="a">1</li>
+    <li class="a">2</li>
+    <li class="a">3</li>
+    <li class="a b">4</li>
+    <li class="a">5</li>
+    <li class="a">6
+        <span>span1</span>
+        <span>span2</span>
+    </li>
+    <li class="a">7</li>
+    <li class="a">8</li>
+    <li class="a">9</li>
+    <li class="a">10</li>
+</ul>
+
+<script>
+    const a = document.querySelector('.evtTest');
+    addEventListener('click', e => {
+        // console.log(e.target)
+        let hoho = evtAssign('.a', e.target) 
+        console.log(hoho)
+    })
+
+
+    function evtAssign(selector, evtTarget) {
+        let isTarget = target => [...target.querySelectorAll(selector)].includes(target) || target.closest(selector)
+        return isTarget ? isTarget(evtTarget): false; 
+    }
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

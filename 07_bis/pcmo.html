@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+        // pc mo 바뀔 때 바잉툴 스와이프 초기화 돼서 이미지 다시 넣음.
+        let isMoSwitch = 'pc';
+        window.addEventListener('resize', e => {
+            
+            if(util.isMobile() === false) {
+                if(isMoSwitch === 'pc') return;
+                // console.log('?? 피씨 중요로직')
+                isMoSwitch = 'pc';
+            }
+
+            if(util.isMobile() === true) {
+                if(isMoSwitch === 'mo') return;
+                // console.log('?? 모발 중요로직')
+                isMoSwitch = 'mo';
+            }
+
+        })
+
+
+    </script>
+</body>
+</html>

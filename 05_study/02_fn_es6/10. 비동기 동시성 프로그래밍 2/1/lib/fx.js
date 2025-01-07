@@ -47,6 +47,7 @@ const take = curry((l, iter) => {
       res.push(a);
       if (res.length == l) return res;
     }
+    
     return res;
   }();
 });

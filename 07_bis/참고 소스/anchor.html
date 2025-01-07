@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <ul class="pt_nav__sticky">
+        <li class="pt_nav__sticky--item nav01">
+            <a href="javascript:;" data-omni-type="microsite" data-omni="sec:event:system-air-conditioners:anc_sticky-buy" data-role-anchor="sec_buying" title="구매하기 영역으로 이동">
+                구매하기
+            </a>
+        </li>
+
+        <li class="pt_nav__sticky--item nav02">
+            <a href="javascript:;" data-omni-type="microsite" data-omni="" data-role-anchor="sec_benefit" title="구매 혜택 영역으로 이동">
+                구매 혜택
+            </a>
+        </li>
+
+        <!-- <li class="pt_nav__sticky--item nav02">
+            <a href="javascript:;" data-omni-type="microsite" data-omni="sec:event:system-air-conditioners:anc_sticky-howto" data-role-anchor="sec_select" title="무풍 시스템에어컨 이렇게 선택하세요 영역으로 이동" >
+                우리 집에 딱 맞게<br> 선택하기
+            </a>
+        </li> -->
+
+        <li class="pt_nav__sticky--item nav04">
+            <a href="javascript:;" data-omni-type="microsite" data-omni="sec:event:system-air-conditioners:anc_sticky-accessory" data-role-anchor="sec_component" title="전문세척 · 액세서리 영역으로 이동">
+                전문세척 ·<br class="m_show"> 액세서리
+            </a>
+        </li>
+
+        <li class="pt_nav__sticky--item nav03">
+            <a href="javascript:;" data-omni-type="microsite" data-omni="sec:event:system-air-conditioners:anc_sticky-install" data-role-anchor="sec_judgment" title="설치 가능 여부 판단방법 영역으로 이동">
+                설치 가능 여부<br class="m_show"> 확인하기
+            </a>
+        </li>
+    </ul>
+
+
+    <script>
+        import { anchor } from './modules/anchor';
+
+         anchor.click([
+            {
+                el: '[data-role-anchor="notice1"]',
+                target: '[data-role-accordian="bnf_acco"]',
+                scroll: [-62, -48]
+            },
+            {
+                el: '[data-role-anchor="sec_buying"]',
+                target: '.sec_buying',
+                scroll: [-62, 0]
+
+            },
+            {
+                el: '[data-role-anchor="sec_benefit"]',
+                target: '.sec_benefit',
+                scroll: [-62, -48]
+
+            },
+            // 1/15 러닝체인지 : .sec_select영역 삭제요청
+            // {
+            //     el: '[data-role-anchor="sec_select"]',
+            //     target: '.sec_select',
+            //     scroll: [-120, -180]
+            // },
+            {
+                el: '[data-role-anchor="sec_judgment"]',
+                target: '.sec_judgment',
+                scroll: [-62, -48]
+            },
+            {
+                el: '[data-role-anchor="sec_component"]',
+                target: '.sec_component',
+                scroll: [-62, -48]
+            },
+            {
+                el: '[data-role-anchor="sec_line_model01"]',
+                target: '.sec_model',
+                scroll: [-62, -48]
+            },
+            {
+                el: '[data-role-anchor="sec_line_model02"]',
+                target: '.sec_model',
+                scroll: [-62, -48]
+            },
+        ]);
+    </script>
+
+</body>
+</html>

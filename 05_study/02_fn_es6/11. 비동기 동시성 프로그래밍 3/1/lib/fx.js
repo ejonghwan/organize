@@ -1,7 +1,6 @@
 const log = console.log;
 
-const curry = f =>
-  (a, ..._) => _.length ? f(a, ..._) : (..._) => f(a, ..._);
+const curry = f => (a, ..._) => _.length ? f(a, ..._) : (..._) => f(a, ..._);
 
 const isIterable = a => a && a[Symbol.iterator];
 
@@ -75,6 +74,7 @@ L.filter = curry(function* (f, iter) {
     else if (b) yield a;
   }
 });
+
 
 L.entries = function* (obj) {
   for (const k in obj) yield [k, obj[k]];

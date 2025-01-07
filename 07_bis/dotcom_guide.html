@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    ################ 
+    1. data-buying 엘리먼트 밖까지 
+    2. data-opt 엘리먼트 안쪽만
+    
+
+    // opt / buying 속성 이슈
+    // 이슈1. data-buying-txt 속성명을 같이 써서 데이터 반영 제대로 안됨. 
+    // 해결1. 공청기쪽을 data-opt-txt로 변경 
+
+    // find 이슈
+    // 이슈2. secWrap이 가장 상위에 있어서 [data-buying-text]을 다같이 찾아버리는 이슈. 
+    // 해결2. find 한번 더 써서 각 스티키마다 가져오게끔.
+
+
+
+
+
+    ################ 넷퍼넬 
+    제이쿼리는 배열을 반복으로 찾아줘서 load 시 한번만 실행하면 됨 
+    (모두 명칭이 같다면) [data-role="btnBuy"]
+
+
+
+
+    
+
+    ################# init button 설명
+    initBuy(target, netFunnelId) : target 지정하면 여러개 사용할 수 있고요
+    스티키 버튼, 바잉툴 버튼이 target='[data-role="btnBuy"]' 으로 동일하면 기본값으로 지정되어 있어서
+    initBuy(null, netFunnelId) 이렇게 사용하셔도 되고요!
+    각 target 값 지정해서 사용하셔도 됩니다!
+
+    ### initBtnAll(netFunnel)
+
+    - 페이지 내 모든 버튼 관련 기능을 초기 상태로 설정하는 역할을 수행합니다. 
+    - 이 함수는 `initBuy(), initNPay(), initCart(), initPresent(), initPickup()` 해당 버튼을 초기화 기능을 모두 실행합니다. 
+    - `netFunnelId`의 적용 여부와 사용할 ID는 기획 단계에서 결정되어야 합니다. 
+    - `netFunnelId` 값이 설정된 버튼에만 넷퍼넬(netFunnel) 기능이 적용됩니다. 반면, `netFunnelId`가 빈값('')으로 설정된 경우에는 넷퍼넬 기능이 적용되지 않습니다.
+
+    ```javascript
+    const netFunnel = {
+        buy: '(netFunnelId)', 
+        npay: '(netFunnelId)',
+        cart: '(netFunnelId)', 
+        present: '', 
+        pickup: ''
+    };
+    PT_STATE.service.initBtnAll(netFunnel);
+    ```
+
+
+
+
+    ### initBuy(target, netFunnelId)
+
+    `initBuy` 함수는 프로모션 페이지 내에서 구매하기 버튼 기능을 초기화하는 데 사용됩니다. 이 함수를 통해 버튼에 동적 기능을 할당하고, 넷퍼넬(netFunnel) 기능의 적용 여부를 설정할 수 있습니다.
+
+    ##### 주요 기능 및 특성:
+
+    - **넷퍼넬 적용:** `netFunnelId`의 사용 여부와 적용할 ID는 기획 단계에서 결정됩니다. `netFunnelId`가 설정된 버튼에만 넷퍼넬 기능이 적용되며, `netFunnelId`가 빈값('')인 경우 넷퍼넬이 적용되지 않습니다.
+    - **제품 코드(G코드) 설정:** 제품의 구매를 위한 버튼에는 `data-gcode`를 통해 해당 제품의 G코드를 지정할 수 있습니다.
+    - **번들 제품 설정:** 번들 제품 구매 버튼을 설정하기 위해, 추가된 G코드를 `data-gcodeB` 속성으로 표시합니다. 이는 추가옵션(예: 마갤클, 중고보상 등)과 관련된 정보에는 사용할 수 없습니다.
+
+    ##### 사용 예시:
+
+    - **단일 제품 구매 버튼:**
+        ```html
+        <button data-role="btnBuy" data-gcode="G000380047">구매하기</button>
+        ```
+
+    - **번들 제품 구매 버튼:**
+        ```html
+        <button data-role="btnBuy" data-gcode="G000380047" data-gcodeB="G000380048">구매하기</button>
+        ```
+
+    ##### 구매 버튼에 추가 가능한 `data-attribute`:
+
+    | 속성명              | 설명                                | 사용 예시               |
+    |-----------------|-----------------------------------|---------------------|
+    | `data-gcode`       | 제품의 G코드                      | data-gcode="G000380047" |
+    | `data-gcodeB`      | 번들 제품의 경우, 번들 G코드 추가       | data-gcodeB="G000380048" |
+    | `data-tradeIn`     | 중고보상(Y/N) 선택 여부               | data-tradeIn="Y"    |
+    | `data-trial`       | 체험이벤트(Y/N) 참여 여부              | data-trial="N"      |
+    | `data-galaxyClub`  | 마갤클(Y/N) 선택 여부                 | data-galaxyClub="N" |
+    | `data-galaxyCd`    | 제품별 마갤클 코드                    | data-galaxyCd="CLBT03" |
+
+    ##### 스크립트 적용 및 넷퍼넬 설정:
+
+    페이지 로딩 시 아래 스크립트를 한 번만 실행하여 버튼을 초기화하고, 필요한 경우 넷퍼넬 기능을 적용합니다.
+    ```javascript
+    const netFunnelId = '(netFunnelId)';
+    PT_STATE.service.initBuy('[data-role="btnBuy"]', netFunnelId);
+    ```
+
+
+
+
+
+
+
+
+    <script>
+
+
+
+    </script>
+</body>
+</html>

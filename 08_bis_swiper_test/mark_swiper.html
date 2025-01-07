@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./swiper/swiper.css" />
+    <script src="./swiper/swiper.js"></script>
+    <title>Document</title>
+
+    <style>
+        * { margin:0; padding:0; box-sizing: border-box; }
+        ul, ol { list-style: none; }
+
+        .loop { padding: 20px; }
+        .loop .swiper-slide {  cursor: pointer; width: 200px; margin: 20px; height: 100px;  border: 1px solid red; }
+        .loop .swiper-slide .inner { background-color: aqua; height: 100%;; }
+        .loop .swiper-slide:last-child {margin-right: 0;}
+        .loop .swiper-slide.swiper-slide-active {  padding: 0 20px; transform: scale(1.2);} 
+    </style>
+
+</head>
+<body>
+
+
+    <div class="swiper_wrap">
+
+          <!-- loop test -->
+          <div class="swiper-container loop">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="inner">hoho1</div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="inner">hoho2</div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="inner">hoho3</div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="inner">hoho4</div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="inner">hoho5</div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="inner">hoho6</div>
+                </div>
+            </div>
+            
+            <div class="swiper-pagination swiper-pagination-bullets"></div>
+            <div class="pt-swiper-prev"></div>
+            <div class="pt-swiper-next"></div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+        </div>    
+        <!-- //loop test -->
+    </div>
+
+
+    <script>
+
+ 
+
+        const ui = {
+            init() {
+                const loopSwiper = this.swiper_loop();
+            },
+
+
+            swiper_loop() {
+                let _this = this;
+                new Swiper(".loop.swiper-container", {
+                    slidesPerView: "auto",
+                    observer: true, 
+                    observeParents: true, 
+                    loop: true,
+                    centeredSlides: true,
+                 
+                    pagination: {
+                        el: ".loop .swiper-pagination",
+                    },
+                });
+            },
+        };
+
+        ui.init();
+
+    </script>
+</body>
+</html>
