@@ -23,6 +23,7 @@ function throttleUsingRaf(cb) {
           window.cancelAnimationFrame(rAfTimeout);
         }
         rAfTimeout = window.requestAnimationFrame(function () {
+            // console.log(rAfTimeout)
           cb();
         })
       }
@@ -31,7 +32,7 @@ function throttleUsingRaf(cb) {
        console.log('123')
       // code ...
     }
-    // document.addEventListener('scroll', throttleUsingRaf(onScroll));
+    document.addEventListener('scroll', throttleUsingRaf(onScroll));
 
 
 
@@ -93,7 +94,7 @@ function throttleUsingRaf(cb) {
 
     window.addEventListener('click', debounce(() => {
         console.log(1111)
-    }, 3000))
+    }, 2000))
 
 
         

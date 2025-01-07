@@ -272,86 +272,25 @@
             function modify(e, getId) {
                 info.map(function (val, i) {
                     if (val.id === getId) {
-                        e
-                            .target
-                            .parentNode
-                            .parentNode
-                            .querySelector('.default')
-                            .style
-                            .display = 'none'
-                        e
-                            .target
-                            .parentNode
-                            .parentNode
-                            .querySelector('.modifybtn')
-                            .style
-                            .display = 'none'
-                        e
-                            .target
-                            .parentNode
-                            .parentNode
-                            .querySelector('.modify')
-                            .style
-                            .display = 'block'
-                        e
-                            .target
-                            .parentNode
-                            .parentNode
-                            .querySelector('.comple')
-                            .style
-                            .display = 'inline-block'
+                        e.target.parentNode.parentNode.querySelector('.default').style.display = 'none'
+                        e.target.parentNode.parentNode.querySelector('.modifybtn').style.display = 'none'
+                        e.target.parentNode.parentNode.querySelector('.modify').style.display = 'block'
+                        e.target.parentNode.parentNode.querySelector('.comple').style.display = 'inline-block'
                     }
                 })
             }
 
 
             function comple(e, getId) {
-                // if(e.target.className === 'comple') {}
                 info.map(function (val, i) {
-                    // console.log('valid: ', val.id) console.log('getId: ', getId)
                     if (val.id === getId) {
                         console.log(e.target.parentNode.parentNode)
-                        e
-                            .target
-                            .parentNode
-                            .parentNode
-                            .querySelector('.default')
-                            .style
-                            .display = 'block'
-                        e
-                            .target
-                            .parentNode
-                            .parentNode
-                            .querySelector('.modifybtn')
-                            .style
-                            .display = 'inline-block'
-                        e
-                            .target
-                            .parentNode
-                            .parentNode
-                            .querySelector('.modify')
-                            .style
-                            .display = 'none'
-                        e
-                            .target
-                            .parentNode
-                            .parentNode
-                            .querySelector('.comple')
-                            .style
-                            .display = 'none'
-                        val.title = e
-                            .target
-                            .parentNode
-                            .parentNode
-                            .querySelector('.changeInput')
-                            .value;
-                        var constData = e
-                            .target
-                            .parentNode
-                            .parentNode
-                            .querySelector('.changeArea')
-                            .value
-                            .replace(/(?:\r\n|\r|\n)/g, '<br />')
+                        e.target.parentNode.parentNode.querySelector('.default').style.display = 'block'
+                        e.target.parentNode.parentNode.querySelector('.modifybtn').style.display = 'inline-block'
+                        e.target.parentNode.parentNode.querySelector('.modify').style.display = 'none'
+                        e.target.parentNode.parentNode.querySelector('.comple').style.display = 'none'
+                        val.title = e.target.parentNode.parentNode.querySelector('.changeInput').value;
+                        var constData = e.target.parentNode.parentNode.querySelector('.changeArea').value.replace(/(?:\r\n|\r|\n)/g, '<br />')
                         val.conts = constData
                     }
                 })
