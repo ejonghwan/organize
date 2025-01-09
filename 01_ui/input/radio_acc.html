@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../assets/style/style.css">
+   <title>Document</title>
+   <script defer src="../assets/js/nuli.autocomplete.es5.js"></script>
+   <script defer src="../assets/js/wai-aria.ui.es5.js"></script>
+   <style>
+      body { margin: 30px }
+   </style>
+</head>
+<body>
+   
+
+<div id="content" class="sub tool">
+
+  
+
+
+   <!-- 1) 기본 라디오버튼-->
+   <section>
+      <h1>1) 기본 라디오버튼</h1>
+      
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*키보드 사용</strong>
+         <p>왼쪽, 위쪽 화살표 : 이전 라디오 버튼으로 초점 이동 및 활성화</p>
+         <p>오른쪽, 아래쪽 화살표 : 다음 라디오 버튼으로 초점 이동 및 활성화</p>
+         <p>Space bar : 라디오 버튼 활성화, 선택된 라디오버튼만 초점 받음, 모두 선택 안 된 경우 첫 번째 요소만 초점 받음</p>
+         <p>Tabindex="0" : 초점을 받지 않는 요소에 적용 시 키보드 접근 가능</p>
+      </div>
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*구성 요소</strong>
+         <table class="tbl_aria">
+            <caption class="blind">
+               <strong>기본 라디오버튼 wai-aria 구성요소</strong>
+               <span>필수유무, role, property, state, 설명 정보 제공</span>
+            </caption>
+            <thead>
+               <tr>
+                  <th class="need">필수유무</th>
+                  <th class="role">role</th>
+                  <th class="prop">property</th>
+                  <th class="state">state</th>
+                  <th class="exp">설명</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role">role="radiogroup"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">라디오버튼 집합</td>
+               </tr>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role"></td>
+                  <td class="prop">aria-labelledby<br>또는<br>aria-label</td>
+                  <td class="state"></td>
+                  <td class="exp">role= “radiogroup” 사용 시 레이블 제공</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role">role="radio"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">라디오버튼 역할</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role"></td>
+                  <td class="prop"></td>
+                  <td class="state">aria-checked</td>
+                  <td class="exp">
+                     <ul>
+                        <li>true : 체크됨</li>
+                        <li>false : 체크되지 않음</li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role">role="none"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">ul &gt; li 구조에서 해당 역할을 하지 않는 경우 필수</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      
+      <!-- 소스 -->
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <div class="aria_ui">
+            <strong id="group_radio_lb01" class="tit">보안등급</strong>
+            <div class="li_radio float">
+               <ul role="radiogroup" aria-labelledby="group_radio_lb01">
+                  <li role="none"><span class="radio_common" role="radio" aria-checked="true" tabindex="0">일반</span></li>
+                  <li role="none"><span class="radio_common" role="radio" aria-checked="false" tabindex="-1">대외비</span></li>
+                  <li role="none"><span class="radio_common" role="radio" aria-checked="false" tabindex="-1">기밀</span></li>
+               </ul>
+              </div>
+         </div>
+      </div>
+      <!-- 소스 -->
+     
+   </section>
+   <!-- 1) 기본 라디오버튼  -->
+   <hr style="margin: 50px 0">
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+</body>
+</html>

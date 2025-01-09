@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../assets/style/style.css">
+   <script defer src="../assets/js/nuli.autocomplete.es5.js"></script>
+   <script defer src="../assets/js/wai-aria.ui.es5.js"></script>
+   <title>Document</title>
+   <style>
+      body { margin: 30px }
+   </style>
+</head>
+<body>
+   
+
+<div id="content" class="sub tool">
+
+  
+
+
+   <!-- 직렬 완성형 -->
+   <section>
+      <h1>1) 직렬 완성형</h1>
+      <p>입력 서식에 글자 입력 시 단어가 자동완성 됩니다. 자동완성된 텍스트는 선택된 상태로 삽입되어야 합니다.</p>
+      
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*키보드 사용</strong>
+         <p>Esc : 텍스트 제거</p>
+      </div>
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*구성 요소</strong>
+         <table class="tbl_aria">
+            <caption class="blind">
+               <strong>직렬 완성형 wai-aria 구성요소</strong>
+               <span>필수유무, role, property, state, 설명 정보 제공</span>
+            </caption>
+            <thead>
+               <tr>
+                  <th class="need">필수유무</th>
+                  <th class="role">role</th>
+                  <th class="prop">property</th>
+                  <th class="state">state</th>
+                  <th class="exp">설명</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role"></td>
+                  <td class="prop">aria-autocomplete</td>
+                  <td class="state"></td>
+                  <td class="exp">inline : 직렬형 자동완성</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      
+      <!-- 소스 -->
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <div class="aria_ui">
+            <input type="text" title="검색어" placeholder="'n'을 입력해보세요." id="autoComplete1" class="input_ac" aria-owns="acl_li1" auto-complete="inline">
+            <div id="acl_li1" class="li_search_txt"> 
+               <ul role="listbox"> 
+                  <li role="option">NAVER</li> 
+                  <li role="option">NAVER Webtoon</li> 
+                  <li role="option">NAVER Mail</li> 
+                  <li role="option">NAVER Map</li> 
+                  <li role="option">naver</li>
+                  <li role="option">naver webtoon</li>
+                  <li role="option">naver mail</li>
+                  <li role="option">naver map</li>  
+               </ul>
+            </div>  
+         </div>
+      </div>
+      <!-- 소스 -->
+     
+   </section>
+   <!-- 직렬 완성형 -->
+   <hr style="margin: 50px 0">
+
+
+
+
+    <!-- 목록 선택형 -->
+    <section style="margin-bottom: 50px">
+      <h1>2) 목록 선택형</h1>
+      
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*키보드 사용</strong>
+         <p>위쪽 화살표 : 이전 목록 탐색, 텍스트는 기존 입력된 값 유지, 첫 번째 항목에서 위쪽 화살표 선택 시 마지막 항목으로 이동</p>
+         <p>아래쪽 화살표 : 다음 목록 탐색, 텍스트는 기존 입력된 값 유지, 마지막 항목에서 아래쪽 화살표 선택 시 첫 번째 항목으로 이동</p>
+         <p>Enter : 텍스트 값을 선택한 옵션 내용으로 설정</p>
+         <p>Esc : 목록 상자 닫기 및 텍스트 삭제</p>
+         <p>Tabindex="-1" : li > a 구조로 자동완성 리스트가 표시되는 경우 a 요소에 적용</p>
+      </div>
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*구성 요소</strong>
+         <table class="tbl_aria">
+            <caption class="blind">
+               <strong>목록 선택형 wai-aria 구성요소</strong>
+               <span>필수유무, role, property, state, 설명 정보 제공</span>
+            </caption>
+            <thead>
+               <tr>
+                  <th class="need">필수유무</th>
+                  <th class="role">role</th>
+                  <th class="prop">property</th>
+                  <th class="state">state</th>
+                  <th class="exp">설명</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role">role="combobox"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">확장/축소 가능 요소임을 알림</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role"></td>
+                  <td class="prop"></td>
+                  <td class="state">aria-haspopup</td>
+                  <td class="exp">
+                     <ul>
+                        <li>false : 기본값, 연결된 팝업 없음</li>
+                        <li>true : 연결된 팝업 있음</li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role"></td>
+                  <td class="prop">aria-autocomplete</td>
+                  <td class="state"></td>
+                  <td class="exp">list : 목록형 자동완성</td>
+               </tr>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role"></td>
+                  <td class="prop">aria-owns</td>
+                  <td class="state"></td>
+                  <td class="exp">DOM 구조와 달리 기능적으로 상, 하위 관계인 경우 사용, 자동완성 리스트 컨테이너의 id 값 부여</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role"></td>
+                  <td class="prop">aria-activedescendant</td>
+                  <td class="state"></td>
+                  <td class="exp">스크립트로 선택된 자동완성 키워드 id 연결, 미선택시 빈 값</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role">role="listbox"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">선택 목록</td>
+               </tr>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role"></td>
+                  <td class="prop">aria-controls</td>
+                  <td class="state"></td>
+                  <td class="exp">input 요소와 자동완성 리스트 를 연결</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role">role="option"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">선택 목록에서 선택 가능한 항목</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role">role="none"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">li &gt; a 구조인 경우 li 요소에 사용</td>
+               </tr>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role"></td>
+                  <td class="prop"></td>
+                  <td class="state">aria-selected</td>
+                  <td class="exp">
+                     <ul>
+                        <li>자동완성 리스트에서 선택된 요소에 적용</li>
+                        <li>true : 선택됨</li>
+                        <li>false : 선택 안됨</li>
+                     </ul>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+    
+      <!-- 소스 -->
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <div class="aria_ui">
+            <input type="text" title="검색어" placeholder="'n'을 입력해보세요." class="input_ac" id="autoComplete2" role="combobox" aria-expanded="false" aria-haspopup="true" auto-complete="list" aria-owns="acl_li2"> 
+            <div id="acl_li2" class="li_search_txt" style="display: none;"> 
+               <ul role="listbox"> 
+                  <li role="option" hidden="true" aria-selected="false" style="display: none;">NAVER</li> 
+                  <li role="option" hidden="true" aria-selected="false" style="display: none;">NAVER Webtoon</li> 
+                  <li role="option" hidden="true" aria-selected="false" style="display: none;">NAVER Mail</li> 
+                  <li role="option" hidden="true" aria-selected="false" style="display: none;">NAVER Map</li> 
+                  <li role="option" aria-selected="true" style="display: block;">naver</li>
+                  <li role="option" aria-selected="false" style="display: block;">naver webtoon</li>
+                  <li role="option" aria-selected="false" style="display: block;">naver mail</li>
+                  <li role="option" aria-selected="false" style="display: block;">naver map</li>  
+               </ul>
+            </div>  
+         </div>
+      </div>
+      <!-- 소스 -->
+     
+   </section>
+   <!-- 목록 선택형 -->
+   <hr style="margin: 50px 0">
+
+     <!-- 복합형 -->
+     <section style="margin-bottom: 50px">
+      <h1>3) 복합형</h1>
+      
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*키보드 사용</strong>
+         <p>위쪽 화살표 : 이전 목록 탐색, 텍스트 값을 해당 옵션 내용으로 변경</p>
+         <p>아래쪽 화살표 : 다음 목록 탐색, 텍스트 값을 해당 옵션 내용으로 변경</p>
+         <p>Enter : 텍스트 값을 선택한 옵션 내용으로 설정</p>
+         <p>Esc : 텍스트 제거, 목록 상자 닫기</p>
+         <p>Tabindex="-1" : li > a 구조로 자동완성 리스트가 표시되는 경우 a 요소에 적용</p>
+      </div>
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*구성 요소</strong>
+         <table class="tbl_aria">
+            <caption class="blind">
+               <strong>복합형 wai-aria 구성요소</strong>
+               <span>필수유무, role, property, state, 설명 정보 제공</span>
+            </caption>
+            <thead>
+               <tr>
+                  <th class="need">필수유무</th>
+                  <th class="role">role</th>
+                  <th class="prop">property</th>
+                  <th class="state">state</th>
+                  <th class="exp">설명</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role">role="combobox"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">확장/축소 가능 요소임을 알림</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role"></td>
+                  <td class="prop"></td>
+                  <td class="state">aria-haspopup</td>
+                  <td class="exp">
+                     <ul>
+                        <li>false : 기본값, 연결된 팝업 없음</li>
+                        <li>true : 연결된 팝업 있음</li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role"></td>
+                  <td class="prop">aria-autocomplete</td>
+                  <td class="state"></td>
+                  <td class="exp">both : 목록형과 직렬형을 포함한 복합형 자동완성</td>
+               </tr>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role"></td>
+                  <td class="prop">aria-owns</td>
+                  <td class="state"></td>
+                  <td class="exp">DOM 구조와 달리 기능적으로 상, 하위 관계인 경우 사용, 자동완성 리스트 컨테이너의 id 값 부여</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role"></td>
+                  <td class="prop">aria-activedescendant</td>
+                  <td class="state"></td>
+                  <td class="exp">스크립트로 선택된 자동완성 키워드 id 연결, 미선택시 빈 값</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role">role="listbox"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">선택 목록</td>
+               </tr>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role"></td>
+                  <td class="prop">aria-controls</td>
+                  <td class="state"></td>
+                  <td class="exp">input 요소와 자동완성 리스트 를 연결</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role">role="option"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">선택 목록에서 선택 가능한 항목</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role">role="none"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">li &gt; a 구조인 경우 li 요소에 사용</td>
+               </tr>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role"></td>
+                  <td class="prop"></td>
+                  <td class="state">aria-selected</td>
+                  <td class="exp">
+                     <ul>
+                        <li>자동완성 리스트에서 선택된 요소에 적용</li>
+                        <li>true : 선택됨</li>
+                        <li>false : 선택 안됨</li>
+                     </ul>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+    
+      <!-- 소스 -->
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <div class="aria_ui">
+            <input type="text" title="검색어" placeholder="'n'을 입력해보세요." id="autoComplete3" class="input_ac" role="combobox" aria-expanded="false" aria-haspopup="true" auto-complete="both" aria-owns="acl_li3"> 
+            <div id="acl_li3" class="li_search_txt" style="display: none;"> 
+               <ul role="listbox"> 
+                  <li role="option" hidden="true" aria-selected="false" style="display: none;">NAVER</li> 
+                  <li role="option" hidden="true" aria-selected="false" style="display: none;">NAVER Webtoon</li> 
+                  <li role="option" hidden="true" aria-selected="false" style="display: none;">NAVER Mail</li> 
+                  <li role="option" hidden="true" aria-selected="false" style="display: none;">NAVER Map</li> 
+                  <li role="option" aria-selected="true" style="display: block;">naver</li>
+                  <li role="option" aria-selected="false" style="display: block;">naver webtoon</li>
+                  <li role="option" aria-selected="false" style="display: block;">naver mail</li>
+                  <li role="option" aria-selected="false" style="display: block;">naver map</li>  
+               </ul> 
+            </div>  
+         </div>
+      </div>
+      <!-- 소스 -->
+     
+   </section>
+   <!-- 목록 선택형 -->
+   <hr style="margin: 50px 0">
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+   <script>
+      window.onload = function() {
+
+         NuliComplete("autoComplete1");
+         NuliComplete("autoComplete2");
+         NuliComplete("autoComplete3");
+      }
+   </script>
+
+
+</body>
+</html>

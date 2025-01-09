@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../assets/style/style.css">
+   <title>Document</title>
+   <script defer src="../assets/js/nuli.autocomplete.es5.js"></script>
+   <script defer src="../assets/js/wai-aria.ui.es5.js"></script>
+   <style>
+      body { margin: 30px }
+   </style>
+</head>
+<body>
+   
+
+<div id="content" class="sub tool">
+
+  
+
+
+   <!--1) 기본 입력 서식 오류-->
+   <section>
+      <h1>1) 기본 입력 서식 오류</h1>
+      
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*키보드 사용</strong>
+         <p>위쪽 화살표 : 목록을 확장하고 목록 마지막 항목으로 초점 이동 및 값 변경. 목록이 확장된 경우 이전 목록으로 이동</p>
+         <p>아래쪽 화살표 : 목록을 확장하고 목록 첫 번째 항목으로 초점 이동 및 값 변경. 목록 안에 있을 경우 다음 목록으로 이동</p>
+         <p>Enter : 목록 확장 또는 선택된 항목 활성화</p>
+         <p>Space bar : 목록이 축소된 경우 확장하고 첫 번째 목록에 포커스</p>
+         <p>Esc : 목록 상자 닫고 목록 열기 버튼으로 위치</p>
+         <p>Tab, Shift Tab : 목록을 닫고 해당 목록 버튼으로 초점 위치</p>
+      </div>
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*구성 요소</strong>
+         <table class="tbl_aria">
+            <caption class="blind">
+               <strong>기본 입력 서식 오류 wai-aria 구성요소</strong>
+               <span>필수유무, role, property, state, 설명 정보 제공</span>
+            </caption>
+            <thead>
+               <tr>
+                  <th class="need">필수유무</th>
+                  <th class="role">role</th>
+                  <th class="prop">property</th>
+                  <th class="state">state</th>
+                  <th class="exp">설명</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role">role="alert"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">알림</td>
+               </tr>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role"></td>
+                  <td class="prop">aria-describedby</td>
+                  <td class="state"></td>
+                  <td class="exp">편집창과 입력 가이드 및 에러 메시지를 연결</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role"></td>
+                  <td class="prop">aria-invalid</td>
+                  <td class="state"></td>
+                  <td class="exp">
+                     <li>true: 입력 값이 유효하지 않음</li>
+                     <li>false : 기본값, 오류 없음</li>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      
+      <!-- 소스 -->
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <div class="aria_ui">
+            <label for="input_email" class="tit">이메일</label>
+            <input id="input_email_alert" type="text" class="input_ac input_email" placeholder="abc@naver.com" aria-describedby="error_msg" aria-invalid="true">
+            <div class="txt_error" role="alert" id="error_msg" style="display:none">이메일 형식이 아닙니다.</div>
+         </div>
+      </div>
+      <!-- 소스 -->
+     
+   </section>
+   <!--1) 기본 입력 서식 오류  -->
+   <hr style="margin: 50px 0">
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+</body>
+</html>

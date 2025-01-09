@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../assets/style/style.css">
+   <title>Document</title>
+   <script defer src="../assets/js/nuli.autocomplete.es5.js"></script>
+   <script defer src="../assets/js/wai-aria.ui.es5.js"></script>
+   <style>
+      body { margin: 30px }
+   </style>
+</head>
+<body>
+   
+
+<div id="content" class="sub tool">
+
+  
+
+
+   <!-- 1) 단일 선택목록-->
+   <section>
+      <h1>1) 단일 선택목록</h1>
+      
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*키보드 사용</strong>
+         <p>위쪽 화살표 : 목록을 확장하고 목록 마지막 항목으로 초점 이동 및 값 변경. 목록이 확장된 경우 이전 목록으로 이동</p>
+         <p>아래쪽 화살표 : 목록을 확장하고 목록 첫 번째 항목으로 초점 이동 및 값 변경. 목록 안에 있을 경우 다음 목록으로 이동</p>
+         <p>Enter : 목록 확장 또는 선택된 항목 활성화</p>
+         <p>Space bar : 목록이 축소된 경우 확장하고 첫 번째 목록에 포커스</p>
+         <p>Esc : 목록 상자 닫고 목록 열기 버튼으로 위치</p>
+         <p>Tab, Shift Tab : 목록을 닫고 해당 목록 버튼으로 초점 위치</p>
+      </div>
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*구성 요소</strong>
+         <table class="tbl_aria">
+            <caption class="blind">
+               <strong>단일 선택목록 wai-aria 구성요소</strong>
+               <span>필수유무, role, property, state, 설명 정보 제공</span>
+            </caption>
+            <thead>
+               <tr>
+                  <th class="need">필수유무</th>
+                  <th class="role">role</th>
+                  <th class="prop">property</th>
+                  <th class="state">state</th>
+                  <th class="exp">설명</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role">role="listbox"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">선택 목록</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role">role="option"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">선택 목록에서 선택 가능한 항목</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role"></td>
+                  <td class="prop"></td>
+                  <td class="state">aria-haspopup</td>
+                  <td class="exp">
+                     <ul>
+                        <li>false : 기본값, 연결된 팝업 없음</li>
+                        <li>listbox : 선택 목록 팝업 있음</li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role"></td>
+                  <td class="prop"></td>
+                  <td class="state">aria-expanded</td>
+                  <td class="exp">
+                     <ul>
+                        <li>true : 확장</li>
+                        <li>false : 축소</li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role"></td>
+                  <td class="prop"></td>
+                  <td class="state">aria-selected</td>
+                  <td class="exp">
+                     <ul>
+                        <li>true : 선택됨</li>
+                        <li>false : 선택 안됨</li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role"></td>
+                  <td class="prop">aria-labelledby<br>또는<br>aria-label</td>
+                  <td class="state"></td>
+                  <td class="exp">어떤 리스트박스인지에 대한 레이블 제공</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role">role="none"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">li &gt; a 구조인 경우 li 요소에 사용</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      
+      <!-- 소스 -->
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <div class="aria_ui">
+         <div class="select_wrap">
+            <button class="btn_select" aria-haspopup="listbox" aria-controls="li_sort" aria-expanded="false"><span>네이버 랭킹순</span><span class="icon_arr" aria-hidden="true"></span></button>
+            <ul id="li_sort" role="listbox" class="li_sort" style="display: none;">
+               <li id="li_sort01" role="option" aria-selected="true" tabindex="-1">네이버 랭킹순</li>
+               <li id="li_sort02" role="option" aria-selected="false" tabindex="-1">낮은 가격순</li>
+               <li id="li_sort03" role="option" aria-selected="false" tabindex="-1">높은 가격순</li>
+               <li id="li_sort04" role="option" aria-selected="false" tabindex="-1">등록일순</li>
+               <li id="li_sort05" role="option" aria-selected="false" tabindex="-1">리뷰 많은순</li>
+            </ul>
+           </div>
+      </div>
+   </div>
+      <!-- 소스 -->
+     
+   </section>
+   <!-- 1) 단일 선택목록  -->
+   <hr style="margin: 50px 0">
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+</body>
+</html>

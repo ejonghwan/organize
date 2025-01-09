@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../assets/style/style.css">
+   <title>Document</title>
+   <script defer src="../assets/js/nuli.autocomplete.es5.js"></script>
+   <script defer src="../assets/js/wai-aria.ui.es5.js"></script>
+   <style>
+      body { margin: 30px }
+   </style>
+</head>
+<body>
+   
+
+<div id="content" class="sub tool">
+
+  
+
+
+   <!-- 기본 버튼 -->
+   <section>
+      <h1>1) 기본 버튼</h1>
+      
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*키보드 사용</strong>
+         <p>Enter, Space bar : 버튼 활성화</p>
+         <p>Tabindex="0": 초점을 받지 않는 요소에 적용 시 키보드 접근 가능</p>
+      </div>
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*구성 요소</strong>
+         <table class="tbl_aria">
+            <caption class="blind">
+               <strong>기본 버튼 wai-aria 구성요소</strong>
+               <span>필수유무, role, property, state, 설명 정보 제공</span>
+            </caption>
+            <thead>
+               <tr>
+                  <th class="need">필수유무</th>
+                  <th class="role">role</th>
+                  <th class="prop">property</th>
+                  <th class="state">state</th>
+                  <th class="exp">설명</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role">role="button"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">버튼 역할</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      
+      <!-- 소스 -->
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <div class="aria_ui">
+            <div id="default-btn" class="btn-common btn-download" style="cursor:pointer" role="button" tabindex="0"><span>PDF 파일 다운로드</span></div>
+         </div>
+      </div>
+      <!-- 소스 -->
+     
+   </section>
+   <!-- 기본 버튼  -->
+   <hr style="margin: 50px 0">
+
+
+
+
+   <!-- 토글 버튼 -->
+   <section>
+      <h1>2) 토글 버튼</h1>
+      
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*키보드 사용</strong>
+         <p>Enter, Space bar : 버튼 활성화</p>
+      </div>
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*구성 요소</strong>
+         <table class="tbl_aria">
+            <caption class="blind">
+               <strong>토글 버튼 wai-aria 구성요소</strong>
+               <span>필수유무, role, property, state, 설명 정보 제공</span>
+            </caption>
+            <thead>
+               <tr>
+                  <th class="need">필수유무</th>
+                  <th class="role">role</th>
+                  <th class="prop">property</th>
+                  <th class="state">state</th>
+                  <th class="exp">설명</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role"></td>
+                  <td class="prop"></td>
+                  <td class="state">aria-pressed</td>
+                  <td class="exp">
+                     <ul>
+                        <li>true : 눌림</li>
+                        <li>false : 눌리지 않음</li>
+                     </ul>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      
+      <!-- 소스 -->
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <div class="aria_ui">
+            <button class="btn_mute" aria-pressed="false" aria-label="음소거"><span class="icon" aria-hidden="true"></span></button>
+         </div>
+      </div>
+      <!-- 소스 -->
+     
+   </section>
+   <!-- 토글 버튼  -->
+   <hr style="margin: 50px 0">
+
+
+
+
+   <!-- 확장/축소 버튼 -->
+   <section>
+      <h1>3) 확장/축소 버튼</h1>
+      
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*키보드 사용</strong>
+         <p>Enter, Space bar : 버튼 활성화</p>
+      </div>
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*구성 요소</strong>
+         <table class="tbl_aria">
+            <caption class="blind">
+               <strong>확장/축소 버튼 wai-aria 구성요소</strong>
+               <span>필수유무, role, property, state, 설명 정보 제공</span>
+            </caption>
+            <thead>
+               <tr>
+                  <th class="need">필수유무</th>
+                  <th class="role">role</th>
+                  <th class="prop">property</th>
+                  <th class="state">state</th>
+                  <th class="exp">설명</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role"></td>
+                  <td class="prop"></td>
+                  <td class="state">aria-expanded</td>
+                  <td class="exp">
+                     <ul>
+                        <li>true : 확장</li>
+                        <li>false : 축소</li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role"></td>
+                  <td class="prop">aria-controls</td>
+                  <td class="state"></td>
+                  <td class="exp">탭 요소와 탭 내용을 id 로 연결</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      
+      <!-- 소스 -->
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <div class="aria_ui"> 
+            <button class="btn_expand" aria-expanded="false" aria-controls="expanded-example">Q. 스크린리더를 테스트하려면 어떻게 해야 하나요?</button>
+            <div id="expanded-example" class="txt_ans" style="display: none;">A. 전달드린 주소와 계정으로 원격 접속하여 테스트 가능합니다.</div>
+         </div>
+      </div>
+      <!-- 소스 -->
+     
+   </section>
+   <!-- 확장/축소 버튼  -->
+   <hr style="margin: 50px 0">
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+</body>
+</html>

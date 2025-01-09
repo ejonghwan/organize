@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../assets/style/style.css">
+   <title>Document</title>
+   <script defer src="../assets/js/nuli.autocomplete.es5.js"></script>
+   <script defer src="../assets/js/wai-aria.ui.es5.js"></script>
+   <style>
+      body { margin: 30px }
+   </style>
+</head>
+<body>
+   
+
+<div id="content" class="sub tool">
+
+  
+
+
+   <!--1) 기본 입력 서식 오류-->
+   <section>
+      <h1>1) 기본 입력 서식 오류</h1>
+      
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*키보드 사용</strong>
+         <p>Home : 슬라이더 값을 최소값으로 설정</p>
+         <p>End : 슬라이더 값을 최대값으로 설정</p>
+         <p>**가로 슬라이더의 경우</p>
+         <br />
+         <p>왼쪽 화살표 : 슬라이더 값 한 단계 감소</p>
+         <p>오른쪽 화살표 : 슬라이더 값 한 단계 증가</p>
+         <br />
+         <p>**세로 슬라이더의 경우</p>
+         <p>위쪽 화살표 : 슬라이더 값 한 단계 증가</p>
+         <p>아래쪽 화살표 : 슬라이더 값 한 단계 감소</p>
+      </div>
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*구성 요소</strong>
+         <table class="tbl_aria">
+            <caption class="blind">
+               <strong>싱글 슬라이더 wai-aria 구성요소</strong>
+               <span>필수유무, role, property, state, 설명 정보 제공</span>
+            </caption>
+            <thead>
+               <tr>
+                  <th class="need">필수유무</th>
+                  <th class="role">role</th>
+                  <th class="prop">property</th>
+                  <th class="state">state</th>
+                  <th class="exp">설명</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role">role="slider"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">슬라이더</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role"></td>
+                  <td class="prop">aria-labelledby<br>또는<br>aria-label</td>
+                  <td class="state"></td>
+                  <td class="exp">role="silder" 사용 시 레이블 제공</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role"></td>
+                  <td class="prop">aria-valuemin</td>
+                  <td class="state"></td>
+                  <td class="exp">슬라이더 최소값</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role"></td>
+                  <td class="prop">aria-valuemax</td>
+                  <td class="state"></td>
+                  <td class="exp">슬라이더 최대값</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role"></td>
+                  <td class="prop">aria-valuenow</td>
+                  <td class="state"></td>
+                  <td class="exp">슬라이더 현재값</td>
+               </tr>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role"></td>
+                  <td class="prop">aria-valuetext</td>
+                  <td class="state"></td>
+                  <td class="exp">현재 상태를 텍스트로 포현</td>
+               </tr>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role"></td>
+                  <td class="prop">aria-orientation</td>
+                  <td class="state"></td>
+                  <td class="exp">
+                     <ul>
+                        <li>horizontal : 기본값, 가로 형태로 배치</li>
+                        <li>vertical : 세로 형태로 배치</li>
+                     </ul>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      
+      <!-- 소스 -->
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <div class="aria_ui">
+            <div id="slider-wrap" class="slider">
+               <!-- 프로그래스 바 -->
+               <div id="slider-percent" class="slider_percent" style="width: 195px;"></div>
+               <!-- 슬라이드 조절 버튼 -->
+               <div id="slider-drag" class="btn_state" draggable="true" role="slider" aria-valuemin="0" aria-valuenow="39" aria-valuemax="100" aria-valuetext="0" aria-orientation="horizontal" aria-label="점수" tabindex="0" style="left: 39%; margin-left: -15px;">
+               </div>
+            </div>
+            <span id="slider-num" class="slider_num" aria-hidden="true">39</span>
+         </div>
+      </div>
+      <!-- 소스 -->
+     
+   </section>
+   <!--1) 기본 입력 서식 오류  -->
+   <hr style="margin: 50px 0">
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+</body>
+</html>

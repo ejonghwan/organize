@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../assets/style/style.css">
+   <title>Document</title>
+   <script defer src="../assets/js/nuli.autocomplete.es5.js"></script>
+   <script defer src="../assets/js/wai-aria.ui.es5.js"></script>
+   <style>
+      body { margin: 30px }
+   </style>
+</head>
+<body>
+   
+
+<div id="content" class="sub tool">
+
+  
+
+
+   <!-- 콘텍스트형 -->
+   <section>
+      <h1>1) 콘텍스트형</h1>
+      <p>입력 서식에 글자 입력 시 단어가 자동완성 됩니다. 자동완성된 텍스트는 선택된 상태로 삽입되어야 합니다.</p>
+      
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*키보드 사용</strong>
+         <p>- 설정 버튼을 선택한 경우</p>
+         <p>해상도 팝업으로 초점 이동</p>
+         <p>Tab : 레이어 닫고 설정 버튼으로 초점 보내기</p>
+         <p>Esc : 설정 메뉴 닫고 설정 버튼으로 초점 이동</p>
+         <p>왼쪽, 오른쪽 화살표 : 해상도, 재생속도조절 상위 메뉴 순환</p>
+         <p>아래쪽, 위쪽 화살표 : 초점을 위치한 메뉴 열고 처음, 마지막 요소로 초점 이동</p>
+         <p>Enter : 초점을 받은 요소 하위 메뉴 열고 첫 번째 메뉴에 초점 이동</p>
+         <br />
+         <p>- 하위 메뉴가 노출된 경우</p>
+         <p>하위 첫 번째 요소로 초점 이동</p>
+         <p>Tab : 뒤로, 다시 누르면 레이어 닫고 설정 버튼으로 초점 이동</p>
+         <p>오른쪽, 왼쪽 화살표 : 하위 메뉴 닫고 다음 또는 이전 항목으로 초점 이동</p>
+         <p>Enter : 선택한 메뉴 요소 실행</p>
+         <p>Esc: 하위메뉴 닫고 이전 상위 메뉴에 초점 보내기</p>
+         <p>뒤로 버튼 선택 시 : 하위 메뉴 닫고 이전 상위 메뉴로 초점 이동</p>
+      </div>
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*구성 요소</strong>
+         <table class="tbl_aria">
+            <caption class="blind">
+               <strong>콘텍스트형 wai-aria 구성요소</strong>
+               <span>필수유무, role, property, state, 설명 정보 제공</span>
+            </caption>
+            <thead>
+               <tr>
+                  <th class="need">필수유무</th>
+                  <th class="role">role</th>
+                  <th class="prop">property</th>
+                  <th class="state">state</th>
+                  <th class="exp">설명</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role">role="menu"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">메뉴 선택 목록</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role">role="menuitem"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">메뉴에서의 선택 항목</td>
+               </tr>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role">role="none"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">역할 없음</td>
+               </tr>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role">aria-label<br>또는<br>aria-labelledby</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">각 메뉴 그룹에 들어갈 레이블</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role"></td>
+                  <td class="prop"></td>
+                  <td class="state">aria-expanded</td>
+                  <td class="exp">
+                     <ul>
+                        <li>true : 확장</li>
+                        <li>false : 축소</li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role"></td>
+                  <td class="prop"></td>
+                  <td class="state">aria-haspopup</td>
+                  <td class="exp">
+                     <ul>
+                        <li>true : 메뉴 있음</li>
+                        <li>false : 기본값, 메뉴 없음</li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role"></td>
+                  <td class="prop">aria-current</td>
+                  <td class="state"></td>
+                  <td class="exp">
+                     선택된 메뉴가 있는 경우 적용
+                     <ul>
+                        <li>false : 기본값, 해당 항목이 현재 맥락과 불일치</li>
+                        <li>true : 해당 항목이 현재 맥락과 일치</li>
+                     </ul>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      
+      <!-- 소스 -->
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <div id="menu-haspop" class="aria_ui">
+            <div class="vod">
+               <img src="./aria_vod.jpg" alt="">
+               <div class="ctrls">
+                  <div class="slider">
+                     <div class="slider_percent"></div>
+                  </div>
+                  <div class="ctrls_left">
+                     <button class="btn_prev"><span class="blind">이전 영상</span></button>
+                     <button class="btn_play" aria-pressed="true"><span class="blind">재생</span></button>
+                     <button class="btn_next"><span class="blind">다음 영상</span></button>
+                     <button class="btn_sound" aria-pressed="false"><span class="blind">음소거</span></button>
+                  </div>
+                  <div class="ctrls_right">
+                     <button class="btn_setting" aria-haspopup="true" aria-label="설정" aria-controls="video-menu" aria-expanded="false"></button>
+                     <div id="video-menu" class="menu_context" role="menu" aria-label="설정">
+                        <div class="mc_li">
+                           <button class="lb_menu" role="menuitem" aria-haspopup="true" aria-controls="resolution-menu" aria-expanded="false" tabindex="-1"><span class="txt_left">해상도</span><span class="txt_right">자동 480p</span></button>
+                           <div id="resolution-menu" class="menu_context" style="z-index:1">
+                              <button class="lb_menu"><span>해상도</span> <span class="blind">메뉴 닫기</span></button>
+                              <ul role="menu" aria-label="해상도">
+                                 <li role="none"><a href="#" role="menuitem"><span>자동(480p)</span></a></li>
+                                 <li role="none"><a href="#" role="menuitem"><span>1080p</span><span class="hd">HD</span></a></li>
+                                 <li role="none"><a href="#" role="menuitem"><span>720p</span><span class="hd">HD</span></a></li>
+                                 <li role="none"><a href="#" role="menuitem"><span>480p</span></a></li>
+                                 <li role="none"><a href="#" role="menuitem"><span>360p</span></a></li>
+                                 <li role="none"><a href="#" role="menuitem"><span>270p</span></a></li>
+                              </ul>
+                           </div>
+                        </div>
+                        <div class="mc_li">
+                           <button class="lb_menu" role="menuitem" aria-haspopup="true" aria-controls="speed-menu" aria-expanded="false" tabindex="-1"><span class="txt_left">재생속도</span><span class="txt_right">1.0x(기본)</span></button>
+                           <div id="speed-menu" class="menu_context" style="z-index:1">
+                              <button class="lb_menu"><span>재생 속도</span> <span class="blind">메뉴 닫기</span></button>
+                              <ul role="menu" aria-label="재생 속도">
+                                 <li role="none"><a href="#" role="menuitem"><span>0.25x</span></a></li>
+                                 <li role="none"><a href="#" role="menuitem"><span>0.5x</span></a></li>
+                                 <li role="none"><a href="#" role="menuitem"><span>0.75x</span></a></li>
+                                 <li role="none"><a href="#" role="menuitem"><span>1.0x(기본)</span></a></li>
+                                 <li role="none"><a href="#" role="menuitem"><span>1.25x</span></a></li>
+                                 <li role="none"><a href="#" role="menuitem"><span>1.5x</span></a></li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                     <button class="btn_wide" aria-pressed="false" aria-label="넓은 화면 보기"></button>
+                     <button class="btn_all" aria-pressed="false" aria-label="전체 화면 보기"></button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- 소스 -->
+     
+   </section>
+   <!-- 콘텍스트형 -->
+   <hr style="margin: 50px 0">
+
+
+
+
+
+   <!-- 2) 데스크톱형 -->
+   <section>
+      <h1>2) 데스크톱형</h1>
+      <p>입력 서식에 글자 입력 시 단어가 자동완성 됩니다. 자동완성된 텍스트는 선택된 상태로 삽입되어야 합니다.</p>
+      
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*키보드 사용</strong>
+         <p>- 설정 버튼을 선택한 경우</p>
+         <p>해상도 팝업으로 초점 이동</p>
+         <p>Tab : 레이어 닫고 설정 버튼으로 초점 보내기</p>
+         <p>Esc : 설정 메뉴 닫고 설정 버튼으로 초점 이동</p>
+         <p>왼쪽, 오른쪽 화살표 : 해상도, 재생속도조절 상위 메뉴 순환</p>
+         <p>아래쪽, 위쪽 화살표 : 초점을 위치한 메뉴 열고 처음, 마지막 요소로 초점 이동</p>
+         <p>Enter : 초점을 받은 요소 하위 메뉴 열고 첫 번째 메뉴에 초점 이동</p>
+         <br />
+         <p>- 하위 메뉴가 노출된 경우</p>
+         <p>하위 첫 번째 요소로 초점 이동</p>
+         <p>Tab : 뒤로, 다시 누르면 레이어 닫고 설정 버튼으로 초점 이동</p>
+         <p>오른쪽, 왼쪽 화살표 : 하위 메뉴 닫고 다음 또는 이전 항목으로 초점 이동</p>
+         <p>Enter : 선택한 메뉴 요소 실행</p>
+         <p>Esc: 하위메뉴 닫고 이전 상위 메뉴에 초점 보내기</p>
+         <p>뒤로 버튼 선택 시 : 하위 메뉴 닫고 이전 상위 메뉴로 초점 이동</p>
+      </div>
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*구성 요소</strong>
+         <table class="tbl_aria">
+            <caption class="blind">
+               <strong>데스크톱형 wai-aria 구성요소</strong>
+               <span>필수유무, role, property, state, 설명 정보 제공</span>
+            </caption>
+            <thead>
+               <tr>
+                  <th class="need">필수유무</th>
+                  <th class="role">role</th>
+                  <th class="prop">property</th>
+                  <th class="state">state</th>
+                  <th class="exp">설명</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role">role="menubar"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">메뉴 표시 줄</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role">role="menu"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">메뉴 선택 목록</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role">role="menuitem"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">메뉴에서의 선택 항목</td>
+               </tr>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role">role="none"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">역할 없음</td>
+               </tr>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role">aria-label<br>또는<br>aria-labelledby</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">각 메뉴 그룹에 들어갈 레이블</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role"></td>
+                  <td class="prop"></td>
+                  <td class="state">aria-expanded</td>
+                  <td class="exp">
+                     <ul>
+                        <li>true : 확장</li>
+                        <li>false : 축소</li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role"></td>
+                  <td class="prop"></td>
+                  <td class="state">aria-haspopup</td>
+                  <td class="exp">
+                     <ul>
+                        <li>true : 메뉴 있음</li>
+                        <li>false : 기본값, 메뉴 없음</li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role"></td>
+                  <td class="prop">aria-current</td>
+                  <td class="state"></td>
+                  <td class="exp">
+                     선택된 메뉴가 있는 경우 적용
+                     <ul>
+                        <li>false : 기본값, 해당 항목이 현재 맥락과 불일치</li>
+                        <li>true : 해당 항목이 현재 맥락과 일치</li>
+                     </ul>
+                  </td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      
+      <!-- 소스 -->
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <div id="menu-editor" class="aria_ui">
+            <div class="menu_desktop">
+               <div class="li_menu_edit">
+                  <ul role="menubar">
+                     <li role="none">
+                        <a href="#" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="editor_filemenu">파일</a>
+                        <ul id="editor_filemenu" class="menu_vert" role="menu" aria-label="파일">
+                           <li role="none"><a href="#" role="menuitem">열기</a></li>
+                           <li role="none"><a href="#" role="menuitem">저장</a></li>
+                           <li role="none"><a href="#" role="menuitem">다른 이름으로 저장</a></li>
+                        </ul>
+                     </li>
+                     <li role="none">
+                        <a href="#" role="menuitem" aria-haspopup="true" aria-controls="editor_eidtmenu" aria-expanded="false">편집</a>
+                        <ul id="editor_eidtmenu" class="menu_vert" role="menu" aria-label="편집">
+                           <li role="none"><a href="#" role="menuitem">잘라내기</a></li>
+                           <li role="none"><a href="#" role="menuitem">복사</a></li>
+                           <li role="none"><a href="#" role="menuitem">붙여넣기</a></li>
+                        </ul>
+                     </li>
+                     <li>
+                        <a href="#" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="editor_fontmenu">서식</a>
+                        <ul id="editor_fontmenu" class="menu_vert" role="menu" aria-label="서식">
+                           <li role="none"><a href="#" role="menuitem">자동 줄 바꿈</a></li>
+                           <li role="none"><a href="#" role="menuitem">글꼴</a></li>
+                        </ul>
+                     </li>
+                     <li>
+                        <ul class="menu_horz" role="menu" aria-label="정렬">
+                           <li role="none" class="ta_left"><a href="#" role="menuitem" aria-current="true" aria-label="왼쪽 정렬"> </a></li>
+                           <li role="none" class="ta_center"><a href="#" role="menuitem" aria-current="false" aria-label="가운데 정렬"> </a></li>
+                           <li role="none" class="ta_right"><a href="#" role="menuitem" aria-current="false" aria-label="오른쪽 정렬"> </a></li>
+                        </ul>
+                     </li>
+                  </ul>
+               </div>
+               <div class="textarea">
+                  <textarea placeholder="안녕하세요, 에디터 영역입니다." title="글 작성, alt + F10으로 메뉴 이동"></textarea>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- 소스 -->
+      
+   </section>
+   <!-- 데스크톱형 -->
+   <hr style="margin: 50px 0">
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+</body>
+</html>

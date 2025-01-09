@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../assets/style/style.css">
+   <title>Document</title>
+   <script defer src="../assets/js/nuli.autocomplete.es5.js"></script>
+   <script defer src="../assets/js/wai-aria.ui.es5.js"></script>
+   <style>
+      body { margin: 30px }
+   </style>
+</head>
+<body>
+   
+
+<div id="content" class="sub tool">
+
+  
+
+
+   <!-- 1) 기본 체크박스-->
+   <section>
+      <h1>1) 기본 체크박스</h1>
+      
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*키보드 사용</strong>
+         <p>Tab : 다음 체크박스로 초점 이동</p>
+         <p>Space bar : 체크박스 활성화</p>
+         <p>Tabindex="0" : 초점을 받지 않는 요소에 적용 시 키보드 접근 가능</p>
+      </div>
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*구성 요소</strong>
+         <table class="tbl_aria">
+            <caption class="blind">
+               <strong>기본 체크박스 wai-aria 구성요소</strong>
+               <span>필수유무, role, property, state, 설명 정보 제공</span>
+            </caption>
+            <thead>
+               <tr>
+                  <th class="need">필수유무</th>
+                  <th class="role">role</th>
+                  <th class="prop">property</th>
+                  <th class="state">state</th>
+                  <th class="exp">설명</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role">role="group"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">동일 속성의 집합</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role">role="checkbox"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">체크박스 역할</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role"></td>
+                  <td class="prop"></td>
+                  <td class="state">aria-checked</td>
+                  <td class="exp">
+                     <ul>
+                        <li>true : 체크됨</li>
+                        <li>false : 체크되지 않음</li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role"></td>
+                  <td class="prop">aria-labelledby<br>또는<br>aria-label</td>
+                  <td class="state"></td>
+                  <td class="exp">role=“group” 사용시 레이블 제공</td>
+               </tr>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role">role="none"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">ul &gt; li 구조에서 해당 역할을 하지 않는 경우 필수</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      
+      <!-- 소스 -->
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <div class="aria_ui">
+            <strong class="tit" id="group_chk_lb01">관심 서비스</strong>
+            <div class="li_chk float">
+               <ul role="group" aria-labelledby="group_chk_lb01">
+                  <li role="none"><span class="chk_common" role="checkbox" aria-checked="true" tabindex="0">날씨</span></li>
+                  <li role="none"><span class="chk_common" role="checkbox" aria-checked="true" tabindex="0">영화</span></li>
+                  <li role="none"><span class="chk_common" role="checkbox" aria-checked="false" tabindex="0">밴드</span></li>
+                  <li role="none"><span class="chk_common" role="checkbox" aria-checked="false" tabindex="0">오피스</span></li>
+               </ul>
+              </div>
+         </div>
+      </div>
+      <!-- 소스 -->
+     
+   </section>
+   <!-- 1) 기본 체크박스  -->
+   <hr style="margin: 50px 0">
+
+
+
+   <!-- 2) 전체 선택 가능한 체크박스-->
+   <section>
+      <h1>2) 전체 선택 가능한 체크박스</h1>
+      
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*키보드 사용</strong>
+         <p>Tab : 다음 체크박스로 초점 이동</p>
+         <p>Space bar : 체크박스 활성화</p>
+      </div>
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*구성 요소</strong>
+         <table class="tbl_aria">
+            <caption class="blind">
+               <strong>기본 체크박스 wai-aria 구성요소</strong>
+               <span>필수유무, role, property, state, 설명 정보 제공</span>
+            </caption>
+            <thead>
+               <tr>
+                  <th class="need">필수유무</th>
+                  <th class="role">role</th>
+                  <th class="prop">property</th>
+                  <th class="state">state</th>
+                  <th class="exp">설명</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role">role="group"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">동일 속성의 집합</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role">role="checkbox"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">체크박스 역할</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role"></td>
+                  <td class="prop"></td>
+                  <td class="state">aria-checked</td>
+                  <td class="exp">
+                     <ul>
+                        <li>true : 체크됨</li>
+                        <li>false : 체크되지 않음</li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role"></td>
+                  <td class="prop">aria-labelledby<br>또는<br>aria-label</td>
+                  <td class="state"></td>
+                  <td class="exp">role=“group” 사용시 레이블 제공</td>
+               </tr>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role">role="none"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">ul &gt; li 구조에서 해당 역할을 하지 않는 경우 필수</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      
+      <!-- 소스 -->
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <div class="aria_ui">
+            <strong id="group_chk_lb02" class="tit">관심 서비스</strong>
+            <div class="li_chk" role="group" aria-labelledby="group_chk_lb02">
+               <span class="chk_common" role="checkbox" aria-checked="false" aria-controls="chk2_1 chk2_2 chk2_3 chk2_4" tabindex="0">전체 선택</span>
+               <ul class="padding" role="none">
+                  <li role="none"><span id="chk2_1" class="chk_common" role="checkbox" aria-checked="false" tabindex="0">날씨</span></li>
+                  <li role="none"><span id="chk2_2" class="chk_common" role="checkbox" aria-checked="false" tabindex="0">영화</span></li>
+                  <li role="none"><span id="chk2_3" class="chk_common" role="checkbox" aria-checked="false" tabindex="0">밴드</span></li>
+                  <li role="none"><span id="chk2_4" class="chk_common" role="checkbox" aria-checked="false" tabindex="0">오피스</span></li>
+               </ul>
+              </div>
+         </div>
+      </div>
+      <!-- 소스 -->
+     
+   </section>
+   <!-- 2) 전체 선택 가능한 체크박스  -->
+   <hr style="margin: 50px 0">
+
+
+
+
+   <!-- 3) 하위 콘텐츠가 있는 체크박스 -->
+   <section>
+      <h1>3) 하위 콘텐츠가 있는 체크박스 </h1>
+      
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*키보드 사용</strong>
+         <p>Tab : 다음 체크박스로 초점 이동</p>
+         <p>Space bar : 체크박스 활성화</p>
+      </div>
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*구성 요소</strong>
+         <table class="tbl_aria">
+            <caption class="blind">
+               <strong>하위 콘텐츠가 있는 체크박스 wai-aria 구성요소</strong>
+               <span>필수유무, role, property, state, 설명 정보 제공</span>
+            </caption>
+            <thead>
+               <tr>
+                  <th class="need">필수유무</th>
+                  <th class="role">role</th>
+                  <th class="prop">property</th>
+                  <th class="state">state</th>
+                  <th class="exp">설명</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role">role="group"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">동일 속성의 집합</td>
+               </tr>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role">role="checkbox"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">체크박스 역할</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role"></td>
+                  <td class="prop"></td>
+                  <td class="state">aria-checked</td>
+                  <td class="exp">
+                     <ul>
+                        <li>true : 체크됨</li>
+                        <li>false : 체크되지 않음</li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role"></td>
+                  <td class="prop">aria-labelledby<br>또는<br>aria-label</td>
+                  <td class="state"></td>
+                  <td class="exp">role=“group” 사용시 레이블 제공</td>
+               </tr>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role"></td>
+                  <td class="prop">aria-controls</td>
+                  <td class="state"></td>
+                  <td class="exp">속성값과 일치하는 id를 참조</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role"></td>
+                  <td class="prop"></td>
+                  <td class="state">aria-expanded</td>
+                  <td class="exp">
+                     <ul>
+                        <li>true : 확장</li>
+                        <li>false : 축소</li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role">role="none"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">ul &gt; li 구조에서 해당 역할을 하지 않는 경우 필수</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      
+      <!-- 소스 -->
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <div class="aria_ui">
+            <strong id="group_chk_lb03" class="blind">가능날짜</strong>							
+            <div role="group" aria-labelledby="group_chk_lb03" class="li_chk bd active">
+               <span id="show-checkdate" class="chk_common" role="checkbox" aria-checked="false" aria-controls="chk3_1_1 chk3_1_2 chk3_1_3" tabindex="0" aria-expanded="true">날짜<span class="blind">전체</span></span>
+               <span class="icon_arr" aria-hidden="true"></span>
+               <ul id="checkdate-lists" class="padding" role="none" style="display: block;">
+                  <li role="none"><span id="chk3_1_1" class="chk_common" role="checkbox" aria-checked="false" tabindex="0">1월 1일</span></li>
+                  <li role="none"><span id="chk3_1_2" class="chk_common" role="checkbox" aria-checked="false" tabindex="0">1월 2일</span></li>
+                  <li role="none"><span id="chk3_1_3" class="chk_common" role="checkbox" aria-checked="false" tabindex="0">1월 3일</span></li>
+               </ul>
+              </div>
+            <strong id="group_chk_lb04" class="blind">가능시간</strong>	
+              <div role="group" aria-labelledby="group_chk_lb04" class="li_chk bd">
+               <span id="show-checktime" class="chk_common" role="checkbox" aria-checked="false" aria-controls="chk3_2_1 chk3_2_2 chk3_2_3" tabindex="0">시간<span class="blind">전체</span></span>
+               <span class="icon_arr"></span>
+               <ul id="checktime-lists" class="padding" role="none">
+                  <li role="none"><span id="chk3_2_1" class="chk_common" role="checkbox" aria-checked="false" tabindex="0">9시</span></li>
+                  <li role="none"><span id="chk3_2_2" class="chk_common" role="checkbox" aria-checked="false" tabindex="0">10시</span></li>
+                  <li role="none"><span id="chk3_2_3" class="chk_common" role="checkbox" aria-checked="false" tabindex="0">11시</span></li>
+               </ul>
+              </div>
+         </div>
+      </div>
+      <!-- 소스 -->
+     
+   </section>
+   <!-- 3) 하위 콘텐츠가 있는 체크박스  -->
+   <hr style="margin: 50px 0">
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+</body>
+</html>

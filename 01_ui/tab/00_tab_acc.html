@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../assets/style/style.css">
+   <title>Document</title>
+   <script defer src="../assets/js/nuli.autocomplete.es5.js"></script>
+   <script defer src="../assets/js/wai-aria.ui.es5.js"></script>
+   <style>
+      body { margin: 30px }
+   </style>
+</head>
+<body>
+   
+
+<div id="content" class="sub tool">
+
+  
+
+
+   <!-- 콘텍스트형 -->
+   <section>
+      <h1>1) 콘텍스트형</h1>
+      
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*키보드 사용</strong>
+         <p>Tab : 선택한 탭을 제외한 탭 메뉴 이동 불가능</p>
+         <p>왼쪽 화살표 : 이전 탭 메뉴로 이동하고 활성화</p>
+         <p>오른쪽 화살표 : 다음 탭 메뉴로 이동하고 활성화</p>
+         <p>Home : 초점을 첫 번째 탭으로 이동하고 활성화</p>
+         <p>End : 초점을 마지막 탭으로 이동하고 활성화</p>
+      </div>
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <strong>*구성 요소</strong>
+         <table class="tbl_aria">
+            <caption class="blind">
+               <strong>가로형 wai-aria 구성요소</strong>
+               <span>필수유무, role, property, state, 설명 정보 제공</span>
+            </caption>
+            <thead>
+               <tr>
+                  <th class="need">필수유무</th>
+                  <th class="role">role</th>
+                  <th class="prop">property</th>
+                  <th class="state">state</th>
+                  <th class="exp">설명</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role">role="tablist"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">탭 메뉴 리스트</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role">role="tab"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">탭 메뉴</td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role">role="tabpanel"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">탭 내용</td>
+               </tr>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role"></td>
+                  <td class="prop">aria-orientation</td>
+                  <td class="state"></td>
+                  <td class="exp">
+                     <ul>
+                        <li>horizontal : 기본값, 가로 형태로 배치</li>
+                        <li>vertical : 세로 형태로 배치</li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="need">필수</td>
+                  <td class="role"></td>
+                  <td class="prop"></td>
+                  <td class="state">aria-selected</td>
+                  <td class="exp">
+                     <ul>
+                        <li>true : 선택됨</li>
+                        <li>false : 선택 안됨</li>
+                     </ul>
+                  </td>
+               </tr>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role"></td>
+                  <td class="prop">aria-controls</td>
+                  <td class="state"></td>
+                  <td class="exp">탭 요소와 탭 내용을 id 로 연결</td>
+               </tr>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role"></td>
+                  <td class="prop">aria-labelledby 혹은 aria-label</td>
+                  <td class="state"></td>
+                  <td class="exp">탭 컨트롤 혹은 탭 본문의영역정보 제공</td>
+               </tr>
+               <tr>
+                  <td class="need"></td>
+                  <td class="role">role="none"</td>
+                  <td class="prop"></td>
+                  <td class="state"></td>
+                  <td class="exp">ul &gt; li 구조에서 해당 역할을 하지 않는 경우 필수</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+      
+      <!-- 소스 -->
+      <div style="background-color: #ddd; padding:20px;  margin: 10px 0">
+         <div class="aria_ui">
+            <div class="li_tab">
+               <ul role="tablist">
+                  <li role="none"><a href="#" id="ui" role="tab" aria-selected="true" aria-controls="tab_ui" tabindex="0">UI 개발</a></li>
+                  <li role="none"><a href="#" id="ac" role="tab" aria-selected="false" aria-controls="tab_ac" tabindex="-1">접근성</a></li>
+                  <li role="none"><a href="#" id="se" role="tab" aria-selected="false" aria-controls="tab_se" tabindex="-1">세미나</a></li>
+               </ul>
+            </div>
+            <div class="ex_tab_ct active" id="tab_ui" role="tabpanel" aria-labelledby="ui" tabindex="0" style="display: block;">
+               <ul>
+                  <li>
+                     <a href="#">
+                        <img src="https://nuli.navercorp.com/upload/2021/9d0fc1b0-dbb7-4427-93fa-b1b28a5da0b3_article_banner2.jpg" alt="">
+                        <strong class="tit">WAI-ARIA 바르게 사용하기 10부 - TreeView</strong>
+                     </a>
+                   </li>
+                  <li>
+                     <a href="#">
+                        <img src="https://nuli.navercorp.com/upload/2021/53e47530-571f-4b59-8641-a9a59dcb4298_article_banner1.jpg" alt="">
+                        <strong class="tit">WCAG 3.0 첫번째 초안 문서를 기준으로 살펴보는 WCAG 변경된 사항</strong>
+                     </a>
+                   </li>
+               </ul>
+            </div>
+            <div class="ex_tab_ct" id="tab_ac" role="tabpanel" aria-labelledby="ac" tabindex="0" style="display: none;">
+               <ul>
+                  <li>
+                     <a href="#">
+                        <img src="https://nuli.navercorp.com/upload/2020/039d9a80-b4c3-4ad7-a2dd-e0f67a096688_article_banner3.jpg" alt="">
+                        <strong class="tit">사람을 돕는 직업을 가진 도우미. 안내견들의 이야기</strong>
+                     </a>
+                   </li>
+                  <li>
+                     <a href="#">
+                        <img src="https://nuli.navercorp.com/upload/2020/70751d9b-6640-4f87-b727-5e8ee4fb2fe5_article_banner2.jpg" alt="">
+                        <strong class="tit">최악의 사례들로 배우는 캐러셀 접근성</strong>
+                     </a>
+                   </li>
+               </ul>
+            </div>
+            <div class="ex_tab_ct" id="tab_se" role="tabpanel" aria-labelledby="se" tabindex="0" style="display: none;">
+               <ul>
+                  <li>
+                     <a href="#">
+                        <img src="https://nuli.navercorp.com/upload/2020/4896731f-9986-440b-bc34-7970179f671c_2020 널리 웨비나_공지 썸네일.jpg" alt="">
+                        <strong class="tit">[세미나 2차 공지] 누구나 접근할 수 있는! 2020 널리 웨비나</strong>
+                     </a>
+                   </li>
+                  <li>
+                     <a href="#">
+                        <img src="https://nuli.navercorp.com/upload/2020/78caba14-9b38-4dfc-993e-0ed8ed920146_8NULIWebinar_610_304.jpg" alt="">
+                        <strong class="tit">[세미나 1차 공지] 누구나 접근할 수 있는! 2020 널리 웨비나</strong>
+                     </a>
+                   </li>
+               </ul>
+            </div>
+         </div>
+      </div>
+      <!-- 소스 -->
+     
+   </section>
+   <!-- 콘텍스트형 -->
+   <hr style="margin: 50px 0">
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+</body>
+</html>
