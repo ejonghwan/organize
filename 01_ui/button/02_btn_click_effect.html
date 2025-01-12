@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+   
+
+   <!-- 
+      ** 원리 
+      버튼 위에 가상요소를 포지션으로 가운데에 띄움
+
+      1. left 위치 구하기
+      (버튼 가로길이) 분의 (마우스 clientX - 버튼 왼쪽여백 - 원의 반지름) * 100
+   -->
+    
+
+   <style>
+
+      body {
+         margin: 0;
+         padding: 20px;
+         display: flex;
+         justify-content: center;
+      }
+
+      button {
+         font-family: roboto;
+         letter-spacing: 1px;
+         padding: 1rem 5rem;
+         border-radius: 9px;
+         font-size: 1.5rem;
+         color: #eaeaea;
+         font-weight: bold;
+         background-color: #ff2e63;
+         box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.5);
+         border: none;
+         cursor: pointer;
+         position: relative;
+
+         --a: initial /* 크롬이슈 */
+      }
+
+      button:after {
+         content: '';
+         position: absolute;
+         /* top: 0; */
+         /* left: 0; */
+         /* width: 20px; */
+         /* height: 20px; */
+         transform: scale(1);
+         background-color: rgba(255, 255, 255, 0);
+         border-radius: 50%;
+         pointer-events: none;
+
+         top: var(--top);
+         left: var(--left);
+         width: var(--diameter);
+         height: var(--diameter);
+         animation: var(--a);
+
+      }
+
+      @keyframes ripple-effect {
+         100% {
+            transform: scale(1);
+            opacity: 0;
+         }
+      }
+   </style>
+
+
+
+
+   <button type="button" id="btn1">
+      click
+   </button>
+
+
+   <script>
+
+      const btn = document.querySelector("#btn1")
+
+      const handleBtnClick = e => {
+         const { x, y, width, height } = btn.getBoundingClientRect()
+         const radius = Math.sqrt(width * width + height * height)
+         btn.style.setProperty('--diameter', radius * 2 + 'px')
+
+         const { clientX, clientY } = e; 
+         const left = (clientX - x - radius) / width * 100 + '%'
+         const top = (clientY - y - radius) / height * 100 + '%'
+
+         btn.style.setProperty('--left', left)
+         btn.style.setProperty('--top', top)
+         btn.style.setProperty('--a', '')
+
+         setTimeout(() => {
+            btn.style.setProperty('--a', 'ripple-effect 500ms linear')
+         })
+      }
+
+
+      btn.addEventListener('click', handleBtnClick)
+      
+
+   </script>
+
+
+</body>
+</html>
