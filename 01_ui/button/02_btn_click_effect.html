@@ -6,14 +6,23 @@
    <title>Document</title>
 </head>
 <body>
-   
-
+   <p>width</p>
+   <img src="./img/02_btn_click_effect.jpg" alt="" style="width: 500px;">
+   <br />
+   <p>원의 반지름: 피타고라스 정리. 루트 a제곱 + b제곱. sqrt로 제공</p>
+   <img src="./img/bbb.jpg" alt="" style="width: 500px;">
+   <br />
    <!-- 
       ** 원리 
-      버튼 위에 가상요소를 포지션으로 가운데에 띄움
+      1. div 버튼 위로 가상요소 ::after 속성으로 원 그려 띄움 
+      2. 원의 중심 : 버튼 내 마우스를 클릭한 위치 
+      3. 원의 반지름 : 버튼의 한쪽 끝 부터 반대쪽 대각선 끝 
 
-      1. left 위치 구하기
-      (버튼 가로길이) 분의 (마우스 clientX - 버튼 왼쪽여백 - 원의 반지름) * 100
+
+      4. left 위치 구하기
+       (마우스 clientX - 버튼 왼쪽여백 - 원의 반지름) / (버튼 가로길이) * 100
+
+      5. top 위치 구하기
    -->
     
 
@@ -22,8 +31,8 @@
       body {
          margin: 0;
          padding: 20px;
-         display: flex;
-         justify-content: center;
+         /* display: flex; */
+         /* justify-content: center; */
       }
 
       button {
@@ -39,8 +48,11 @@
          border: none;
          cursor: pointer;
          position: relative;
+         overflow: hidden;
 
-         --a: initial /* 크롬이슈 */
+
+         --a: initial; /* 크롬이슈 */
+         border: var(--hoho);
       }
 
       button:after {
@@ -50,16 +62,19 @@
          /* left: 0; */
          /* width: 20px; */
          /* height: 20px; */
-         transform: scale(1);
-         background-color: rgba(255, 255, 255, 0);
+         transform: scale(0);
+         background-color: rgba(255, 255, 255, 0.4);
          border-radius: 50%;
          pointer-events: none;
+         z-index: 100;
 
          top: var(--top);
          left: var(--left);
          width: var(--diameter);
          height: var(--diameter);
          animation: var(--a);
+
+        
 
       }
 
@@ -82,6 +97,7 @@
    <script>
 
       const btn = document.querySelector("#btn1")
+      let n = 0
 
       const handleBtnClick = e => {
          const { x, y, width, height } = btn.getBoundingClientRect()
@@ -95,6 +111,9 @@
          btn.style.setProperty('--left', left)
          btn.style.setProperty('--top', top)
          btn.style.setProperty('--a', '')
+         // btn.style.setProperty('--hoho', `${n}px solid black`)
+         btn.style.border = `${n}px solid black`
+         n++
 
          setTimeout(() => {
             btn.style.setProperty('--a', 'ripple-effect 500ms linear')
