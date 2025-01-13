@@ -97,7 +97,7 @@
    <script>
 
       const btn = document.querySelector("#btn1")
-      let n = 0
+      // let n = 0
 
       const handleBtnClick = e => {
          const { x, y, width, height } = btn.getBoundingClientRect()
@@ -112,11 +112,11 @@
          btn.style.setProperty('--top', top)
          btn.style.setProperty('--a', '')
          // btn.style.setProperty('--hoho', `${n}px solid black`)
-         btn.style.border = `${n}px solid black`
-         n++
+         // btn.style.border = `${n}px solid black`
+         // n++
 
          setTimeout(() => {
-            btn.style.setProperty('--a', 'ripple-effect 500ms linear')
+            btn.style.setProperty('--a', 'ripple-effect 400ms linear')
          })
       }
 
