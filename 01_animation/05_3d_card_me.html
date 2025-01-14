@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            width: 100%;
+            height: 100vh;
+            background-color: rgb(255, 251, 231);
+        }
+
+        .wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .card {
+            width: 300px;
+            height: 400px;
+            background-color: #c1d5e7;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card>span {
+            color: white;
+            font-size: 50px;
+        }
+
+
+
+        .light {
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0.2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrap">
+        <!-- <div class="card"> <span>+</span> </div> -->
+        <div class="card">
+            <span class="light"></span>
+            <img src="./img/promotion_detail_visual_mo.jpg" alt="" width="300px" height="400px">
+        </div>
+    </div>
+
+    <script>
+        const wrap = document.querySelector('.wrap')
+        const cardEle = document.querySelector('.card')
+        const light = document.querySelector('.light')
+        const img = document.querySelector('.card > img')
+        // console.log(cardEle)
+
+
+
+        const handleMouseMove = (e) => {
+            const { x, y, width, height } = cardEle.getBoundingClientRect()
+            const left = e.clientX - x;
+            const top = e.clientY - y;
+            const centerLeft = left - (width / 2)
+            const centerTop = top - (height / 2)
+            // console.log(e.clientX, e.clientY)
+            console.log(centerLeft, centerTop)
+
+            const d = Math.sqrt(centerLeft ** 2 + centerTop ** 2) / 10
+            // console.log('dd???', d)
+
+            cardEle.style.transform = `perspective(800px) rotate3d(${-centerTop / 100}, ${centerLeft / 100}, ${0}, ${d}deg)`
+            cardEle.style.boxShadow = `${-centerLeft / 2}px ${-centerTop / 2}px 20px 0px rgba(0, 0, 0, 0.2)`
+            light.style.background = `linear-gradient(${-d * 50}deg, white, transparent)`
+        }
+
+
+        const handleMouseLeave = () => {
+            cardEle.style.transform = `perspective(800px) rotate3d(${0}, ${0}, ${0}, ${0}deg)`
+            cardEle.style.boxShadow = `${5}px ${5}px 20px 0px rgba(0, 0, 0, 0.2)`
+            light.style.background = `none`
+        }
+
+
+
+        // cardEle.addEventListener('click', handleClickEle)
+        cardEle.addEventListener('mousemove', handleMouseMove)
+        cardEle.addEventListener('mouseleave', handleMouseLeave)
+        window.addEventListener('load', handleMouseLeave)
+
+    </script>
+
+</body>
+
+</html>
