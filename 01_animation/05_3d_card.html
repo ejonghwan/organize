@@ -1,47 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Document</title>
 </head>
+
 <body>
-   
+
 
    <!-- 로직 -->
-   
-   <p>1. 마우스 좌표값을 구할 때 x y width height 먼저 구해둠</p> 
+
+   <p>1. 마우스 좌표값을 구할 때 x y width height 먼저 구해둠</p>
    <img src="./img/111.jpg" alt="">
 
    <br />
    <br />
 
-   <p>2. 현재 마우스 위치 구함</p> 
+   <p>2. 현재 마우스 위치 구함</p>
    <img src="./img/222.jpg" alt="">
 
 
    <br />
    <br />
 
-   <p>3. 구하고 싶은 곳의 상대값 찾음. clientX - x</p> 
+   <p>3. 구하고 싶은 곳의 상대값 찾음. clientX - x</p>
    <img src="./img/333.jpg" alt="">
 
-   
+
    <br />
    <br />
 
-   <p>4. 카드 센터에서 어느 위치에 왔는지 찾음 </p> 
+   <p>4. 카드 센터에서 어느 위치에 왔는지 찾음 </p>
    <img src="./img/444.jpg" alt="">
 
-     
+
    <br />
    <br />
 
-   <p>5. 트랜스폼 rotate3d 사용</p> 
+   <p>5. 트랜스폼 rotate3d 사용</p>
    <p>transform: rotate3d(양수 위로 기울임. x축기준, 양수 오른쪽 기울임. y축기준, 오른쪽사선 기울임. z축기준, deg 각도)</p>
    <p>오른쪽 아래로 기울이려면 ? (-2, 2, 0, 25deg)</p>
 
-    
+
    <br />
    <br />
 
@@ -52,15 +54,19 @@
    <br />
 
    <p>한자리 수로 나오게 하려면(rotate값) centerY,X / 100</p>
-   <p>왜냐하면 100단위기 때문에 한자리수로 나타내야함</p> 
+   <p>왜냐하면 100단위기 때문에 한자리수로 나타내야함</p>
    <img src="./img/666.jpg" alt="">
 
-     
+
+
+
+
+
    <br />
    <br />
 
 
-   
+
 
    <p>7. 기울기 계산 (각도)</p>
    <p>센터에서 가깝게 클릭했을 땐 조금 기울이고 멀리 클릭했을 땐 많이 기울게 하려면 피타고라스 정리를 이용하여 위치를 구함</p>
@@ -95,4 +101,5 @@
 
 
 </body>
+
 </html>
