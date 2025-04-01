@@ -400,6 +400,7 @@
                 if(isProgress) { //각 섹션별 프로그래스 
                     eles[idx].querySelector('.progress').style.transform = "translateX(" + (Math.abs(yoffset - prevHeight) - (main.getBoundingClientRect().top + yoffset)) / sectionHeight[idx] * 100 + "%)"
                 };
+                
                 if(isProgressWrap[idx] && idx < isProgressWrap.length) { //단계별로 나눈거 
                     isProgressWrap[idx].style.transform = "translateX(" + (Math.abs(yoffset - prevHeight) - (main.getBoundingClientRect().top + yoffset)) / sectionHeight[idx] * 100 + "%)"
                     if(yOffset <= eles[idx].getBoundingClientRect().top + yoffset) { //영역 이전
