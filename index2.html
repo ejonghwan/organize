@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Document</title>
+      <title>Document</title>
+
+   j
 
 
    <style>
@@ -116,6 +120,31 @@
       <div class="card1"></div>
       <div class="card2"></div>
    </div>
+
+   <div class="hoho">
+      <!-- cms 영역 -->
+      <div>
+         <strong>{{ name }}</strong>
+         <p>{{ age }}</p>
+      </div>
+      <!-- //cms 영역 -->
+   </div>
+
+
+   <script>
+
+      const zzz = fetch('hoho.json').then(res => res.json()).then(data => {
+         console.log('asdasd?', data);
+
+         return data
+      });
+
+      console.log('zz?', zzz)
+
+      const aa = {name: 'zzz', age: 'zzz213'}
+      
+
+   </script>
 
 </body>
 
