@@ -134,23 +134,79 @@
         }
 
 
-        
-        .flex_test { display: flex; width: 100%; }
-        .flex_test > span { border: 1px solid red; }
+
+        .flex_test {
+            display: flex;
+            width: 100%;
+        }
+
+        .flex_test>span {
+            border: 1px solid red;
+        }
     </style>
 </head>
 
 <body>
-    
+
+
+    <style>
+        .test123 {
+            display: table;
+        }
+
+        .test123 .box1 {
+            border: 1px solid red;
+            display: table-cell;
+        }
+
+        .test123 .box2 {
+            border: 1px solid red;
+            float: right;
+            width: 50px;
+            height: 50px;
+            display: table-cell;
+        }
+
+        .ellipsis {
+            /* width: 200px; */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+    </style>
+
+    <!-- <img style="float:right; border: 1px solid red;" width="50px" height="20px" src="./assets/img/arr.png" /> -->
+    <span style="float:right; border: 1px solid red; " width="50px" height="20px">123123</span>
+    <div class="ellipsis" style="position: relative;">float:left 왼쪽 속성 테스트 입니다. 보이는 것처럼 사진이 왼쪽으로 이동해있고 글이 오른쪽으로 오는것을 알 수
+        있습니다. 말을 길게 써야 글이 물 흐르듯이
+        써지는걸
+        보여야할텐데요.float:left 왼쪽 속성 테스트 입니다. 보이는 것처럼 사진이 왼쪽으로 이동해있고 글이 오른쪽으로 오는것을 알 수 있습니다. 말을 길게 써야 글이 물 흐르듯이 써지는걸
+        보여야할텐데요.
+    </div>
+    <span style="position: absolute; bottom: 0; right: 0;">asdasd</span>
+
+    <!-- <div class="test123">
+        <div class="box1">(워싱턴=연합뉴스) 박성민 특파원 = 도널드 트럼프 미국 대통령은 자신의 집권 2기 취임 100일을 앞두고 속속 발표된 여론조사에서 '역대 대통령 최저치 지지율'을
+            기록하고 있다는 결과가 나오자 28일(현지시간) "가짜 여론조사"라고 반발했다. 트럼프 대통령은 이날 자신이 소유한 소셜미디</div>
+        <div class="box2">
+            <img src="./assets/img/arr.png" alt="" class="box2">
+        </div>
+    </div> -->
+
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+
     <!-- 노치테스트 -->
-     <div>
+    <div>
 
-     </div>
+    </div>
 
-     <script>
-            const isIphone = /iphone/.test(navigator.userAgent.toLowerCase());
-            console.log('isIphone?', isIphone)
-     </script>
+    <script>
+        const isIphone = /iphone/.test(navigator.userAgent.toLowerCase());
+        console.log('isIphone?', isIphone)
+    </script>
 
 
     test
@@ -159,7 +215,7 @@
         <span>x</span>
     </div>
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-    
+
 
 
     <main class="hoho">
