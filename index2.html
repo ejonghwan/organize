@@ -8,7 +8,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Document</title>
 
-   j
+   
 
 
    <style>
@@ -160,6 +160,85 @@
 
 <body>
    <div class="wrap">
+
+      <style>
+  .item-wrapper {
+  width: 100%;
+  max-width: 600px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.title-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.title-line {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.first-line {
+  width: 100%;
+}
+
+.second-line {
+  width: calc(100% - 80px); /* badge 자리만큼 줄임 */
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+}
+
+.badge {
+  display: inline-block;
+  margin-left: 8px;
+  background: #f36;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 12px;
+  vertical-align: middle;
+}
+.date {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #777;
+}
+
+      </style>
+
+<div class="item-wrapper">
+   <div class="title-wrapper">
+     <div class="title-line first-line">
+       일이삼사오육칠팔구일이삼사오육칠팔구십일이삼
+     </div>
+     <div class="title-line second-line">
+       일이삼사오육칠팔구일이삼사오육칠팔구십일이삼
+       <span class="badge">NEW</span>
+     </div>
+   </div>
+   <div class="date">2025-02-10</div>
+ </div>
+
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
 
       <div class="card1"></div>
       <div class="card2"></div>
