@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+
+   <style>
+      * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+      }
+
+      img {
+         width: 100%;
+      }
+
+      .wrap {
+         width: 100%;
+      }
+
+      .evt1 {
+         position: relative;
+      }
+
+      ul,
+      ol {
+         list-style: none;
+      }
+
+      .pos {
+         position: absolute;
+         top: 0;
+         left: 0;
+         right: 0;
+         margin: 5.3333vw auto 0;
+         width: 89.33333333333333%;
+         height: calc((1.3333vw * 2) + 66.6667vw);
+         /* padding-top: calc(500 / 670 * 100%); */
+         border: 1px solid red;
+         padding: 0 3.2000vw;
+      }
+
+      .card {
+         display: flex;
+         flex-wrap: wrap;
+         margin: -1.3333vw;
+      }
+
+      .card--item {
+         /* border: 1px solid blue; */
+         background-color: rgba(0, 0, 0, 0.3);
+         width: calc(50% - (1.3333vw * 2));
+         height: calc(66.6667vw / 2);
+         margin: 1.3333vw;
+      }
+   </style>
+
+   <div class="wrap">
+      <div class="evt1">
+         <div class="pos">
+            <ul class="card">
+               <li class="card--item">1</li>
+               <li class="card--item">2</li>
+               <li class="card--item">3</li>
+               <li class="card--item">4</li>
+            </ul>
+         </div>
+         <img src="./1505952_img04.jpg" alt="">
+      </div>
+   </div>
+</body>
+
+</html>
