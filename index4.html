@@ -36,7 +36,10 @@
    </style>
 
    <div class="wrap">
-      <div class="target"> ho ? </div>
+      <div class="target1"> ho ? </div>
+      <div class="target2"> ho ? </div>
+      <div class="target3"> ho ? </div>
+      <div class="target4"> ho ? </div>
       <div class="item">item</div>
       <div class="item">item</div>
       <div class="item">item</div>
@@ -48,9 +51,15 @@
 <script>
 
    window.onload = function () {
-      const abc = getComputedStyle(document.documentElement).getPropertyValue("--sat")
+      const abc1 = getComputedStyle(document.documentElement).getPropertyValue("--sat")
+      const abc2 = getComputedStyle(document.documentElement).getPropertyValue("--sab")
+      const abc3 = getComputedStyle(document.documentElement).getPropertyValue("--sar")
+      const abc4 = getComputedStyle(document.documentElement).getPropertyValue("--sal")
 
-      document.querySelector(".target").innerHTML = abc;
+      document.querySelector(".target1").innerHTML = abc1;
+      document.querySelector(".target2").innerHTML = abc2;
+      document.querySelector(".target3").innerHTML = abc3;
+      document.querySelector(".target4").innerHTML = abc4;
 
       console.log("safe-area-inset-top: " + abc);
       console.log("safe-area-inset-right: " + getComputedStyle(document.documentElement).getPropertyValue("--sar"));
