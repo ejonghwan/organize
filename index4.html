@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+   
+
+<body>
+
+   <style>
+      :root {
+      --sat: env(safe-area-inset-top);
+      --sar: env(safe-area-inset-right);
+      --sab: env(safe-area-inset-bottom);
+      --sal: env(safe-area-inset-left);
+   }
+      
+      * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+      }
+
+      img {
+         width: 100%;
+      }
+
+      .item {
+         height: 500px; width: 100%;;
+      }
+
+   </style>
+
+   <div class="wrap">
+      <div class="target"> ho ? </div>
+      <div class="item">item</div>
+      <div class="item">item</div>
+      <div class="item">item</div>
+      <div class="item">item</div>
+      <div class="item">item</div>
+   </div>
+</body>
+
+<script>
+
+   window.onload = function () {
+      const abc = getComputedStyle(document.documentElement).getPropertyValue("--sat")
+
+      document.querySelector(".target").innerHTML = abc;
+
+      console.log("safe-area-inset-top: " + abc);
+      console.log("safe-area-inset-right: " + getComputedStyle(document.documentElement).getPropertyValue("--sar"));
+      console.log("safe-area-inset-bottom: " + getComputedStyle(document.documentElement).getPropertyValue("--sab"));
+      console.log("safe-area-inset-left: " + getComputedStyle(document.documentElement).  getPropertyValue("--sal"));      
+   }
+</script>  
+
+</html>

@@ -151,18 +151,15 @@
             middleW = document.body.clientWidth;
             middleH = document.body.clientHeight;
         }
-        window
-            .addEventListener('mousedown', function (e) {
+            window.addEventListener('mousedown', function (e) {
                 click_active = true
                 x = e.pageX
                 y = e.pageY
             })
-            window
-            .addEventListener('mouseup', function (e) {
+            window.addEventListener('mouseup', function (e) {
                 click_active = false
             })
-            window
-            .addEventListener('mousemove', function (e) {
+            window.addEventListener('mousemove', function (e) {
                 if (click_active) {
                     mx = mx + (e.pageX - x);
                     my = my + (e.pageY - y);
@@ -176,6 +173,9 @@
                     // innerwrap.style.transform = `rotate3d(${-(my)}, ${mx}, ${0}, ${mx}deg)`
                 }
             })
+
+
+
         window
         .addEventListener('resize', function (e) {
             init()
