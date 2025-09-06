@@ -7,12 +7,38 @@
    <title>Document</title>
 </head>
 
+
+
 <body>
 
+   <style>
+      * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+      }
 
+      .box {
+         width: 50px;
+         height: 50px;
+         background: red;
+         ;
+      }
+
+      .box1 {
+         width: 50px;
+         height: 50px;
+         background: blue;
+         transition: all .5s;
+      }
+   </style>
+   <div class="box"></div>
+   <div class="box1"></div>
 
 
    <script>
+
+      const log = console.log
 
       const _setTimeout = (cb, timer) => {
          let startTime;
@@ -26,17 +52,45 @@
                console.log('END');
                return;
             }
+
+            // clear 시
+            // if (조건) {
+            //    cancelAnimationFrame(raf);
+            //    return;
+            // }
+            // raf = requestAnimationFrame(performAnimation)
+
             requestAnimationFrame(draw);
          }
          requestAnimationFrame(draw);
       }
 
+
+
+      // 진행률 = 구하기 지금 시간 / 총 시간 
+      // 총거리 * 진행률; // 이동거리
+
       window.addEventListener('click', () => {
+         const box = document.querySelector(".box")
+         const duration = 500; // 3초
+         const distance = document.body.clientWidth - box.clientWidth - 20; // 50px
+
 
          _setTimeout(({ startTime, currentTime, timestamp }) => {
-            log('zz?', startTime, currentTime, timestamp)
+            // log('zz?', startTime, currentTime, timestamp)
+            // const elapsed = currentTime - startTime; // 경과 시간
+            let progress = currentTime / duration; // 진행률 (0 ~ 1)
 
-         }, 2000)
+            const x = distance * progress; // 이동거리
+            box.style.transform = `translateX(${x}px)`;
+
+            // 진행률 100%에서 멈추게 하려면 여기서 종료 처리
+            if (progress >= 1) return false; // <- _setTimeout 구현체에 따라 stop 조건
+
+         }, duration)
+
+
+         document.querySelector('.box1').style.transform = `translateX(${document.body.clientWidth - box.clientWidth - 20}px)`;
       })
 
 
