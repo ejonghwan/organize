@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+
+
+   <script>
+
+
+      let debounceTimer
+      let timer = 2000
+      function debounce() {
+         if (debounceTimer) clearTimeout(debounceTimer);
+         // 콜백함수가 있으면 지우고 다시 콜백함수를 매크로 태스크 큐에 설정
+         debounceTimer = setTimeout(() => {
+            doSomething()
+         }, timer)
+      }
+
+
+      let throttleTimer;
+      function throttle() {
+         if (!throttleTimer) { // timer 저장된게 있으면 5초동안 if문에 들어오지못해 실행이 안됨
+            throttleTimer = setTimeout(() => {
+               doSomething();
+               throttleTimer = null;
+            }, 2000)
+         }
+      }
+      const doSomething = () => log(213213)
+      // window.addEventListener('click', throttle)
+      // window.addEventListener('click', debounce)
+
+   </script>
+
+</body>
+
+</html>

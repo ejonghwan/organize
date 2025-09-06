@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+   <button type="button" class="action">action</button>
+   <button type="button" class="reset">reset</button>
+
+   <script>
+
+      window.onload = function () {
+         let swich = false
+         const action = (e) => {
+            if (!swich) {
+               alert('go')
+               swich = true
+            }
+         }
+         document.querySelector('.action').addEventListener('click', action)
+         document.querySelector('.reset').addEventListener('click', () => swich = false)
+      }
+
+
+   </script>
+</body>
+
+</html>

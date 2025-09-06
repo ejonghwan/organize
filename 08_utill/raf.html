@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+
+
+
+
+   <script>
+
+      const _setTimeout = (cb, timer) => {
+         let startTime;
+         const draw = timestamp => {
+            if (!startTime) startTime = timestamp; // 애니메이션 시작 시간
+
+            currentTime = timestamp - startTime; // 웹브라우저 시작한시간 - 클릭한 시간
+            cb({ startTime, currentTime, timestamp });
+
+            if (currentTime > timer) {
+               console.log('END');
+               return;
+            }
+            requestAnimationFrame(draw);
+         }
+         requestAnimationFrame(draw);
+      }
+
+      window.addEventListener('click', () => {
+
+         _setTimeout(({ startTime, currentTime, timestamp }) => {
+            log('zz?', startTime, currentTime, timestamp)
+
+         }, 2000)
+      })
+
+
+
+   </script>
+
+</body>
+
+</html>
