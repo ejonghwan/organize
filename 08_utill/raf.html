@@ -73,13 +73,15 @@
       window.addEventListener('click', () => {
          const box = document.querySelector(".box")
          const duration = 500; // 3초
-         const distance = document.body.clientWidth - box.clientWidth - 20; // 50px
+         const distance = document.body.clientWidth - box.clientWidth; // 50px
 
 
          _setTimeout(({ startTime, currentTime, timestamp }) => {
             // log('zz?', startTime, currentTime, timestamp)
             // const elapsed = currentTime - startTime; // 경과 시간
-            let progress = currentTime / duration; // 진행률 (0 ~ 1)
+            // let progress = currentTime / duration; // 진행률 (0 ~ 1)
+            let progress = Math.min(currentTime / duration, 1);
+
 
             const x = distance * progress; // 이동거리
             box.style.transform = `translateX(${x}px)`;
@@ -90,7 +92,7 @@
          }, duration)
 
 
-         document.querySelector('.box1').style.transform = `translateX(${document.body.clientWidth - box.clientWidth - 20}px)`;
+         document.querySelector('.box1').style.transform = `translateX(${document.body.clientWidth - box.clientWidth}px)`;
       })
 
 
