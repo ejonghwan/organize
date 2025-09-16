@@ -18,14 +18,14 @@ export class Wave {
         this.pointGap = this.stageWidth / (this.totalPoints - 1)
 
         this.init();
-        
+
     }
 
     init() {
         this.point = new Point(this.centerX, this.centerY)
         this.points = []
-        
-        for(let i = 0; i < this.totalPoints; i++) {
+
+        for (let i = 0; i < this.totalPoints; i++) {
             const point = new Point(
                 this.index + i, //index
                 this.pointGap * i, //x
@@ -51,8 +51,8 @@ export class Wave {
 
         ctx.moveTo(prevX, prevY)
 
-        for(let i = 1; i < this.totalPoints; i++) {
-            if(i < this.totalPoints - 1) {
+        for (let i = 1; i < this.totalPoints; i++) {
+            if (i < this.totalPoints - 1) {
                 this.points[i].update();
             }
 

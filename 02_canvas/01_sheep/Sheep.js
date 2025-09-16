@@ -1,10 +1,10 @@
 export class Sheep {
     constructor(img, stageWidth) {
         this.img = img;
-        
+
         this.totalFrame = 10 //프레임개수
         this.curFrame = 0;
-        
+
         this.imgWidth = 82;
         this.imgHeight = 86;
 
@@ -22,15 +22,15 @@ export class Sheep {
 
     draw(ctx, t, dots) {
 
-        if(!this.time) {
+        if (!this.time) {
             this.time = t;
         }
 
         const now = t - this.time;
-        if(now > this.fpsTime) {
+        if (now > this.fpsTime) {
             this.time = t;
             this.curFrame += 1;
-            if(this.curFrame === this.totalFrame) {
+            if (this.curFrame === this.totalFrame) {
                 this.curFrame = 0;
             }
         }
@@ -39,7 +39,7 @@ export class Sheep {
 
     }
 
-   
+
 
     animate(ctx, dots) {
         this.x -= this.speed;
@@ -74,11 +74,11 @@ export class Sheep {
     }
 
 
-     // Quadratic Bézier curves
-  
+    // Quadratic Bézier curves
+
 
     getQuadValue(p0, p1, p2, t) {
-        return (1 - t) * (1 - t) * p0 + 2 * (1 - t) * t * p1 + t * t * p2; 
+        return (1 - t) * (1 - t) * p0 + 2 * (1 - t) * t * p1 + t * t * p2;
     }
 
     // atan2 이전
@@ -103,8 +103,8 @@ export class Sheep {
 
     // curv
     getY(x, dots) {
-        for(let i = 1; i < dots.length; i++) {
-            if(x >= dots[i].x1 && x <= dots[i].x3) {
+        for (let i = 1; i < dots.length; i++) {
+            if (x >= dots[i].x1 && x <= dots[i].x3) {
                 return this.getY2(x, dots[i])
             }
         }
@@ -119,11 +119,11 @@ export class Sheep {
         const total = 200;
         let pt = this.getPointOnQuad(dot.x1, dot.y1, dot.x2, dot.y2, dot.x3, dot.y3, 0);
         let prevX = pt.x;
-        for(let i = 1; i < total; i++) {
+        for (let i = 1; i < total; i++) {
             const t = i / total;
             pt = this.getPointOnQuad(dot.x1, dot.y1, dot.x2, dot.y2, dot.x3, dot.y3, t);
 
-            if(x >= prevX && x <= pt.x) {
+            if (x >= prevX && x <= pt.x) {
                 return pt;
             }
 
@@ -141,5 +141,5 @@ export class Sheep {
 
     // 와 존나어렵다 진짜 
 
-    
+
 }
