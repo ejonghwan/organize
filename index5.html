@@ -9,11 +9,25 @@
 
 <body>
 
+
+
    <style>
+      :root {
+         --safe-top: 44px;
+         /* iPhone X 노치 높이 */
+         --safe-bottom: 34px;
+      }
+
       * {
          margin: 0;
          padding: 0;
          box-sizing: border-box;
+      }
+
+      html {
+         /* background-color: rgb(0, 0, 0);
+         padding-top: var(--safe-top);
+         padding-bottom: var(--safe-bottom); */
       }
 
       html,
@@ -31,7 +45,7 @@
 
       header {
          border: 1px solid red;
-         height: 56px;
+         height: calc(56px + var(--safe-top));
          flex: 0 0 auto;
          background-color: #ddd;
          position: fixed;
@@ -40,7 +54,7 @@
       }
 
       main {
-         padding-top: 56px;
+         padding-top: calc(56px + var(--safe-top));
          border: 1px solid blue;
          flex: 1;
       }
@@ -64,6 +78,7 @@
       section {
          height: 300px;
          border-bottom: 1px solid #ddd;
+         background-color: aliceblue;
       }
 
       .visual {
