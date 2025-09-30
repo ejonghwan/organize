@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+
+   <style>
+      * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+      }
+
+      html,
+      body {
+         height: 100%;
+      }
+
+      .wrap {
+         display: flex;
+         flex-direction: column;
+         justify-content: space-between;
+         height: 100%;
+         ;
+      }
+
+      header {
+         border: 1px solid red;
+         height: 56px;
+         flex: 0 0 auto;
+         background-color: #ddd;
+         position: fixed;
+         width: 100%;
+         top: 0;
+      }
+
+      main {
+         padding-top: 56px;
+         border: 1px solid blue;
+         flex: 1;
+      }
+
+      footer {
+         border: 1px solid red;
+         flex: 0 0 auto;
+         background-color: #ddd;
+
+         padding-bottom: 60px;
+         /* btn + env */
+
+      }
+
+      footer .footer_con {
+         border: 1px solid red;
+         height: 100px;
+      }
+
+
+      section {
+         height: 300px;
+         border-bottom: 1px solid #ddd;
+      }
+
+      .visual {
+         height: 500px;
+         background-color: bisque;
+      }
+
+      .btn_wrap {
+         position: fixed;
+         bottom: 0;
+         height: 50px;
+         width: 100%;
+         background-color: aqua;
+      }
+
+      .target {
+         background-color: red;
+         color: #fff;
+         height: 30px;
+      }
+
+      .target.fix {
+         position: fixed;
+         width: 100%;
+         top: 56px;
+      }
+   </style>
+
+   <!-- <div style="height: 20px; background-color: black;">safe</div> -->
+   <div class="wrap">
+
+      <header>
+         header
+      </header>
+
+      <main>
+         <div class="visual">visual</div>
+         <section>
+            <div class="target">target</div>
+         </section>
+         <section>
+            1
+         </section>
+         <section>
+            2
+         </section>
+         <section>
+            3
+         </section>
+         <section>
+            4
+         </section>
+         <section>
+            5
+         </section>
+
+         <div class="btn_wrap">
+            <button type="submit">
+               btn
+            </button>
+         </div>
+      </main>
+
+      <footer>
+         <div class="footer_con">footer</div>
+      </footer>
+
+
+
+
+
+   </div>
+
+
+   <script>
+
+      let y = 0;
+      const header_H = document.querySelector('header').clientHeight;
+      const target = document.querySelector('.target')
+      const visual = document.querySelector('.visual')
+
+      console.log('visual.offsetBottom?', visual.clientHeight)
+
+      function scrollAction() {
+         y = window.pageYOffset
+
+         console.log(y)
+         // ??   >   500
+         if (y >= visual.clientHeight) {
+            target.classList.add('fix')
+         } else {
+            target.classList.remove('fix')
+         }
+      }
+
+      window.addEventListener('scroll', scrollAction)
+
+   </script>
+
+</body>
+
+</html>
