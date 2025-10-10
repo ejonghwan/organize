@@ -9,13 +9,17 @@ next js
 
 7. react 렌더링 - 요청 (빈화면) - js 번들 내려줌 (빈화면) - js 번들 파싱 후 필요한 요청 - [FCP] 화면 렌더링 -> 기존 리액트의 문제점은 데이터 패칭 자체가 FCP 끝난 후 요청 소스를 읽기 떄문에 "화면을 그린 후 요청이 들어감" -> 화면 로딩 기다린 후 로딩바 까지 기다리는 상황 -> 때문에 사전 렌더링 / SSR 가능하게 next 지원 
 
-5. next 사전렌더링 - [FCP] : 
-1. 화면 렌더링 - [FCP] : 
-2. 서버에서 JS번들 파일 받아옴 (프론트 서버요청) - [FCP] : 
-3. 번들 파일과 화면 렌더링 소스 하이드레이션 - [TTI] : 
-4. 인터렉션 가능해짐 - [TTI] : 
-5. route 이동시 페이지이동 요청 (CSR) - [TTI] : 
-6. JS 교체 - [TTI] : 7. 페이지 렌더링 6. 프리패칭 - 링크된 페이지 라우터를 모두 미리 불러놓는 기능. (내가 알기론 빌드할 때 만드는걸로 알고있는데 ..SSG ?) - 빌드단계에서 라우팅별로 스플리팅 해서 만들어둠. 요청 시 그 코드들만 재전달 (클라이언트 안에서 동작하기 떄문에 빠름) - 네트워크탭보면 라우터이동시 각각의 js 파일 다시 받아오는데, 빌드단계를 거치지 않아서임 - 빌드 후 프로덕션모드로 실행하면 모두 다운받음(캐시 없어지면 다시 요청하기도함) 
+5. next 사전렌더링 
+- [FCP] : 1. 화면 렌더링 
+- [FCP] : 2. 서버에서 JS번들 파일 받아옴 (프론트 서버요청) 
+- [FCP] : 3. 번들 파일과 화면 렌더링 소스 하이드레이션 
+- [TTI] : 4. 인터렉션 가능해짐 
+- [TTI] : 5. route 이동시 페이지이동 요청 (CSR) 
+- [TTI] : 6. JS 교체 
+- [TTI] : 7. 페이지 렌더링 
+
+
+6. 프리패칭 - 링크된 페이지 라우터를 모두 미리 불러놓는 기능. (내가 알기론 빌드할 때 만드는걸로 알고있는데 ..SSG ?) - 빌드단계에서 라우팅별로 스플리팅 해서 만들어둠. 요청 시 그 코드들만 재전달 (클라이언트 안에서 동작하기 떄문에 빠름) - 네트워크탭보면 라우터이동시 각각의 js 파일 다시 받아오는데, 빌드단계를 거치지 않아서임 - 빌드 후 프로덕션모드로 실행하면 모두 다운받음(캐시 없어지면 다시 요청하기도함) 
 
 * Link 컴포넌트에 걸린것만 빌드시점에 프리패칭하기에 button으로 된 건 클릭했을 때 요청함. 
 * button이나 router 객체로 연결한건 router.prefetch('/home') 
@@ -81,15 +85,20 @@ next js
 2. server component - 하이드레이션 단계를 
 
 
-# next js 특징 주의 - 상호작용 가능한 기능 넣으면 안됨 - 의존성 라이브러리가 상호작용 기능이 들어가있다면 역시 에러남 - 클라이언트 컴포넌트는 서버/클라 두 곳에서 실행된다는 것 명심 
+# next js 특징 주의 
+- 상호작용 가능한 기능 넣으면 안됨 
+- 의존성 라이브러리가 상호작용 기능이 들어가있다면 역시 에러남 
+- 클라이언트 컴포넌트는 서버/클라 두 곳에서 실행된다는 것 명심 
 
 1)서버컴포에서 사전렌더링때 1번 
 2)클라 컴포에서 하이드레이션 할 떄 1번 
-3)총 2번 실행 - 클라 컴포에서 서버 컴포 임폴트 불가 
+3)총 2번 실행 
 
+- 클라 컴포에서 서버 컴포 임폴트 불가 
 1)이유 : 서버 컴포는 서버에서만 실행되기 떄문. 서버컴포 소스는 없기 떄문(하이드레이션 단계 번들 파일에 존재 하지 않음) 
-2)하지만 에러는 나지 않음. 서버컴포를 클라컴포로 변경해버림 - 서버 컴포에서 클라컴포에게 직렬화 되지 않은 props는 전달 불가능함 
+2)하지만 에러는 나지 않음. 서버컴포를 클라컴포로 변경해버림 
 
+- 서버 컴포에서 클라컴포에게 직렬화 되지 않은 props는 전달 불가능함 
 1) 직렬화 (serialization) 
 2) js Fn객체는 직렬화 불가능함 (그럼 setter함수는 왜 넘어가짖 ? ) 
 
@@ -108,7 +117,23 @@ next js
 
 ###################################### 풀 라우트 캐시 
 
-* 단계 (static) [NEXT SERVER] | [BACK] (full route cache) (pre-fetch) (reuqest memo) (data cache) | A 요청 -> -> -> -> 뒤 과정들 다 돌고 set <- B 요청 -> <- 풀 라우트 캐시에서 꺼내옴 * 단계 (dynamic) full route cache 공간에 저장하지 않고 위 단계 계속 반복 (querystring 사용하는 search / auth cookie 검증 등 어쩔 수 없는경우에는 필요) * 풀라우트 캐시 + 데이터 캐시 같이 사용 = ISR같은 애 A 요청 시 [풀라우트 캐시] > [사전렌더링] > [리퀘스트 메모] > [데이터 캐싱] > [백] 모두 돈 후 [풀라우트 캐시]에 저장 B 요청 시 fetch('api', { revalidate: 3 }) 설정 후 3초 이후 stale 상태일 때 우선 [풀라우트 캐시]에서 상한 데이터 꺼내서 렌더링 이후 빠르게 최신 데이터를 가져와 [데이터 캐싱] [풀라우트 캐시] 부분에 최신화 시키고 렌더링 
+* 단계 (static) 
+
+[NEXT SERVER]                                                                     | [BACK] 
+(full route cache)       (pre-fetch)         (reuqest memo)      (data cache)     | 
+
+A 요청              ->                    ->                  ->                -> 
+뒤 과정들 다 돌고 set                                                                  <- 
+
+B 요청 -> 
+        <- 풀 라우트 캐시에서 꺼내옴 
+        
+* 단계 (dynamic) full route cache 공간에 저장하지 않고 위 단계 계속 반복 (querystring 사용하는 search / auth cookie 검증 등 어쩔 수 없는경우에는 필요) 
+
+* 풀라우트 캐시 + 데이터 캐시 같이 사용 = ISR같은 애 
+
+A 요청 시 [풀라우트 캐시] > [사전렌더링] > [리퀘스트 메모] > [데이터 캐싱] > [백] 모두 돈 후 [풀라우트 캐시]에 저장 
+B 요청 시 fetch('api', { revalidate: 3 }) 설정 후 3초 이후 stale 상태일 때 우선 [풀라우트 캐시]에서 상한 데이터 꺼내서 렌더링 이후 빠르게 최신 데이터를 가져와 [데이터 캐싱] [풀라우트 캐시] 부분에 최신화 시키고 렌더링 
 
 1. 풀 라우트 캐시 - build time 에서 사전로드 하는 기능(api 요청도 포함해서) = SSG같은 애임 - 컴포넌트는 static / dynamic 두 가지가 존재 - 생성되는 과정은 
 
@@ -120,13 +145,13 @@ next js
 2. query string 받는 곳이나 다이나믹라우팅 페이지들은 풀 라우트 캐시를 사용하지 못함. (때문에 data cache 이용) 하지만 특정 params 등만 풀 라우트 캐시를 설정할 수 있음 - 혹은 정적인 params 받는 설정 => generateSteicParams() 함수임 export generateSteicParams = () => { return [{ id: "1" }, { id: "2" }, { id: "3" }] } 이렇게 설정하면 build time에 1,2,3 동적 라우팅 페이지들은 풀라우트캐싱 처리됨 * generateSteicParams 함수 사용하면 request가 있더라도 static 페이지로 아예 고정됨 * 1,2,3 외 다른 id 요청이 들어가도 라우트캐시에 저장이 자동으로 됨 (.next 캐시폴더에 추가됨) - 근데 id:4로 왔을 떄도 렌더링이 되어버림. export const dynamicParams = false 해줘야 404로 이동 
 
 
-###################################### 
-클라이언트 캐시 페이지 이동 시 라우터는 넥스트 client server에 있는 풀라우트캐시로 요청하지 않고 client(브라우저) 에 캐시를 저장 후 그 데이터를 가져와서 뿌린다 
+###################################### 클라이언트 캐시 
+페이지 이동 시 라우터는 넥스트 client server에 있는 풀라우트캐시로 요청하지 않고 client(브라우저) 에 캐시를 저장 후 그 데이터를 가져와서 뿌린다 
 
 
 
-###################################### 
-요청 후 ssr 에서 실행안되게 하는 useSearchParams hook은 비동기로 작동. 
+###################################### 요청 후 ssr 에서 실행안되게 하는 
+useSearchParams hook은 비동기로 작동. 
 클라이언트 훅인데 서버컴포넌트에서 실행되기 떄문에 에러가 나는데, 내꺼에선 안남 next server에서 실행 안되게 하는 방법 
 
 1. window check 
@@ -140,22 +165,75 @@ next js
 2 ) 비동기 컴포넌트만 적용됨 주의 
 3 ) page.tsx에만 적용가능함 (layout components 모두 적용안됨. Suspense 사용) 
 
-## 컴포넌트를 스트리밍 하고 싶다면 아래 컴포넌트 사용 - (로딩보단 서스펜스 많이 사용) Suspense 팁 : query string 변경 시 로딩 상태 주고 싶으면 Suspense props 값 중 key 쓰면 됨 ex) 
+
+
+## 컴포넌트를 스트리밍 하고 싶다면 아래 컴포넌트 사용 
+- (로딩보단 서스펜스 많이 사용) Suspense 팁 : query string 변경 시 로딩 상태 주고 싶으면 Suspense props 값 중 key 쓰면 됨 ex) 
 
 
 ###################################### 
 dynamic router => 앵간하면 옵션 사용하지않는게 좋음. 충돌or관리 떄문에 특정 페이지를 강제로 static / dynamic 으로 변경해줌 export const dynamic = 'auto' => 암것도안함 export const dynamic = 'force-dynamic' => 강제 dynamic export const dynamic = 'force-static' => 강제 static export const dynamic = 'error' => 강제 static 페이지로 변경하지만, 동적 함수같은게 있다면 build 시 오류 발생 동적 함수인 useSearchParams 에서 query string을 가져오는 컴포넌트에서 'force-static' 옵션을 키면 강제 스태틱 페이지가 되기 떄문에 query string을 가져올 수 없음. 컴포넌트 내에서도 가능하고 import 할 떄도 가능 
 
+
+
+
 ###################################### 
 이미지 도메인 다르면 next.config > domain: [] 설정 
 
 
-###################################### 
-seo 
+
+
+###################################### seo 
 1. 사이트맵 설정 
 2. rss발행 
 3. 시멘틱 
-4. 메타데이터 동적인 메타데이터 설정법 page.tsx에서 아래 함수 사용. 이미 선언된 함수임. 비동기 promise 리턴. component랑 같게 query string props로 받기 가능 
+4. 메타데이터 동적인 메타데이터 설정법 page.tsx에서 아래 함수 사용. 이미 선언된 함수임. 
+비동기 promise 리턴. component랑 같게 query string props로 받기 가능 export const genaratorMetadata({ searchParams: Promise<{ q: string || '' }> }): Promise {} 함수 사용 
 
 
-export const genaratorMetadata({ searchParams: Promise<{ q: string || '' }> }): Promise
+
+
+###################################### 에러핸들링 
+1. error.tsx 에서 한번에 처리 
+2. client compo 여야함 (SSR CSR 에서 두번 실행되기 떄문) 
+3. 복구되면 재랜더링 할 수 있는 prop 제공 => reset (type void fn) button onClick={reset}다시시도 주의 reset은 CSR만 다시 렌더링 시키기 떄문에 SSR에서 request 보낸건 다시 실행하지않음 그래서 reset 보다는 window.location.reload() 이렇게 써도 되는데 인메모리 데이터는 모두 날라감 아래처럼하는게 제일 나음 router.refresh() // 지금 페이지에 필요한 SSR 컴포넌트들 모두 서버측에서 다시 실행 // SSR컴포넌트만 다시 reset() // 에러상태 초기화, 근데 위 처럼 하면 제대로 작동을 안함. 이유는 router.refresh 자체가 비동기로 작동하기 떄문. 하지만 Promise를 반환하지 않음. 때문에 async await 는 못쓰고 Promise fn으로 만들어서 동기로 만들거나 구 방식인 setTimeout으로 동기적으로 만들어야됨 혹은 react 에서 지원해주는 startTransition 사용하면 컴포넌트 그려질 떄 알아서 잘 버무려서 작동함. 
+
+
+
+###################################### next vercel에 배포 
+
+npm i -g vercel (vercel 설치. 퍼미션 에러 시 관리자 권한으로 열기) 
+vercel login (가입한 아이디로 ) 
+
+vercel (명령어 치면 배포 시작) 
+환경변수 설정 (domains 항목이 주소임) 
+settings > 인바이러먼트 어쩌고 왼쪽 메뉴에서 환경변수 추가 재 배포시 : vercel --prod 명령어 
+
+## 배포 최적화 
+vercel 홈페이지에서 리전 변경하면 더 빨라짐 
+ㄴ settings > functions > 리전 서울로 변경 
+
+다이나믹 페이지, back에서 오지만 데이터 변경이 동적으로 되지 않는건 SSG로 변경 
+ex) 1 export function generatioStaticParams() { return [{ 쿼리스트링값: 1 }, { 쿼리스트링값: 2 }, { 쿼리스트링값: 3 }] } 
+ex) 2 export function generatioStaticParams() { return } 
+
+
+
+###################################### type 관련 팁 
+
+- setState 타입 추론 
+setState(q || '') 일때 타입에러가 남 
+이유는 searchParams로 가져올 때 여러개가 올 수 있기 때문에 string[] || string 으로 추론하기 떄문 
+
+const q = router.query as string React.ChangeEvent const Home = () => { return (
+) } // fn은 obj 이기떄문에 Home.getLayout = (page: ReactNode) => { return {page} } 이때 getLayout을 사용하면 타입에러 나는데 기존 React Type에 확장해서 함수를 추가해줘야됨. 
+
+searchParams 자체가 promise return interface Props { searchParams: Promise<{ value: 'a' }> } 
+const Com = async({ optPrams, searchParams }: Props) => { const { value } await = searchParams return () } 
+
+파라미터가 다른 경우 api 같은데 만힝 사용한다고 하는데 ..? 
+
+대부분은 유니온이나 타입정하기로 처리함 함수명이 같아야함. 
+제네릭과 다른점은 
+1. 제네릭은 실행할 때 
+2. 오버로딩은 선언할 때 이건 그냥 타입정하는걸로 해결될듯 ..? 
