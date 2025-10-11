@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,74 +10,207 @@
     <title>Document</title>
 
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        * {margin: 0; padding:0; box-sizing: border-box;}
-        html, body { width: 100%; height: 100%; font-family: 'ShinhanCard';}
-        ul, ol {list-style: none;}
-        a {text-decoration: none;}
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            font-family: 'ShinhanCard';
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
         /* .j_wrap {height: 100%;;} */
-        .j_wrap {margin-top: 400px;}
-        main {height: 100%;;}
-        .main {margin-bottom: 50px; padding: 50px; background: #ddd; 
-            height: 300px; 
+        .j_wrap {
+            margin-top: 400px;
+        }
+
+        main {
+            height: 100%;
+            ;
+        }
+
+        .main {
+            margin-bottom: 50px;
+            padding: 50px;
+            background: #ddd;
+            height: 300px;
             /* height: 100%;; */
-            border-top: 2px solid red;}
-        .main:nth-child(1) {height: 200px;}
-        .main:nth-child(2) {height: 300px;}
-        .main:nth-child(3) {height: 400px;}
-        .main:nth-child(4) {height: 500px;}
-        .main:nth-child(5) {height: 700px;}
-        .main:nth-child(6) {height: 750px;}
-        .main:nth-child(7) {height: 650px;}
-        .main:nth-child(8) {height: 400px;}
-        header {position: fixed; width: 50px; height: 50px; font-size: 30px; top:100px; background: black; color: #fff;}
-       
-        .location_btn {position: fixed; background-color: #fff; color: #fff; left:0; right:0; bottom: 0; margin: auto; width: 100%;; height: 50px; display: flex;}
-        .jslide_loca_li {flex: 1 1 auto; border: 1px solid black; }
-        .jslide_loca_li.active { background: black; }
-        .jslide_loca_li.active > a {color: #fff;}
+            border-top: 2px solid red;
+        }
+
+        .main:nth-child(1) {
+            height: 200px;
+        }
+
+        .main:nth-child(2) {
+            height: 300px;
+        }
+
+        .main:nth-child(3) {
+            height: 400px;
+        }
+
+        .main:nth-child(4) {
+            height: 500px;
+        }
+
+        .main:nth-child(5) {
+            height: 700px;
+        }
+
+        .main:nth-child(6) {
+            height: 750px;
+        }
+
+        .main:nth-child(7) {
+            height: 650px;
+        }
+
+        .main:nth-child(8) {
+            height: 400px;
+        }
+
+        header {
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            font-size: 30px;
+            top: 100px;
+            background: black;
+            color: #fff;
+        }
+
+        .location_btn {
+            position: fixed;
+            background-color: #fff;
+            color: #fff;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            width: 100%;
+            ;
+            height: 50px;
+            display: flex;
+        }
+
+        .jslide_loca_li {
+            flex: 1 1 auto;
+            border: 1px solid black;
+        }
+
+        .jslide_loca_li.active {
+            background: black;
+        }
+
+        .jslide_loca_li.active>a {
+            color: #fff;
+        }
 
 
 
-        .jslide_arow_wrap { width: 100%; height: 100%;;  }
-        .jslide_arow_wrap .prev { width: 20px; height: 100%; border: 1px solid red; position: absolute; top:0; left:0; background: #ddd; z-index: 20;}
-        .jslide_arow_wrap .next { width: 20px; height: 100%; border: 1px solid red; position: absolute; top:0; right:0; background: #ddd; z-index: 20;}
+        .jslide_arow_wrap {
+            width: 100%;
+            height: 100%;
+            ;
+        }
+
+        .jslide_arow_wrap .prev {
+            width: 20px;
+            height: 100%;
+            border: 1px solid red;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: #ddd;
+            z-index: 20;
+        }
+
+        .jslide_arow_wrap .next {
+            width: 20px;
+            height: 100%;
+            border: 1px solid red;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #ddd;
+            z-index: 20;
+        }
 
 
-        nav {position: fixed; right: 0; top: 360px; background: #fff ; width: 100%; }
-        .jslide_btn {display: flex; width: auto; 
+        nav {
+            position: fixed;
+            right: 0;
+            top: 360px;
+            background: #fff;
+            width: 100%;
+        }
+
+        .jslide_btn {
+            display: flex;
+            width: auto;
             /* overflow-x: scroll; */
             transition: all .2s ease-in-out;
-        
+
         }
-        .jslide_btn_li {flex: 0 0 auto;  text-align: center;}
-        .jslide_btn_li > a {flex: 0 0 auto; width: auto;  text-align: center; padding: 10px 100px; display: inline-block;}
-        
-        .jslide_btn_li.active > a {color: #fff; background: black;}
+
+        .jslide_btn_li {
+            flex: 0 0 auto;
+            text-align: center;
+        }
+
+        .jslide_btn_li>a {
+            flex: 0 0 auto;
+            width: auto;
+            text-align: center;
+            padding: 10px 100px;
+            display: inline-block;
+        }
+
+        .jslide_btn_li.active>a {
+            color: #fff;
+            background: black;
+        }
 
 
-        footer {height: 300px; background: #444;}
+        footer {
+            height: 300px;
+            background: #444;
+        }
 
-        @font-face{
-        font-family: 'ShinhanCard';
-        src: local('ShinhanCard'),
-            url('/pconts/fonts/shcard/ShinhanCardM.woff2') format('woff2'),
-            url('/pconts/fonts/ShinhanCardM.woff') format('woff'),
-            url('/pconts/fonts/ShinhanCardM.ttf') format('truetype'),
-            url('/pconts/fonts/ShinhanCardM.eot') format('embeded-opentype');
-        font-weight: 700;
-        font-style: normal;
-        font-display:swap;
-    }
-
+        @font-face {
+            font-family: 'ShinhanCard';
+            src: local('ShinhanCard'),
+                url('/pconts/fonts/shcard/ShinhanCardM.woff2') format('woff2'),
+                url('/pconts/fonts/ShinhanCardM.woff') format('woff'),
+                url('/pconts/fonts/ShinhanCardM.ttf') format('truetype'),
+                url('/pconts/fonts/ShinhanCardM.eot') format('embeded-opentype');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+        }
     </style>
 </head>
+
 <body>
-    
 
 
 
-    
+
+
 
     <!-- <ul class="test">
         <li>1</li>
@@ -87,61 +221,61 @@
     </ul> -->
 
     <div class="wrap">
-    <header>header</header>
+        <header>header</header>
 
-    
-    <div class="j_wrap">
-        
-        <nav>
-            <div class="jslide_arow_wrap">
-                <span class="prev" role="button"></span>
-                <span class="next" role="button"></span>
+
+        <div class="j_wrap">
+
+            <nav>
+                <div class="jslide_arow_wrap">
+                    <span class="prev" role="button"></span>
+                    <span class="next" role="button"></span>
+                </div>
+                <ul class="jslide_btn">
+                    <li class="jslide_btn_li"><a href="" class="target">click0 first</a></li>
+                    <li class="jslide_btn_li"><a href="" class="target">click1click0</a></li>
+                    <li class="jslide_btn_li"><a href="" class="target">click2click0click0</a></li>
+                    <li class="jslide_btn_li"><a href="" class="target">click3click0click0click0</a></li>
+                    <li class="jslide_btn_li"><a href="" class="target">click4click4click4click4click4</a></li>
+                    <li class="jslide_btn_li"><a href="" class="target">click5click0click0click0click0click0</a></li>
+                    <li class="jslide_btn_li"><a href="" class="target">click6click0</a></li>
+                    <li class="jslide_btn_li"><a href="" class="target">click7</a></li>
+                    <li class="jslide_btn_li"><a href="" class="target">click8click0click0</a></li>
+                    <li class="jslide_btn_li"><a href="" class="target">click9click0</a></li>
+                    <li class="jslide_btn_li"><a href="" class="target">click10click0 last</a></li>
+                </ul>
+
+            </nav>
+
+            <div>
+                <ul class="location_btn">
+                    <li class="jslide_loca_li"><a href="" class="target">location 0</a></li>
+                    <li class="jslide_loca_li"><a href="" class="target">location 1</a></li>
+                    <li class="jslide_loca_li"><a href="" class="target">location 2</a></li>
+                    <li class="jslide_loca_li"><a href="" class="target">location 3</a></li>
+                    <li class="jslide_loca_li"><a href="" class="target">location 4</a></li>
+                    <li class="jslide_loca_li"><a href="" class="target">location 5</a></li>
+                    <li class="jslide_loca_li"><a href="" class="target">location 6</a></li>
+                    <li class="jslide_loca_li"><a href="" class="target">location 7</a></li>
+                    <li class="jslide_loca_li"><a href="" class="target">location 8</a></li>
+                    <li class="jslide_loca_li"><a href="" class="target">location 9</a></li>
+                    <li class="jslide_loca_li"><a href="" class="target">location 10</a></li>
+                </ul>
+
+                <section class="main">0</section>
+                <section class="main">1</section>
+                <section class="main">2</section>
+                <section class="main">3</section>
+                <section class="main">4</section>
+                <section class="main">5</section>
+                <section class="main">6</section>
+                <section class="main">7</section>
+                <section class="main">8</section>
+                <section class="main">9</section>
+                <section class="main">10</section>
             </div>
-            <ul class="jslide_btn">
-                <li class="jslide_btn_li"><a href="" class="target">click0 first</a></li>
-                <li class="jslide_btn_li"><a href="" class="target">click1click0</a></li>
-                <li class="jslide_btn_li"><a href="" class="target">click2click0click0</a></li>
-                <li class="jslide_btn_li"><a href="" class="target">click3click0click0click0</a></li>
-                <li class="jslide_btn_li"><a href="" class="target">click4click4click4click4click4</a></li>
-                <li class="jslide_btn_li"><a href="" class="target">click5click0click0click0click0click0</a></li>
-                <li class="jslide_btn_li"><a href="" class="target">click6click0</a></li>
-                <li class="jslide_btn_li"><a href="" class="target">click7</a></li>
-                <li class="jslide_btn_li"><a href="" class="target">click8click0click0</a></li>
-                <li class="jslide_btn_li"><a href="" class="target">click9click0</a></li>
-                <li class="jslide_btn_li"><a href="" class="target">click10click0  last</a></li>
-            </ul>
-            
-        </nav>
-    
-        <div>
-            <ul class="location_btn">
-                <li class="jslide_loca_li"><a href="" class="target">location 0</a></li>
-                <li class="jslide_loca_li"><a href="" class="target">location 1</a></li>
-                <li class="jslide_loca_li"><a href="" class="target">location 2</a></li>
-                <li class="jslide_loca_li"><a href="" class="target">location 3</a></li>
-                <li class="jslide_loca_li"><a href="" class="target">location 4</a></li>
-                <li class="jslide_loca_li"><a href="" class="target">location 5</a></li>
-                <li class="jslide_loca_li"><a href="" class="target">location 6</a></li>
-                <li class="jslide_loca_li"><a href="" class="target">location 7</a></li>
-                <li class="jslide_loca_li"><a href="" class="target">location 8</a></li>
-                <li class="jslide_loca_li"><a href="" class="target">location 9</a></li>
-                <li class="jslide_loca_li"><a href="" class="target">location 10</a></li>
-            </ul>
 
-            <section class="main">0</section>
-            <section class="main">1</section>
-            <section class="main">2</section>
-            <section class="main">3</section>
-            <section class="main">4</section>
-            <section class="main">5</section>
-            <section class="main">6</section>
-            <section class="main">7</section>
-            <section class="main">8</section>
-            <section class="main">9</section>
-            <section class="main">10</section>
         </div>
-
-    </div>
         <footer>hoho</footer>
     </div>
 
@@ -152,13 +286,13 @@
         "use strict";
         var test = document.querySelectorAll('.test > li')
 
-        for(var i = 0; i < test.length; i++) {
+        for (var i = 0; i < test.length; i++) {
             // console.log(test[i])
-            
-            (function(h){
-                test[h].addEventListener('click', function(e) {
+
+            (function (h) {
+                test[h].addEventListener('click', function (e) {
                     console.log(test[h])
-                    for(var t = 0; t < test.length; t++) {
+                    for (var t = 0; t < test.length; t++) {
                         test[t].className = ''
                     }
                     test[h].classList.add('hoho')
@@ -198,7 +332,7 @@
 
 
 
-        Jscroll.prototype.init = function() {
+        Jscroll.prototype.init = function () {
             console.log('asdasdsad?? ', this)
             this.calc();
             this.handleNav();
@@ -210,27 +344,27 @@
 
             window.addEventListener('scroll', this.scrollEvt.bind(this))
             this.arrowWrap.addEventListener('click', this.arrowClickEvt.bind(this))
-           
+
         }
 
 
-        Jscroll.prototype.calc = function() {
+        Jscroll.prototype.calc = function () {
             this.YOffset = (window.pageYOffset - this.j_wrap_offset) + document.body.clientHeight / 3;
 
-            for(var i = 0; i < this.eles.length; i++) {
+            for (var i = 0; i < this.eles.length; i++) {
                 this.h_arr.push(this.eles[i].offsetHeight + parseInt(getComputedStyle(this.eles[i]).marginTop) + parseInt(getComputedStyle(this.eles[i]).marginBottom))
             }
 
-            for(var i = 0; i < this.navLis.length; i++) {
+            for (var i = 0; i < this.navLis.length; i++) {
                 this.w_arr.push(this.navLis[i].offsetWidth + parseInt(getComputedStyle(this.navLis[i]).marginLeft) + parseInt(getComputedStyle(this.navLis[i]).marginRight))
             }
 
-            this.navMax = this.w_arr.reduce(function(acc, cur) { return acc + cur }, 0);
-           
+            this.navMax = this.w_arr.reduce(function (acc, cur) { return acc + cur }, 0);
+
             // 인덱스 새로고침
-            for(var h = 0; h < this.h_arr.length; h++) {
+            for (var h = 0; h < this.h_arr.length; h++) {
                 this.totalHeight += this.h_arr[h];
-                if(this.YOffset < this.totalHeight) {
+                if (this.YOffset < this.totalHeight) {
                     this.current = h
                     document.body.setAttribute('data-scroll', this.current)
                     document.querySelector('header').innerHTML = this.current;
@@ -240,15 +374,15 @@
             }
 
             // 네비 새로고침
-            if(this.current !== 0) { 
-                for(var i = 0; i < this.current; i++) {
+            if (this.current !== 0) {
+                for (var i = 0; i < this.current; i++) {
                     this.navTotal += this.w_arr[i]
                 }
-                if(this.navTotal >= this.navMax - this.navSelect.offsetWidth) { 
+                if (this.navTotal >= this.navMax - this.navSelect.offsetWidth) {
                     this.listIndexCalc(); return;
-                 } else {
+                } else {
                     this.navSelect.style.transform = "translateX(" + (-this.navTotal) + "px)"
-                 }
+                }
             }
 
 
@@ -258,31 +392,31 @@
         }
 
 
-        Jscroll.prototype.scrollEvt = function() {
+        Jscroll.prototype.scrollEvt = function () {
 
             console.log('??????????????????????')
-            if(window.pageYOffset >= this.j_wrap_offset) {
-                
+            if (window.pageYOffset >= this.j_wrap_offset) {
+
 
                 this.YOffset = (window.pageYOffset - this.j_wrap_offset) + document.body.clientHeight / 3;
-                if(this.YOffset <= 0) { this.current = 0 };
+                if (this.YOffset <= 0) { this.current = 0 };
 
                 this.prevHeight = 0;
-                for(var i = 0; i < this.current; i++) {
+                for (var i = 0; i < this.current; i++) {
                     this.prevHeight += this.h_arr[i];
                 }
 
-                if(this.YOffset > this.prevHeight + this.h_arr[this.current]) {
+                if (this.YOffset > this.prevHeight + this.h_arr[this.current]) {
                     this.current++
                     document.body.setAttribute('data-scroll', this.current)
                     this.toggleClass(this.navLis, 'active', this.current)
                     this.toggleClass(this.locationLis, 'active', this.current)
                     this.navSwipeDec()
                     document.querySelector('header').innerHTML = this.current
-                    
+
                 }
 
-                if(this.YOffset < this.prevHeight) {
+                if (this.YOffset < this.prevHeight) {
                     this.current--
                     document.body.setAttribute('data-scroll', this.current)
                     this.toggleClass(this.navLis, 'active', this.current)
@@ -301,54 +435,54 @@
 
 
 
-        Jscroll.prototype.handleNav = function(e) {
+        Jscroll.prototype.handleNav = function (e) {
             this.navClickEvt(this.navLis)
-        } 
+        }
 
-        Jscroll.prototype.handleLocation = function(e) {
+        Jscroll.prototype.handleLocation = function (e) {
             this.navClickEvt(this.locationLis)
         }
 
-        
-        Jscroll.prototype.navSwipeDec = function() {
+
+        Jscroll.prototype.navSwipeDec = function () {
             this.navTotal += this.w_arr[this.current - 1]
-            if(this.navTotal >= this.navMax - this.navSelect.offsetWidth) { this.listIndexCalc(); return; }
+            if (this.navTotal >= this.navMax - this.navSelect.offsetWidth) { this.listIndexCalc(); return; }
             this.navSelect.style.transform = "translateX(" + (-this.navTotal) + "px)"
-            console.log('dec ',this.navTotal)
+            console.log('dec ', this.navTotal)
         }
 
 
-        Jscroll.prototype.navSwipeInc = function() {
+        Jscroll.prototype.navSwipeInc = function () {
             this.navTotal -= this.w_arr[this.current]
-            if(this.navTotal >= (this.navMax - this.navSelect.offsetWidth)) { this.listIndexCalc(); return; }
+            if (this.navTotal >= (this.navMax - this.navSelect.offsetWidth)) { this.listIndexCalc(); return; }
             this.navSelect.style.transform = "translateX(" + (-this.navTotal) + "px)"
         }
 
 
-        Jscroll.prototype.listIndexCalc = function() {
-            this.navSelect.style.transform = "translateX(" + (-(this.navMax - this.navSelect.offsetWidth) ) + "px)"
+        Jscroll.prototype.listIndexCalc = function () {
+            this.navSelect.style.transform = "translateX(" + (-(this.navMax - this.navSelect.offsetWidth)) + "px)"
         }
 
 
 
-        Jscroll.prototype.toggleClass = function(allEle, activeName, idx) {
-            for(var i = 0; i < allEle.length; i++) {
-                (function(h){
+        Jscroll.prototype.toggleClass = function (allEle, activeName, idx) {
+            for (var i = 0; i < allEle.length; i++) {
+                (function (h) {
                     allEle[h].classList.remove(activeName)
                     allEle[idx].classList.add(activeName)
                 }.bind(this))(i)
             }
         }
 
-        Jscroll.prototype.navClickEvt = function(eleArr) {
-            for(var i = 0; i < eleArr.length; i++) {
-                (function(h) {
-                    eleArr[h].querySelector('.target').addEventListener('click', function(e) {
+        Jscroll.prototype.navClickEvt = function (eleArr) {
+            for (var i = 0; i < eleArr.length; i++) {
+                (function (h) {
+                    eleArr[h].querySelector('.target').addEventListener('click', function (e) {
                         e.preventDefault();
-                        if(e.target.nodeName === 'A' || e.target.nodeName === 'BUTTON') {  
-                          
-                            var accVal = this.h_arr.reduce(function(acc, cur, idx) {
-                                if(idx > h) { return acc; }
+                        if (e.target.nodeName === 'A' || e.target.nodeName === 'BUTTON') {
+
+                            var accVal = this.h_arr.reduce(function (acc, cur, idx) {
+                                if (idx > h) { return acc; }
                                 return acc + cur;
                             }, 0)
                             window.scrollTo({ top: accVal, left: 0, behavior: 'smooth' })
@@ -359,38 +493,38 @@
         }
 
 
-        Jscroll.prototype.stickyBar = function() {
-            if(pageYOffset > this.navSelect.parentElement.offsetTop + 20) {
+        Jscroll.prototype.stickyBar = function () {
+            if (pageYOffset > this.navSelect.parentElement.offsetTop + 20) {
                 this.navSelect.parentElement.style.top = 0
                 this.navSelect.parentElement.style.position = 'fixed'
-            } 
-            if(pageYOffset < 360){
+            }
+            if (pageYOffset < 360) {
                 this.navSelect.parentElement.style.top = 360 + 'px'
                 this.navSelect.parentElement.style.position = 'absolute'
             }
         }
 
 
-      
-        Jscroll.prototype.arrowClickEvt = function(e) {
+
+        Jscroll.prototype.arrowClickEvt = function (e) {
             this.navRefresh();
             console.log(this.current)
             var getNavPos = getComputedStyle(this.navSelect).getPropertyValue('transform')
             this.navRefreshValue = getNavPos.match(/(-?[0-9/.]+)/g)[4]
 
-            if(e.target.classList.contains('next')) {
+            if (e.target.classList.contains('next')) {
                 // if(this.current === this.navLis.length - 1) return;
                 // this.toggleClass(this.navLis, 'active', ++this.current)
                 console.log(this.navRefreshValue)
-                
+
                 this.navRefreshValue += this.w_arr[0]
-                this.navSelect.style.transform = "translateX(" + (-(this.navRefreshValue) ) + "px)"
+                this.navSelect.style.transform = "translateX(" + (-(this.navRefreshValue)) + "px)"
                 // this.navSwipeDec();
 
-                
+
             }
 
-            if(e.target.classList.contains('prev')) {
+            if (e.target.classList.contains('prev')) {
                 // if(this.current === 0) return;
                 // this.toggleClass(this.navLis, 'active', --this.current)
                 // this.navSwipeInc();
@@ -398,20 +532,20 @@
         }
 
 
-        Jscroll.prototype.navRefresh = function() {
+        Jscroll.prototype.navRefresh = function () {
             console.log(this.isRefresh)
             this.isRefresh = true;
-            if(this.isRefresh && !this.navRefreshValue) {
+            if (this.isRefresh && !this.navRefreshValue) {
                 var getNavPos = getComputedStyle(this.navSelect).getPropertyValue('transform')
                 this.navRefreshValue = getNavPos.match(/(-?[0-9/.]+)/g)[4]
                 // console.log(this.navRefreshValue)
             }
         }
 
-        Jscroll.prototype.navRefreshActive = function() {
-            if(!this.isRefresh) return;
+        Jscroll.prototype.navRefreshActive = function () {
+            if (!this.isRefresh) return;
             // console.log('?????????????????????')
-            if(this.current !== 0 && this.isRefresh) { 
+            if (this.current !== 0 && this.isRefresh) {
                 this.navSelect.style.transform = "translateX(" + (this.navRefreshValue) + "px)"
                 this.isRefresh = false; //이벤트 후 false
                 this.navRefreshValue = null;
@@ -421,15 +555,15 @@
 
 
 
-        
-        window.addEventListener('load', function() {
+
+        window.addEventListener('load', function () {
             var ins1 = new Jscroll('.main', {
                 navButtonClass: '.jslide_btn',
                 locationButtonClass: '.location_btn',
             })
             ins1.init()
-            
-        } )
+
+        })
 
 
 
@@ -437,7 +571,7 @@
         // function clo(fn) {
         //     let memo = []
         //     return function(...args) {
-        //         //실제 적용하기 전에 필터하거나 메모리에 저장해서 있으면 실제 로직을 타지않게 
+        //         //실제 적용하기 전에 필터하거나 메모리에 저장해서 있으면 실제 로직을 타지않게
         //         // console.log(...args)
         //         if(memo[0] === args[0]) { // 만약 메모에 있으면 메모값을 리턴
         //             return memo[0]
@@ -451,7 +585,7 @@
 
         // var bb = clo(function(a, b) {
         //     // console.log(a) a는 result에서 넘긴 값
-        //     // 실제 적용 로직 
+        //     // 실제 적용 로직
         //     return a + b
         // })
 
@@ -463,4 +597,5 @@
 
 
 </body>
+
 </html>

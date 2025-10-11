@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+   <title>Document</title>
+</head>
+
+<body>
+
+
+
+   <style>
+      /* 
+// iOS 11.0 버전
+constant(safe-area-inset-top)
+constant(safe-area-inset-right)
+constant(safe-area-inset-bottom)
+constant(safe-area-inset-left)
+// iOS 11.2 이상
+env(safe-area-inset-top)
+env(safe-area-inset-right)
+env(safe-area-inset-bottom)
+env(safe-area-inset-left) 
+*/
+
+
+      :root {
+         --safe-top: 44px;
+         /* iPhone X 노치 높이 */
+         --safe-bottom: 34px;
+      }
+
+      * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+      }
+
+      html {
+         /* background-color: rgb(0, 0, 0);
+         padding-top: var(--safe-top);
+         padding-bottom: var(--safe-bottom); */
+         height: 100%;
+         border: 3px solid red
+      }
+
+      html,
+      body {
+         /* border: 3px solid blue; */
+         height: 100%;
+      }
+
+      .wrap {
+         display: flex;
+         flex-direction: column;
+         justify-content: space-between;
+         height: 100%;
+         ;
+      }
+
+      header {
+         border: 1px solid red;
+         height: calc(56px + env(safe-area-inset-top));
+         flex: 0 0 auto;
+         background-color: #ddd;
+         position: fixed;
+         width: 100%;
+         top: 0;
+         opacity: .5;
+      }
+
+      .header_con {
+         background-color: aquamarine;
+         height: 56px;
+         margin-top: calc(0 + env(safe-area-inset-top));
+         position: absolute;
+         width: 100%;
+         bottom: 0;
+      }
+
+      main {
+         padding-top: calc(56px + env(safe-area-inset-top));
+         border: 1px solid blue;
+         flex: 1;
+      }
+
+      footer {
+         border: 1px solid red;
+         flex: 0 0 auto;
+         background-color: #ddd;
+
+         padding-bottom: calc(60px + env(safe-area-inset-bottom));
+         /* btn + env */
+
+      }
+
+      footer .footer_con {
+         border: 1px solid red;
+         height: 100px;
+      }
+
+
+      section {
+         height: 300px;
+         border-bottom: 1px solid #ddd;
+         background-color: aliceblue;
+      }
+
+      .visual {
+         height: 500px;
+         background-color: bisque;
+      }
+
+      .btn_wrap {
+         position: fixed;
+         bottom: 0;
+         height: calc(50px + env(safe-area-inset-bottom));
+         width: 100%;
+         background-color: aqua;
+      }
+
+      .target {
+         background-color: red;
+         color: #fff;
+         height: 30px;
+      }
+
+      .target.fix {
+         position: fixed;
+         width: 100%;
+         top: calc(56px + env(safe-area-inset-top));
+      }
+
+      .scrollValue {
+         position: fixed;
+         top: 150px;
+         left: 50px;
+         font-size: 40px;
+      }
+   </style>
+
+   <!-- <div style="height: 20px; background-color: black;">safe</div> -->
+   <div class="wrap">
+      <div class="scrollValue">0</div>
+      <header>
+         <div class="header_con">header</div>
+      </header>
+
+      <main>
+         <div class="visual">visual</div>
+         <section>
+            <div class="target">target</div>
+         </section>
+         <section>
+            1
+         </section>
+         <section>
+            2
+         </section>
+         <section>
+            3
+         </section>
+         <section>
+            4
+         </section>
+         <section>
+            5
+         </section>
+
+         <div class="btn_wrap">
+            <button type="submit">
+               btn
+            </button>
+         </div>
+      </main>
+
+      <footer>
+         <div class="footer_con">footer</div>
+      </footer>
+
+
+
+
+
+   </div>
+
+
+   <script>
+
+      let y = 0;
+      const header_H = document.querySelector('header').clientHeight;
+      const target = document.querySelector('.target')
+      const visual = document.querySelector('.visual')
+      const scrollValue = document.querySelector('.scrollValue')
+
+      console.log('visual.offsetBottom?', visual.clientHeight)
+
+      function scrollAction() {
+         y = window.pageYOffset
+
+         scrollValue.innerHTML = `y: ${y} : ${500 + header_H}`
+
+         console.log(y)
+         // ??   >   500
+         // 비주얼 높이 + 헤더높이 = 노치값 포함한 타겟까지의 총 길이
+         // 비주얼 높이 y값하면 따로 줄 필요없음 왜 ??
+         // 메인 패딩탑(패딩+노치) +  헤더높이(얜 떠있어서 상관없음) 이 값들이니깐 비주얼 높이만 구하면 이상없던거
+         // 더쉽게 => 애초에 패딩탑(노치값포함) or 헤더값(노치값포함)인 값은 - 해주고 계산해주는게 맞으니깐 비주얼 높이만 계산하는게 맞음
+
+         if (y >= visual.clientHeight) {
+            target.classList.add('fix')
+         } else {
+            target.classList.remove('fix')
+         }
+      }
+
+      window.addEventListener('scroll', scrollAction)
+
+   </script>
+
+</body>
+
+</html>

@@ -3,7 +3,8 @@
 
 <head>
    <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
    <title>Document</title>
 </head>
 
@@ -12,6 +13,21 @@
 
 
    <style>
+      /*  vh test */
+      /* 
+            // iOS 11.0 버전
+            constant(safe-area-inset-top)
+            constant(safe-area-inset-right)
+            constant(safe-area-inset-bottom)
+            constant(safe-area-inset-left)
+            // iOS 11.2 이상
+            env(safe-area-inset-top)
+            env(safe-area-inset-right)
+            env(safe-area-inset-bottom)
+            env(safe-area-inset-left) 
+        */
+
+
       :root {
          --safe-top: 44px;
          /* iPhone X 노치 높이 */
@@ -28,10 +44,13 @@
          /* background-color: rgb(0, 0, 0);
          padding-top: var(--safe-top);
          padding-bottom: var(--safe-bottom); */
+         height: 100%;
+         border: 3px solid red
       }
 
       html,
       body {
+         /* border: 3px solid blue; */
          height: 100%;
       }
 
@@ -45,16 +64,26 @@
 
       header {
          border: 1px solid red;
-         height: calc(56px + var(--safe-top));
+         height: calc(56px + env(safe-area-inset-top));
          flex: 0 0 auto;
          background-color: #ddd;
          position: fixed;
          width: 100%;
          top: 0;
+         opacity: .5;
+      }
+
+      .header_con {
+         background-color: aquamarine;
+         height: 56px;
+         margin-top: calc(0 + env(safe-area-inset-top));
+         position: absolute;
+         width: 100%;
+         bottom: 0;
       }
 
       main {
-         padding-top: calc(56px + var(--safe-top));
+         padding-top: calc(56px + env(safe-area-inset-top));
          border: 1px solid blue;
          flex: 1;
       }
@@ -63,10 +92,8 @@
          border: 1px solid red;
          flex: 0 0 auto;
          background-color: #ddd;
-
-         padding-bottom: 60px;
+         padding-bottom: calc(60px + env(safe-area-inset-bottom));
          /* btn + env */
-
       }
 
       footer .footer_con {
@@ -74,53 +101,64 @@
          height: 100px;
       }
 
-
       section {
-         height: 300px;
-         border-bottom: 1px solid #ddd;
-         background-color: aliceblue;
-      }
-
-      .visual {
-         height: 500px;
-         background-color: bisque;
+         height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 56px - 50px);
+         border: 1px solid blue;
+         background-color: rgb(247, 185, 255);
       }
 
       .btn_wrap {
+         opacity: .5;
          position: fixed;
          bottom: 0;
-         height: 50px;
+         height: calc(50px + env(safe-area-inset-bottom));
          width: 100%;
          background-color: aqua;
       }
 
-      .target {
+      /* 부모높이만큼 */
+      .visual {
+         width: 100%;
+         height: 100%;
+         border: 1px solid blue;
+         position: relative;
          background-color: red;
-         color: #fff;
-         height: 30px;
+         opacity: .5;
       }
 
-      .target.fix {
-         position: fixed;
+      .con {
          width: 100%;
-         top: 56px;
+         height: 30%;
+         border: 1px solid blue;
+         position: relative;
+      }
+
+      .foo {
+         width: 100%;
+         height: 20%;
+         border: 1px solid blue;
+         position: relative;
       }
    </style>
 
    <!-- <div style="height: 20px; background-color: black;">safe</div> -->
    <div class="wrap">
-
       <header>
-         header
+         <div class="header_con">header</div>
       </header>
 
       <main>
-         <div class="visual">visual</div>
+
          <section>
-            <div class="target">target</div>
-         </section>
-         <section>
-            1
+            <div class="visual">
+               visual
+            </div>
+            <div class="con">
+               con
+            </div>
+            <div class="foo">
+               foo
+            </div>
          </section>
          <section>
             2
@@ -155,26 +193,7 @@
 
    <script>
 
-      let y = 0;
-      const header_H = document.querySelector('header').clientHeight;
-      const target = document.querySelector('.target')
-      const visual = document.querySelector('.visual')
 
-      console.log('visual.offsetBottom?', visual.clientHeight)
-
-      function scrollAction() {
-         y = window.pageYOffset
-
-         console.log(y)
-         // ??   >   500
-         if (y >= visual.clientHeight) {
-            target.classList.add('fix')
-         } else {
-            target.classList.remove('fix')
-         }
-      }
-
-      window.addEventListener('scroll', scrollAction)
 
    </script>
 

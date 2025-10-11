@@ -3,6 +3,7 @@
         margin: 0;
         padding: 0;
     }
+
     body,
     html {
         width: 100%;
@@ -10,6 +11,7 @@
         background: #222;
         overflow: hidden;
     }
+
     .wrap {
         width: 190px;
         height: 190px;
@@ -19,6 +21,7 @@
         right: 0;
         margin: auto;
     }
+
     .face {
         width: 100%;
         height: 100%;
@@ -28,6 +31,7 @@
         z-index: 20;
         position: absolute;
     }
+
     /* 귀 */
     .ears {
         z-index: 10;
@@ -37,7 +41,8 @@
         transform-origin: 50% 50% 20px;
         transition: all 0.6s;
     }
-    .ears > span {
+
+    .ears>span {
         border-radius: 50%;
         border: 1px solid #fff;
         width: 60px;
@@ -46,14 +51,17 @@
         position: absolute;
         background: #666;
     }
-    .ears > span:nth-child(1) {
+
+    .ears>span:nth-child(1) {
         left: 0;
         top: 0;
     }
-    .ears > span:nth-child(2) {
+
+    .ears>span:nth-child(2) {
         right: 0;
         top: 0;
     }
+
     /* 눈 */
     .eyes {
         position: absolute;
@@ -62,21 +70,25 @@
         transform-origin: 50% 50% -80px;
         transition: all 0.6s;
     }
-    .eyes > span {
+
+    .eyes>span {
         position: absolute;
         width: 10px;
         height: 10px;
         border-radius: 50%;
         background: #fff;
     }
-    .eyes > span:nth-child(1) {
+
+    .eyes>span:nth-child(1) {
         position: absolute;
         left: 60px;
     }
-    .eyes > span:nth-child(2) {
+
+    .eyes>span:nth-child(2) {
         position: absolute;
         right: 60px;
     }
+
     /* 코 */
     .muzzle {
         position: absolute;
@@ -85,7 +97,8 @@
         transform-origin: 50% 50% -90px;
         transition: all 0.6s;
     }
-    .muzzle > span {
+
+    .muzzle>span {
         position: absolute;
         width: 30px;
         height: 30px;
@@ -93,7 +106,8 @@
         border: 1px solid #fff;
         background: #666;
     }
-    .muzzle > span:nth-child(1) {
+
+    .muzzle>span:nth-child(1) {
         position: absolute;
         left: 0;
         right: 0;
@@ -101,6 +115,7 @@
         border-radius: 39%;
         background: #c6c6c6;
     }
+
     /* 양볼 */
     .cheek {
         position: absolute;
@@ -109,7 +124,8 @@
         transform-origin: 50% 50% -74px;
         transition: all 0.6s;
     }
-    .cheek > span {
+
+    .cheek>span {
         width: 50px;
         height: 50px;
         background: transparent;
@@ -117,7 +133,8 @@
         font-size: 6px;
         color: #ff7e7e;
     }
-    .cheek > span:nth-child(1) {
+
+    .cheek>span:nth-child(1) {
         width: 21px;
         height: 10px;
         border-radius: 50%;
@@ -125,7 +142,8 @@
         /* background: #ffd8d8; */
         /* border: 1px solid #fff; */
     }
-    .cheek > span:nth-child(2) {
+
+    .cheek>span:nth-child(2) {
         width: 21px;
         height: 10px;
         border-radius: 50%;
@@ -133,6 +151,7 @@
         /* background: #ffd8d8; */
         /* border: 1px solid #fff; */
     }
+
     .input {
         font-size: 16px;
         position: absolute;
@@ -142,6 +161,7 @@
         margin: auto;
         width: 300px;
     }
+
     .password {
         font-size: 16px;
         position: absolute;
@@ -151,6 +171,7 @@
         margin: auto;
         width: 300px;
     }
+
     .span {
         font-size: 16px;
         position: absolute;
@@ -181,8 +202,8 @@
         <span></span>
     </div>
 </div>
-<input type="text" class="input" placeholder="value"/>
-<input type="password" class="password" placeholder="password"/>
+<input type="text" class="input" placeholder="value" />
+<input type="password" class="password" placeholder="password" />
 <span class="span">.</span>
 
 
@@ -205,25 +226,25 @@
     let x = 0;
     let y = 0;
 
-    function init(e) {}
+    function init(e) { }
 
     function click(e) {
-        const {target: {
-                type
-            }} = e;
+        const { target: {
+            type
+        } } = e;
         let val = calcValue(e)
         // console.log(val)
         if (type === 'password') {
             console.log(type)
             for (let i = 0; i < eyesInnerEle.length; i++) {
-                eyesInnerEle[i].style.height = `${ 2}px`
+                eyesInnerEle[i].style.height = `${2}px`
             }
             rotate3d([
                 eyes, muzzle, cheek, ears
             ], 1, 0, 0, .5)
         } else {
             for (let i = 0; i < eyesInnerEle.length; i++) {
-                eyesInnerEle[i].style.height = `${ 10}px`
+                eyesInnerEle[i].style.height = `${10}px`
             }
         }
         if (type !== 'text' && type !== 'password') {
@@ -239,9 +260,9 @@
     }
 
     function calcValue(e) {
-        const {target, target: {
-                value
-            }} = e;
+        const { target, target: {
+            value
+        } } = e;
         span.innerText = value;
         spanRect = span.getBoundingClientRect();
         inputRect = input.getBoundingClientRect();
@@ -258,7 +279,7 @@
         rotate3d([
             eyes, muzzle, cheek, ears
         ], x / angle, y / angle, y / angle / 2, angle)
-        return {x, y, angle}
+        return { x, y, angle }
     }
 
     function rotate3d(ele, x, y, z, deg) {
