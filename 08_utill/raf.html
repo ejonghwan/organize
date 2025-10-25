@@ -97,6 +97,75 @@
 
 
 
+
+
+
+      // raf 최적화 
+
+      /*
+         ### setTimeout과 setInterval의 한계
+         일반적인 모니터의 가변 주사율이 60프레임을 고려해, 1초에 60번의 호출이 발생하도록 delay를 1000/60ms로 준다고 가정하자. 
+         보통의 경우는 이 delay가 잘 지켜져 의도한 대로 60 프레임의 애니메이션이 그려질 것 
+         그런데 만약 연산에 delay 이상의 시간이 필요한 경우는 싱글 스레드인 자바스크립트의 특성상, 
+         주어진 delay 시간을 지키지 못하고 일부 애니메이션이 누락될 것
+
+
+         ### requestAnimationFrame API
+         - rAF는 브라우저에 의해 repaint 직전에 실행
+         - 60 프레임 또는 모니터의 가변 주사율에 최대한 맞추어 콜백 함수를 호출
+         - 브라우저의 paint 사이클에 상관없이 실행되는 setTimeout, setInterval보다 부드러운 애니메이션을 제공
+         - rAF의 콜백 함수는 setTimeout 등에 의해 등록되는 Task Queue보다 우선 순위가 높은 Animation Frames라는 큐에 등록
+         - 다수의 브라우저에서 Animation Frames의 작업들이 Task Queue의 작업들 보다 먼저 수행
+         - 호출 스택이 빌 때 하나의 작업씩 꺼내오는 Task Queue와 달리 Animation Frames는 쌓여있는 모든 함수를 꺼내오기 때문에 더 부드러운 애니메이션을 제공
+
+
+         function draw() {
+            console.log("hello");
+            requestAnimationFrame(draw);
+         }
+
+         draw();
+          초당 60회 정도의 속도로 "Hello"가 출력되는 것을 확인
+      */
+
+
+      /*
+         ### 문제
+         mousemove나 drag와 같이 한 번에 많은 함수 호출이 일어날 수 있는 이벤트 리스너에 사용할 때 
+         가벼운 마우스 움직임에도 초당 60회 를 훌쩍 넘는 함수 호출함
+         이렇게 빠른 함수 호출은 모니터의 가변 주사율을 넘어서기 때문에 무의미한 연산으로 자원을 낭비
+
+         useEffect(() => {
+            const animation = (e: MouseEvent) => {
+               // do something
+            }
+
+            window.addEventListener('mousemove', animation);
+
+            return () => window.removeEventListener('mousemove', animation);
+         }, []);
+
+
+         ### 해결 
+         useEffect(() => {
+            let animating = false;
+
+            const animation = (e: MouseEvent) => {
+               if (animating) return;
+
+               animating = true;
+               return requestAnimationFrame(() => {
+               //do something
+               animating = false;
+            };
+
+            window.addEventListener('mousemove', animation);
+
+            return () => window.removeEventListener('mousemove', animation);
+         }, []);
+      */
+
+
    </script>
 
 </body>

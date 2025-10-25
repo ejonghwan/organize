@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+
+
+   <style>
+      * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+      }
+
+      .target {
+         width: 50px;
+         height: 50px;
+         background-color: red;
+      }
+
+      .mouse {
+         width: 30px;
+         height: 30px;
+         background-color: blue;
+         position: absolute;
+         top: 0;
+         left: 0;
+      }
+   </style>
+   <div class="target"></div>
+   <div class="mouse"></div>
+
+   <script>
+
+
+      // 박스
+      const target = document.querySelector('.target')
+      const mouse = document.querySelector('.mouse')
+      let start = 0;
+      let end = 200;
+      let x = 0;
+
+
+      function action() {
+         const re = requestAnimationFrame(action)
+         // x = start + (end - start) * del
+         start = lerp(start, end, 0.05)
+         target.style.transform = `translateX(${start}px)`
+
+         if (x > 200) {
+            cancelAnimationFrame(re)
+         }
+      }
+
+
+      // 마우스
+      let mouseX = 0;
+      let mouseY = 0;
+      let startX = 0;
+      let startY = 0;
+
+      function loop(e) {
+         // console.log('123123')
+         requestAnimationFrame(loop)
+         startX = lerp(startX, mouseX, 0.1)
+         startY = lerp(startY, mouseY, 0.1)
+
+         mouse.style.transform = `translate(${startX}px, ${startY}px)`
+      }
+      requestAnimationFrame(loop)
+
+      function mouseEvt(e) {
+         mouseX = e.clientX
+         mouseY = e.clientY
+      }
+
+
+      function lerp(s, e, a) {
+         // 1차 선형보간법. 2차 선형보간법은 여기서 y값 추가 
+         // P = S + (E - S) * 0.3
+         return s + (e - s) * a
+      }
+
+
+      // requestAnimationFrame(action)
+      window.addEventListener('click', action)
+      window.addEventListener('mousemove', mouseEvt)
+
+   </script>
+
+
+</body>
+
+</html>

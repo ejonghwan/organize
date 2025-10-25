@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+   <style>
+      div {
+         height: 300px;
+         border: 1px solid red;
+      }
+   </style>
+
+   <div></div>
+   <div></div>
+   <div></div>
+   <div></div>
+   <div></div>
+   <div></div>
+
+
+   <script>
+
+      /*
+
+         #################
+         #################   ### Passive Event Listener
+         #################
+
+         Chrome 51 부터 등장한 스크롤 동작 최적화를 위한 옵션.
+
+         # 동작
+         스크롤의 성능을 최적화하고 싶을 때 사용하는데, preventDefault의 동작이 실행되는 것을 막을 수 있음
+         1. addEventListener로 등록된 이벤트는 Compositor thread에서 처리
+         2. 원래대로라면, 이벤트를 Main thread에 넘긴 뒤 자신은 Render tree를 다시 넘겨받을 때까지 대기상태
+         3. 그런데 passive 옵션이 활성화(true)되어 있다면, Compositor thread는 Main thread를 기다리지 않고 자신의 작업을 즉시 수행
+         4. 이벤트를 수신하자마자 핸들러를 실행하고, 화면에 바로 반영하여 렌더링 퍼포먼스가 향상될 수 있음
+
+
+         # passive : true
+         1. passive 옵션이 true인 경우 Main thread를 거치지 않고 작업을 바로 실행
+         2. Main thread에서 처리되는 preventDefault가 실행되지 않음
+
+
+         # ex)
+         터치, 스크롤, 휠과 같은 이벤트는 취소해야 할 일이 거의 없음. 특성상 짧은 시간에 빠르고 많이 발생
+         - 만약 passive 옵션이 false 상태인 경우 이벤트가 다 끝날때까지 기다렸다가 화면에 반영을 하게 되어 버벅이는 등의 현상이 발생
+         - passive 옵션을 true 설정 시, 이벤트가 수신되는 즉시 화면에 반영해도 됨을 알려주는 것이고 퍼포먼스 향상을 기대
+
+
+         # 문제 사항
+         "Unable to preventDefault inside passive event listener invocation." 에러
+
+         터치, 스크롤 등의 이벤트를 발생시키는 코드를 작성하다 보면, 위와 같은 에러가 발생할 수 있음
+         해당 이벤트 내에 preventDefault가 실행되고 있는데, `passive: true` 속성으로 인해 preventDefault가 실행되지 않고 있다는 의미
+
+         해결 : 따라서 event.addEventListener('event', func, {passive: false})와 같이 passvie 옵션을 비활성화 상태로 선언하여 해결
+               하지만 퍼포먼스 떨어짐
+
+
+
+         * preventDefault : 어떤 이벤트를 명시적으로 처리하지 않은 경우, 해당 이벤트에 대한 사용자 에이전트의 기본 동작을 실행하지 않도록 지정
+         * preventDefault는 cancelable (취소 가능한 이벤트)의 기본 동작을 취소하는 이벤트
+         * ex) 체크박스에 preventDefault 조건을 걸어주게 되면 체크박스에 체크가 되지 않음
+      */
+
+
+
+
+
+
+      /*
+
+         #################
+         #################   이벤트 최적화
+         #################
+
+         # 상황
+         1. 사용자의 스크롤, 클릭 등에 반응하는 페이지를 만들면, 1초에도 몇십 번씩 특정 함수가 동작해야 할 때가 많음
+         2. 프레임 주사율 넘어 실행되는 경우가 생김
+         3. 이렇게 무거운 함수를 돌리는 와중에도 event.preventDefault() 사용 여부를 확인해야 하니,
+            브라우저의 메인 쓰레드에까지 악영향을 끼쳐 사용자가 페이지 전체가 버벅인다 느낄 수 있음
+
+
+         window.addEventListener("scroll", foo, { passive: true });
+         - 요즘엔 scroll이나 touchstart 같은 이벤트에 passive 옵션을 추가하지 않으면 콘솔에 경고까지 뜨기에, 아마 대부분 사용하는 옵션
+         - passive가 true인 이벤트 리스너는 preventDefault()를 호출할 수 없음
+         - preventDefault()를 호출할 일이 없으니, 상술한 것처럼 브라우저의 메인 쓰레드에까지 악영향을 끼치는 참사는 막을 수 있음
+      */
+
+
+      // 안좋은코드 
+      const startTime = performance.now();
+      function log() {
+         console.log('몇번실행?')
+         if (performance.now() - startTime <= 1000) {
+            requestAnimationFrame(() => {
+               setTimeout(() => {
+                  log()
+               })
+            })
+         }
+      }
+
+      log(); //121번 실행
+
+      // requestAnimationFrame에 콜백을 넘겨주면 브라우저가 화면을 다시 그리기 전에 해당 함수를 호출하니, 함수가 초당 200회씩 호출되는 참사를 방지할 수 있음
+
+
+
+      // 개선코드 
+      !(function () {
+         let ticking = false;
+
+         function foo() {
+            if (!ticking) {
+               ticking = true;
+               requestAnimationFrame(() => {
+                  console.log("Scrolled!");
+                  ticking = false;
+               });
+            }
+         }
+
+         window.addEventListener("scroll", foo, { passive: true });
+      })();
+
+      // 이제 주사율보다 더 실행되지 않음 
+
+
+
+      // 클로저 사용하여 재사용코드 
+      function optimizeAnimation(callback) {
+         let ticking = false;
+
+         return () => {
+            if (!ticking) {
+               ticking = true;
+               requestAnimationFrame(() => {
+                  callback();
+                  ticking = false;
+               });
+            }
+         };
+      }
+
+      window.addEventListener(
+         "scroll",
+         optimizeAnimation(() => {
+            console.log("Hi there 👋");
+         }),
+         { passive: true }
+      );
+
+   </script>
+
+
+</body>
+
+</html>
