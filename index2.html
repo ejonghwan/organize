@@ -272,6 +272,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      height: 200px;
     }
 
     .swiper-slide img {
@@ -312,6 +313,23 @@
   </script>
    </div>
 
+
+
+   <br />
+   <br />
+   <br />
+   <ul class="testhoho">
+      <li tabindex="0">1</li>
+      <li tabindex="0">2</li>
+      <li tabindex="0">3</li>
+   </ul>
+
+   <script>
+      const aa = document.querySelectorAll('.testhoho li')
+      aa.forEach(item => item.addEventListener('click', () => {
+         alert(`${item} clicked`)
+      }))
+   </script>
 
 </body>
 
