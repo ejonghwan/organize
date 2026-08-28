@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <meta name="color-scheme" content="light only" />
+    <meta name="supported-color-schemes" content="light" />
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
@@ -14,6 +16,7 @@
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        /* forced-color-adjust: none; */
       }
 
       html,
@@ -186,12 +189,15 @@
           background-color: #111;
         }
       }
+      :root {
+        color-scheme: light only;
+      }
     </style>
 
     <br /><br /><br /><br /><br /><br />
     <div class="darkmodetest">
       다크모드 테스트 다크모드 테스트다크모드 테스트다크모드 테스트다크모드
-      테스트다크모드 테스트다크모드 테스트 1
+      테스트다크모드 테스트다크모드 테스트 12
     </div>
     <div>카카오 인앱 테스트</div>
     <input
