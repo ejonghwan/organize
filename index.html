@@ -1,38 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
-    <link rel="stylesheet" href="" media="screen">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <link rel="stylesheet" href="" media="screen" />
     <title>스터디 내용</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        html,
-        body {
-            width: 100%;
-            height: 100%;
-        }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
 
-        ul,
-        ol {
-            list-style: none;
-            ;
-        }
+      ul,
+      ol {
+        list-style: none;
+      }
 
-        header {
-            width: 980px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+      header {
+        width: 980px;
+        margin: 0 auto;
+        padding: 20px;
+      }
 
-        /* main {width: 980px; margin:0 auto; }
+      /* main {width: 980px; margin:0 auto; }
         section {padding:20px 20px}
         section > ul {margin-bottom: 40px;;}
         section > ul > li {margin-bottom: 40px; font-size: 15px; position: relative; padding-left: 20px;}
@@ -42,155 +43,174 @@
         dd > ul {margin: 15px 0;}
         dd > ul > li{margin-bottom: 5px; position: relative;padding-left: 10px;;}
         dd > ul > li::before {content: '-';  display: inline-block; position: absolute; top:0; left:0; } */
-        h1 {
-            margin-bottom: 20px;
-            font-size: 24px;
+      h1 {
+        margin-bottom: 20px;
+        font-size: 24px;
+      }
+
+      h2 {
+        margin-bottom: 20px;
+        font-size: 20px;
+      }
+
+      h3 {
+        margin-bottom: 10px;
+        font-size: 17px;
+      }
+
+      body {
+        /* background-color: #111;
+            color: rgb(197, 197, 197) */
+      }
+
+      a {
+        text-decoration: none;
+        color: rgb(42, 195, 255);
+      }
+
+      .hoho section {
+        padding: 20px;
+      }
+
+      .hoho section + section {
+        margin-top: 20px;
+        border-top: 1px solid #333;
+      }
+
+      .hoho section > div {
+        margin-bottom: 30px;
+      }
+
+      .hoho section ul {
+        padding-left: 10px;
+      }
+
+      .hoho section ul > li::before {
+        content: "-";
+        display: inline-block;
+        width: 10px;
+        height: 100%;
+      }
+
+      @media (max-width: 960px) {
+        main,
+        header {
+          width: 100%;
         }
+      }
 
-        h2 {
-            margin-bottom: 20px;
-            font-size: 20px;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        h3 {
-            margin-bottom: 10px;
-            font-size: 17px;
-        }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
 
-        body {
-            background-color: #111;
-            color: rgb(197, 197, 197)
-        }
+      .wrap {
+        width: 80%;
+        height: 30px;
+        margin-top: 30px;
+        display: inline-block;
+        background-color: #ffd4dc;
+      }
 
-        a {
-            text-decoration: none;
-            color: rgb(42, 195, 255);
-        }
+      .title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
 
-        .hoho section {
-            padding: 20px;
-        }
+      .title > li {
+        display: inline;
+      }
 
-        .hoho section+section {
-            margin-top: 20px;
-            border-top: 1px solid #333;
-        }
+      .flex_test {
+        display: flex;
+        width: 100%;
+      }
 
-        .hoho section>div {
-            margin-bottom: 30px;
-        }
-
-        .hoho section ul {
-            padding-left: 10px;
-        }
-
-        .hoho section ul>li::before {
-            content: '-';
-            display: inline-block;
-            width: 10px;
-            height: 100%;
-        }
-
-
-        @media (max-width: 960px) {
-
-            main,
-            header {
-                width: 100%;
-            }
-        }
-
-
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html,
-        body {
-            width: 100%;
-            height: 100%;
-            ;
-        }
-
-        .wrap {
-            width: 80%;
-            height: 30px;
-            margin-top: 30px;
-            display: inline-block;
-            background-color: #ffd4dc;
-        }
-
-        .title {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .title>li {
-            display: inline;
-        }
-
-
-
-        .flex_test {
-            display: flex;
-            width: 100%;
-        }
-
-        .flex_test>span {
-            border: 1px solid red;
-        }
+      .flex_test > span {
+        border: 1px solid red;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
-
+  <body>
     <style>
-        .test123 {
-            display: table;
-        }
+      .test123 {
+        display: table;
+      }
 
-        .test123 .box1 {
-            border: 1px solid red;
-            display: table-cell;
-        }
+      .test123 .box1 {
+        border: 1px solid red;
+        display: table-cell;
+      }
 
-        .test123 .box2 {
-            border: 1px solid red;
-            float: right;
-            width: 50px;
-            height: 50px;
-            display: table-cell;
-        }
+      .test123 .box2 {
+        border: 1px solid red;
+        float: right;
+        width: 50px;
+        height: 50px;
+        display: table-cell;
+      }
 
-        .ellipsis {
-            /* width: 200px; */
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
+      .ellipsis {
+        /* width: 200px; */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+      }
+
+      /* CSS 미디어 쿼리가 작동하는지 확인하는 영역 (차단 성공 시 안 변함) */
+      @media (prefers-color-scheme: dark) {
+        .darkmodetest {
+          color: #fff; /* 미디어 쿼리 감지 시 빨간색 */
+          background-color: #111;
         }
+      }
     </style>
 
-
-    <div>카카오 인앱 테스트 </div>
-    <input type="text" title="ho" enterkeyhint="go" style="height: 100px; width: 100%; padding: 27px 0 4px 0; outline: none; position: relative; text-align: left; font-weight: 700; z-index: 1; ">
-
+    <br /><br /><br /><br /><br /><br />
+    <div class="darkmodetest">
+      다크모드 테스트 다크모드 테스트다크모드 테스트다크모드 테스트다크모드
+      테스트다크모드 테스트다크모드 테스트
+    </div>
+    <div>카카오 인앱 테스트</div>
+    <input
+      type="text"
+      title="ho"
+      enterkeyhint="go"
+      style="
+        height: 100px;
+        width: 100%;
+        padding: 27px 0 4px 0;
+        outline: none;
+        position: relative;
+        text-align: left;
+        font-weight: 700;
+        z-index: 1;
+      "
+    />
 
     <!-- <img style="float:right; border: 1px solid red;" width="50px" height="20px" src="./assets/img/arr.png" /> -->
-    <span style="float:right; border: 1px solid red; " width="50px" height="20px">123123</span>
-    <div class="ellipsis" style="position: relative;">float:left 왼쪽 속성 테스트 입니다. 보이는 것처럼 사진이 왼쪽으로 이동해있고 글이 오른쪽으로 오는것을 알 수
-        있습니다. 말을 길게 써야 글이 물 흐르듯이
-        써지는걸
-        보여야할텐데요.float:left 왼쪽 속성 테스트 입니다. 보이는 것처럼 사진이 왼쪽으로 이동해있고 글이 오른쪽으로 오는것을 알 수 있습니다. 말을 길게 써야 글이 물 흐르듯이 써지는걸
-        보여야할텐데요.
+    <span style="float: right; border: 1px solid red" width="50px" height="20px"
+      >123123</span
+    >
+    <div class="ellipsis" style="position: relative">
+      float:left 왼쪽 속성 테스트 입니다. 보이는 것처럼 사진이 왼쪽으로
+      이동해있고 글이 오른쪽으로 오는것을 알 수 있습니다. 말을 길게 써야 글이 물
+      흐르듯이 써지는걸 보여야할텐데요.float:left 왼쪽 속성 테스트 입니다.
+      보이는 것처럼 사진이 왼쪽으로 이동해있고 글이 오른쪽으로 오는것을 알 수
+      있습니다. 말을 길게 써야 글이 물 흐르듯이 써지는걸 보여야할텐데요.
     </div>
-    <span style="position: absolute; bottom: 0; right: 0;">asdasd</span>
+    <span style="position: absolute; bottom: 0; right: 0">asdasd</span>
 
     <!-- <div class="test123">
         <div class="box1">(워싱턴=연합뉴스) 박성민 특파원 = 도널드 트럼프 미국 대통령은 자신의 집권 2기 취임 100일을 앞두고 속속 발표된 여론조사에서 '역대 대통령 최저치 지지율'을
@@ -202,31 +222,25 @@
 
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
-
     <!-- 노치테스트 -->
-    <div>
-
-    </div>
+    <div></div>
 
     <script>
-        const isIphone = /iphone/.test(navigator.userAgent.toLowerCase());
-        console.log('isIphone?', isIphone)
+      const isIphone = /iphone/.test(navigator.userAgent.toLowerCase());
+      console.log("isIphone?", isIphone);
     </script>
-
 
     test
     <div class="flex_test">
-        <span>가나다라마바사가나다라마바사가나다라마바사가나다라마바사</span>
-        <span>x</span>
+      <span>가나다라마바사가나다라마바사가나다라마바사가나다라마바사</span>
+      <span>x</span>
     </div>
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
-
-
     <main class="hoho">
-        <section>
-            <!-- onerror img test  -->
-            <!-- <div onclick="handleclick(event)">
+      <section>
+        <!-- onerror img test  -->
+        <!-- <div onclick="handleclick(event)">
                 <h2>img onerror test (완)</h2>
                 <div>
                     <h3>정상이미지</h3>
@@ -240,99 +254,140 @@
                 </div>
             </div> -->
 
-            <script>
+        <script>
+          function handleclick(event) {
+            console.log("click", event);
+          }
 
-                function handleclick(event) {
-                    console.log('click', event)
-                }
+          function handleImgError(event) {
+            console.log("onError fn???", event);
+            event.target.setAttribute("src", "/assets/img/error.png");
+          }
+        </script>
 
-
-                function handleImgError(event) {
-                    console.log('onError fn???', event)
-                    event.target.setAttribute('src', "/assets/img/error.png")
-
-                }
-
-            </script>
-
-
-            <h2>test page</h2>
-            <ul>
-                <li><a href="/00_test/01_Tetris/index.html" target="_blank">tetris</a></li>
-                <li><a href="/00_test/02_chatting_socketio/" target="_blank">soketio</a></li>
-                <li><a href="/00_test/crud/02_crud_memo.html" target="_blank">crud</a></li>
-            </ul>
-        </section>
-        <section>
-            <h2>ui</h2>
-            <div>
-                <h3>animation</h3>
-                <ul>
-                    <li><a href="/01_ui/animation/gridAnimation.html" target="_blank">카드 그리드</a></li>
-                    <li><a href="/01_ui/animation/01_character.html" target="_blank">인풋 캐릭터 </a></li>
-                </ul>
-            </div>
-            <div>
-                <h3>button</h3>
-                <ul>
-                    <li><a href="/01_ui/button/01_btn.html" target="_blank">스티키 버튼</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3>input</h3>
-                <ul>
-                    <li><a href="/" target="_blank">asd</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3>slide</h3>
-                <ul>
-                    <li><a href="/01_ui/slide/01_slide.html" target="_blank">연습 슬라이드</a></li>
-                    <li><a href="/01_ui/slide/04_cube_rotate.html" target="_blank">큐브 슬라이드</a></li>
-                </ul>
-            </div>
-            <div>
-                <h3>tab</h3>
-                <ul>
-                    <li><a href="/01_ui/tab/06_tab.html" target="_blank">프로토타입 연습 탭</a></li>
-                </ul>
-            </div>
-        </section>
-        <section>
-            <h2>canvas</h2>
-            <ul>
-                <li><a href="/02_canvas/01_sheep/" target="_blank">sheep</a></li>
-                <li><a href="/02_canvas/02_impact/" target="_blank">inpact</a></li>
-                <li><a href="/02_canvas/03_wave/" target="_blank">wave</a></li>
-                <li><a href="/02_canvas/04_rotate_shape/" target="_blank">rotate shape</a></li>
-            </ul>
-        </section>
-        <section>
-            <h2>util</h2>
-            <ul>
-                <li><a href="/03_util/rqafThrottle.html" target="_blank">requestAnimation throttle</a></li>
-            </ul>
-        </section>
-        <section>
-            <h2>default project</h2>
-            <ul>
-                <li><a href="/04_project/index.html" target="_blank">mm</a></li>
-            </ul>
-        </section>
-        <section>
-            <h2>study</h2>
-            <ul>
-                <li><a href="/05_study/01_fn_es5/index.html" target="_blank">함수형 프로그래밍 es5 - 유인동님</a></li>
-                <li><a href="/05_study/02_fn_es6/index.html" target="_blank">함수형 프로그래밍 es6 - 유인동님</a></li>
-                <li><a href="/05_study/02_fn_es6/index.html" target="_blank">함수형 프로그래밍 es6 응용 - 유인동님</a></li>
-            </ul>
-        </section>
+        <h2>test page</h2>
+        <ul>
+          <li>
+            <a href="/00_test/01_Tetris/index.html" target="_blank">tetris</a>
+          </li>
+          <li>
+            <a href="/00_test/02_chatting_socketio/" target="_blank">soketio</a>
+          </li>
+          <li>
+            <a href="/00_test/crud/02_crud_memo.html" target="_blank">crud</a>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>ui</h2>
+        <div>
+          <h3>animation</h3>
+          <ul>
+            <li>
+              <a href="/01_ui/animation/gridAnimation.html" target="_blank"
+                >카드 그리드</a
+              >
+            </li>
+            <li>
+              <a href="/01_ui/animation/01_character.html" target="_blank"
+                >인풋 캐릭터
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>button</h3>
+          <ul>
+            <li>
+              <a href="/01_ui/button/01_btn.html" target="_blank"
+                >스티키 버튼</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>input</h3>
+          <ul>
+            <li><a href="/" target="_blank">asd</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>slide</h3>
+          <ul>
+            <li>
+              <a href="/01_ui/slide/01_slide.html" target="_blank"
+                >연습 슬라이드</a
+              >
+            </li>
+            <li>
+              <a href="/01_ui/slide/04_cube_rotate.html" target="_blank"
+                >큐브 슬라이드</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>tab</h3>
+          <ul>
+            <li>
+              <a href="/01_ui/tab/06_tab.html" target="_blank"
+                >프로토타입 연습 탭</a
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section>
+        <h2>canvas</h2>
+        <ul>
+          <li><a href="/02_canvas/01_sheep/" target="_blank">sheep</a></li>
+          <li><a href="/02_canvas/02_impact/" target="_blank">inpact</a></li>
+          <li><a href="/02_canvas/03_wave/" target="_blank">wave</a></li>
+          <li>
+            <a href="/02_canvas/04_rotate_shape/" target="_blank"
+              >rotate shape</a
+            >
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>util</h2>
+        <ul>
+          <li>
+            <a href="/03_util/rqafThrottle.html" target="_blank"
+              >requestAnimation throttle</a
+            >
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>default project</h2>
+        <ul>
+          <li><a href="/04_project/index.html" target="_blank">mm</a></li>
+        </ul>
+      </section>
+      <section>
+        <h2>study</h2>
+        <ul>
+          <li>
+            <a href="/05_study/01_fn_es5/index.html" target="_blank"
+              >함수형 프로그래밍 es5 - 유인동님</a
+            >
+          </li>
+          <li>
+            <a href="/05_study/02_fn_es6/index.html" target="_blank"
+              >함수형 프로그래밍 es6 - 유인동님</a
+            >
+          </li>
+          <li>
+            <a href="/05_study/02_fn_es6/index.html" target="_blank"
+              >함수형 프로그래밍 es6 응용 - 유인동님</a
+            >
+          </li>
+        </ul>
+      </section>
     </main>
 
-
-
-
-
     <br />
     <br />
     <br />
@@ -341,244 +396,260 @@
     <br />
     <br />
     <br />
-
-
 
     <style>
-        .wraptest {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 1px solid red;
-            margin-bottom: 3px;
-            margin-top: -3px;
-        }
+      .wraptest {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid red;
+        margin-bottom: 3px;
+        margin-top: -3px;
+      }
 
-        .wraptest>button {
-            border: 1px solid blue;
-            width: 24px;
-            height: 24px;
-            flex: 0 0 auto;
-            margin-bottom: 4px;
-            background: url('./arr.png') no-repeat center / 100% auto;
-        }
+      .wraptest > button {
+        border: 1px solid blue;
+        width: 24px;
+        height: 24px;
+        flex: 0 0 auto;
+        margin-bottom: 4px;
+        background: url("./arr.png") no-repeat center / 100% auto;
+      }
 
-        .left {
-            margin-right: 10px;
-        }
+      .left {
+        margin-right: 10px;
+      }
 
-        .right {
-            margin-left: 10px;
-        }
+      .right {
+        margin-left: 10px;
+      }
 
-        .pagenum {
-            flex: 0 0 auto;
-        }
+      .pagenum {
+        flex: 0 0 auto;
+      }
 
-        /* .pagecur {display: inline-block;} */
-        /* .pagetotal {display: inline-block;} */
-        .wraptest .pagetotal {
-            color: #666;
-            font-weight: 400;
-            padding-left: 9px;
-            margin-left: 3px;
-            position: relative;
-            font-size: 16px;
-        }
+      /* .pagecur {display: inline-block;} */
+      /* .pagetotal {display: inline-block;} */
+      .wraptest .pagetotal {
+        color: #666;
+        font-weight: 400;
+        padding-left: 9px;
+        margin-left: 3px;
+        position: relative;
+        font-size: 16px;
+      }
 
-        .wraptest .pagetotal::before {
-            content: '';
-            display: block;
-            position: absolute;
-            top: 53%;
-            left: 3px;
-            background-color: #666;
-            width: 1px;
-            height: 13px;
-            /* transform: translateY(-50%) rotateZ(26deg); */
-        }
+      .wraptest .pagetotal::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 53%;
+        left: 3px;
+        background-color: #666;
+        width: 1px;
+        height: 13px;
+        /* transform: translateY(-50%) rotateZ(26deg); */
+      }
 
-        .blind {
-            position: absolute;
-            left: -999px;
-            top: -999px;
-            width: 1px;
-            height: 1px;
-            overflow: hidden;
-            margin-left: -1px;
-            border: 0 none !important;
-            background: transparent !important;
-            color: transparent !important;
-        }
+      .blind {
+        position: absolute;
+        left: -999px;
+        top: -999px;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        margin-left: -1px;
+        border: 0 none !important;
+        background: transparent !important;
+        color: transparent !important;
+      }
     </style>
     <div class="wraptest">
-        <button class="left">
-            <span class="blind">이전 퀴즈로 이동</span>
-        </button>
-        <div class="pagenum text1"><strong class="pagecur"><span class="blind">현재 페이지</span>1</strong><span
-                class="pagetotal"><span class="blind">총 페이지</span>3</span></div>
+      <button class="left">
+        <span class="blind">이전 퀴즈로 이동</span>
+      </button>
+      <div class="pagenum text1">
+        <strong class="pagecur"><span class="blind">현재 페이지</span>1</strong
+        ><span class="pagetotal"><span class="blind">총 페이지</span>3</span>
+      </div>
 
-        <button class="right">
-            <span class="blind">다음 퀴즈로 이동</span>
-        </button>
+      <button class="right">
+        <span class="blind">다음 퀴즈로 이동</span>
+      </button>
     </div>
     <!-- 아씨 사파리에서 인라인에 가상요소주고 포지션주면 떨어짐;;; 왜이런거지 ?  -->
 
-
     <!-- 아이폰에서는 인라인블록이 (inline역할)문자열로 인식 잘 안하는듯.. 주의  -->
     <div class="wrap">
-        <ul class="title">
-            <li><span>호호호호</span></li>
-            <li><span>호호호호</span></li>
-            <li><span>호호호호</span></li>
-            <li><span>호호호호</span></li>
-            <li><span>호호호호</span></li>
-            <li><span>호호호호</span></li>
-            <li><span>호호호호</span></li>
-            <li><span>호호호호</span></li>
-            <li><span>호호호호</span></li>
-            <li><span>호호호호</span></li>
-            <li><span>호호호호</span></li>
-            <li><span>호호호호</span></li>
-            <li><span>호호호호</span></li>
-            <li><span>호호호호</span></li>
-            <li><span>호호호호</span></li>
-            <li><span>호호호호</span></li>
-            <li><span>호호호호</span></li>
-            <li><span>호호호호</span></li>
-        </ul>
+      <ul class="title">
+        <li><span>호호호호</span></li>
+        <li><span>호호호호</span></li>
+        <li><span>호호호호</span></li>
+        <li><span>호호호호</span></li>
+        <li><span>호호호호</span></li>
+        <li><span>호호호호</span></li>
+        <li><span>호호호호</span></li>
+        <li><span>호호호호</span></li>
+        <li><span>호호호호</span></li>
+        <li><span>호호호호</span></li>
+        <li><span>호호호호</span></li>
+        <li><span>호호호호</span></li>
+        <li><span>호호호호</span></li>
+        <li><span>호호호호</span></li>
+        <li><span>호호호호</span></li>
+        <li><span>호호호호</span></li>
+        <li><span>호호호호</span></li>
+        <li><span>호호호호</span></li>
+      </ul>
     </div>
 
-
     <script>
+      const all = document.querySelectorAll(".wrap .title li");
+      console.log("all?", all);
 
-        const all = document.querySelectorAll('.wrap .title li');
-        console.log('all?', all)
+      // for (let i = 0; i < all.length; i++) {
+      //     all[i].addEventListener('click', () => {
+      //         console.log('target?', this)
+      //     })
+      // }
 
-        // for (let i = 0; i < all.length; i++) {
-        //     all[i].addEventListener('click', () => {
-        //         console.log('target?', this)
-        //     })
-        // }
+      const wrap1 = document.querySelector(".wrap");
+      wrap1.addEventListener("click", (e) => {
+        console.log("wrap", e.target.nodeName);
 
-        const wrap1 = document.querySelector('.wrap')
-        wrap1.addEventListener('click', (e) => {
-            console.log('wrap', e.target.nodeName)
-
-            if (e.target.NodeName === 'LI') {
-                console.log('엘아이')
-            }
-        })
-
+        if (e.target.NodeName === "LI") {
+          console.log("엘아이");
+        }
+      });
     </script>
 
-
     <header>
-        <h1>jj</h1>
+      <h1>jj</h1>
     </header>
     <main>
-        <section>
-            <h2>ui</h2>
-            <article>
-                <h3>인터렉션</h3>
-                <ul>
-                    <li>
-                        <a href="/00_uis/01_btn.html" target="_blank" title="new window">btn</a>
-                    </li>
-                </ul>
-            </article>
-            <article>
-                <h3>접근성</h3>
-                <ul>
-                    <li>
-                        <a href="/00_uis/01_btn.html" target="_blank" title="new window">slide</a>
-                    </li>
-                    <li>
-                        <a href="/00_uis/01_btn.html" target="_blank" title="new window">tab</a>
-                    </li>
-                    <li>
-                        <a href="/00_uis/01_btn.html" target="_blank" title="new window">popup</a>
-                    </li>
-                    <li>
-                        <a href="/00_uis/01_btn.html" target="_blank" title="new window">scroll page</a>
-                    </li>
-                    <li>
-                        <a href="/00_uis/01_btn.html" target="_blank" title="new window">one page</a>
-                    </li>
-                    <li>
-                        <a href="/00_uis/01_btn.html" target="_blank" title="new window">input</a>
-                    </li>
-                </ul>
-            </article>
-        </section>
-        <section>
-            <h2>study</h2>
-            <a href="/study.html">bbbbb</a>
-        </section>
+      <section>
+        <h2>ui</h2>
+        <article>
+          <h3>인터렉션</h3>
+          <ul>
+            <li>
+              <a href="/00_uis/01_btn.html" target="_blank" title="new window"
+                >btn</a
+              >
+            </li>
+          </ul>
+        </article>
+        <article>
+          <h3>접근성</h3>
+          <ul>
+            <li>
+              <a href="/00_uis/01_btn.html" target="_blank" title="new window"
+                >slide</a
+              >
+            </li>
+            <li>
+              <a href="/00_uis/01_btn.html" target="_blank" title="new window"
+                >tab</a
+              >
+            </li>
+            <li>
+              <a href="/00_uis/01_btn.html" target="_blank" title="new window"
+                >popup</a
+              >
+            </li>
+            <li>
+              <a href="/00_uis/01_btn.html" target="_blank" title="new window"
+                >scroll page</a
+              >
+            </li>
+            <li>
+              <a href="/00_uis/01_btn.html" target="_blank" title="new window"
+                >one page</a
+              >
+            </li>
+            <li>
+              <a href="/00_uis/01_btn.html" target="_blank" title="new window"
+                >input</a
+              >
+            </li>
+          </ul>
+        </article>
+      </section>
+      <section>
+        <h2>study</h2>
+        <a href="/study.html">bbbbb</a>
+      </section>
     </main>
 
-
-
-
     <svg width="320" height="320" xmlns="http://www.w3.org/2000/svg">
-        <path d="M10 315
+      <path
+        d="M10 315
                  L 110 215
                  A 30 50 0 0 1 162.55 162.45
                  L 172.55 152.45
                  A 30 50 -45 0 1 215.1 109.9
-                 L 315 10" stroke="black" fill="green" stroke-width="2" fill-opacity="0.5" />
+                 L 315 10"
+        stroke="black"
+        fill="green"
+        stroke-width="2"
+        fill-opacity="0.5"
+      />
     </svg>
 
     <br /><br />
 
     <svg width="325" height="325" xmlns="http://www.w3.org/2000/svg">
-        <path d="M80 80
+      <path
+        d="M80 80
                  A 45 45, 0, 0, 0, 125 125
-                 L 125 80 Z" fill="green" />
-        <path d="M230 80
+                 L 125 80 Z"
+        fill="green"
+      />
+      <path
+        d="M230 80
                  A 45 45, 0, 1, 0, 275 125
-                 L 275 80 Z" fill="red" />
-        <path d="M80 230
+                 L 275 80 Z"
+        fill="red"
+      />
+      <path
+        d="M80 230
         3
                  A 45 45, 0, 0, 1, 125 275
-                 L 125 230 Z" fill="purple" />
-        <path d="M230 230
+                 L 125 230 Z"
+        fill="purple"
+      />
+      <path
+        d="M230 230
                  A 45 45, 0, 1, 1, 275 275
-                 L 275 230 Z" fill="blue" />
+                 L 275 230 Z"
+        fill="blue"
+      />
     </svg>
 
-
-
     <footer></footer>
+  </body>
 
-
-
-</body>
-
-
-<script>
-
+  <script>
     const arr = {
-        아이스크림: [
-            { name: 'hoho1', bb: true },
-            { name: 'hoho2', bb: true },
-            { name: 'hoho3', bb: false },
-            { name: 'hoho4', bb: false },
-            { name: 'hoho5', bb: true },
-            { name: 'hoho6', bb: true },
-        ],
-        토단: [
-            { name: 'toto1', bb: true },
-            { name: 'toto2', bb: true },
-            { name: 'toto3', bb: false },
-            { name: 'toto4', bb: false },
-            { name: 'toto5', bb: true },
-            { name: 'toto6', bb: true },
-        ],
-    }
+      아이스크림: [
+        { name: "hoho1", bb: true },
+        { name: "hoho2", bb: true },
+        { name: "hoho3", bb: false },
+        { name: "hoho4", bb: false },
+        { name: "hoho5", bb: true },
+        { name: "hoho6", bb: true },
+      ],
+      토단: [
+        { name: "toto1", bb: true },
+        { name: "toto2", bb: true },
+        { name: "toto3", bb: false },
+        { name: "toto4", bb: false },
+        { name: "toto5", bb: true },
+        { name: "toto6", bb: true },
+      ],
+    };
 
     // console.log('arr??', arr)
-
 
     // const item = Object.entries(arr).reduce((acc, cur, idx) => {
     //     // console.log('reduce?', acc, cur, idx)
@@ -587,229 +658,220 @@
     // },)
     // console.log('최종 값????', item)
 
-
-
-
-
-
-
-
-
-
-    // test 2 
+    // test 2
     // console.clear();
     const orderList = [
-        {
-            orderNum: '124124124124',
-            orderDate: '202401111000',
-            orderTag: '신용카드',
-            nonMember: true,
-            orderData: [
-                {
-                    partialShipment: true,
-                    company: '아이스크림미디어',
-                    seller: '아이스크림',
-                    itemName:
-                        '마르지아나 싸인펜 12색 (뚜껑 없이도 최대 30일간 마르지않아요)',
-                    isSingleProd: true,
-                    itemCount: 1,
-                    price: '19,800',
-                    thumbnailUrl: '/images/thumb/banner/small_01.jpg',
-                    order: '',
-                    status: '배송완료',
-                    statusNo: '06',
-                    fileNames: [
-                        'filename.jpg',
-                        'filename2.jpg',
-                        'filename3.jpg',
-                        'filename4.jpg'
-                    ]
-                },
-                {
-                    partialShipment: true,
-                    company: '아이스크림미디어',
-                    seller: '아이스크림',
-                    itemName:
-                        '마르지아나 싸인펜 12색 (뚜껑 없이도 최대 30일간 마르지않아요)',
-                    isSingleProd: true,
-                    itemCount: 1,
-                    price: '19,800',
-                    thumbnailUrl: '/images/thumb/banner/small_01.jpg',
-                    order: '',
-                    status: '배송완료',
-                    statusSub: '상품후기작성',
-                    statusNo: '08'
-                },
-                {
-                    partialShipment: false,
-                    company: '아이스크림미디어',
-                    seller: '아이스크림',
-                    itemName:
-                        '마르지아나 싸인펜 12색 (뚜껑 없이도 최대 30일간 마르지않아요)',
-                    isSingleProd: true,
-                    itemCount: 1,
-                    price: '19,800',
-                    thumbnailUrl: '/images/thumb/banner/small_01.jpg',
-                    order: '',
-                    status: '배송완료',
-                    statusSub: '상품후기작성',
-                    statusNo: '08'
-                },
-                {
-                    partialShipment: false,
-                    company: '아이스크림미디어',
-                    seller: '아이스크림',
-                    itemName:
-                        '마르지아나 싸인펜 12색 (뚜껑 없이도 최대 30일간 마르지않아요)',
-                    isSingleProd: true,
-                    itemCount: 1,
-                    price: '19,800',
-                    thumbnailUrl: '/images/thumb/banner/small_01.jpg',
-                    order: '',
-                    status: '배송완료',
-                    statusSub: '상품후기작성',
-                    statusNo: '08'
-                },
-                {
-                    partialShipment: true,
-                    company: '아이스크림미디어',
-                    seller: '아이스크림',
-                    itemName:
-                        '마르지아나 싸인펜 12색 (뚜껑 없이도 최대 30일간 마르지않아요)',
-                    isSingleProd: true,
-                    itemCount: 1,
-                    price: '19,800',
-                    thumbnailUrl: '/images/thumb/banner/small_01.jpg',
-                    order: '',
-                    status: '배송완료',
-                    statusSub: '상품후기작성',
-                    statusNo: '08'
-                },
-                {
-                    partialShipment: true,
-                    company: '아이스크림미디어',
-                    seller: '아이스크림',
-                    itemName:
-                        '마르지아나 싸인펜 12색 (뚜껑 없이도 최대 30일간 마르지않아요)',
-                    isSingleProd: true,
-                    itemCount: 1,
-                    price: '19,800',
-                    thumbnailUrl: '/images/thumb/banner/small_01.jpg',
-                    order: '',
-                    status: '배송완료',
-                    statusSub: '상품후기작성',
-                    statusNo: '08'
-                },
-                {
-                    partialShipment: true,
-                    company: '주식회사 토단',
-                    seller: '토단',
-                    itemName: '하비클레이 실속형(5색)',
-                    isSingleProd: true,
-                    itemCount: 1,
-                    price: '19,800',
-                    thumbnailUrl: '/images/thumb/banner/small_01.jpg',
-                    order: '',
-                    status: '주문완료',
-                    statusNo: '02'
-                },
-                {
-                    partialShipment: true,
-                    company: '주식회사 토단',
-                    seller: '토단',
-                    itemName: '하비클레이 실속형(5색)',
-                    isSingleProd: true,
-                    itemCount: 1,
-                    price: '19,800',
-                    thumbnailUrl: '/images/thumb/banner/small_01.jpg',
-                    order: '',
-                    status: '주문완료',
-                    statusNo: '02'
-                },
-                {
-                    partialShipment: true,
-                    company: '주식회사 토단',
-                    seller: '토단',
-                    itemName: '하비클레이 실속형(5색)',
-                    isSingleProd: true,
-                    itemCount: 1,
-                    price: '19,800',
-                    thumbnailUrl: '/images/thumb/banner/small_01.jpg',
-                    order: '',
-                    status: '주문완료',
-                    statusNo: '02'
-                },
-                {
-                    partialShipment: false,
-                    company: '주식회사 토단',
-                    seller: '토단',
-                    itemName: '하비클레이 실속형(5색)',
-                    isSingleProd: true,
-                    itemCount: 1,
-                    price: '19,800',
-                    thumbnailUrl: '/images/thumb/banner/small_01.jpg',
-                    order: '',
-                    status: '주문완료',
-                    statusNo: '02'
-                },
-                {
-                    partialShipment: true,
-                    company: '주식회사 토단',
-                    seller: '토단',
-                    itemName: '하비클레이 실속형(5색)',
-                    isSingleProd: true,
-                    itemCount: 1,
-                    price: '19,800',
-                    thumbnailUrl: '/images/thumb/banner/small_01.jpg',
-                    order: '',
-                    status: '주문완료',
-                    statusNo: '02'
-                },
-                {
-                    partialShipment: true,
-                    company: '주식회사 토단',
-                    seller: '토단',
-                    itemName: '하비클레이 실속형(5색)',
-                    isSingleProd: true,
-                    itemCount: 1,
-                    price: '19,800',
-                    thumbnailUrl: '/images/thumb/banner/small_01.jpg',
-                    order: '',
-                    status: '주문완료',
-                    statusNo: '02'
-                },
-                {
-                    partialShipment: true,
-                    company: '주식회사 토단',
-                    seller: '토단',
-                    itemName: '하비클레이 실속형(5색)',
-                    isSingleProd: true,
-                    itemCount: 1,
-                    price: '19,800',
-                    thumbnailUrl: '/images/thumb/banner/small_01.jpg',
-                    order: '',
-                    status: '주문완료',
-                    statusNo: '02'
-                },
-                {
-                    partialShipment: true,
-                    company: '주식회사 토단',
-                    seller: '토단',
-                    itemName: '하비클레이 실속형(5색)',
-                    isSingleProd: true,
-                    itemCount: 1,
-                    price: '19,800',
-                    thumbnailUrl: '/images/thumb/banner/small_01.jpg',
-                    order: '',
-                    status: '주문완료',
-                    statusNo: '02'
-                },
-            ]
-        }
-    ]
+      {
+        orderNum: "124124124124",
+        orderDate: "202401111000",
+        orderTag: "신용카드",
+        nonMember: true,
+        orderData: [
+          {
+            partialShipment: true,
+            company: "아이스크림미디어",
+            seller: "아이스크림",
+            itemName:
+              "마르지아나 싸인펜 12색 (뚜껑 없이도 최대 30일간 마르지않아요)",
+            isSingleProd: true,
+            itemCount: 1,
+            price: "19,800",
+            thumbnailUrl: "/images/thumb/banner/small_01.jpg",
+            order: "",
+            status: "배송완료",
+            statusNo: "06",
+            fileNames: [
+              "filename.jpg",
+              "filename2.jpg",
+              "filename3.jpg",
+              "filename4.jpg",
+            ],
+          },
+          {
+            partialShipment: true,
+            company: "아이스크림미디어",
+            seller: "아이스크림",
+            itemName:
+              "마르지아나 싸인펜 12색 (뚜껑 없이도 최대 30일간 마르지않아요)",
+            isSingleProd: true,
+            itemCount: 1,
+            price: "19,800",
+            thumbnailUrl: "/images/thumb/banner/small_01.jpg",
+            order: "",
+            status: "배송완료",
+            statusSub: "상품후기작성",
+            statusNo: "08",
+          },
+          {
+            partialShipment: false,
+            company: "아이스크림미디어",
+            seller: "아이스크림",
+            itemName:
+              "마르지아나 싸인펜 12색 (뚜껑 없이도 최대 30일간 마르지않아요)",
+            isSingleProd: true,
+            itemCount: 1,
+            price: "19,800",
+            thumbnailUrl: "/images/thumb/banner/small_01.jpg",
+            order: "",
+            status: "배송완료",
+            statusSub: "상품후기작성",
+            statusNo: "08",
+          },
+          {
+            partialShipment: false,
+            company: "아이스크림미디어",
+            seller: "아이스크림",
+            itemName:
+              "마르지아나 싸인펜 12색 (뚜껑 없이도 최대 30일간 마르지않아요)",
+            isSingleProd: true,
+            itemCount: 1,
+            price: "19,800",
+            thumbnailUrl: "/images/thumb/banner/small_01.jpg",
+            order: "",
+            status: "배송완료",
+            statusSub: "상품후기작성",
+            statusNo: "08",
+          },
+          {
+            partialShipment: true,
+            company: "아이스크림미디어",
+            seller: "아이스크림",
+            itemName:
+              "마르지아나 싸인펜 12색 (뚜껑 없이도 최대 30일간 마르지않아요)",
+            isSingleProd: true,
+            itemCount: 1,
+            price: "19,800",
+            thumbnailUrl: "/images/thumb/banner/small_01.jpg",
+            order: "",
+            status: "배송완료",
+            statusSub: "상품후기작성",
+            statusNo: "08",
+          },
+          {
+            partialShipment: true,
+            company: "아이스크림미디어",
+            seller: "아이스크림",
+            itemName:
+              "마르지아나 싸인펜 12색 (뚜껑 없이도 최대 30일간 마르지않아요)",
+            isSingleProd: true,
+            itemCount: 1,
+            price: "19,800",
+            thumbnailUrl: "/images/thumb/banner/small_01.jpg",
+            order: "",
+            status: "배송완료",
+            statusSub: "상품후기작성",
+            statusNo: "08",
+          },
+          {
+            partialShipment: true,
+            company: "주식회사 토단",
+            seller: "토단",
+            itemName: "하비클레이 실속형(5색)",
+            isSingleProd: true,
+            itemCount: 1,
+            price: "19,800",
+            thumbnailUrl: "/images/thumb/banner/small_01.jpg",
+            order: "",
+            status: "주문완료",
+            statusNo: "02",
+          },
+          {
+            partialShipment: true,
+            company: "주식회사 토단",
+            seller: "토단",
+            itemName: "하비클레이 실속형(5색)",
+            isSingleProd: true,
+            itemCount: 1,
+            price: "19,800",
+            thumbnailUrl: "/images/thumb/banner/small_01.jpg",
+            order: "",
+            status: "주문완료",
+            statusNo: "02",
+          },
+          {
+            partialShipment: true,
+            company: "주식회사 토단",
+            seller: "토단",
+            itemName: "하비클레이 실속형(5색)",
+            isSingleProd: true,
+            itemCount: 1,
+            price: "19,800",
+            thumbnailUrl: "/images/thumb/banner/small_01.jpg",
+            order: "",
+            status: "주문완료",
+            statusNo: "02",
+          },
+          {
+            partialShipment: false,
+            company: "주식회사 토단",
+            seller: "토단",
+            itemName: "하비클레이 실속형(5색)",
+            isSingleProd: true,
+            itemCount: 1,
+            price: "19,800",
+            thumbnailUrl: "/images/thumb/banner/small_01.jpg",
+            order: "",
+            status: "주문완료",
+            statusNo: "02",
+          },
+          {
+            partialShipment: true,
+            company: "주식회사 토단",
+            seller: "토단",
+            itemName: "하비클레이 실속형(5색)",
+            isSingleProd: true,
+            itemCount: 1,
+            price: "19,800",
+            thumbnailUrl: "/images/thumb/banner/small_01.jpg",
+            order: "",
+            status: "주문완료",
+            statusNo: "02",
+          },
+          {
+            partialShipment: true,
+            company: "주식회사 토단",
+            seller: "토단",
+            itemName: "하비클레이 실속형(5색)",
+            isSingleProd: true,
+            itemCount: 1,
+            price: "19,800",
+            thumbnailUrl: "/images/thumb/banner/small_01.jpg",
+            order: "",
+            status: "주문완료",
+            statusNo: "02",
+          },
+          {
+            partialShipment: true,
+            company: "주식회사 토단",
+            seller: "토단",
+            itemName: "하비클레이 실속형(5색)",
+            isSingleProd: true,
+            itemCount: 1,
+            price: "19,800",
+            thumbnailUrl: "/images/thumb/banner/small_01.jpg",
+            order: "",
+            status: "주문완료",
+            statusNo: "02",
+          },
+          {
+            partialShipment: true,
+            company: "주식회사 토단",
+            seller: "토단",
+            itemName: "하비클레이 실속형(5색)",
+            isSingleProd: true,
+            itemCount: 1,
+            price: "19,800",
+            thumbnailUrl: "/images/thumb/banner/small_01.jpg",
+            order: "",
+            status: "주문완료",
+            statusNo: "02",
+          },
+        ],
+      },
+    ];
 
-    // const last = { 
-    //     아이스크림: { 
+    // const last = {
+    //     아이스크림: {
     //         bb1: [],
     //         bb2: []
     //      }
@@ -817,20 +879,19 @@
 
     // .push({ bb1: cur, bb2: cur })
 
-    const groupedItems = orderList[0].orderData.reduce(
-        (acc, cur) => {
-            if (cur.seller) {
-                const groupBy = (acc[cur.seller] = acc[cur.seller] || { partialShipment: [], notPartialShipment: [] })
-                cur.partialShipment ? groupBy.partialShipment.push(cur) : groupBy.notPartialShipment.push(cur)
-            }
-            return acc
-        },
-        {}
-    )
+    const groupedItems = orderList[0].orderData.reduce((acc, cur) => {
+      if (cur.seller) {
+        const groupBy = (acc[cur.seller] = acc[cur.seller] || {
+          partialShipment: [],
+          notPartialShipment: [],
+        });
+        cur.partialShipment
+          ? groupBy.partialShipment.push(cur)
+          : groupBy.notPartialShipment.push(cur);
+      }
+      return acc;
+    }, {});
 
-    console.log('groupedItems???', groupedItems)
-
-
-</script>
-
+    console.log("groupedItems???", groupedItems);
+  </script>
 </html>
