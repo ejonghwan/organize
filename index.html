@@ -168,10 +168,21 @@
         -webkit-box-orient: vertical;
       }
 
-      /* CSS 미디어 쿼리가 작동하는지 확인하는 영역 (차단 성공 시 안 변함) */
+      .darkmodetest {
+        color: red;
+        background-color: yellow;
+      }
+
+      @media (prefers-color-scheme: light) {
+        .darkmodetest {
+          color: #111;
+          background-color: #ddd;
+        }
+      }
+
       @media (prefers-color-scheme: dark) {
         .darkmodetest {
-          color: #fff; /* 미디어 쿼리 감지 시 빨간색 */
+          color: #fff;
           background-color: #111;
         }
       }
