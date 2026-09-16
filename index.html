@@ -190,7 +190,7 @@
         }
       } */
 
-      /* @media (prefers-color-scheme: dark) {
+      @media (prefers-color-scheme: dark) {
         .darkmodetest {
           color: #fff;
           background-color: #111;
@@ -198,7 +198,7 @@
       }
       :root {
         color-scheme: light only;
-      } */
+      }
 
       html {
         view-transition-name: root;
@@ -212,6 +212,75 @@
         -webkit-touch-callout: none;
       }
     </style>
+
+    <br /><br /><br /><br /><br /><br />
+
+    <style>
+      .input__wrap {
+        display: flex;
+        width: 100%;
+      }
+      .input__wrap input {
+        border: none;
+        border-bottom: 1px solid #ddd;
+        padding: 10px;
+        width: 50%;
+        height: 100%;
+      }
+      .input__wrap__d {
+        width: 20px;
+        flex: 0 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .input__wrap__test {
+        position: relative;
+        width: 50%;
+      }
+      .input__wrap__test > input {
+        color: transparent;
+        font-size: 1px;
+        width: 100%;
+      }
+      .input__wrap__inner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        pointer-events: none;
+      }
+      .input__wrap__inner .change {
+        color: #999;
+      }
+    </style>
+
+    <script>
+      window.onload = function () {
+        const hotarget = document.querySelector(".hotarget");
+        const change = document.querySelector(".change");
+        hotarget.addEventListener("input", (e) => {
+          if (e.target.value.length <= 0) {
+            change.innerHTML = "●";
+          } else {
+            change.innerHTML = e.target.value;
+          }
+        });
+      };
+    </script>
+
+    <div>input test</div>
+    <div class="input__wrap">
+      <input type="text" />
+      <div class="input__wrap__d">-</div>
+      <div class="input__wrap__test">
+        <input type="text" class="hotarget" maxlength="1" />
+        <div class="input__wrap__inner">
+          <span class="change">●</span><span class="default">●●●●●●●</span>
+        </div>
+      </div>
+    </div>
 
     <br /><br /><br /><br /><br /><br />
     <div class="darkmodetest">
